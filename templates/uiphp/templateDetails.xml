@@ -13,23 +13,26 @@
 
 		<folder>css</folder>
 		<folder>html</folder>
-		<folder>images</folder>
 		<folder>img</folder>
 		<folder>js</folder>
+		<folder>language</folder>
+		<folder>lib</folder>
 
 	</files>
 	<positions>
 		<position>header</position>
 
-		<position>position_2</position>
+		<position>content</position>
 
 		<position>footer</position>
 	</positions>
 
-<!-- 	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.tpl_protostar.ini</language>
-		<language tag="en-GB">en-GB/en-GB.tpl_protostar.sys.ini</language>
-	</languages> -->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_uiphp.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_uiphp.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.tpl_uiphp.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.tpl_uiphp.sys.ini</language>
+	</languages>
 
 	<config>
 	</config>
