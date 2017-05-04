@@ -1,0 +1,21 @@
+{
+  "name": "uiphp",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "ZD"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "jquery": "2.*"
+  }
+}
