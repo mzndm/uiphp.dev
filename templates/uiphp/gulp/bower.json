@@ -1,7 +1,7 @@
 {
   "name": "uiphp",
   "description": "",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "authors": [
     "ZD"
   ],
@@ -11,6 +11,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "src/bower/",
     "test",
     "tests"
   ],
