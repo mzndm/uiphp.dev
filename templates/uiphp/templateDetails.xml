@@ -20,7 +20,13 @@
 
 	</files>
 	<positions>
-		<position>header</position>
+		<position>insidePage__menu</position>
+		<position>search</position>
+		<position>language</position>
+		<position>mainPage__menu</position>
+		<position>breadcrumbs</position>
+
+
 
 		<position>content</position>
 
