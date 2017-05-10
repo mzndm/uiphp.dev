@@ -47,18 +47,15 @@ $class  = $active->alias . " pageid-" . $active->id;
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<jdoc:include type="head" />
-	<!--[if lt IE 9]><script src="< ?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 
-	<?php
 
-		// Add JavaScript Frameworks
 
-		$doc->addScriptVersion($this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js');
+	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'?>">
+	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/libs.css'?>">
 
-		// Add Stylesheets
-		$doc->addStyleSheetVersion($this->baseurl . '/templates/' . $this->template . '/css/main.css');
-		$doc->addStyleSheetVersion($this->baseurl . '/templates/' . $this->template . '/css/lib.css');
-	?>
+	<script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js'?>"></script>
+
 </head>
 
 <body class="body <?php echo $class; ?>">
@@ -68,10 +65,11 @@ $class  = $active->alias . " pageid-" . $active->id;
 			<div class="row">
 				<div class="container">
 					<!-- Header -->
-					<header class="header">
+					<header class="header col-md-12">
 						<div class="row">
 							<div class="header__logo">
 								<div class="logo">
+									<a href="/">
 <!--									--><?//xml version="1.0" encoding="utf-8"?>
 									<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 viewBox="5 0 172 68" style="enable-background:new 5 0 172 68;" xml:space="preserve">
@@ -256,7 +254,7 @@ $class  = $active->alias . " pageid-" . $active->id;
 											</g>
 										</g>
 </svg>
-
+									</a>
 								</div>
 							</div>
 

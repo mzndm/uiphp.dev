@@ -39,8 +39,13 @@ var path = {
         js: ['src/js/libs/libs.js'],
         style: [
             'src/bower/normalize.css/normalize.css',
-            'src/bower/bootstrap/dist/css/bootstrap.css'
+            'src/scss/libs/*.*'
         ]
+        /*[
+            // 'src/bower/normalize.css/normalize.css',
+            // 'src/bower/bootstrap/dist/css/bootstrap.css'
+
+        ]*/
     }
     // clean: ['../css/*.css', '../js/**/*.js']
 
@@ -74,10 +79,12 @@ gulp.task('style:build', function () {
 gulp.task('lib_css:build', function () {
     gulp.src(path.lib.style)
         .pipe(sourcemaps.init())
-        .pipe(concat('libs.css'))
+        .pipe(sass())
         .pipe(prefixer())
         // .pipe(cssmin())
+        .pipe(concat('libs.css'))
         .pipe(sourcemaps.write())
+
         .pipe(gulp.dest(path.build.style));
     // .pipe(reload({stream: true}));
 });
