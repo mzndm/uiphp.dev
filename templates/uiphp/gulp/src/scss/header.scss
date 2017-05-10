@@ -1,7 +1,23 @@
-.header{
-  &__logo {
-    .logo {
-      width: 200px;
+.pageid-101 {
+  .header {
+    &__logo {
+      @extend .col-sm-9;
+      .logo {
+        width: 200px;
+        margin: 0 auto;
+      }
+    }
+    .insidePage__menu {
+      display: none;
+    }
+    &__search {
+      @extend .col-sm-2;   // TODO: змінить на 3 колонки
+      .element-invisible {
+        display: none;
+      }
+      .language {
+
+      }
     }
   }
 }

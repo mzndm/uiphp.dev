@@ -65,10 +65,10 @@ gulp.task('style:build', function () {
     gulp.src(path.src.style)
         .pipe(sourcemaps.init())
         .pipe(sass({
-            // includePaths: ['src/style/'],
+            includePaths: ['src/bower/bootstrap-sass/assets/stylesheets/'],
             // outputStyle: 'compressed',
-            // sourceMap: true,
-            // errLogToConsole: true
+            sourceMap: true,
+            errLogToConsole: true
         }))
         .pipe(prefixer())
         // .pipe(cssmin())

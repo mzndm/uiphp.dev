@@ -34,12 +34,6 @@ $class  = $active->alias . " pageid-" . $active->id;
 //$sitename = $app->get('sitename');
 
 
-
-// Add JavaScript Frameworks
-//JHtml::_('bootstrap.framework');
-
-//$doc->addScriptVersion($this->baseurl . '/templates/' . $this->template . '/js/libs.js');
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>">
@@ -65,7 +59,7 @@ $class  = $active->alias . " pageid-" . $active->id;
 			<div class="row">
 				<div class="container">
 					<!-- Header -->
-					<header class="header col-md-12">
+					<header class="header">
 						<div class="row">
 							<div class="header__logo">
 								<div class="logo">
