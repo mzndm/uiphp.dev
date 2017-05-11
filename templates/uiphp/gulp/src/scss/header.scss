@@ -1,7 +1,8 @@
 .pageid-101 {
   .header {
+
     &__logo {
-      @extend .col-sm-9;
+      @extend .col-md-9;
       .logo {
         width: 200px;
         margin: 0 auto;
@@ -11,13 +12,19 @@
       display: none;
     }
     &__search {
-      @extend .col-sm-2;   // TODO: змінить на 3 колонки
+      @extend .col-md-3;
       .element-invisible {
         display: none;
+      }
+      .search {
+
       }
       .language {
 
       }
     }
   }
+}
+.mainPage__menu {
+  @extend .col-md-12;
 }

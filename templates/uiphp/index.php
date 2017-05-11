@@ -45,8 +45,8 @@ $class  = $active->alias . " pageid-" . $active->id;
 
 
 
-	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'?>">
 	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/libs.css'?>">
+	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'?>">
 
 	<script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js'?>"></script>
 
@@ -55,16 +55,17 @@ $class  = $active->alias . " pageid-" . $active->id;
 <body class="body <?php echo $class; ?>">
 	<!-- Body -->
 	<div class="site">
-		<div class="container-fluid">
+		<div class="container">
+			<!-- Header -->
+
+
 			<div class="row">
-				<div class="container">
-					<!-- Header -->
-					<header class="header">
-						<div class="row">
-							<div class="header__logo">
-								<div class="logo">
-									<a href="/">
-<!--									--><?//xml version="1.0" encoding="utf-8"?>
+				<header class="header">
+					<div class="row">
+						<div class="header__logo">
+							<div class="logo">
+								<a href="/">
+									<!--									--><?//xml version="1.0" encoding="utf-8"?>
 									<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 viewBox="5 0 172 68" style="enable-background:new 5 0 172 68;" xml:space="preserve">
 <style type="text/css">
@@ -248,34 +249,38 @@ $class  = $active->alias . " pageid-" . $active->id;
 											</g>
 										</g>
 </svg>
-									</a>
-								</div>
-							</div>
-
-							<div class="header__menu insidePage__menu">
-								<jdoc:include type="modules" name="insidePage__menu" style="xhtml" />
-							</div>
-
-							<div class="header__search">
-								<div class="search">
-									<jdoc:include type="modules" name="search" style="xhtml" />
-								</div>
-								<div class="language">
-									<jdoc:include type="modules" name="language" style="xhtml" />
-								</div>
+								</a>
 							</div>
 						</div>
-						<div class="row">
-							<div class="header__menu mainPage__menu">
-								<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
+
+						<div class="header__menu insidePage__menu">
+							<jdoc:include type="modules" name="insidePage__menu" style="xhtml" />
+						</div>
+
+						<div class="header__search">
+							<div class="search">
+								<jdoc:include type="modules" name="search" style="xhtml" />
+							</div>
+							<div class="language">
+								<jdoc:include type="modules" name="language" style="xhtml" />
 							</div>
 						</div>
-					</header>
-
-					<div class="breadcrumbs">
-						<jdoc:include type="modules" name="breadcrumbs" style="none" />
+<!--					</div>-->
+<!--					<div class="row">-->
+						<div class="header__menu mainPage__menu">
+							<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
+						</div>
 					</div>
-				</div>
+				</header>
+
+			</div>
+			<div class="breadcrumbs">
+				<jdoc:include type="modules" name="breadcrumbs" style="none" />
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+
 			</div>
 
 
