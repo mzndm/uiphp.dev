@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 11 2017 г., 14:00
+-- Время создания: Май 11 2017 г., 16:14
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.6.29
 
@@ -70,7 +70,7 @@ CREATE TABLE `thg47_assets` (
 --
 
 INSERT INTO `thg47_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 0, 127, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
+(1, 0, 0, 147, 0, 'root.1', 'Root Asset', '{\"core.login.site\":{\"6\":1,\"2\":1},\"core.login.admin\":{\"6\":1},\"core.login.offline\":{\"6\":1},\"core.admin\":{\"8\":1},\"core.manage\":{\"7\":1},\"core.create\":{\"6\":1,\"3\":1},\"core.delete\":{\"6\":1},\"core.edit\":{\"6\":1,\"4\":1},\"core.edit.state\":{\"6\":1,\"5\":1},\"core.edit.own\":{\"6\":1,\"3\":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
@@ -87,25 +87,25 @@ INSERT INTO `thg47_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 (15, 1, 35, 36, 1, 'com_media', 'com_media', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1},\"core.create\":{\"3\":1},\"core.delete\":{\"5\":1}}'),
 (16, 1, 37, 44, 1, 'com_menus', 'com_menus', '{\"core.admin\":{\"7\":1}}'),
 (17, 1, 45, 46, 1, 'com_messages', 'com_messages', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"7\":1}}'),
-(18, 1, 47, 90, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
-(19, 1, 91, 94, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(20, 1, 95, 96, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
-(21, 1, 97, 98, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
-(22, 1, 99, 100, 1, 'com_search', 'com_search', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(23, 1, 101, 102, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
-(24, 1, 103, 106, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
-(26, 1, 107, 108, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(18, 1, 47, 106, 1, 'com_modules', 'com_modules', '{\"core.admin\":{\"7\":1}}'),
+(19, 1, 107, 110, 1, 'com_newsfeeds', 'com_newsfeeds', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(20, 1, 111, 112, 1, 'com_plugins', 'com_plugins', '{\"core.admin\":{\"7\":1}}'),
+(21, 1, 113, 114, 1, 'com_redirect', 'com_redirect', '{\"core.admin\":{\"7\":1}}'),
+(22, 1, 115, 116, 1, 'com_search', 'com_search', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(23, 1, 117, 118, 1, 'com_templates', 'com_templates', '{\"core.admin\":{\"7\":1}}'),
+(24, 1, 119, 122, 1, 'com_users', 'com_users', '{\"core.admin\":{\"7\":1}}'),
+(26, 1, 123, 124, 1, 'com_wrapper', 'com_wrapper', '{}'),
 (27, 8, 18, 21, 2, 'com_content.category.2', 'Uncategorised', '{}'),
 (28, 3, 4, 5, 2, 'com_banners.category.3', 'Uncategorised', '{}'),
 (29, 7, 14, 15, 2, 'com_contact.category.4', 'Uncategorised', '{}'),
-(30, 19, 92, 93, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{}'),
-(32, 24, 104, 105, 2, 'com_users.category.7', 'Uncategorised', '{}'),
-(33, 1, 109, 110, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
-(34, 1, 111, 112, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
-(35, 1, 113, 114, 1, 'com_tags', 'com_tags', '{}'),
-(36, 1, 115, 116, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
-(37, 1, 117, 118, 1, 'com_ajax', 'com_ajax', '{}'),
-(38, 1, 119, 120, 1, 'com_postinstall', 'com_postinstall', '{}'),
+(30, 19, 108, 109, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{}'),
+(32, 24, 120, 121, 2, 'com_users.category.7', 'Uncategorised', '{}'),
+(33, 1, 125, 126, 1, 'com_finder', 'com_finder', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1}}'),
+(34, 1, 127, 128, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{}'),
+(35, 1, 129, 130, 1, 'com_tags', 'com_tags', '{}'),
+(36, 1, 131, 132, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
+(37, 1, 133, 134, 1, 'com_ajax', 'com_ajax', '{}'),
+(38, 1, 135, 136, 1, 'com_postinstall', 'com_postinstall', '{}'),
 (39, 18, 48, 49, 2, 'com_modules.module.1', 'com_modules.module.1', '{}'),
 (40, 18, 50, 51, 2, 'com_modules.module.2', 'Login', '{}'),
 (41, 18, 52, 53, 2, 'com_modules.module.3', 'Popular Articles', '{}'),
@@ -122,18 +122,28 @@ INSERT INTO `thg47_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 (52, 18, 74, 75, 2, 'com_modules.module.79', 'Multilanguage status', '{}'),
 (53, 18, 76, 77, 2, 'com_modules.module.86', 'Joomla Version', '{}'),
 (54, 16, 38, 39, 2, 'com_menus.menu.1', 'Main_Menu (UA)', '{}'),
-(56, 1, 121, 122, 1, '#__languages.3', '#__languages.3', '{}'),
+(56, 1, 137, 138, 1, '#__languages.3', '#__languages.3', '{}'),
 (57, 18, 78, 79, 2, 'com_modules.module.87', 'Переключение языков', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
 (58, 16, 40, 41, 2, 'com_menus.menu.2', 'Main_Menu (EN)', '{}'),
 (60, 18, 80, 81, 2, 'com_modules.module.88', 'Main Menu (UA)', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
 (61, 18, 82, 83, 2, 'com_modules.module.89', 'com_modules.module.89', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
-(62, 1, 123, 124, 1, 'com_advancedmodules', 'com_advancedmodules', '{\"core.admin\":[],\"core.manage\":[],\"core.create\":[],\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[]}'),
+(62, 1, 139, 140, 1, 'com_advancedmodules', 'com_advancedmodules', '{\"core.admin\":[],\"core.manage\":[],\"core.create\":[],\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[]}'),
 (63, 27, 19, 20, 3, 'com_content.article.1', 'Пустий матеріал', '{\"core.admin\":{\"7\":1},\"core.manage\":{\"6\":1},\"core.create\":{\"3\":1},\"core.edit\":{\"4\":1},\"core.edit.state\":{\"5\":1}}'),
 (64, 18, 84, 85, 2, 'com_modules.module.90', 'Пошук', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
 (65, 16, 42, 43, 2, 'com_menus.menu.3', 'Main Menu', '{}'),
 (67, 18, 86, 87, 2, 'com_modules.module.91', 'com_modules.module.91', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
 (68, 18, 88, 89, 2, 'com_modules.module.92', 'com_modules.module.92', '{\"core.delete\":[],\"core.edit\":[],\"core.edit.state\":[],\"module.edit.frontend\":[]}'),
-(69, 1, 125, 126, 1, '#__languages.1', '#__languages.1', '{}');
+(69, 1, 141, 142, 1, '#__languages.1', '#__languages.1', '{}'),
+(70, 1, 143, 144, 1, 'com_k2', 'COM_K2', '{}'),
+(71, 18, 90, 91, 2, 'com_modules.module.93', 'K2 Comments', '{}'),
+(72, 18, 92, 93, 2, 'com_modules.module.94', 'K2 Content', '{}'),
+(73, 18, 94, 95, 2, 'com_modules.module.95', 'K2 Tools', '{}'),
+(74, 18, 96, 97, 2, 'com_modules.module.96', 'K2 Users', '{}'),
+(75, 18, 98, 99, 2, 'com_modules.module.97', 'K2 User', '{}'),
+(76, 18, 100, 101, 2, 'com_modules.module.98', 'K2 Quick Icons (admin)', '{}'),
+(77, 18, 102, 103, 2, 'com_modules.module.99', 'K2 Stats (admin)', '{}'),
+(78, 18, 104, 105, 2, 'com_modules.module.100', 'JAK2 Extra fields Filter and Search', '{}'),
+(79, 1, 145, 146, 1, 'com_jak2filter', 'com_jak2filter', '{}');
 
 -- --------------------------------------------------------
 
@@ -370,7 +380,7 @@ CREATE TABLE `thg47_content` (
 --
 
 INSERT INTO `thg47_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 63, 'Пустий матеріал', 'pustij-material', '', '', 1, 2, '2017-05-08 12:30:28', 811, '', '2017-05-08 12:30:28', 0, 811, '2017-05-08 12:30:28', '2017-05-08 12:30:28', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 0, '', '', 1, 138, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', '');
+(1, 63, 'Пустий матеріал', 'pustij-material', '', '', 1, 2, '2017-05-08 12:30:28', 811, '', '2017-05-08 12:30:28', 0, 811, '2017-05-08 12:30:28', '2017-05-08 12:30:28', '0000-00-00 00:00:00', '{\"image_intro\":\"\",\"float_intro\":\"\",\"image_intro_alt\":\"\",\"image_intro_caption\":\"\",\"image_fulltext\":\"\",\"float_fulltext\":\"\",\"image_fulltext_alt\":\"\",\"image_fulltext_caption\":\"\"}', '{\"urla\":false,\"urlatext\":\"\",\"targeta\":\"\",\"urlb\":false,\"urlbtext\":\"\",\"targetb\":\"\",\"urlc\":false,\"urlctext\":\"\",\"targetc\":\"\"}', '{\"article_layout\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_tags\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_vote\":\"\",\"show_hits\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"alternative_readmore\":\"\",\"article_page_title\":\"\",\"show_publishing_options\":\"\",\"show_article_options\":\"\",\"show_urls_images_backend\":\"\",\"show_urls_images_frontend\":\"\"}', 1, 0, '', '', 1, 149, '{\"robots\":\"\",\"author\":\"\",\"rights\":\"\",\"xreference\":\"\"}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -523,7 +533,7 @@ INSERT INTO `thg47_extensions` (`extension_id`, `package_id`, `name`, `type`, `e
 (33, 0, 'com_fields', 'component', 'com_fields', '', 1, 1, 1, 0, '{\"name\":\"com_fields\",\"type\":\"component\",\"creationDate\":\"March 2016\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.7.0\",\"description\":\"COM_FIELDS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"fields\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (34, 0, 'com_associations', 'component', 'com_associations', '', 1, 1, 1, 0, '{\"name\":\"com_associations\",\"type\":\"component\",\"creationDate\":\"Januar 2017\",\"author\":\"Joomla! Project\",\"copyright\":\"(C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"3.7.0\",\"description\":\"COM_ASSOCIATIONS_XML_DESCRIPTION\",\"group\":\"\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (102, 0, 'LIB_PHPUTF8', 'library', 'phputf8', '', 0, 1, 1, 1, '{\"name\":\"LIB_PHPUTF8\",\"type\":\"library\",\"creationDate\":\"2006\",\"author\":\"Harry Fuecks\",\"copyright\":\"Copyright various authors\",\"authorEmail\":\"hfuecks@gmail.com\",\"authorUrl\":\"http:\\/\\/sourceforge.net\\/projects\\/phputf8\",\"version\":\"0.5\",\"description\":\"LIB_PHPUTF8_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"phputf8\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(103, 0, 'LIB_JOOMLA', 'library', 'joomla', '', 0, 1, 1, 1, '{\"name\":\"LIB_JOOMLA\",\"type\":\"library\",\"creationDate\":\"2008\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"https:\\/\\/www.joomla.org\",\"version\":\"13.1\",\"description\":\"LIB_JOOMLA_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"joomla\"}', '{\"mediaversion\":\"aacb52a97e8edaa0bedeac1870598783\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(103, 0, 'LIB_JOOMLA', 'library', 'joomla', '', 0, 1, 1, 1, '{\"name\":\"LIB_JOOMLA\",\"type\":\"library\",\"creationDate\":\"2008\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"https:\\/\\/www.joomla.org\",\"version\":\"13.1\",\"description\":\"LIB_JOOMLA_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"joomla\"}', '{\"mediaversion\":\"5d8ad15ccce86d3d39951d52be47b3cd\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (104, 0, 'LIB_IDNA', 'library', 'idna_convert', '', 0, 1, 1, 1, '{\"name\":\"LIB_IDNA\",\"type\":\"library\",\"creationDate\":\"2004\",\"author\":\"phlyLabs\",\"copyright\":\"2004-2011 phlyLabs Berlin, http:\\/\\/phlylabs.de\",\"authorEmail\":\"phlymail@phlylabs.de\",\"authorUrl\":\"http:\\/\\/phlylabs.de\",\"version\":\"0.8.0\",\"description\":\"LIB_IDNA_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"idna_convert\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (105, 0, 'FOF', 'library', 'fof', '', 0, 1, 1, 1, '{\"name\":\"FOF\",\"type\":\"library\",\"creationDate\":\"2015-04-22 13:15:32\",\"author\":\"Nicholas K. Dionysopoulos \\/ Akeeba Ltd\",\"copyright\":\"(C)2011-2015 Nicholas K. Dionysopoulos\",\"authorEmail\":\"nicholas@akeebabackup.com\",\"authorUrl\":\"https:\\/\\/www.akeebabackup.com\",\"version\":\"2.4.3\",\"description\":\"LIB_FOF_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"fof\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (106, 0, 'LIB_PHPASS', 'library', 'phpass', '', 0, 1, 1, 1, '{\"name\":\"LIB_PHPASS\",\"type\":\"library\",\"creationDate\":\"2004-2006\",\"author\":\"Solar Designer\",\"copyright\":\"\",\"authorEmail\":\"solar@openwall.com\",\"authorUrl\":\"http:\\/\\/www.openwall.com\\/phpass\\/\",\"version\":\"0.3\",\"description\":\"LIB_PHPASS_XML_DESCRIPTION\",\"group\":\"\",\"filename\":\"phpass\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -663,7 +673,25 @@ INSERT INTO `thg47_extensions` (`extension_id`, `package_id`, `name`, `type`, `e
 (10009, 0, 'Regular Labs Library', 'library', 'regularlabs', '', 0, 1, 1, 0, '{\"name\":\"Regular Labs Library\",\"type\":\"library\",\"creationDate\":\"February 2017\",\"author\":\"Regular Labs (Peter van Westen)\",\"copyright\":\"Copyright \\u00a9 2017 Regular Labs - All Rights Reserved\",\"authorEmail\":\"info@regularlabs.com\",\"authorUrl\":\"https:\\/\\/www.regularlabs.com\",\"version\":\"17.2.15002\",\"description\":\"\",\"group\":\"\",\"filename\":\"regularlabs\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10010, 0, 'plg_system_regularlabs', 'plugin', 'regularlabs', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_regularlabs\",\"type\":\"plugin\",\"creationDate\":\"February 2017\",\"author\":\"Regular Labs (Peter van Westen)\",\"copyright\":\"Copyright \\u00a9 2017 Regular Labs - All Rights Reserved\",\"authorEmail\":\"info@regularlabs.com\",\"authorUrl\":\"https:\\/\\/www.regularlabs.com\",\"version\":\"17.2.15002\",\"description\":\"PLG_SYSTEM_REGULARLABS_DESC\",\"group\":\"\",\"filename\":\"regularlabs\"}', '{\"combine_admin_menu\":\"0\",\"show_help_menu\":\"1\",\"max_list_count\":\"2500\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10011, 0, 'com_advancedmodules', 'component', 'com_advancedmodules', '', 1, 1, 0, 0, '{\"name\":\"com_advancedmodules\",\"type\":\"component\",\"creationDate\":\"February 2017\",\"author\":\"Regular Labs (Peter van Westen)\",\"copyright\":\"Copyright \\u00a9 2017 Regular Labs - All Rights Reserved\",\"authorEmail\":\"info@regularlabs.com\",\"authorUrl\":\"https:\\/\\/www.regularlabs.com\",\"version\":\"7.1.1\",\"description\":\"COM_ADVANCEDMODULES_DESC\",\"group\":\"\",\"filename\":\"advancedmodules\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10012, 0, 'plg_system_advancedmodules', 'plugin', 'advancedmodules', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_advancedmodules\",\"type\":\"plugin\",\"creationDate\":\"February 2017\",\"author\":\"Regular Labs (Peter van Westen)\",\"copyright\":\"Copyright \\u00a9 2017 Regular Labs - All Rights Reserved\",\"authorEmail\":\"info@regularlabs.com\",\"authorUrl\":\"https:\\/\\/www.regularlabs.com\",\"version\":\"7.1.1\",\"description\":\"PLG_SYSTEM_ADVANCEDMODULES_DESC\",\"group\":\"\",\"filename\":\"advancedmodules\"}', '[]', '', '', 0, '0000-00-00 00:00:00', -1, 0);
+(10012, 0, 'plg_system_advancedmodules', 'plugin', 'advancedmodules', 'system', 0, 1, 1, 0, '{\"name\":\"plg_system_advancedmodules\",\"type\":\"plugin\",\"creationDate\":\"February 2017\",\"author\":\"Regular Labs (Peter van Westen)\",\"copyright\":\"Copyright \\u00a9 2017 Regular Labs - All Rights Reserved\",\"authorEmail\":\"info@regularlabs.com\",\"authorUrl\":\"https:\\/\\/www.regularlabs.com\",\"version\":\"7.1.1\",\"description\":\"PLG_SYSTEM_ADVANCEDMODULES_DESC\",\"group\":\"\",\"filename\":\"advancedmodules\"}', '[]', '', '', 0, '0000-00-00 00:00:00', -1, 0),
+(10013, 0, 'COM_K2', 'component', 'com_k2', '', 1, 1, 0, 0, '{\"name\":\"COM_K2\",\"type\":\"component\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"Thank you for installing K2 by JoomlaWorks, the powerful content extension for Joomla!\",\"group\":\"\",\"filename\":\"k2\"}', '{\"enable_css\":\"1\",\"jQueryHandling\":\"1.8remote\",\"backendJQueryHandling\":\"remote\",\"userName\":\"1\",\"userImage\":\"1\",\"userDescription\":\"1\",\"userURL\":\"1\",\"userEmail\":\"0\",\"userFeedLink\":\"1\",\"userFeedIcon\":\"1\",\"userItemCount\":\"10\",\"userItemTitle\":\"1\",\"userItemTitleLinked\":\"1\",\"userItemDateCreated\":\"1\",\"userItemImage\":\"1\",\"userItemIntroText\":\"1\",\"userItemCategory\":\"1\",\"userItemTags\":\"1\",\"userItemCommentsAnchor\":\"1\",\"userItemReadMore\":\"1\",\"userItemK2Plugins\":\"1\",\"tagItemCount\":\"10\",\"tagItemTitle\":\"1\",\"tagItemTitleLinked\":\"1\",\"tagItemDateCreated\":\"1\",\"tagItemImage\":\"1\",\"tagItemIntroText\":\"1\",\"tagItemCategory\":\"1\",\"tagItemReadMore\":\"1\",\"tagItemExtraFields\":\"0\",\"tagOrdering\":\"\",\"tagFeedLink\":\"1\",\"tagFeedIcon\":\"1\",\"genericItemCount\":\"10\",\"genericItemTitle\":\"1\",\"genericItemTitleLinked\":\"1\",\"genericItemDateCreated\":\"1\",\"genericItemImage\":\"1\",\"genericItemIntroText\":\"1\",\"genericItemCategory\":\"1\",\"genericItemReadMore\":\"1\",\"genericItemExtraFields\":\"0\",\"genericFeedLink\":\"1\",\"genericFeedIcon\":\"1\",\"feedLimit\":\"10\",\"feedItemImage\":\"1\",\"feedImgSize\":\"S\",\"feedItemIntroText\":\"1\",\"feedTextWordLimit\":\"\",\"feedItemFullText\":\"1\",\"feedItemTags\":\"0\",\"feedItemVideo\":\"0\",\"feedItemGallery\":\"0\",\"feedItemAttachments\":\"0\",\"feedBogusEmail\":\"\",\"introTextCleanup\":\"0\",\"introTextCleanupExcludeTags\":\"\",\"introTextCleanupTagAttr\":\"\",\"fullTextCleanup\":\"0\",\"fullTextCleanupExcludeTags\":\"\",\"fullTextCleanupTagAttr\":\"\",\"xssFiltering\":\"0\",\"linkPopupWidth\":\"900\",\"linkPopupHeight\":\"600\",\"imagesQuality\":\"100\",\"itemImageXS\":\"100\",\"itemImageS\":\"200\",\"itemImageM\":\"400\",\"itemImageL\":\"600\",\"itemImageXL\":\"900\",\"itemImageGeneric\":\"300\",\"catImageWidth\":\"100\",\"catImageDefault\":\"1\",\"userImageWidth\":\"100\",\"userImageDefault\":\"1\",\"commenterImgWidth\":\"48\",\"onlineImageEditor\":\"splashup\",\"imageTimestamp\":\"0\",\"imageMemoryLimit\":\"\",\"socialButtonCode\":\"\",\"twitterUsername\":\"\",\"facebookImage\":\"Medium\",\"comments\":\"1\",\"commentsOrdering\":\"DESC\",\"commentsLimit\":\"10\",\"commentsFormPosition\":\"below\",\"commentsPublishing\":\"1\",\"commentsReporting\":\"2\",\"commentsReportRecipient\":\"\",\"inlineCommentsModeration\":\"0\",\"gravatar\":\"1\",\"recaptcha\":\"0\",\"recaptchaForRegistered\":\"1\",\"commentsFormNotes\":\"1\",\"commentsFormNotesText\":\"\",\"frontendEditing\":\"1\",\"showImageTab\":\"1\",\"showImageGalleryTab\":\"1\",\"showVideoTab\":\"1\",\"showExtraFieldsTab\":\"1\",\"showAttachmentsTab\":\"1\",\"showK2Plugins\":\"1\",\"sideBarDisplayFrontend\":\"0\",\"mergeEditors\":\"1\",\"sideBarDisplay\":\"1\",\"attachmentsFolder\":\"\",\"hideImportButton\":\"0\",\"googleSearch\":\"0\",\"googleSearchContainer\":\"k2GoogleSearchContainer\",\"K2UserProfile\":\"1\",\"K2UserGroup\":\"\",\"redirect\":\"\",\"adminSearch\":\"simple\",\"cookieDomain\":\"\",\"taggingSystem\":\"1\",\"lockTags\":\"0\",\"showTagFilter\":\"0\",\"k2TagNorm\":\"0\",\"k2TagNormCase\":\"lower\",\"k2TagNormAdditionalReplacements\":\"\",\"recaptcha_public_key\":\"\",\"recaptcha_private_key\":\"\",\"recaptcha_theme\":\"clean\",\"recaptchaOnRegistration\":\"0\",\"stopForumSpam\":\"0\",\"stopForumSpamApiKey\":\"\",\"showItemsCounterAdmin\":\"1\",\"showChildCatItems\":\"1\",\"disableCompactOrdering\":\"0\",\"metaDescLimit\":\"150\",\"enforceSEFReplacements\":\"0\",\"SEFReplacements\":\"\",\"k2Sef\":\"0\",\"k2SefLabelCat\":\"content\",\"k2SefLabelTag\":\"tag\",\"k2SefLabelUser\":\"author\",\"k2SefLabelSearch\":\"search\",\"k2SefLabelDate\":\"date\",\"k2SefLabelItem\":\"0\",\"k2SefLabelItemCustomPrefix\":\"\",\"k2SefInsertItemId\":\"1\",\"k2SefItemIdTitleAliasSep\":\"dash\",\"k2SefUseItemTitleAlias\":\"1\",\"k2SefInsertCatId\":\"1\",\"k2SefCatIdTitleAliasSep\":\"dash\",\"k2SefUseCatTitleAlias\":\"1\",\"sh404SefLabelCat\":\"\",\"sh404SefLabelUser\":\"blog\",\"sh404SefLabelItem\":\"2\",\"sh404SefTitleAlias\":\"alias\",\"sh404SefModK2ContentFeedAlias\":\"feed\",\"sh404SefInsertItemId\":\"0\",\"sh404SefInsertUniqueItemId\":\"0\",\"cbIntegration\":\"0\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10014, 0, 'plg_finder_k2', 'plugin', 'k2', 'finder', 0, 1, 1, 0, '{\"name\":\"plg_finder_k2\",\"type\":\"plugin\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"PLG_FINDER_K2_DESCRIPTION\",\"group\":\"\",\"filename\":\"k2\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10015, 0, 'Search - K2', 'plugin', 'k2', 'search', 0, 1, 1, 0, '{\"name\":\"Search - K2\",\"type\":\"plugin\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_THIS_PLUGIN_EXTENDS_THE_DEFAULT_JOOMLA_SEARCH_FUNCTIONALITY_TO_K2_CONTENT\",\"group\":\"\",\"filename\":\"k2\"}', '{\"search_limit\":\"50\",\"search_tags\":\"0\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10016, 0, 'System - K2', 'plugin', 'k2', 'system', 0, 1, 1, 0, '{\"name\":\"System - K2\",\"type\":\"plugin\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_THE_K2_SYSTEM_PLUGIN_IS_USED_TO_ASSIST_THE_PROPER_FUNCTIONALITY_OF_THE_K2_COMPONENT_SITE_WIDE_MAKE_SURE_ITS_ALWAYS_PUBLISHED_WHEN_THE_K2_COMPONENT_IS_INSTALLED\",\"group\":\"\",\"filename\":\"k2\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10017, 0, 'User - K2', 'plugin', 'k2', 'user', 0, 1, 1, 0, '{\"name\":\"User - K2\",\"type\":\"plugin\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_A_USER_SYNCHRONIZATION_PLUGIN_FOR_K2\",\"group\":\"\",\"filename\":\"k2\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10018, 0, 'Josetta - K2 Categories', 'plugin', 'k2category', 'josetta_ext', 0, 1, 1, 0, '{\"name\":\"Josetta - K2 Categories\",\"type\":\"plugin\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"\",\"group\":\"\",\"filename\":\"k2category\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10019, 0, 'Josetta - K2 Items', 'plugin', 'k2item', 'josetta_ext', 0, 1, 1, 0, '{\"name\":\"Josetta - K2 Items\",\"type\":\"plugin\",\"creationDate\":\"June 7th, 2012\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"\",\"group\":\"\",\"filename\":\"k2item\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10020, 0, 'K2 Comments', 'module', 'mod_k2_comments', '', 0, 1, 0, 0, '{\"name\":\"K2 Comments\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"MOD_K2_COMMENTS_DESCRIPTION\",\"group\":\"\",\"filename\":\"mod_k2_comments.j25\"}', '{\"moduleclass_sfx\":\"\",\"module_usage\":\"\",\"\":\"K2_TOP_COMMENTERS\",\"catfilter\":\"0\",\"category_id\":\"\",\"comments_limit\":\"5\",\"comments_word_limit\":\"10\",\"commenterName\":\"1\",\"commentAvatar\":\"1\",\"commentAvatarWidthSelect\":\"custom\",\"commentAvatarWidth\":\"50\",\"commentDate\":\"1\",\"commentDateFormat\":\"absolute\",\"commentLink\":\"1\",\"itemTitle\":\"1\",\"itemCategory\":\"1\",\"feed\":\"1\",\"commenters_limit\":\"5\",\"commenterNameOrUsername\":\"1\",\"commenterAvatar\":\"1\",\"commenterAvatarWidthSelect\":\"custom\",\"commenterAvatarWidth\":\"50\",\"commenterLink\":\"1\",\"commenterCommentsCounter\":\"1\",\"commenterLatestComment\":\"1\",\"cache\":\"1\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10021, 0, 'K2 Content', 'module', 'mod_k2_content', '', 0, 1, 0, 0, '{\"name\":\"K2 Content\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_MOD_K2_CONTENT_DESCRIPTION\",\"group\":\"\",\"filename\":\"mod_k2_content.j25\"}', '{\"moduleclass_sfx\":\"\",\"getTemplate\":\"Default\",\"source\":\"filter\",\"\":\"K2_OTHER_OPTIONS\",\"catfilter\":\"0\",\"category_id\":\"\",\"getChildren\":\"0\",\"itemCount\":\"5\",\"itemsOrdering\":\"\",\"FeaturedItems\":\"1\",\"popularityRange\":\"\",\"videosOnly\":\"0\",\"item\":\"\",\"items\":\"\",\"itemTitle\":\"1\",\"itemAuthor\":\"1\",\"itemAuthorAvatar\":\"1\",\"itemAuthorAvatarWidthSelect\":\"custom\",\"itemAuthorAvatarWidth\":\"50\",\"userDescription\":\"1\",\"itemIntroText\":\"1\",\"itemIntroTextWordLimit\":\"\",\"itemImage\":\"1\",\"itemImgSize\":\"Small\",\"itemVideo\":\"1\",\"itemVideoCaption\":\"1\",\"itemVideoCredits\":\"1\",\"itemAttachments\":\"1\",\"itemTags\":\"1\",\"itemCategory\":\"1\",\"itemDateCreated\":\"1\",\"itemHits\":\"1\",\"itemReadMore\":\"1\",\"itemExtraFields\":\"0\",\"itemCommentsCounter\":\"1\",\"feed\":\"1\",\"itemPreText\":\"\",\"itemCustomLink\":\"0\",\"itemCustomLinkTitle\":\"\",\"itemCustomLinkURL\":\"http:\\/\\/\",\"itemCustomLinkMenuItem\":\"\",\"K2Plugins\":\"1\",\"JPlugins\":\"1\",\"cache\":\"1\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10022, 0, 'K2 Tools', 'module', 'mod_k2_tools', '', 0, 1, 0, 0, '{\"name\":\"K2 Tools\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_TOOLS\",\"group\":\"\",\"filename\":\"mod_k2_tools.j25\"}', '{\"moduleclass_sfx\":\"\",\"module_usage\":\"0\",\"\":\"K2_CUSTOM_CODE_SETTINGS\",\"archiveItemsCounter\":\"1\",\"archiveCategory\":\"\",\"authors_module_category\":\"\",\"authorItemsCounter\":\"1\",\"authorAvatar\":\"1\",\"authorAvatarWidthSelect\":\"custom\",\"authorAvatarWidth\":\"50\",\"authorLatestItem\":\"1\",\"calendarCategory\":\"\",\"home\":\"\",\"seperator\":\"\",\"root_id\":\"\",\"end_level\":\"\",\"categoriesListOrdering\":\"\",\"categoriesListItemsCounter\":\"1\",\"root_id2\":\"\",\"catfilter\":\"0\",\"category_id\":\"\",\"getChildren\":\"0\",\"liveSearch\":\"\",\"width\":\"20\",\"text\":\"\",\"button\":\"\",\"imagebutton\":\"\",\"button_text\":\"\",\"min_size\":\"75\",\"max_size\":\"300\",\"cloud_limit\":\"30\",\"cloud_category\":\"0\",\"cloud_category_recursive\":\"0\",\"customCode\":\"\",\"parsePhp\":\"0\",\"K2Plugins\":\"0\",\"JPlugins\":\"0\",\"cache\":\"1\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10023, 0, 'K2 Users', 'module', 'mod_k2_users', '', 0, 1, 0, 0, '{\"name\":\"K2 Users\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_MOD_K2_USERS_DESCRTIPTION\",\"group\":\"\",\"filename\":\"mod_k2_users.j25\"}', '{\"moduleclass_sfx\":\"\",\"getTemplate\":\"Default\",\"source\":\"0\",\"\":\"K2_DISPLAY_OPTIONS\",\"filter\":\"1\",\"K2UserGroup\":\"\",\"ordering\":\"1\",\"limit\":\"4\",\"userIDs\":\"\",\"userName\":\"1\",\"userAvatar\":\"1\",\"userAvatarWidthSelect\":\"custom\",\"userAvatarWidth\":\"50\",\"userDescription\":\"1\",\"userDescriptionWordLimit\":\"\",\"userURL\":\"1\",\"userEmail\":\"0\",\"userFeed\":\"1\",\"userItemCount\":\"1\",\"cache\":\"1\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10024, 0, 'K2 User', 'module', 'mod_k2_user', '', 0, 1, 0, 0, '{\"name\":\"K2 User\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_MOD_K2_USER_DESCRIPTION\",\"group\":\"\",\"filename\":\"mod_k2_user.j25\"}', '{\"moduleclass_sfx\":\"\",\"pretext\":\"\",\"\":\"K2_LOGIN_LOGOUT_REDIRECTION\",\"name\":\"1\",\"userAvatar\":\"1\",\"userAvatarWidthSelect\":\"custom\",\"userAvatarWidth\":\"50\",\"menu\":\"\",\"login\":\"\",\"logout\":\"\",\"usesecure\":\"0\",\"cache\":\"0\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10025, 0, 'K2 Quick Icons (admin)', 'module', 'mod_k2_quickicons', '', 1, 1, 2, 0, '{\"name\":\"K2 Quick Icons (admin)\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_QUICKICONS_FOR_USE_IN_THE_JOOMLA_CONTROL_PANEL_DASHBOARD_PAGE\",\"group\":\"\",\"filename\":\"mod_k2_quickicons.j25\"}', '{\"modCSSStyling\":\"1\",\"modLogo\":\"1\",\"cache\":\"0\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10026, 0, 'K2 Stats (admin)', 'module', 'mod_k2_stats', '', 1, 1, 2, 0, '{\"name\":\"K2 Stats (admin)\",\"type\":\"module\",\"creationDate\":\"December 8th, 2014\",\"author\":\"JoomlaWorks\",\"copyright\":\"Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"please-use-the-contact-form@joomlaworks.net\",\"authorUrl\":\"www.joomlaworks.net\",\"version\":\"2.6.9\",\"description\":\"K2_STATS_FOR_USE_IN_THE_K2_DASHBOARD_PAGE\",\"group\":\"\",\"filename\":\"mod_k2_stats.j25\"}', '{\"latestItems\":\"1\",\"popularItems\":\"1\",\"mostCommentedItems\":\"1\",\"latestComments\":\"1\",\"statistics\":\"1\",\"cache\":\"0\",\"cache_time\":\"900\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10027, 0, 'Russian (Russia) language pack for K2', 'file', '_install', '', 0, 1, 0, 0, '{\"name\":\"Russian (Russia) language pack for K2\",\"type\":\"file\",\"creationDate\":\"January 5, 2017\",\"author\":\"getk2.org\",\"copyright\":\"Copyright (c) 2006 - 2011 JoomlaWorks Ltd. All rights reserved.\",\"authorEmail\":\"nospam@getk2.org\",\"authorUrl\":\"getk2.org\",\"version\":\"2.5.0\",\"description\":\"Russian (Russia) language pack for K2\",\"group\":\"\"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10028, 0, 'JAK2 Extra fields Filter and Search', 'module', 'mod_jak2filter', '', 0, 1, 0, 0, '{\"name\":\"JAK2 Extra fields Filter and Search\",\"type\":\"module\",\"creationDate\":\"Oct 2014\",\"author\":\"JoomlArt.com\",\"copyright\":\"Copyright (C), J.O.O.M Solutions Co., Ltd. All Rights Reserved.\",\"authorEmail\":\"webmaster@joomlart.com\",\"authorUrl\":\"www.joomlart.com\",\"version\":\"1.1.8\",\"description\":\"\\n\\t\\t<div align=\\\"left\\\"><h1>JA K2 Filter Module for Joomla 2.5.x and Joomla 3.x<\\/h1>\\n\\t\\t<div style=\'font-weight: normal\'>\\n\\t\\t<p><span style=\'color: #ff6600;\'><strong>Features:<\\/strong><\\/span>\\n\\t\\tConfiguration in this module is reflected in the JA K2 Filter Component. \\n\\t\\tIt is required to install JA K2 Search Component to use JA K2 Filter Module<\\/p>\\n\\t\\t\\n\\t\\t<strong><span style=\'color: #ff0000;\'>Usage Instruction:<\\/span><\\/strong><br \\/>\\n\\t\\t<ul>\\n\\t\\t<li>Enable JA K2 Filter Module in Module Manager<\\/li>\\n\\t\\t<\\/ul>\\n\\t\\t<strong><span style=\'color: #ff0000;\'>Upgrade Method:<\\/span><br \\/><\\/strong>\\n\\t\\t<ul>\\n\\t\\t  <li>You can install new version directly over this version. Uninstallation is not required. <\\/li>\\n\\t\\t  <\\/ul>\\n\\t\\n\\t\\t<span style=\'color: #008000;\'><strong>Links:<\\/strong><\\/span><br \\/>\\n\\t\\t<ul>\\n\\t\\t<li><a target=\\\"_blank\\\" href=\\\"http:\\/\\/www.joomlart.com\\/joomla\\/extensions\\/ja-k2-search\\\">Wiki Userguide<\\/a><\\/li>\\n\\t\\t <li><a target=\'_blank\' href=\'http:\\/\\/www.joomlart.com\\/forums\\/downloads.php?do=cat&id=20372\'>Updates &amp; Versions<\\/a><\\/li>\\n\\t\\t<\\/ul>\\n\\t\\t<p>Copyright 2004 - 2013 <a href=\'http:\\/\\/www.joomlart.com\\/\' title=\'Visit Joomlart.com!\'>JoomlArt.com<\\/a>.<\\/p>\\n\\t\\t<\\/div><\\/div>\\n\\t\\t\\t\",\"group\":\"\",\"filename\":\"mod_jak2filter\"}', '{\"form_mode\":\"normal\",\"ja_stylesheet\":\"vertical-layout\",\"ajax_filter\":\"0\",\"share_url_of_results_page\":\"0\",\"auto_filter\":\"0\",\"display_counter\":\"0\",\"update_counter\":\"0\",\"disable_option_empty\":\"0\",\"enable_reset_button\":\"0\",\"display_ordering_box\":\"1\",\"auto_complete\":\"0\",\"set_itemid\":\"\",\"theme\":\"\",\"catOrdering\":\"inherit_from_component\",\"use_standard_fields\":\"1\",\"filter_by_rating\":\"0\",\"search_by_date\":\"0\",\"filter_by_keyword\":\"1\",\"display_keyword_tip\":\"1\",\"filter_by_category\":\"1\",\"k2catsid\":\"\",\"catMode\":\"1\",\"filter_by_author\":\"1\",\"filter_author_display\":\"author_display_name\",\"filter_by_author_fieldtype\":\"select\",\"filter_by_tags\":\"0\",\"filter_by_tags_fieldtype\":\"select\",\"filter_by_extrafield\":\"\",\"xgroup_order\":\"\",\"filter_by_fieldtype\":\"\",\"filter_by_fieldrange\":\"\",\"rangeslider_min\":\"\",\"rangeslider_max\":\"\",\"rangeslider_start\":\"\",\"rangeslider_stop\":\"\",\"rangeslider_step\":\"\",\"range_slider_format_prefix\":\"\",\"range_slider_format_suffix\":\"\",\"range_slider_format\":\"\",\"range_slider_format_decimals\":\"\",\"range_slider_format_decimal_point\":\"\",\"range_slider_format_thousands_sep\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"safeuri\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10029, 0, 'K2 - JA K2 Filter', 'plugin', 'jak2filter', 'k2', 0, 1, 1, 0, '{\"name\":\"K2 - JA K2 Filter\",\"type\":\"plugin\",\"creationDate\":\"Oct 2014\",\"author\":\"Joomla! Project\",\"copyright\":\"Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.\",\"authorEmail\":\"admin@joomla.org\",\"authorUrl\":\"www.joomla.org\",\"version\":\"1.1.8\",\"description\":\"This plugin is used to indexing data\",\"group\":\"\",\"filename\":\"jak2filter\"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10030, 0, 'com_jak2filter', 'component', 'com_jak2filter', '', 1, 1, 0, 0, '{\"name\":\"com_jak2filter\",\"type\":\"component\",\"creationDate\":\"Oct 2014\",\"author\":\"JoomlArt\",\"copyright\":\"Copyright (C), J.O.O.M Solutions Co., Ltd. All Rights Reserved.\",\"authorEmail\":\"webmaster@joomlart.com\",\"authorUrl\":\"http:\\/\\/www.joomlart.com\",\"version\":\"1.1.8\",\"description\":\"\\n\\t\\t<div align=\\\"left\\\"><h1>JA K2 Filter Component for Joomla 2.5 and Joomla 3<\\/h1>\\n\\t\\t<div style=\'font-weight: normal\'>\\n\\t\\t<p><span style=\'color: #ff6600;\'><strong>Features:<\\/strong><\\/span>\\n\\t\\tJA K2 Filter Component<\\/p>\\n\\t\\t\\n\\t\\t<strong><span style=\'color: #ff0000;\'>Usage Instruction:<\\/span><\\/strong><br \\/>\\n\\t\\t<ul>\\n\\t\\t<li>Enable JA K2 Filter Plugin<\\/li>\\n\\t\\t<li>Add Extra fields and add to products<\\/li>\\n\\t\\t<li>Enable JA K2 Filter Module in Module Manager<\\/li>\\n\\t\\t<\\/ul>\\n\\t\\t<strong><span style=\'color: #ff0000;\'>Upgrade Method:<\\/span><br \\/><\\/strong>\\n\\t\\t<ul>\\n\\t\\t  <li>You can install new version directly over this version. Uninstallation is not required. <\\/li>\\n\\t\\t<\\/ul>\\n\\t\\n\\t\\t<span style=\'color: #008000;\'><strong>Links:<\\/strong><\\/span><br \\/>\\n\\t\\t<ul>\\n\\t\\t<li><a target=\\\"_blank\\\" href=\\\"http:\\/\\/joomlart.com\\/documentation\\/joomla-component\\/ja-k2-filter\\\">Documentation<\\/a><\\/li>\\n\\t\\t<li><a target=\'_blank\' href=\'http:\\/\\/www.joomlart.com\\/forums\\/downloads.php?do=cat&id=20372\'>Updates &amp; Versions<\\/a><\\/li>\\n\\t\\t<li><a target=\'_blank\' href=\'http:\\/\\/pm.joomlart.com\\/browse\\/JAK2FILTER\'>Changelog<\\/a><\\/li>\\n\\t\\t<\\/ul>\\n\\t\\t<p>Copyright 2004 - 2013 <a href=\'http:\\/\\/www.joomlart.com\\/\' title=\'Visit Joomlart.com!\'>JoomlArt.com<\\/a>.<\\/p>\\n\\t\\t<\\/div><\\/div>\\n\\t\\t\\t\",\"group\":\"\",\"filename\":\"jak2filter\"}', '{\"minium_keyword\":3,\"maximum_keyword\":20,\"range_option\":\"0\",\"score_title\":10,\"score_metadesc\":9,\"score_metakey\":9,\"score_introtext\":8,\"score_fulltext\":7,\"score_image_caption\":6,\"score_image_credits\":6,\"score_video_caption\":6,\"score_video_credits\":6,\"score_extra_fields_search\":3,\"indexing_onsave\":\"1\",\"indexing_cron_key\":\"indexing\",\"indexing_cron\":\"1\",\"indexing_interval\":\"900\",\"theme\":\"K2_filter\",\"num_leading_items\":\"0\",\"num_leading_columns\":\"1\",\"leadingImgSize\":\"Large\",\"num_primary_items\":\"9\",\"num_primary_columns\":\"3\",\"primaryImgSize\":\"Medium\",\"num_secondary_items\":\"0\",\"num_secondary_columns\":\"1\",\"secondaryImgSize\":\"Small\",\"num_links\":\"0\",\"num_links_columns\":\"1\",\"linksImgSize\":\"XSmall\",\"enableHighlightSearchTerm\":\"0\",\"catFeedLink\":\"0\",\"catFeedIcon\":\"0\",\"catOrdering\":\"\",\"catPagination\":\"2\",\"catPaginationResults\":\"1\",\"catItemTitle\":\"1\",\"catItemTitleLinked\":\"1\",\"catItemFeaturedNotice\":\"0\",\"catItemAuthor\":\"1\",\"catItemDateCreated\":\"1\",\"catItemRating\":\"0\",\"catItemIntroText\":\"1\",\"catItemIntroTextWordLimit\":\"\",\"catItemExtraFields\":\"0\",\"catItemHits\":\"0\",\"catItemCategory\":\"1\",\"catItemTags\":\"1\",\"catItemDateModified\":\"0\",\"catItemReadMore\":\"0\",\"catItemCommentsAnchor\":\"0\",\"catItemK2Plugins\":\"1\",\"selectedExtraFieldsType\":\"0\"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1218,6 +1246,243 @@ CREATE TABLE `thg47_finder_types` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `thg47_jak2filter`
+--
+
+CREATE TABLE `thg47_jak2filter` (
+  `name` varchar(100) NOT NULL,
+  `value` text NOT NULL,
+  `updatetime` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_jak2filter_taxonomy`
+--
+
+CREATE TABLE `thg47_jak2filter_taxonomy` (
+  `id` int(10) NOT NULL,
+  `type` varchar(20) COLLATE utf8_bin NOT NULL,
+  `title` varchar(255) COLLATE utf8_bin NOT NULL,
+  `asset_id` int(11) NOT NULL,
+  `option_id` int(5) NOT NULL DEFAULT '0',
+  `num_items` int(8) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_jak2filter_taxonomy_map`
+--
+
+CREATE TABLE `thg47_jak2filter_taxonomy_map` (
+  `node_id` int(10) NOT NULL COMMENT 'taxonomy id',
+  `item_id` int(11) NOT NULL COMMENT 'K2 item id',
+  `language` char(7) NOT NULL DEFAULT '*'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_attachments`
+--
+
+CREATE TABLE `thg47_k2_attachments` (
+  `id` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `titleAttribute` text NOT NULL,
+  `hits` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_categories`
+--
+
+CREATE TABLE `thg47_k2_categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `parent` int(11) DEFAULT '0',
+  `extraFieldsGroup` int(11) NOT NULL,
+  `published` smallint(6) NOT NULL DEFAULT '0',
+  `access` int(11) NOT NULL DEFAULT '0',
+  `ordering` int(11) NOT NULL DEFAULT '0',
+  `image` varchar(255) NOT NULL,
+  `params` text NOT NULL,
+  `trash` smallint(6) NOT NULL DEFAULT '0',
+  `plugins` text NOT NULL,
+  `language` char(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_comments`
+--
+
+CREATE TABLE `thg47_k2_comments` (
+  `id` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `userName` varchar(255) NOT NULL,
+  `commentDate` datetime NOT NULL,
+  `commentText` text NOT NULL,
+  `commentEmail` varchar(255) NOT NULL,
+  `commentURL` varchar(255) NOT NULL,
+  `published` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_extra_fields`
+--
+
+CREATE TABLE `thg47_k2_extra_fields` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` text NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `group` int(11) NOT NULL,
+  `published` tinyint(4) NOT NULL,
+  `ordering` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_extra_fields_groups`
+--
+
+CREATE TABLE `thg47_k2_extra_fields_groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_items`
+--
+
+CREATE TABLE `thg47_k2_items` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `catid` int(11) NOT NULL,
+  `published` smallint(6) NOT NULL DEFAULT '0',
+  `introtext` mediumtext NOT NULL,
+  `fulltext` mediumtext NOT NULL,
+  `video` text,
+  `gallery` varchar(255) DEFAULT NULL,
+  `extra_fields` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `extra_fields_search` text NOT NULL,
+  `created` datetime NOT NULL,
+  `created_by` int(11) NOT NULL DEFAULT '0',
+  `created_by_alias` varchar(255) NOT NULL,
+  `checked_out` int(10) UNSIGNED NOT NULL,
+  `checked_out_time` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `modified_by` int(11) NOT NULL DEFAULT '0',
+  `publish_up` datetime NOT NULL,
+  `publish_down` datetime NOT NULL,
+  `trash` smallint(6) NOT NULL DEFAULT '0',
+  `access` int(11) NOT NULL DEFAULT '0',
+  `ordering` int(11) NOT NULL DEFAULT '0',
+  `featured` smallint(6) NOT NULL DEFAULT '0',
+  `featured_ordering` int(11) NOT NULL DEFAULT '0',
+  `image_caption` text NOT NULL,
+  `image_credits` varchar(255) NOT NULL,
+  `video_caption` text NOT NULL,
+  `video_credits` varchar(255) NOT NULL,
+  `hits` int(10) UNSIGNED NOT NULL,
+  `params` text NOT NULL,
+  `metadesc` text NOT NULL,
+  `metadata` text NOT NULL,
+  `metakey` text NOT NULL,
+  `plugins` text NOT NULL,
+  `language` char(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_rating`
+--
+
+CREATE TABLE `thg47_k2_rating` (
+  `itemID` int(11) NOT NULL DEFAULT '0',
+  `rating_sum` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `rating_count` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `lastip` varchar(50) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_tags`
+--
+
+CREATE TABLE `thg47_k2_tags` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `published` smallint(6) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_tags_xref`
+--
+
+CREATE TABLE `thg47_k2_tags_xref` (
+  `id` int(11) NOT NULL,
+  `tagID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_users`
+--
+
+CREATE TABLE `thg47_k2_users` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `userName` varchar(255) DEFAULT NULL,
+  `gender` enum('m','f') NOT NULL DEFAULT 'm',
+  `description` text NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `group` int(11) NOT NULL DEFAULT '0',
+  `plugins` text NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `hostname` varchar(255) NOT NULL,
+  `notes` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `thg47_k2_user_groups`
+--
+
+CREATE TABLE `thg47_k2_user_groups` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `permissions` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `thg47_languages`
 --
 
@@ -1284,7 +1549,7 @@ CREATE TABLE `thg47_menu` (
 --
 
 INSERT INTO `thg47_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 67, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 91, 0, '*', 0),
 (2, 'main', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 1, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 1, 10, 0, '*', 1),
 (3, 'main', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 1, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 2, 3, 0, '*', 1),
 (4, 'main', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 1, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 4, 5, 0, '*', 1),
@@ -1317,7 +1582,19 @@ INSERT INTO `thg47_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 (110, 'mainmenu-en', 'проекти (2)', 'proekty-2', '', 'proekty-2', 'index.php?option=com_content&view=article&id=1', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"1\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 59, 60, 0, 'en-GB', 0),
 (111, 'mainmenu-en', 'партнери (2)', 'partnery-2', '', 'partnery-2', 'index.php?option=com_content&view=article&id=1', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"1\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 61, 62, 0, 'en-GB', 0),
 (112, 'mainmenu-en', 'контакти (2)', 'kontakty-2', '', 'kontakty-2', 'index.php?option=com_content&view=article&id=1', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"urls_position\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"1\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 63, 64, 0, 'en-GB', 0),
-(113, 'mainmenu', 'home', 'home', '', 'home', 'index.php?option=com_content&view=featured', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"featured_categories\":[\"\"],\"layout_type\":\"blog\",\"num_leading_articles\":\"\",\"num_intro_articles\":\"\",\"num_columns\":\"\",\"num_links\":\"\",\"multi_column_order\":\"\",\"orderby_pri\":\"\",\"orderby_sec\":\"\",\"order_date\":\"\",\"show_pagination\":\"\",\"show_pagination_results\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_readmore\":\"\",\"show_readmore_title\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"show_feed_link\":\"\",\"feed_summary\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 65, 66, 1, '*', 0);
+(113, 'mainmenu', 'home', 'home', '', 'home', 'index.php?option=com_content&view=featured', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{\"featured_categories\":[\"\"],\"layout_type\":\"blog\",\"num_leading_articles\":\"\",\"num_intro_articles\":\"\",\"num_columns\":\"\",\"num_links\":\"\",\"multi_column_order\":\"\",\"orderby_pri\":\"\",\"orderby_sec\":\"\",\"order_date\":\"\",\"show_pagination\":\"\",\"show_pagination_results\":\"\",\"show_title\":\"\",\"link_titles\":\"\",\"show_intro\":\"\",\"info_block_position\":\"\",\"info_block_show_title\":\"\",\"show_category\":\"\",\"link_category\":\"\",\"show_parent_category\":\"\",\"link_parent_category\":\"\",\"show_associations\":\"\",\"show_author\":\"\",\"link_author\":\"\",\"show_create_date\":\"\",\"show_modify_date\":\"\",\"show_publish_date\":\"\",\"show_item_navigation\":\"\",\"show_vote\":\"\",\"show_readmore\":\"\",\"show_readmore_title\":\"\",\"show_icons\":\"\",\"show_print_icon\":\"\",\"show_email_icon\":\"\",\"show_hits\":\"\",\"show_tags\":\"\",\"show_noauth\":\"\",\"show_feed_link\":\"\",\"feed_summary\":\"\",\"menu-anchor_title\":\"\",\"menu-anchor_css\":\"\",\"menu_image\":\"\",\"menu_text\":1,\"menu_show\":1,\"page_title\":\"\",\"show_page_heading\":\"\",\"page_heading\":\"\",\"pageclass_sfx\":\"\",\"menu-meta_description\":\"\",\"menu-meta_keywords\":\"\",\"robots\":\"\",\"secure\":0}', 65, 66, 1, '*', 0),
+(114, 'main', 'COM_K2', 'com_k2', '', 'com_k2', 'index.php?option=com_k2', 'component', 1, 1, 1, 10013, 0, '0000-00-00 00:00:00', 0, 1, '../media/k2/assets/images/system/k2_16x16.png', 0, '{}', 67, 88, 0, '', 1),
+(115, 'main', 'K2_ITEMS', 'k2_items', '', 'com_k2/k2_items', 'index.php?option=com_k2&view=items', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 68, 69, 0, '', 1),
+(116, 'main', 'K2_CATEGORIES', 'k2_categories', '', 'com_k2/k2_categories', 'index.php?option=com_k2&view=categories', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 70, 71, 0, '', 1),
+(117, 'main', 'K2_TAGS', 'k2_tags', '', 'com_k2/k2_tags', 'index.php?option=com_k2&view=tags', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 72, 73, 0, '', 1),
+(118, 'main', 'K2_COMMENTS', 'k2_comments', '', 'com_k2/k2_comments', 'index.php?option=com_k2&view=comments', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 74, 75, 0, '', 1),
+(119, 'main', 'K2_USERS', 'k2_users', '', 'com_k2/k2_users', 'index.php?option=com_k2&view=users', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 76, 77, 0, '', 1),
+(120, 'main', 'K2_USER_GROUPS', 'k2_user_groups', '', 'com_k2/k2_user_groups', 'index.php?option=com_k2&view=usergroups', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 78, 79, 0, '', 1),
+(121, 'main', 'K2_EXTRA_FIELDS', 'k2_extra_fields', '', 'com_k2/k2_extra_fields', 'index.php?option=com_k2&view=extrafields', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 80, 81, 0, '', 1),
+(122, 'main', 'K2_EXTRA_FIELD_GROUPS', 'k2_extra_field_groups', '', 'com_k2/k2_extra_field_groups', 'index.php?option=com_k2&view=extrafieldsgroups', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 82, 83, 0, '', 1),
+(123, 'main', 'K2_MEDIA_MANAGER', 'k2_media_manager', '', 'com_k2/k2_media_manager', 'index.php?option=com_k2&view=media', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 84, 85, 0, '', 1),
+(124, 'main', 'K2_INFORMATION', 'k2_information', '', 'com_k2/k2_information', 'index.php?option=com_k2&view=info', 'component', 1, 114, 2, 10013, 0, '0000-00-00 00:00:00', 0, 1, 'class:component', 0, '{}', 86, 87, 0, '', 1),
+(125, 'main', 'COM_JAK2FILTER', 'com_jak2filter', '', 'com_jak2filter', 'index.php?option=com_jak2filter', 'component', 1, 1, 1, 10030, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_jak2filter/images/jak2fr.png', 0, '{}', 89, 90, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1424,7 +1701,15 @@ INSERT INTO `thg47_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 (88, 60, 'Main Menu (UA)', '', '', 1, 'mainPage__menu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 0, '{\"menutype\":\"mainmenu-ua\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
 (90, 64, 'Пошук', '', '', 1, 'search', 811, '2017-05-10 13:44:27', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_search', 1, 0, '{\"label\":\"\",\"width\":\"\",\"text\":\"\",\"button\":\"0\",\"button_pos\":\"left\",\"imagebutton\":\"0\",\"button_text\":\"\",\"opensearch\":\"1\",\"opensearch_title\":\"\",\"set_itemid\":\"0\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
 (91, 67, 'Main Menu', '', '', 1, 'language', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_menu', 1, 1, '{\"menutype\":\"mainmenu\",\"base\":\"113\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
-(92, 68, 'Main Menu (EN)', '', '', 1, 'mainPage__menu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 1, '{\"menutype\":\"mainmenu-en\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*');
+(92, 68, 'Main Menu (EN)', '', '', 1, 'mainPage__menu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 1, '{\"menutype\":\"mainmenu-en\",\"base\":\"\",\"startLevel\":\"1\",\"endLevel\":\"0\",\"showAllChildren\":\"1\",\"tag_id\":\"\",\"class_sfx\":\"\",\"window_open\":\"\",\"layout\":\"_:default\",\"moduleclass_sfx\":\"\",\"cache\":\"1\",\"cache_time\":\"900\",\"cachemode\":\"itemid\",\"module_tag\":\"div\",\"bootstrap_size\":\"0\",\"header_tag\":\"h3\",\"header_class\":\"\",\"style\":\"0\"}', 0, '*'),
+(93, 71, 'K2 Comments', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_k2_comments', 1, 1, '', 0, '*'),
+(94, 72, 'K2 Content', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_k2_content', 1, 1, '', 0, '*'),
+(95, 73, 'K2 Tools', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_k2_tools', 1, 1, '', 0, '*'),
+(96, 74, 'K2 Users', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_k2_users', 1, 1, '', 0, '*'),
+(97, 75, 'K2 User', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_k2_user', 1, 1, '', 0, '*'),
+(98, 76, 'K2 Quick Icons (admin)', '', '', 0, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_k2_quickicons', 1, 1, '', 1, '*'),
+(99, 77, 'K2 Stats (admin)', '', '', 0, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_k2_stats', 1, 1, '', 1, '*'),
+(100, 78, 'JAK2 Extra fields Filter and Search', '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_jak2filter', 1, 1, '', 0, '*');
 
 -- --------------------------------------------------------
 
@@ -1469,7 +1754,9 @@ INSERT INTO `thg47_modules_menu` (`moduleid`, `menuid`) VALUES
 (92, 109),
 (92, 110),
 (92, 111),
-(92, 112);
+(92, 112),
+(98, 0),
+(99, 0);
 
 -- --------------------------------------------------------
 
@@ -1616,11 +1903,8 @@ CREATE TABLE `thg47_session` (
 --
 
 INSERT INTO `thg47_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('2ckmi82lqvqjmjc5vr7h95pgo3', 0, 1, '1494499478', 'joomla|s:644:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjI6e3M6NzoiY291bnRlciI7aToxO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTQ5NDQ5OTQ3ODtzOjQ6Imxhc3QiO2k6MTQ5NDQ5OTQ3ODtzOjM6Im5vdyI7aToxNDk0NDk5NDc4O319czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086NToiSlVzZXIiOjE6e3M6MjoiaWQiO2k6MDt9fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 0, ''),
-('80r2a37kb3bph0e8lak25ffh33', 0, 1, '1494500333', 'joomla|s:1096:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjI6e3M6NzoiY291bnRlciI7aTo1ODtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0OTQ0OTUyMjI7czo0OiJsYXN0IjtpOjE0OTQ1MDAzMjI7czozOiJub3ciO2k6MTQ5NDUwMDMzMjt9fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoxOntzOjI6ImlkIjtpOjA7fXM6MTA6ImNvbV9tYWlsdG8iO086ODoic3RkQ2xhc3MiOjE6e3M6NToibGlua3MiO2E6Mjp7czo0MDoiMDFkYjgzZDJkZGVjMGRmZGQzM2M2OGZjNzMyMjk5MzFiY2I5ZDE0YiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo0OiJsaW5rIjtzOjI4OiJodHRwOi8vZGV2LnVpcGhwL3VrL2tvbnRha3R5IjtzOjY6ImV4cGlyeSI7aToxNDk0NTAwMzMyO31zOjQwOiI3MjJiOWVhYmY4OTNmZWU5YzdlZmRjMTY3MDIwNzMwNmY1MGU3NjA5IjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxpbmsiO3M6MzA6Imh0dHA6Ly9kZXYudWlwaHAvZW4va29udGFrdHktMiI7czo2OiJleHBpcnkiO2k6MTQ5NDUwMDMyMjt9fX19fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fQ==\";', 0, ''),
-('fpju1dt5v652e0tbimc380ce45', 0, 1, '1494498740', 'joomla|s:644:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjI6e3M6NzoiY291bnRlciI7aToxO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTQ5NDQ5ODczOTtzOjQ6Imxhc3QiO2k6MTQ5NDQ5ODczOTtzOjM6Im5vdyI7aToxNDk0NDk4NzM5O319czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086NToiSlVzZXIiOjE6e3M6MjoiaWQiO2k6MDt9fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 0, ''),
-('l3io5okf5e5l71ft436127i9e3', 1, 0, '1494500318', 'joomla|s:8480:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aToxOTc7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDk0NDg4MjE0O3M6NDoibGFzdCI7aToxNDk0NTAwMzE1O3M6Mzoibm93IjtpOjE0OTQ1MDAzMTg7fXM6NToidG9rZW4iO3M6MzI6InhLeTdSRnU5TEZrMDZxRHRTWGI5Qmd1V1NVRmYxVVpCIjt9czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjY6e3M6MTA6ImNvbV9jb25maWciO086ODoic3RkQ2xhc3MiOjE6e3M6NjoiY29uZmlnIjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Imdsb2JhbCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJkYXRhIjthOjkxOntzOjEzOiJjYWNoZV9oYW5kbGVyIjtzOjQ6ImZpbGUiO3M6MTA6ImNhY2hlX3BhdGgiO3M6MDoiIjtzOjE2OiJtZW1jYWNoZV9wZXJzaXN0IjtpOjE7czoxNzoibWVtY2FjaGVfY29tcHJlc3MiO2k6MDtzOjIwOiJtZW1jYWNoZV9zZXJ2ZXJfaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6MjA6Im1lbWNhY2hlX3NlcnZlcl9wb3J0IjtpOjExMjExO3M6MTc6Im1lbWNhY2hlZF9wZXJzaXN0IjtpOjE7czoxODoibWVtY2FjaGVkX2NvbXByZXNzIjtpOjA7czoyMToibWVtY2FjaGVkX3NlcnZlcl9ob3N0IjtzOjk6ImxvY2FsaG9zdCI7czoyMToibWVtY2FjaGVkX3NlcnZlcl9wb3J0IjtpOjExMjExO3M6MTM6InJlZGlzX3BlcnNpc3QiO2k6MTtzOjE3OiJyZWRpc19zZXJ2ZXJfaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6MTc6InJlZGlzX3NlcnZlcl9wb3J0IjtpOjYzNzk7czoxNzoicmVkaXNfc2VydmVyX2F1dGgiO3M6MDoiIjtzOjE1OiJyZWRpc19zZXJ2ZXJfZGIiO2k6MDtzOjk6ImNhY2hldGltZSI7aToxNTtzOjIwOiJjYWNoZV9wbGF0Zm9ybXByZWZpeCI7aTowO3M6NzoiY2FjaGluZyI7aTowO3M6NjoiZGJ0eXBlIjtzOjY6Im15c3FsaSI7czo0OiJob3N0IjtzOjk6IjEyNy4wLjAuMSI7czo0OiJ1c2VyIjtzOjQ6InJvb3QiO3M6MjoiZGIiO3M6ODoidWlwaHBfZGIiO3M6ODoiZGJwcmVmaXgiO3M6NjoidGhnNDdfIjtzOjU6ImRlYnVnIjtpOjA7czoxMDoiZGVidWdfbGFuZyI7aTowO3M6MTA6ImZ0cF9lbmFibGUiO2k6MDtzOjg6ImZ0cF9ob3N0IjtzOjA6IiI7czo4OiJmdHBfcG9ydCI7czowOiIiO3M6ODoiZnRwX3VzZXIiO3M6MDoiIjtzOjg6ImZ0cF9wYXNzIjtzOjA6IiI7czo4OiJmdHBfcm9vdCI7czowOiIiO3M6MTI6InByb3h5X2VuYWJsZSI7aTowO3M6MTA6InByb3h5X2hvc3QiO3M6MDoiIjtzOjEwOiJwcm94eV9wb3J0IjtzOjA6IiI7czoxMDoicHJveHlfdXNlciI7czowOiIiO3M6MTA6InByb3h5X3Bhc3MiO3M6MDoiIjtzOjY6Im9mZnNldCI7czozOiJVVEMiO3M6MTA6Im1haWxvbmxpbmUiO2k6MTtzOjExOiJtYXNzbWFpbG9mZiI7aTowO3M6ODoibWFpbGZyb20iO3M6MTg6InByQGdyZWVud2ViLmNvbS51YSI7czo4OiJmcm9tbmFtZSI7czo1OiJVSVBIUCI7czo3OiJyZXBseXRvIjtzOjA6IiI7czoxMToicmVwbHl0b25hbWUiO3M6MDoiIjtzOjY6Im1haWxlciI7czo0OiJtYWlsIjtzOjg6InNlbmRtYWlsIjtzOjE4OiIvdXNyL3NiaW4vc2VuZG1haWwiO3M6ODoic210cGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjg6InNtdHBwb3J0IjtpOjI1O3M6MTA6InNtdHBzZWN1cmUiO3M6NDoibm9uZSI7czo4OiJzbXRwYXV0aCI7aTowO3M6ODoic210cHVzZXIiO3M6MDoiIjtzOjg6InNtdHBwYXNzIjtzOjA6IiI7czo4OiJNZXRhRGVzYyI7czowOiIiO3M6ODoiTWV0YUtleXMiO3M6MDoiIjtzOjY6InJvYm90cyI7czowOiIiO3M6MTA6Ik1ldGFSaWdodHMiO3M6MDoiIjtzOjEwOiJNZXRhQXV0aG9yIjtpOjE7czoxMToiTWV0YVZlcnNpb24iO2k6MDtzOjM6InNlZiI7aToxO3M6MTE6InNlZl9yZXdyaXRlIjtpOjE7czoxMDoic2VmX3N1ZmZpeCI7aTowO3M6MTI6InVuaWNvZGVzbHVncyI7aToxO3M6MTk6InNpdGVuYW1lX3BhZ2V0aXRsZXMiO2k6MDtzOjg6InRtcF9wYXRoIjtzOjM1OiJDOlxPcGVuU2VydmVyXGRvbWFpbnNcZGV2LnVpcGhwL3RtcCI7czo0OiJnemlwIjtpOjA7czoxNToiZXJyb3JfcmVwb3J0aW5nIjtzOjc6ImRlZmF1bHQiO3M6OToiZm9yY2Vfc3NsIjtpOjA7czoxNToic2Vzc2lvbl9oYW5kbGVyIjtzOjg6ImRhdGFiYXNlIjtzOjI4OiJzZXNzaW9uX21lbWNhY2hlX3NlcnZlcl9ob3N0IjtzOjk6ImxvY2FsaG9zdCI7czoyODoic2Vzc2lvbl9tZW1jYWNoZV9zZXJ2ZXJfcG9ydCI7aToxMTIxMTtzOjI5OiJzZXNzaW9uX21lbWNhY2hlZF9zZXJ2ZXJfaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6Mjk6InNlc3Npb25fbWVtY2FjaGVkX3NlcnZlcl9wb3J0IjtpOjExMjExO3M6ODoibGlmZXRpbWUiO2k6NjA7czoxNDoic2hhcmVkX3Nlc3Npb24iO2k6MDtzOjg6InNpdGVuYW1lIjtzOjU6IlVJUEhQIjtzOjc6Im9mZmxpbmUiO2k6MDtzOjIzOiJkaXNwbGF5X29mZmxpbmVfbWVzc2FnZSI7aToxO3M6MTU6Im9mZmxpbmVfbWVzc2FnZSI7czoxMjk6ItCh0LDQudGCINC30LDQutGA0YvRgiDQvdCwINGC0LXRhdC90LjRh9C10YHQutC+0LUg0L7QsdGB0LvRg9C20LjQstCw0L3QuNC1LjxiciAvPtCf0L7QttCw0LvRg9C50YHRgtCwLCDQt9Cw0LnQtNC40YLQtSDQv9C+0LfQttC1LiI7czoxMzoib2ZmbGluZV9pbWFnZSI7czowOiIiO3M6MTI6ImZyb250ZWRpdGluZyI7aToxO3M6NjoiZWRpdG9yIjtzOjc6InRpbnltY2UiO3M6NzoiY2FwdGNoYSI7czoxOiIwIjtzOjY6ImFjY2VzcyI7aToxO3M6MTA6Imxpc3RfbGltaXQiO2k6NTAwO3M6MTA6ImZlZWRfbGltaXQiO2k6MTA7czoxMDoiZmVlZF9lbWFpbCI7czo0OiJub25lIjtzOjg6ImxvZ19wYXRoIjtzOjUwOiJDOlxPcGVuU2VydmVyXGRvbWFpbnNcZGV2LnVpcGhwXGFkbWluaXN0cmF0b3IvbG9ncyI7czo3OiJoZWxwdXJsIjtzOjgwOiJodHRwczovL2hlbHAuam9vbWxhLm9yZy9wcm94eT9rZXlyZWY9SGVscHttYWpvcn17bWlub3J9OntrZXlyZWZ9Jmxhbmc9e2xhbmdjb2RlfSI7czoxMzoiY29va2llX2RvbWFpbiI7czowOiIiO3M6MTE6ImNvb2tpZV9wYXRoIjtzOjA6IiI7czo3OiJmaWx0ZXJzIjthOjk6e2k6MTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6Ik5IIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6OTthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NjthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjI6IkJMIjtzOjExOiJmaWx0ZXJfdGFncyI7czowOiIiO3M6MTc6ImZpbHRlcl9hdHRyaWJ1dGVzIjtzOjA6IiI7fWk6NzthOjM6e3M6MTE6ImZpbHRlcl90eXBlIjtzOjQ6Ik5PTkUiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aToyO2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiTkgiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTozO2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo0O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo1O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6MjoiQkwiO3M6MTE6ImZpbHRlcl90YWdzIjtzOjA6IiI7czoxNzoiZmlsdGVyX2F0dHJpYnV0ZXMiO3M6MDoiIjt9aTo4O2E6Mzp7czoxMToiZmlsdGVyX3R5cGUiO3M6NDoiTk9ORSI7czoxMToiZmlsdGVyX3RhZ3MiO3M6MDoiIjtzOjE3OiJmaWx0ZXJfYXR0cmlidXRlcyI7czowOiIiO319czo4OiJhc3NldF9pZCI7aToxO319fX1zOjk6ImNvbV9tZW51cyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo1OiJpdGVtcyI7Tzo4OiJzdGRDbGFzcyI6ODp7czo4OiJtZW51dHlwZSI7czoxMToibWFpbm1lbnUtZW4iO3M6OToiY2xpZW50X2lkIjtpOjA7czoxMDoibGltaXRzdGFydCI7aTowO3M6NDoibGlzdCI7YToyOntzOjEyOiJmdWxsb3JkZXJpbmciO3M6OToiYS5sZnQgQVNDIjtzOjU6ImxpbWl0IjtzOjM6IjUwMCI7fXM6Njoic2VhcmNoIjtzOjA6IiI7czo5OiJwdWJsaXNoZWQiO3M6MDoiIjtzOjY6ImZpbHRlciI7YTo1OntzOjY6InNlYXJjaCI7czowOiIiO3M6OToicHVibGlzaGVkIjtzOjA6IiI7czo2OiJhY2Nlc3MiO3M6MDoiIjtzOjg6Imxhbmd1YWdlIjtzOjA6IiI7czo1OiJsZXZlbCI7czowOiIiO31zOjU6Im1vZGFsIjtPOjg6InN0ZENsYXNzIjo3OntzOjg6Im1lbnV0eXBlIjtzOjExOiJtYWlubWVudS1lbiI7czo5OiJjbGllbnRfaWQiO2k6MDtzOjQ6Imxpc3QiO2E6Mjp7czoxMjoiZnVsbG9yZGVyaW5nIjtzOjk6ImEubGZ0IEFTQyI7czo1OiJsaW1pdCI7czozOiI1MDAiO31zOjY6InNlYXJjaCI7czowOiIiO3M6OToicHVibGlzaGVkIjtzOjA6IiI7czo2OiJmaWx0ZXIiO2E6NTp7czo2OiJzZWFyY2giO3M6MDoiIjtzOjk6InB1Ymxpc2hlZCI7czowOiIiO3M6NjoiYWNjZXNzIjtzOjA6IiI7czo4OiJsYW5ndWFnZSI7czowOiIiO3M6NToibGV2ZWwiO3M6MDoiIjt9czoxMDoibGltaXRzdGFydCI7aTowO319czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoyOntzOjQ6Iml0ZW0iO086ODoic3RkQ2xhc3MiOjQ6e3M6MjoiaWQiO2E6MDp7fXM6NDoiZGF0YSI7TjtzOjQ6InR5cGUiO047czo0OiJsaW5rIjtOO31zOjQ6Im1lbnUiO086ODoic3RkQ2xhc3MiOjI6e3M6NDoiZGF0YSI7TjtzOjI6ImlkIjthOjA6e319fX1zOjExOiJjb21fbW9kdWxlcyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Im1vZHVsZSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo0OiJkYXRhIjtOO3M6MjoiaWQiO2E6MDp7fX19czozOiJhZGQiO086ODoic3RkQ2xhc3MiOjE6e3M6NjoibW9kdWxlIjtPOjg6InN0ZENsYXNzIjoyOntzOjEyOiJleHRlbnNpb25faWQiO047czo2OiJwYXJhbXMiO047fX19czoxMzoiY29tX2xhbmd1YWdlcyI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo5OiJvdmVycmlkZXMiO086ODoic3RkQ2xhc3MiOjQ6e3M6NjoiZmlsdGVyIjtPOjg6InN0ZENsYXNzIjo0OntzOjY6ImNsaWVudCI7czoxOiIwIjtzOjg6Imxhbmd1YWdlIjtzOjU6InJ1LVJVIjtzOjE1OiJsYW5ndWFnZV9jbGllbnQiO3M6NjoicnUtUlUwIjtzOjY6InNlYXJjaCI7czowOiIiO31zOjg6Im9yZGVyY29sIjtzOjM6ImtleSI7czo5OiJvcmRlcmRpcm4iO3M6MzoiYXNjIjtzOjEwOiJsaW1pdHN0YXJ0IjtpOjA7fXM6OToibGFuZ3VhZ2VzIjtPOjg6InN0ZENsYXNzIjozOntzOjY6ImZpbHRlciI7YTozOntzOjY6InNlYXJjaCI7czowOiIiO3M6OToicHVibGlzaGVkIjtzOjA6IiI7czo2OiJhY2Nlc3MiO3M6MDoiIjt9czo0OiJsaXN0IjthOjI6e3M6MTI6ImZ1bGxvcmRlcmluZyI7czoxNDoiYS5vcmRlcmluZyBBU0MiO3M6NToibGltaXQiO3M6MToiNSI7fXM6MTA6ImxpbWl0c3RhcnQiO2k6MDt9czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjg6Imxhbmd1YWdlIjtPOjg6InN0ZENsYXNzIjoyOntzOjI6ImlkIjthOjA6e31zOjQ6ImRhdGEiO047fX19czo2OiJnbG9iYWwiO086ODoic3RkQ2xhc3MiOjE6e3M6NDoibGlzdCI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJsaW1pdCI7aTo1O319czoxOToiY29tX2FkdmFuY2VkbW9kdWxlcyI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjY6Im1vZHVsZSI7Tzo4OiJzdGRDbGFzcyI6Mjp7czoyOiJpZCI7YToxOntpOjA7aTo4Nzt9czo0OiJkYXRhIjtOO319czozOiJhZGQiO086ODoic3RkQ2xhc3MiOjE6e3M6NjoibW9kdWxlIjtPOjg6InN0ZENsYXNzIjoyOntzOjEyOiJleHRlbnNpb25faWQiO047czo2OiJwYXJhbXMiO047fX19fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI4MTEiO31zOjExOiJhcHBsaWNhdGlvbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJxdWV1ZSI7Tjt9fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 811, 'admin-gw'),
-('siul9juc5n4vgkj75sqe9eic60', 0, 1, '1494500038', 'joomla|s:644:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjozOntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjI6e3M6NzoiY291bnRlciI7aToxO3M6NToidGltZXIiO086ODoic3RkQ2xhc3MiOjM6e3M6NToic3RhcnQiO2k6MTQ5NDUwMDAzODtzOjQ6Imxhc3QiO2k6MTQ5NDUwMDAzODtzOjM6Im5vdyI7aToxNDk0NTAwMDM4O319czo4OiJyZWdpc3RyeSI7TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjA6e31zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO31zOjQ6InVzZXIiO086NToiSlVzZXIiOjE6e3M6MjoiaWQiO2k6MDt9fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 0, '');
+('cn5oq8kmp8el7d86ok2bphqr97', 0, 1, '1494506780', 'joomla|s:904:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjI6e3M6NzoiY291bnRlciI7aToxMTtzOjU6InRpbWVyIjtPOjg6InN0ZENsYXNzIjozOntzOjU6InN0YXJ0IjtpOjE0OTQ1MDQ1MjU7czo0OiJsYXN0IjtpOjE0OTQ1MDY3NzQ7czozOiJub3ciO2k6MTQ5NDUwNjc3OTt9fXM6ODoicmVnaXN0cnkiO086MjQ6Ikpvb21sYVxSZWdpc3RyeVxSZWdpc3RyeSI6Mzp7czo3OiIAKgBkYXRhIjtPOjg6InN0ZENsYXNzIjowOnt9czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjk6InNlcGFyYXRvciI7czoxOiIuIjt9czo0OiJ1c2VyIjtPOjU6IkpVc2VyIjoxOntzOjI6ImlkIjtpOjA7fXM6MTA6ImNvbV9tYWlsdG8iO086ODoic3RkQ2xhc3MiOjE6e3M6NToibGlua3MiO2E6MTp7czo0MDoiMDFkYjgzZDJkZGVjMGRmZGQzM2M2OGZjNzMyMjk5MzFiY2I5ZDE0YiI7Tzo4OiJzdGRDbGFzcyI6Mjp7czo0OiJsaW5rIjtzOjI4OiJodHRwOi8vZGV2LnVpcGhwL3VrL2tvbnRha3R5IjtzOjY6ImV4cGlyeSI7aToxNDk0NTA2Nzc5O319fX19czoxNDoiACoAaW5pdGlhbGl6ZWQiO2I6MDtzOjk6InNlcGFyYXRvciI7czoxOiIuIjt9\";', 0, ''),
+('oug8k2ifhu5ff4ponnp6iigp83', 1, 0, '1494506762', 'joomla|s:1528:\"TzoyNDoiSm9vbWxhXFJlZ2lzdHJ5XFJlZ2lzdHJ5IjozOntzOjc6IgAqAGRhdGEiO086ODoic3RkQ2xhc3MiOjE6e3M6OToiX19kZWZhdWx0IjtPOjg6InN0ZENsYXNzIjo0OntzOjc6InNlc3Npb24iO086ODoic3RkQ2xhc3MiOjM6e3M6NzoiY291bnRlciI7aTo4NTtzOjU6InRva2VuIjtzOjMyOiJJQzlrcVRxazByMTAzOXVoR2ttN2Y1T0JIeGFwUkFpcSI7czo1OiJ0aW1lciI7Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJzdGFydCI7aToxNDk0NTA0NDg4O3M6NDoibGFzdCI7aToxNDk0NTA2NzUyO3M6Mzoibm93IjtpOjE0OTQ1MDY3NjE7fX1zOjg6InJlZ2lzdHJ5IjtPOjI0OiJKb29tbGFcUmVnaXN0cnlcUmVnaXN0cnkiOjM6e3M6NzoiACoAZGF0YSI7Tzo4OiJzdGRDbGFzcyI6Mzp7czoxMzoiY29tX3RlbXBsYXRlcyI7Tzo4OiJzdGRDbGFzcyI6MTp7czo0OiJlZGl0IjtPOjg6InN0ZENsYXNzIjoxOntzOjU6InN0eWxlIjtPOjg6InN0ZENsYXNzIjoyOntzOjI6ImlkIjthOjA6e31zOjQ6ImRhdGEiO047fX19czoxMzoiY29tX2luc3RhbGxlciI7Tzo4OiJzdGRDbGFzcyI6NDp7czo3OiJtZXNzYWdlIjtzOjA6IiI7czoxNzoiZXh0ZW5zaW9uX21lc3NhZ2UiO3M6MDoiIjtzOjEyOiJyZWRpcmVjdF91cmwiO047czo2OiJtYW5hZ2UiO086ODoic3RkQ2xhc3MiOjM6e3M6NjoiZmlsdGVyIjthOjU6e3M6Njoic2VhcmNoIjtzOjA6IiI7czo2OiJzdGF0dXMiO3M6MDoiIjtzOjk6ImNsaWVudF9pZCI7czowOiIiO3M6NDoidHlwZSI7czowOiIiO3M6NjoiZm9sZGVyIjtzOjA6IiI7fXM6NDoibGlzdCI7YToyOntzOjEyOiJmdWxsb3JkZXJpbmciO3M6ODoibmFtZSBBU0MiO3M6NToibGltaXQiO3M6MzoiNTAwIjt9czoxMDoibGltaXRzdGFydCI7aTowO319czoxMToiY29tX2syaXRlbXMiO086ODoic3RkQ2xhc3MiOjE6e3M6MTA6ImxpbWl0c3RhcnQiO2k6MDt9fXM6MTQ6IgAqAGluaXRpYWxpemVkIjtiOjA7czo5OiJzZXBhcmF0b3IiO3M6MToiLiI7fXM6NDoidXNlciI7Tzo1OiJKVXNlciI6MTp7czoyOiJpZCI7czozOiI4MTEiO31zOjExOiJhcHBsaWNhdGlvbiI7Tzo4OiJzdGRDbGFzcyI6MTp7czo1OiJxdWV1ZSI7Tjt9fX1zOjE0OiIAKgBpbml0aWFsaXplZCI7YjowO3M6OToic2VwYXJhdG9yIjtzOjE6Ii4iO30=\";', 811, 'admin-gw');
 
 -- --------------------------------------------------------
 
@@ -1829,7 +2113,8 @@ INSERT INTO `thg47_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 (2, 'Accredited Joomla! Translations', 'collection', 'https://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
 (3, 'Joomla! Update Component Update Site', 'extension', 'https://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, ''),
 (4, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
-(5, 'Regular Labs - Advanced Module Manager', 'extension', 'http://download.regularlabs.com/updates.xml?e=advancedmodulemanager&type=.xml', 1, 1494423837, '');
+(5, 'Regular Labs - Advanced Module Manager', 'extension', 'http://download.regularlabs.com/updates.xml?e=advancedmodulemanager&type=.xml', 1, 1494423837, ''),
+(6, 'K2 Updates', 'extension', 'http://getk2.org/update.xml', 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -1853,7 +2138,8 @@ INSERT INTO `thg47_update_sites_extensions` (`update_site_id`, `extension_id`) V
 (3, 28),
 (4, 10005),
 (5, 10011),
-(5, 10012);
+(5, 10012),
+(6, 10013);
 
 -- --------------------------------------------------------
 
@@ -1914,7 +2200,7 @@ CREATE TABLE `thg47_users` (
 --
 
 INSERT INTO `thg47_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(811, 'Super User', 'admin-gw', 'pr@greenweb.com.ua', '$2y$10$geWomQUi274aFDQXOnCNQuXEdMZEf2duYrVs12zU9vanf5pxjKuUq', 0, 1, '2017-05-04 12:24:00', '2017-05-11 10:31:08', '0', '', '0000-00-00 00:00:00', 0, '', '', 0);
+(811, 'Super User', 'admin-gw', 'pr@greenweb.com.ua', '$2y$10$geWomQUi274aFDQXOnCNQuXEdMZEf2duYrVs12zU9vanf5pxjKuUq', 0, 1, '2017-05-04 12:24:00', '2017-05-11 12:08:09', '0', '', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -2401,6 +2687,120 @@ ALTER TABLE `thg47_finder_types`
   ADD UNIQUE KEY `title` (`title`);
 
 --
+-- Индексы таблицы `thg47_jak2filter`
+--
+ALTER TABLE `thg47_jak2filter`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Индексы таблицы `thg47_jak2filter_taxonomy`
+--
+ALTER TABLE `thg47_jak2filter_taxonomy`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `asset_idx` (`asset_id`,`option_id`,`type`);
+
+--
+-- Индексы таблицы `thg47_jak2filter_taxonomy_map`
+--
+ALTER TABLE `thg47_jak2filter_taxonomy_map`
+  ADD UNIQUE KEY `taxonomy_map_id` (`node_id`,`item_id`);
+
+--
+-- Индексы таблицы `thg47_k2_attachments`
+--
+ALTER TABLE `thg47_k2_attachments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `itemID` (`itemID`);
+
+--
+-- Индексы таблицы `thg47_k2_categories`
+--
+ALTER TABLE `thg47_k2_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category` (`published`,`access`,`trash`),
+  ADD KEY `parent` (`parent`),
+  ADD KEY `ordering` (`ordering`),
+  ADD KEY `published` (`published`),
+  ADD KEY `access` (`access`),
+  ADD KEY `trash` (`trash`),
+  ADD KEY `language` (`language`);
+
+--
+-- Индексы таблицы `thg47_k2_comments`
+--
+ALTER TABLE `thg47_k2_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `itemID` (`itemID`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `published` (`published`),
+  ADD KEY `latestComments` (`published`,`commentDate`);
+
+--
+-- Индексы таблицы `thg47_k2_extra_fields`
+--
+ALTER TABLE `thg47_k2_extra_fields`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `group` (`group`),
+  ADD KEY `published` (`published`),
+  ADD KEY `ordering` (`ordering`);
+
+--
+-- Индексы таблицы `thg47_k2_extra_fields_groups`
+--
+ALTER TABLE `thg47_k2_extra_fields_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `thg47_k2_items`
+--
+ALTER TABLE `thg47_k2_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item` (`published`,`publish_up`,`publish_down`,`trash`,`access`),
+  ADD KEY `catid` (`catid`),
+  ADD KEY `created_by` (`created_by`),
+  ADD KEY `ordering` (`ordering`),
+  ADD KEY `featured` (`featured`),
+  ADD KEY `featured_ordering` (`featured_ordering`),
+  ADD KEY `hits` (`hits`),
+  ADD KEY `created` (`created`),
+  ADD KEY `language` (`language`);
+
+--
+-- Индексы таблицы `thg47_k2_rating`
+--
+ALTER TABLE `thg47_k2_rating`
+  ADD PRIMARY KEY (`itemID`);
+
+--
+-- Индексы таблицы `thg47_k2_tags`
+--
+ALTER TABLE `thg47_k2_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `published` (`published`);
+
+--
+-- Индексы таблицы `thg47_k2_tags_xref`
+--
+ALTER TABLE `thg47_k2_tags_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tagID` (`tagID`),
+  ADD KEY `itemID` (`itemID`);
+
+--
+-- Индексы таблицы `thg47_k2_users`
+--
+ALTER TABLE `thg47_k2_users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `group` (`group`);
+
+--
+-- Индексы таблицы `thg47_k2_user_groups`
+--
+ALTER TABLE `thg47_k2_user_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `thg47_languages`
 --
 ALTER TABLE `thg47_languages`
@@ -2644,7 +3044,7 @@ ALTER TABLE `thg47_viewlevels`
 -- AUTO_INCREMENT для таблицы `thg47_assets`
 --
 ALTER TABLE `thg47_assets`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT для таблицы `thg47_banners`
 --
@@ -2679,7 +3079,7 @@ ALTER TABLE `thg47_content_types`
 -- AUTO_INCREMENT для таблицы `thg47_extensions`
 --
 ALTER TABLE `thg47_extensions`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10013;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10031;
 --
 -- AUTO_INCREMENT для таблицы `thg47_fields`
 --
@@ -2716,6 +3116,61 @@ ALTER TABLE `thg47_finder_terms`
 ALTER TABLE `thg47_finder_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT для таблицы `thg47_jak2filter_taxonomy`
+--
+ALTER TABLE `thg47_jak2filter_taxonomy`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_attachments`
+--
+ALTER TABLE `thg47_k2_attachments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_categories`
+--
+ALTER TABLE `thg47_k2_categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_comments`
+--
+ALTER TABLE `thg47_k2_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_extra_fields`
+--
+ALTER TABLE `thg47_k2_extra_fields`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_extra_fields_groups`
+--
+ALTER TABLE `thg47_k2_extra_fields_groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_items`
+--
+ALTER TABLE `thg47_k2_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_tags`
+--
+ALTER TABLE `thg47_k2_tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_tags_xref`
+--
+ALTER TABLE `thg47_k2_tags_xref`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_users`
+--
+ALTER TABLE `thg47_k2_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `thg47_k2_user_groups`
+--
+ALTER TABLE `thg47_k2_user_groups`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT для таблицы `thg47_languages`
 --
 ALTER TABLE `thg47_languages`
@@ -2724,7 +3179,7 @@ ALTER TABLE `thg47_languages`
 -- AUTO_INCREMENT для таблицы `thg47_menu`
 --
 ALTER TABLE `thg47_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT для таблицы `thg47_menu_types`
 --
@@ -2739,7 +3194,7 @@ ALTER TABLE `thg47_messages`
 -- AUTO_INCREMENT для таблицы `thg47_modules`
 --
 ALTER TABLE `thg47_modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT для таблицы `thg47_newsfeeds`
 --
@@ -2789,7 +3244,7 @@ ALTER TABLE `thg47_updates`
 -- AUTO_INCREMENT для таблицы `thg47_update_sites`
 --
 ALTER TABLE `thg47_update_sites`
-  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `thg47_usergroups`
 --

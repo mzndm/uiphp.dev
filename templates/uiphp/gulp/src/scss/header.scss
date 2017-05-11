@@ -10,6 +10,7 @@
     }
     .insidePage__menu {
       display: none;
+     // @extend .col-md-12;
     }
     &__search {
       @extend .col-md-3;
