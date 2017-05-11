@@ -1,12 +1,21 @@
+.header {
+  &__logo {
+    //@extend .col-md-9;
+    .logo {
+      width: 200px;
+      margin: 0 auto;
+    }
+  }
+}
 .pageid-101 {
   .header {
 
     &__logo {
       @extend .col-md-9;
-      .logo {
-        width: 200px;
-        margin: 0 auto;
-      }
+      //.logo {
+      //  width: 200px;
+      //  margin: 0 auto;
+      //}
     }
     .insidePage__menu {
       display: none;

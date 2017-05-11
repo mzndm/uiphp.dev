@@ -286,8 +286,20 @@ $class  = $active->alias . " pageid-" . $active->id;
 
 			<!-- Begin Content -->
 
-			<jdoc:include type="modules" name="content" style="xhtml" />
 			<jdoc:include type="component" />
+            <div class="row">
+                <div class="news">
+                    <jdoc:include type="modules" name="news" style="xhtml" />
+                </div>
+
+                <div class="banner">
+                    <jdoc:include type="modules" name="banner" style="xhtml" />
+                </div>
+            </div>
+
+            <div class="row">
+                <jdoc:include type="modules" name="content" style="xhtml" />
+            </div>
 
 			<!-- End Content -->
 		</div>

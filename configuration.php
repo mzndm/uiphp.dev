@@ -53,7 +53,7 @@ class JConfig {
 	public $sef = '1';
 	public $sef_rewrite = '1';
 	public $sef_suffix = '0';
-	public $unicodeslugs = '1';
+	public $unicodeslugs = '0';
 	public $feed_limit = '10';
 	public $feed_email = 'none';
 	public $log_path = 'C:\\OpenServer\\domains\\dev.uiphp\\administrator/logs';
