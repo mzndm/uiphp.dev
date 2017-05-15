@@ -2,8 +2,8 @@
   &__logo {
     //@extend .col-md-9;
     .logo {
-      width: 200px;
-      margin: 0 auto;
+      width: 275px;
+      margin: 2em auto 3em;
     }
   }
 }
@@ -30,7 +30,13 @@
 
       }
       .language {
-
+        a {
+          font: 0.85em/1em $Regular;
+          color: $green;
+          text-transform: uppercase;
+          text-decoration: underline;
+          text-decoration-color: $green;
+        }
       }
     }
   }

@@ -137,15 +137,10 @@ gulp.task('build', [
 gulp.task('clean', function () {
     return del(path.clean, {force: true});
 });
-// gulp.task('clean', function (cb) {
-//     rimraf(path.clean, cb);
-// });
-// gulp.task('clean', function (cb ) {
-//     del(path.clean, cb);
-// });
+
 gulp.task('cache', function () {
     return cache.clearAll();
-})
+});
 
 gulp.task('watch', function(){
     gulp.watch([path.watch.style], function(event, cb) {

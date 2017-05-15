@@ -1,6 +1,9 @@
 @import "bootstrap-custom";
+@import "variable";
 @import "header";
-@import "news";
+@import "menu";
+@import "events";
+@import "footer";
 * {
  //outline: 1px dotted blue;
  box-sizing: border-box;

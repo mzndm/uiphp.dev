@@ -54,7 +54,7 @@ class plgSystemK2 extends JPlugin
 		// jQuery and K2 JS loading
 		K2HelperHTML::loadjQuery();
 
-		$document->addScript(JURI::root(true).'/components/com_k2/js/k2.js?v2.6.9&amp;sitepath='.JURI::root(true).'/');
+//		$document->addScript(JURI::root(true).'/components/com_k2/js/k2.js?v2.6.9&amp;sitepath='.JURI::root(true).'/');
 		//$document->addScriptDeclaration("var K2SitePath = '".JURI::root(true)."/';");
 
 		if (JRequest::getCmd('task') == 'search' && $params->get('googleSearch'))

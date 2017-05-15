@@ -18,7 +18,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 // The menu class is deprecated. Use nav instead
 ?>
-<ul class="nav menu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
+<div class="nav menu <?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php foreach ($list as $i => &$item)
 {
 	$class = 'item-' . $item->id;
@@ -30,12 +30,12 @@ if ($tagId = $params->get('tag_id', ''))
 
 	if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 	{
-		$class .= ' current';
+		$class .= ' menu__item--current';
 	}
 
 	if (in_array($item->id, $path))
 	{
-		$class .= ' active';
+		$class .= ' menu__item--active';
 	}
 	elseif ($item->type === 'alias')
 	{
@@ -66,7 +66,7 @@ if ($tagId = $params->get('tag_id', ''))
 		$class .= ' parent';
 	}
 
-	echo '<li class="' . $class . '">';
+	echo '<div class="menu__item ' . $class . '"> <span class="menu__icon menu__icon--'. $item->id . ' "></span>';
 
 	switch ($item->type) :
 		case 'separator':
@@ -84,18 +84,19 @@ if ($tagId = $params->get('tag_id', ''))
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul class="nav-child unstyled small">';
+		echo '<div class="menu__child">';
 	}
 	// The next item is shallower.
+
 	elseif ($item->shallower)
 	{
-		echo '</li>';
-		echo str_repeat('</ul></li>', $item->level_diff);
+		echo '</div>';
+		echo str_repeat('</div></div>', $item->level_diff);
 	}
 	// The next item is on the same level.
 	else
 	{
-		echo '</li>';
+		echo '</div>';
 	}
 }
-?></ul>
+?></div>

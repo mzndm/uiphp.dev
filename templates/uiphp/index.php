@@ -6,7 +6,7 @@
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
+// realised Mazun Dmytro
 defined('_JEXEC') or die;
 
 $app             = JFactory::getApplication();
@@ -33,6 +33,21 @@ $class  = $active->alias . " pageid-" . $active->id;
 //$itemid   = $app->input->getCmd('Itemid', '');
 //$sitename = $app->get('sitename');
 
+// add scripts
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js');
+// add styles
+$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/libs.css');
+$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/main.css');
+
+
+?>
+
+<?php
+	$doc = JFactory::getDocument();
+		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery.min.js']);
+		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
+		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
+		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/bootstrap.min.js']);
 
 ?>
 <!DOCTYPE html>
@@ -43,12 +58,10 @@ $class  = $active->alias . " pageid-" . $active->id;
 	<jdoc:include type="head" />
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 
-
-
-	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/libs.css'?>">
-	<link rel="stylesheet" href="<?php echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'?>">
-
-	<script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js'?>"></script>
+<!--
+	<link rel="stylesheet" href="<?php /*echo $this->baseurl . '/templates/' . $this->template . '/css/libs.css'*/?>">
+	<link rel="stylesheet" href="<?php /*echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'*/?>">
+-->
 
 </head>
 
@@ -57,7 +70,6 @@ $class  = $active->alias . " pageid-" . $active->id;
 	<div class="site">
 		<div class="container">
 			<!-- Header -->
-
 
 			<div class="row">
 				<header class="header">
@@ -250,63 +262,61 @@ $class  = $active->alias . " pageid-" . $active->id;
 										</g>
 </svg>
 								</a>
-							</div>
-						</div>
+							</div>	<!--	.logo	-->
+						</div>		<!--	.header__logo	-->
 
 						<div class="header__menu insidePage__menu">
 							<jdoc:include type="modules" name="insidePage__menu" style="xhtml" />
-						</div>
+						</div>		<!--	.header__menu insidePage__menu	-->
 
 						<div class="header__search">
 							<div class="search">
 								<jdoc:include type="modules" name="search" style="xhtml" />
-							</div>
+							</div>		<!--	.search		-->
 							<div class="language">
 								<jdoc:include type="modules" name="language" style="xhtml" />
-							</div>
-						</div>
-<!--					</div>-->
-<!--					<div class="row">-->
+							</div>		<!--	.language	-->
+						</div>		<!--	.header__search		-->
 						<div class="header__menu mainPage__menu">
 							<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
-						</div>
-					</div>
-				</header>
+						</div>		<!--	.header__menu mainPage__menu	-->
+					</div>	<!--	.row	-->
+				</header>		<!--	.header		-->
 
-			</div>
+			</div>	<!-- 	.row	 -->
 			<div class="breadcrumbs">
 				<jdoc:include type="modules" name="breadcrumbs" style="none" />
-			</div>
-		</div>
+			</div>	<!--	.breadcrumbs	-->
+		</div>	<!--	.container		-->
 		<div class="container">
-			<div class="row">
-
-			</div>
-
-
 			<!-- Begin Content -->
 
 			<jdoc:include type="component" />
             <div class="row">
-                <div class="news">
-                    <jdoc:include type="modules" name="news" style="xhtml" />
-                </div>
+                <div class="events">
+                    <jdoc:include type="modules" name="events" style="xhtml" />
+                </div>	<!--	.events		-->
 
                 <div class="banner">
                     <jdoc:include type="modules" name="banner" style="xhtml" />
-                </div>
-            </div>
+                </div>	<!--	.banner		-->
+            </div>		<!--	.row	-->
 
             <div class="row">
                 <jdoc:include type="modules" name="content" style="xhtml" />
             </div>
 
 			<!-- End Content -->
-		</div>
-	</div>
+		</div>	<!--	.container 	-->
+	</div>  <!--	.site	 -->
+
 	<!-- Footer -->
-	<footer>
-		<jdoc:include type="modules" name="footer" style="xhtml" />
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<jdoc:include type="modules" name="footer" style="xhtml" />
+			</div>
+		</div>
 	</footer>
 
 <script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/common.js'?>"></script>

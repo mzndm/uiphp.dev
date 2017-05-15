@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "FiraSans-Light";
+  src: url("../fonts/FiraSans/FiraSans-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraSans-Regular";
+  src: url("../fonts/FiraSans/FiraSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraSans-Medium";
+  src: url("../fonts/FiraSans/FiraSans-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FiraSans-Bold";
+  src: url("../fonts/FiraSans/FiraSans-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+// font-family
+$Light: "FiraSans-Light", Helvetica, Arial, sans-serif;
+$Regular: "FiraSans-Regular", Helvetica, Arial, sans-serif;
+$Medium: "FiraSans-Medium", Helvetica, Arial, sans-serif;
+$Bold: "FiraSans-Bold", Helvetica, Arial, sans-serif;
+//  font-size
+$xsmall: 0.75em;
+$small: 0.875em;
+$normal: 1em;
+$big: 1.5em;
+// color
+$green: #19d0cc;
+$grey: #414042;
+h1 {
+  font-family: $Bold;
+  font-size: $big;
+  color: $grey;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+p {
+  font-family: $Light;
+  font-size: $normal;
+  line-height: 1.5em;
+  color: #000;
+}
