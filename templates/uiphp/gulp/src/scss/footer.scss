@@ -1,3 +1,24 @@
 .footer {
   background-color: #19d0cc;
+  padding: 0.5em;
+  &__copyright {
+    width: 190px;
+    font-family: $Light;
+    font-size: $xsmall;
+    float: left;
+  }
+  &__contacts {
+    margin-top: 1em;
+    display: inline-block;
+  }
+  &__phone {
+    display: block;
+    font-family: $Bold;
+    font-size: $xsmall;
+    color: #000;
+    text-decoration: none;
+  }
+  &__mail {
+    @extend .footer__phone;
+  }
 }
