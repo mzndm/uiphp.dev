@@ -19,8 +19,11 @@
     }
   }
   &__readmore {
-    @extend .item__readmore;
+    @extend h4;
     color: #fff;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-color: $green;
   }
   &__facebook {
     height: 175px;

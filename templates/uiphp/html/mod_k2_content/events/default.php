@@ -10,8 +10,9 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-	<span class="h1"><?php echo JText::_('K2_EVENTS'); ?> </span>
+	<span class="events__h1"><?php echo JText::_('K2_EVENTS'); ?> </span>
 	<a class="toEvents" href="#"><?php echo JText::_('K2_TO_EVENTS'); ?> </a>
+<!-- TODO: ссилка на події -->
 
 <div id="k2ModuleBox<?php echo $module->id; ?>" class="category <?php if($params->get('moduleclass_sfx')) echo ' '.$params->get('moduleclass_sfx'); ?>">
 
