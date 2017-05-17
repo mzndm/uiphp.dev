@@ -29,7 +29,7 @@ function modChrome_xhtml($module, &$params, &$attribs)
     $headerClass    = ($headerClass) ? ' class="' . htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8') . '"' : '';
 
     if (!empty ($module->content)) : ?>
-        <<?php echo $moduleTag; ?> class="moduletable">
+        <<?php echo $moduleTag; ?> class="moduletable <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 
         <?php if ((bool) $module->showtitle) : ?>
             <<?php echo $headerTag . $headerClass . '>' . $module->title; ?></<?php echo $headerTag; ?>>

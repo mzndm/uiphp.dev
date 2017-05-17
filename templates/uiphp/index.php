@@ -304,7 +304,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 
             <div class="row">
                 <jdoc:include type="modules" name="content" style="xhtml" />
-            </div>
+            </div>		<!--	.row	-->
 
 			<!-- End Content -->
 		</div>	<!--	.container 	-->
@@ -315,8 +315,8 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 		<div class="container">
 			<div class="row">
 				<jdoc:include type="modules" name="footer" style="xhtml" />
-			</div>
-		</div>
+			</div>	<!--	.row	-->
+		</div>		<!--	.container	-->
 	</footer>
 
 <script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/common.js'?>"></script>
