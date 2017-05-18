@@ -26,6 +26,7 @@
 		<position>mainPage__menu</position>
 		<position>breadcrumbs</position>
 
+		<position>before_content</position>
 		<position>events</position>
 		<position>banner</position>
 

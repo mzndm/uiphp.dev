@@ -378,7 +378,7 @@ $document->addScriptDeclaration("
 															<i>(<?php echo JText::_('K2_MAX_UPLOAD_SIZE'); ?>: <?php echo ini_get('upload_max_filesize'); ?>)</i> </div>
 													</div>
 													<div id="k2VideoTab2" class="simpleTabsContent">
-														<div class="panel" id="Remote_video"> <a id="k2MediaBrowseServer" href="index.php?option=com_k2&view=media&type=video&tmpl=component&fieldID=remoteVideo"><?php echo JText::_('K2_BROWSE_VIDEOS_ON_SERVER')?></a> <?php echo JText::_('K2_OR'); ?> <?php echo JText::_('K2_PASTE_REMOTE_VIDEO_URL'); ?>
+														<div class="panel" id="Remote_video"> <a id="k2MediaBrowseServer" href="../../../../../../index.php"><?php echo JText::_('K2_BROWSE_VIDEOS_ON_SERVER')?></a> <?php echo JText::_('K2_OR'); ?> <?php echo JText::_('K2_PASTE_REMOTE_VIDEO_URL'); ?>
 															<br />
 															<br />
 															<input type="text" size="50" name="remoteVideo" id="remoteVideo" value="<?php echo $this->lists['remoteVideo'] ?>" />
@@ -791,7 +791,7 @@ $document->addScriptDeclaration("
 											<td id="k2AuthorOptions">
 												<span id="k2Author"><?php echo $this->row->author; ?></span>
 												<?php if($this->mainframe->isAdmin() || ($this->mainframe->isSite() && $this->permissions->get('editAll'))): ?>
-												<a class="modal" rel="{handler:'iframe', size: {x: 800, y: 460}}" href="index.php?option=com_k2&amp;view=users&amp;task=element&amp;tmpl=component"><?php echo JText::_('K2_CHANGE'); ?></a>
+												<a class="modal" rel="{handler:'iframe', size: {x: 800, y: 460}}" href="../../../../../../index.php"><?php echo JText::_('K2_CHANGE'); ?></a>
 												<input type="hidden" name="created_by" value="<?php echo $this->row->created_by; ?>" />
 												<?php endif; ?>
 											</td>
