@@ -43,7 +43,6 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 ?>
 
 <?php
-	$doc = JFactory::getDocument();
 		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery.min.js']);
 		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-noconflict.js']);
 		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
