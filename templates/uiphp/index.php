@@ -291,9 +291,9 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 			<!-- Begin Content -->
 			<div class="row">
 				<jdoc:include type="modules" name="before_content" style="xhtml" />
-			</div>	<!--	.row 	-->
 
-			<jdoc:include type="component" />
+				<jdoc:include type="component" />
+			</div>	<!--	.row 	-->
             <div class="row">
                 <div class="events">
                     <jdoc:include type="modules" name="events" style="xhtml" />

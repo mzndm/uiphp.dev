@@ -12,10 +12,6 @@
 
     &__logo {
       @extend .col-md-9;
-      //.logo {
-      //  width: 200px;
-      //  margin: 0 auto;
-      //}
     }
     .insidePage__menu {
       display: none;
@@ -23,22 +19,42 @@
     }
     &__search {
       @extend .col-md-3;
-      .element-invisible {
-        display: none;
-      }
-      .search {
-
-      }
-      .language {
-        a {
-          font: 0.85em/1em $Regular;
-          color: $green;
-          text-transform: uppercase;
-          text-decoration: underline;
-          text-decoration-color: $green;
-        }
-      }
     }
+  }
+}
+.search {
+  float: right;
+  .element-invisible {
+    display: none;
+  }
+  &__wrapper {
+    margin-top: 4em;
+  }
+  &__input {
+    border: 0;
+    background: none;
+    border-bottom: 1px solid $green;
+    color: $grey;
+    padding: 0 0.5em 0.1em;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__img {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.language {
+  margin-top: 0.5em;
+  float: right;
+  a {
+    font: 0.85em/1em $Regular;
+    color: $green;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-color: $green;
   }
 }
 .mainPage__menu {
