@@ -1,24 +1,34 @@
 .header {
   &__logo {
-    //@extend .col-md-9;
-    .logo {
-      width: 275px;
-      margin: 2em auto 3em;
-    }
+    @extend .col-md-2;
+    padding-top: 3em;
+  }
+  .insidePage__menu {
+    @extend .col-md-8
+  }
+  &__search {
+    @extend .col-md-2;
+    padding-top: 3em;
   }
 }
 .pageid-101 {
   .header {
-
     &__logo {
       @extend .col-md-9;
+      padding-top: 0;
+      .logo {
+        width: 275px;
+        margin: 2em auto 3em;
+      }
     }
     .insidePage__menu {
       display: none;
-     // @extend .col-md-12;
+    }
+    .mainPage__menu {
+      @extend .col-md-12;
     }
     &__search {
-      @extend .col-md-3;
+      padding-top: 4em;
     }
   }
 }
@@ -28,7 +38,7 @@
     display: none;
   }
   &__wrapper {
-    margin-top: 4em;
+   // margin-top: 4em;
   }
   &__input {
     border: 0;
@@ -36,6 +46,7 @@
     border-bottom: 1px solid $green;
     color: $grey;
     padding: 0 0.5em 0.1em;
+    max-width: 85%;
     &:focus {
       outline: none;
     }
@@ -57,6 +68,4 @@
     text-decoration-color: $green;
   }
 }
-.mainPage__menu {
-  @extend .col-md-12;
-}
+
