@@ -1,0 +1,10 @@
+.resources {
+  @extend .col-md-8;
+
+  &__wrapper {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: right;
+    background-color: #ffffff;
+  }
+}

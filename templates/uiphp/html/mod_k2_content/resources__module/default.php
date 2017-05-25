@@ -23,21 +23,18 @@ defined('_JEXEC') or die;
 		<div class="item">
 
 		  <?php if($params->get('itemAttachments') && count($item->attachments)): ?>
-				  <?php foreach ($item->attachments as $attachment): ?>
-					  <a class="item__title" href="/media/k2/attachments/<?php echo $attachment->filename; ?>" target="_blank">
-						  <?php echo $item->title; ?></a>
-				<?php endforeach; ?>
+			  <?php foreach ($item->attachments as $attachment): ?>
+				  <a class="item__title" href="/media/k2/attachments/<?php echo $attachment->filename; ?>" target="_blank">
+					  <?php echo $item->title; ?></a>
+			  <?php endforeach; ?>
 
-			<?php elseif($params->get('itemExtraFields') && count($item->extra_fields)): ?>
-					<?php foreach ($item->extra_fields as $extraField): ?>
-						<?php if($extraField->value != ''): ?>
-								<?php if($extraField->type == 'header'): ?>
-	<!--						<p class="moduleItemExtraFieldsHeader">--><?php //echo $extraField->name; ?><!--</p>-->
-								<?php else: ?>
-									<p class="item__title">	<?php echo $extraField->value; ?> </p>
-								<?php endif; ?>
-						<?php endif; ?>
-					<?php endforeach; ?>
+			  <?php elseif($params->get('itemVideo')): ?>
+				  <div class="moduleItemVideo">
+					  <a class="item__title" href="<?php echo $item->video ; ?>" target="_blank">
+						  <?php echo $item->title; ?>
+					  </a>
+				  </div>
+
 
 			<?php elseif($params->get('itemTitle')): ?>
 				<a class="item__title" href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a>
@@ -49,24 +46,11 @@ defined('_JEXEC') or die;
 			<?php endif; ?>
 		  </div>
 
-		  <?php if($params->get('itemExtraFields') && count($item->extra_fields)): ?>
-				<?php foreach ($item->extra_fields as $extraField): ?>
-						<?php if($extraField->value != ''): ?>
-							<?php if($extraField->type == 'header'): ?>
-	<!--			<h4 class="moduleItemExtraFieldsHeader">--><?php //echo $extraField->name; ?><!--</h4>-->
-							<?php else: ?>
-							<p class="item__format"><?php echo $extraField->name; ?></p>
-
-							<?php endif; ?>
-						<?php endif; ?>
+			<?php if($params->get('itemTags') && count($item->tags)>0): ?>
+				<?php foreach ($item->tags as $tag): ?>
+					<p class="item__format"><?php echo $tag->name; ?></p>
 				<?php endforeach; ?>
-		  <?php endif; ?>
-
-		  <?php if($params->get('itemAttachments') && count($item->attachments)): ?>
-					<?php foreach ($item->attachments as $attachment): ?>
-						<p class="item__format"><?php echo $attachment->title; ?></p>
-					<?php endforeach; ?>
-		  <?php endif; ?>
+			<?php endif; ?>
 
 		</div>
     </div>

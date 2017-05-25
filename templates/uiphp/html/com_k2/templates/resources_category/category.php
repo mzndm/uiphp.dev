@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 ?>
 
 <!-- Start K2 Category Layout -->
-<div id="k2Container" class="itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
+<div id="k2Container" class="resources<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
 	<?php if($this->params->get('show_page_title')): ?>
 	<!-- Page title -->
@@ -22,15 +22,6 @@ defined('_JEXEC') or die;
 	</div>
 	<?php endif; ?>
 
-	<?php if($this->params->get('catFeedIcon')): ?>
-	<!-- RSS feed icon -->
-	<div class="k2FeedIcon">
-		<a href="<?php echo $this->feed; ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
-			<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
-		</a>
-		<div class="clr"></div>
-	</div>
-	<?php endif; ?>
 
 	<?php if(isset($this->category) || ( $this->params->get('subCategories') && isset($this->subCategories) && count($this->subCategories) )): ?>
 	<!-- Blocks for current category and subcategories -->
@@ -132,12 +123,9 @@ defined('_JEXEC') or die;
 
 
 	<?php if((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))): ?>
-	<!-- Item list -->
-	<div class="itemList">
-
+        <!-- Item list -->
 		<?php if(isset($this->leading) && count($this->leading)): ?>
-		<!-- Leading items -->
-		<div id="itemListLeading">
+            <!-- Leading items -->
 			<?php foreach($this->leading as $key=>$item): ?>
 
 			<?php
@@ -147,8 +135,8 @@ defined('_JEXEC') or die;
 			else
 				$lastContainer='';
 			?>
-			
-			<div class="itemContainer<?php echo $lastContainer; ?>"<?php echo (count($this->leading)==1) ? '' : ' style="width:'.number_format(100/$this->params->get('num_leading_columns'), 1).'%;"'; ?>>
+
+			<div class="resources__item">
 				<?php
 					// Load category_item.php by default
 					$this->item=$item;
@@ -156,11 +144,10 @@ defined('_JEXEC') or die;
 				?>
 			</div>
 			<?php if(($key+1)%($this->params->get('num_leading_columns'))==0): ?>
-			<div class="clr"></div>
+
 			<?php endif; ?>
 			<?php endforeach; ?>
-			<div class="clr"></div>
-		</div>
+
 		<?php endif; ?>
 
 		<?php if(isset($this->primary) && count($this->primary)): ?>
@@ -248,7 +235,6 @@ defined('_JEXEC') or die;
 		</div>
 		<?php endif; ?>
 
-	</div>
 
 	<!-- Pagination -->
 	<?php if($this->pagination->getPagesLinks()): ?>
