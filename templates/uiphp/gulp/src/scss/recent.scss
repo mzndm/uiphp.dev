@@ -5,37 +5,21 @@
     margin-left: 1em;
     margin-bottom: 1em;
   }
-  .category {
-    &__item {
-      @extend .col-sm-4;
-      margin-bottom: 4em;
-    }
+  &__category {}
+  &__item {
+    @extend .col-sm-4;
+    margin-bottom: 4em;
   }
-  .item {
-    background-color: #fff;
-    padding: 1.5em;
-    height: 360px;
-    &__title {
-      font-family: $Bold;
-      font-size: $normal;
-      line-height: 1.5em;
-      text-decoration: none;
-      color: #000;
-      margin: 0;
-      &:hover {
-        text-decoration: underline;
-        text-decoration-color: $green;
-      }
-      a {
-        @extend .item__title;
-      }
+  .resources {
+    &__item {
+      background-color: #fff;
+      padding: 1.5em;
+      height: 360px;
     }
+    &__title {}
     &__format {
-      @extend h4;
       position: absolute;
       bottom: 1.5em;
-      color: #bdbfc0;
-      text-transform: uppercase;
     }
   }
 

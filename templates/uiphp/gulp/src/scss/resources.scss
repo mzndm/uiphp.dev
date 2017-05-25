@@ -5,6 +5,26 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: right;
-    background-color: #ffffff;
+    background-color: #fff;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  &__title {
+    font-family: $Bold;
+    font-size: $normal;
+    line-height: 1.5em;
+    text-decoration: none;
+    color: #000;
+    margin: 0;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $green;
+    }
+  }
+  &__format {
+    @extend h4;
+    margin: 0;
+    color: #bdbfc0;
+    text-transform: uppercase;
   }
 }

@@ -1,0 +1,24 @@
+.pagination {
+  &__wrapper {
+    margin-top: 4em;
+  }
+  &__item {
+    display: inline-block;
+    font-family: $Light;
+    font-size: 2.25em;
+    margin-right: 1em;
+    color: $green;
+    &--prev {
+      display: none;
+    }
+    &--next {
+      display: none;
+    }
+
+    a {
+      color: #bdbfc0;
+      text-decoration: underline;
+      text-decoration-color: $green;
+    }
+  }
+}

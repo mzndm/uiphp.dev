@@ -14,33 +14,33 @@ defined('_JEXEC') or die;
 	<a class="toEvents" href="#"><?php echo JText::_('K2_RESOURCE'); ?> </a>
 <!-- TODO: ссилка на ресурси -->
 
-<div id="k2ModuleBox<?php echo $module->id; ?>" class="category ">
+<div id="k2ModuleBox<?php echo $module->id; ?>" class="recent__category">
 
 	<?php if(count($items)): ?>
 
     <?php foreach ($items as $key=>$item):	?>
-    <div class="category__item">
-		<div class="item">
+    <div class="recent__item">
+		<div class="resources__item">
 
 		  <?php if($params->get('itemAttachments') && count($item->attachments)): ?>
 			  <?php foreach ($item->attachments as $attachment): ?>
-				  <a class="item__title" href="/media/k2/attachments/<?php echo $attachment->filename; ?>" target="_blank">
+				  <a class="resources__title" href="/media/k2/attachments/<?php echo $attachment->filename; ?>" target="_blank">
 					  <?php echo $item->title; ?></a>
 			  <?php endforeach; ?>
 
 			  <?php elseif($params->get('itemVideo')): ?>
 				  <div class="moduleItemVideo">
-					  <a class="item__title" href="<?php echo $item->video ; ?>" target="_blank">
+					  <a class="resources__title" href="<?php echo $item->video ; ?>" target="_blank">
 						  <?php echo $item->title; ?>
 					  </a>
 				  </div>
 
 
 			<?php elseif($params->get('itemTitle')): ?>
-				<a class="item__title" href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a>
+				<a class="resources__title" href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a>
 		  <?php endif; ?>
 
-		  <div class="item__text">
+		  <div class="resources__text">
 			<?php if($params->get('itemIntroText')): ?>
 				<?php echo $item->introtext; ?>
 			<?php endif; ?>
@@ -48,7 +48,7 @@ defined('_JEXEC') or die;
 
 			<?php if($params->get('itemTags') && count($item->tags)>0): ?>
 				<?php foreach ($item->tags as $tag): ?>
-					<p class="item__format"><?php echo $tag->name; ?></p>
+					<p class="resources__format"><?php echo $tag->name; ?></p>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
