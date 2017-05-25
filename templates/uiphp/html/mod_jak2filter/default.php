@@ -19,7 +19,7 @@ $itemid = $params->get('set_itemid',0)?$params->get('set_itemid',0):JRequest::ge
 $ajax_filter = $params->get('ajax_filter', 0);
 $share_url = $params->get('share_url_of_results_page', 0);
 ?>
-<form id="<?php echo $formid; ?>" name="<?php echo $formid; ?>" method="POST"
+<form id="<?php echo $formid; ?>" class="filter" name="<?php echo $formid; ?>" method="POST"
 	action="<?php echo JRoute::_('index.php?option=com_jak2filter&view=itemlist&Itemid='.$itemid); ?>">
 <input type="hidden" name="task" value="search" />
 <input type="hidden" name="swr" value="<?php echo $slider_whole_range; ?>" />
