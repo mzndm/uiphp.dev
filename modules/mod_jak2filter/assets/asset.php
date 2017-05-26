@@ -13,8 +13,9 @@
 $app = JFactory::getApplication();
 $doc = JFactory::getDocument();
 $basepath = JURI::root(true).'/modules/' . $module->module . '/assets/';
-
-$doc->addStyleSheet($basepath.'css/style.css');
+$stylepath = JURI::root(true).'/templates/' . $app->getTemplate() . '/css/';
+$doc->addStyleSheet($stylepath.'libs.css');
+//$doc->addStyleSheet($basepath.'css/style.css');
 //load override css
 $templatepath = 'templates/'.$app->getTemplate().'/css/'.$module->module.'.css';
 if(file_exists(JPATH_SITE . '/' . $templatepath)) {

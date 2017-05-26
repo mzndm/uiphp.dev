@@ -34,6 +34,7 @@ var path = {
         js: 'src/js/*.js',
         lib_js: 'src/js/libs/lib.js',
         style: 'src/scss/*.scss',
+        lib_style: 'src/scss/libs/*.css',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*'
     },
@@ -41,7 +42,7 @@ var path = {
         js: ['src/js/libs/libs.js'],
         style: [
             'src/bower/normalize.css/normalize.css',
-            'src/scss/libs/*.*'
+            'src/scss/libs/*.css'
         ]
     },
     clean: [
@@ -145,6 +146,9 @@ gulp.task('cache', function () {
 gulp.task('watch', function(){
     gulp.watch([path.watch.style], function(event, cb) {
         gulp.start('style:build');
+    });
+    gulp.watch([path.watch.lib_style], function(event, cb) {
+        gulp.start('lib_css:build');
     });
     gulp.watch([path.watch.js], function(event, cb) {
         gulp.start('js:build');
