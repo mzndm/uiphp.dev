@@ -36,7 +36,7 @@ $share_url = $params->get('share_url_of_results_page', 0);
 <?php if(!$filter_by_category): ?>
 <?php echo $categories; ?>
 <?php endif; ?>
-<ul id="jak2filter<?php echo $module->id; ?>" class="ja-k2filter <?php echo $ja_stylesheet;?>">
+<ul id="jak2filter<?php echo $module->id; ?>" class="filter__wrapper ja-k2filter <?php echo $ja_stylesheet;?>">
 <?php 
 $j = 0;
 $clear = '';
@@ -265,7 +265,7 @@ if($ja_column || $clear){
 }
 $j++;
 ?>
-	<li <?php echo $style;?> class="last-item">
+	<li class="filter__item last-item" <?php echo $style;?> >
 	<?php if($params->get('auto_filter',1) == 0): ?>
 		<input class="btn" type="submit" name="btnSubmit" value="<?php echo JText::_('JAK2SEARCH'); ?>" />
 	<?php endif; ?>

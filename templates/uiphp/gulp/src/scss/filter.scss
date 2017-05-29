@@ -1,3 +1,48 @@
 .filter {
   @extend .col-md-4;
+  &__wrapper {}
+  &__item {
+    label{
+      font-family: $Medium;
+      font-size: $small;
+      display: block;
+      line-height: 1.5em;
+    }
+    .lb-checkbox {
+      font-family: $Light;
+    }
+    input[type="text"] {
+      font-family: $Light;
+      font-size: $small;
+      color: #000;
+      border: 1px solid $green;
+      padding: 0.5em 1em;
+      width: 100%;
+      background-color: transparent;
+      &:focus {
+        outline: none;
+      }
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      left: -9999px;
+    }
+    input[type="checkbox"] + label {
+      background: url("../img/icons/sprite.png") 0 3px no-repeat;
+      padding-left: 20px;
+    }
+    input[type="checkbox"]:checked + label {
+      background-position: 0 -38px;
+    }
+    select {
+      @extend input[type="text"];
+      appearance: none;
+      background: transparent url("../img/icons/triangle.png") 95% center no-repeat;
+    }
+    .btn {
+      @extend input[type="text"];
+      background-color: $green;
+      text-align: left;
+    }
+  }
 }

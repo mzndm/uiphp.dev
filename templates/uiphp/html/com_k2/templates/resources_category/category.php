@@ -163,7 +163,7 @@ defined('_JEXEC') or die;
 				$lastContainer='';
 			?>
 			
-			<div class="itemContainer<?php echo $lastContainer; ?>"<?php echo (count($this->primary)==1) ? '' : ' style="width:'.number_format(100/$this->params->get('num_primary_columns'), 1).'%;"'; ?>>
+			<div class="itemContainer<?php echo $lastContainer; ?>">
 				<?php
 					// Load category_item.php by default
 					$this->item=$item;

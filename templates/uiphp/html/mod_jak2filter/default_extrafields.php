@@ -18,7 +18,7 @@ foreach ($glist['items'] as $key => $exfield):
 	$j++;
 
 	?>
-	<li <?php echo $style;?> <?php echo $magicSelect;?>>
+	<li class="filter__item" <?php echo $style;?> <?php echo $magicSelect;?>>
 		<?php echo $exfield; ?>
 	</li>
 	<?php
