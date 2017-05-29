@@ -24,6 +24,7 @@
 		<position>search</position>
 		<position>language</position>
 		<position>mainPage__menu</position>
+		<position>submenu</position>
 		<position>breadcrumbs</position>
 
 		<position>before_content</position>

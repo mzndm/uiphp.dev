@@ -2,17 +2,28 @@
 @import "variable";
 @import "header";
 @import "menu";
+@import "submenu";
 @import "events";
 @import "banner";
 @import "recent";
 @import "filter";
 @import "resources";
 @import "pagination";
+@import "about_us";
 @import "footer";
+@import "custom_page";
 * {
  //outline: 1px dotted blue;
  box-sizing: border-box;
 }
 .site {
   background-color: #f0f0ef;;
+}
+.content {
+  background-color: #fff;
+  h2 {
+    @extend  .page_title;
+    font-weight: normal;
+    text-transform: inherit;
+  }
 }

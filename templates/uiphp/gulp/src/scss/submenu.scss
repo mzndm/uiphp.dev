@@ -1,0 +1,23 @@
+.submenu {
+  margin-bottom: 3em;
+  .menu {
+    &__item {
+      display: inline-block;
+      font-family: $Regular;
+      font-size: $normal;
+      color: $green;
+      margin-right: 2em;
+      a {
+        color: $grey;
+        text-decoration: underline;
+        text-decoration-color: $green;
+      }
+      &--current {
+        a {
+          color: $green;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
