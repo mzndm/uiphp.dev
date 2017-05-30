@@ -3,19 +3,10 @@
     display: none;
   }
 }
-.pageid-102 {
-  .submenu {
-    .item-126 {
-      a {
-        color: $green;
-        text-decoration: none;
-      }
-    }
-  }
-}
+.pageid-102,
 .pageid-103 {
   .submenu {
-    .item-132 {
+    .menu__item:first-child {
       a {
         color: $green;
         text-decoration: none;
@@ -26,6 +17,14 @@
 .pageid-131 {
   .page_title {
     padding-left: 3em;
+  }
+}
+.pageid-135 {
+  .page_title,
+  .submenu,
+  .institutions__title{
+    padding-left: 10vw;
+    /*  TODO: padding-left: 10vw на всіх строрінках, де це потрібно   */
   }
 }
 /*

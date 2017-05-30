@@ -1,0 +1,44 @@
+.institutions {
+  @extend .row;
+  &__module {
+    margin-bottom: 4em;
+    .page_title {
+      margin-top: 0;
+      text-transform: inherit;
+    }
+  }
+  &__title {
+    font-family:$Regular;
+    font-size: $big;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    margin-left: 15px;
+  }
+  &__item {
+    @extend .col-md-4;
+    margin-bottom: 2em;
+  }
+  &__wrapper {
+    background-color: #fff;
+    padding: 1.5em;
+  }
+  &__link {
+    font-family: $Light;
+    font-size:$big;
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      @extend .hover;
+    }
+  }
+  &__logo {
+    height: 150px;
+    background-repeat: no-repeat;
+    &--national {
+      background-image: url("../img/icons/trident.png");
+    }
+    &--foreign {
+      background-image: url("../img/icons/who.png");
+    }
+  }
+}
