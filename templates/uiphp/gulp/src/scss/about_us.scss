@@ -11,6 +11,7 @@
   &__normal {
     //width: 80%;
     @extend .col-md-10;
+    @extend .row;
     margin-bottom: 1.5em;
   }
   &__list {
@@ -22,9 +23,11 @@
     margin-bottom: 0;
   }
   &__ul {
+    @extend .col-md-10;
+    @extend .row;
     padding: 0;
     margin: 0 -15px;
-    max-width: 80%;
+    //max-width: 80%;
   }
   &__li {
     @extend p;

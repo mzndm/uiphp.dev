@@ -285,7 +285,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 			</div>	<!-- 	.row	 -->
             <div class="row">
                 <div class="page_title">
-                    <?php echo $active->title ?>
+                   <?php echo $active->title ?>
                 </div>
 				<div class="submenu">
 					<jdoc:include type="modules" name="submenu" style="xhtml" />
@@ -298,8 +298,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 		<div class="container">
 			<!-- Begin Content -->
 			<div class="row">
-				<jdoc:include type="modules" name="before_content" style="xhtml" />
-                <jdoc:include type="component" />
+
 			</div>	<!--	.row 	-->
 		</div>
 
@@ -307,6 +306,8 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 			<div class="content">
 				<div class="container">
 					<div class="row">
+						<jdoc:include type="modules" name="before_content" style="xhtml" />
+						<jdoc:include type="component" />
                         <jdoc:include type="modules" name="full_width" style="xhtml" />
 					</div> 	<!--	.row	-->
 				</div>	<!--	.container -->
