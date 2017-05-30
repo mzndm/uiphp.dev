@@ -11,12 +11,12 @@
   &__normal {
     //width: 80%;
     @extend .col-md-10;
-    @extend .row;
-    margin-bottom: 1.5em;
+    padding: 0;
+    //margin-bottom: 1.5em;
   }
   &__list {
     @extend .col-md-6;
-    min-height: 300px;
+    min-height: 400px;
   }
   &__title {
     @extend .about-us__big;
