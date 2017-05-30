@@ -10,6 +10,7 @@
 @import "resources";
 @import "pagination";
 @import "about_us";
+@import "article";
 @import "footer";
 @import "custom_page";
 * {
@@ -19,11 +20,4 @@
 .site {
   background-color: #f0f0ef;;
 }
-.content {
-  background-color: #fff;
-  h2 {
-    @extend  .page_title;
-    font-weight: normal;
-    text-transform: inherit;
-  }
-}
+

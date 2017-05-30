@@ -1,0 +1,42 @@
+.content {
+  background-color: #fff;
+  .page-header {
+    h2 {
+       @extend  .page_title;
+       font-weight: normal;
+       text-transform: inherit;
+      margin-bottom: 0;
+    }
+  }
+}
+.article {
+  h2 {
+    font-family: $Light;
+    margin: 0;
+    padding-top: 1em;
+  }
+  h3 {
+    font-family: $Medium;
+    font-size: $big;
+    margin: 0;
+
+  }
+  img {
+    @extend .col-md-4;
+    padding-top: 1.5em;
+  }
+  .pull-left {
+    margin: 0 1em 0.5em 0;
+    padding-left: 0;
+  }
+  .pull-right {
+    margin: 0 1em 0.5em 0;
+    padding-right: 0;
+  }
+  p {
+    margin: 1em 0;
+  }
+  strong {
+    font-family: $Bold;
+  }
+}

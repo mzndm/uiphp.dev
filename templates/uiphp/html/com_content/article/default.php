@@ -107,7 +107,7 @@ JHtml::_('behavior.caption');
 	<?php if (isset ($this->item->toc)) :
 		echo $this->item->toc;
 	endif; ?>
-	<div itemprop="articleBody">
+	<div class="article" itemprop="articleBody">
 		<?php echo $this->item->text; ?>
 	</div>
 
