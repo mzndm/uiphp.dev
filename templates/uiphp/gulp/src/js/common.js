@@ -7,4 +7,13 @@ jQuery(document).ready(function($) {
 
     $('.filter__item input[type="text"]').prev().remove();
     $('.filter__item select').prev().remove();
+
+    //= map.js
+
+    // jQuery(window).load(function($) {
+    //
+    // });
 });
+
+
+

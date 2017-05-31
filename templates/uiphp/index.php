@@ -62,6 +62,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 	<link rel="stylesheet" href="<?php /*echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'*/?>">
 -->
 
+
 </head>
 
 <body class="body <?php echo $class; ?>">
@@ -344,6 +345,8 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 		</div>		<!--	.container	-->
 	</footer>
 
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwtQJUMz9-C6oH1Q_MVLxrDwRH5dV3UKM"></script>
 <script src="<?php echo $this->baseurl . '/templates/' . $this->template . '/js/common.js'?>"></script>
 
 </body>
