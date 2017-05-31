@@ -14,18 +14,30 @@
     }
   }
 }
-.pageid-131 {
+.pageid-105 {
+  h1, h2 {
+    display: none;
+  }
+  .content {
+    background-color: transparent;
+  }
+}
+/*.pageid-131 {
   .page_title {
     padding-left: 3em;
   }
-}
-.pageid-135 {
-  .page_title,
+}*/
+.pageid-135,
+.pageid-131 {
+  .content {
+    background-color: transparent;
+  }
+/*  .page_title,
   .submenu,
   .institutions__title{
     padding-left: 10vw;
-    /*  TODO: padding-left: 10vw на всіх строрінках, де це потрібно   */
-  }
+    !*  TODO: padding-left: 10vw на всіх строрінках, де це потрібно   *!
+  }*/
 }
 /*
 pre {

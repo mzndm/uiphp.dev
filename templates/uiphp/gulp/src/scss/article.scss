@@ -5,11 +5,14 @@
        @extend  .page_title;
        font-weight: normal;
        text-transform: inherit;
-      margin-bottom: 0;
+       margin-bottom: 0;
     }
   }
 }
 .article {
+  .page_title {
+    text-transform: inherit;
+  }
   h2 {
     font-family: $Light;
     margin: 0;
@@ -20,10 +23,6 @@
     font-size: $big;
     margin: 0;
 
-  }
-  img {
-    @extend .col-md-4;
-    padding-top: 1.5em;
   }
   .pull-left {
     margin: 0 1em 0.5em 0;
@@ -38,5 +37,69 @@
   }
   strong {
     font-family: $Bold;
+  }
+  &__3 {
+    img {
+      @extend .col-md-4;
+      padding-top: 1.5em;
+    }
+  }
+}
+
+.flat {
+  @extend .row;
+  display: flex;
+  flex-wrap: wrap;
+  &__partners {
+    &--national {
+      flex-direction: column;
+      max-height: 600px;
+    }
+    &--foreign {
+      flex-direction: row;
+    }
+  }
+  &__institution {
+    &--national {
+      flex-direction: row;
+    }
+    &--foreign {
+      flex-direction: row;
+    }
+  }
+
+  &__title {
+    font-family:$Regular;
+    font-size: $big;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    padding-left: 10vw;
+  }
+  &__item {
+    @extend .col-md-4;
+    width: 33.33%;
+    margin-bottom: 2em;
+  }
+  &__wrapper {
+    background-color: #fff;
+    padding: 1.5em;
+  }
+  &__link {
+    font-family: $Light;
+    font-size:$big;
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      @extend .hover;
+    }
+  }
+  &__logo {
+    min-height: 150px;
+  }
+  &__img {
+    padding-top: 0;
+    //width: inherit;
+    max-width: 100%;
+    margin-bottom: 1em;
   }
 }
