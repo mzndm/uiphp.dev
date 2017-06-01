@@ -11,6 +11,7 @@
 @import "pagination";
 @import "about_us";
 @import "article";
+@import "contact";
 @import "footer";
 @import "custom_page";
 * {
@@ -19,8 +20,4 @@
 }
 .site {
   background-color: #f0f0ef;;
-}
-
-#map {
-  height: 500px;
 }

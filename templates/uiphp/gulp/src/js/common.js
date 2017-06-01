@@ -1,7 +1,3 @@
-/**
- * Created by admin on 08.05.2017.
- */
-
 jQuery(document).ready(function($) {
     //= menu.js
 
@@ -10,9 +6,6 @@ jQuery(document).ready(function($) {
 
     //= map.js
 
-    // jQuery(window).load(function($) {
-    //
-    // });
 });
 
 

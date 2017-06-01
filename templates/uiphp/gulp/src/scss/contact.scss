@@ -1,0 +1,55 @@
+.map {
+  height: 75vh;
+  margin-top: 3em;
+}
+.contact {
+  @extend .col-md-5;
+  position: absolute;
+  top: -2em;
+  left: 5em;
+  background-color: #fff;
+  z-index: 2;
+  padding: 2em;
+  &__wrapper {}
+  &__address {
+    margin-top: 1.5em;
+  }
+  &__phone {
+    @extend .contact__address;
+  }
+  &__fax {
+    @extend .contact__address;
+  }
+  &__mail {
+    @extend .contact__address;
+    margin-bottom: 2em;
+    .contact__link {
+      text-decoration: underline;
+      text-decoration-color: $green;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  &__h1 {
+    font-family: $Regular;
+    font-size: 3em;
+    text-transform: uppercase;
+    color: $grey;
+    line-height: 1em;
+  }
+  &__title {
+    font-family: $Bold;
+    font-size: $normal;
+  }
+  &__link {
+    text-decoration: none;
+    color: #000;
+    &:hover {
+      @extend .hover;
+    }
+  }
+  p {
+    margin: 0;
+  }
+}

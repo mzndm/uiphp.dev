@@ -1,7 +1,3 @@
-/**
- * Created by admin on 15.05.2017.
- */
-
 //  menu
 
 $('.parent > a').addClass('parent__link');
