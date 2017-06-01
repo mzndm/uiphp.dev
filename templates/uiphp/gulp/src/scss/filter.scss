@@ -28,11 +28,23 @@
       left: -9999px;
     }
     input[type="checkbox"] + label {
-      background: url("../img/icons/sprite.png") 0 3px no-repeat;
+      background: url("../img/icons/sprite.png") no-repeat;
+      background-position: 0 3px;
       padding-left: 20px;
     }
     input[type="checkbox"]:checked + label {
       background-position: 0 -38px;
+    }
+    input[type="radio"] {
+      @extend input[type="checkbox"];
+    }
+    .controls label {
+      background: url("../img/icons/sprite.png") no-repeat;
+      background-position: 0 -68px;
+      padding-left: 20px;
+    }
+    label.checked {
+      background-position: 0 -108px;
     }
     select {
       @extend input[type="text"];
