@@ -308,9 +308,11 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 			<div class="content">
 				<div class="container">
 					<div class="row">
-						<jdoc:include type="modules" name="before_content" style="xhtml" />
-						<jdoc:include type="component" />
-                        <jdoc:include type="modules" name="full_width" style="xhtml" />
+						<div class="content__wrapper">
+							<jdoc:include type="modules" name="before_content" style="xhtml" />
+							<jdoc:include type="component" />
+							<jdoc:include type="modules" name="full_width" style="xhtml" />
+						</div>
 					</div> 	<!--	.row	-->
 				</div>	<!--	.container -->
 			</div>	<!--	.content -->

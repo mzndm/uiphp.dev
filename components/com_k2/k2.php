@@ -68,7 +68,3 @@ else
     JError::raiseError(404, JText::_('K2_NOT_FOUND'));
 }
 
-if (JRequest::getCmd('format') != 'json')
-{
-    echo "\n<!-- JoomlaWorks \"K2\" (v2.6.9) | Learn more about K2 at http://getk2.org -->\n\n";
-}

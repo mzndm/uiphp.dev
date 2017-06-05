@@ -35,6 +35,7 @@ $big: 1.5em;
 // color
 $green: #19d0cc;
 $grey: #414042;
+$light_grey: #bdbfc0;
 h1 {
   font-family: $Bold;
   font-size: $big;
@@ -70,9 +71,11 @@ p {
   text-decoration-color: $green;
 }
 .page_title {
+  @extend .col-md-offset-2;
   font-family: $Regular;
   font-size: 3em;
-  padding-left: 10vw;
+  padding-left: 15px;
+ // padding-left: 10vw;
   text-transform: uppercase;
   color: $grey;
   margin-top: 1.5em;

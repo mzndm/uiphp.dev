@@ -20,15 +20,15 @@
   h1, h2 {
     display: none;
   }
-  .content {
-    background-color: transparent;
-  }
 }
 /*.pageid-131 {
   .page_title {
     padding-left: 3em;
   }
 }*/
+.pageid-105,
+.pageid-106,
+.pageid-130,
 .pageid-131,
 .pageid-135,
 .pageid-136 {
@@ -41,6 +41,12 @@
     padding-left: 10vw;
     !*  TODO: padding-left: 10vw на всіх строрінках, де це потрібно   *!
   }*/
+}
+.pageid-130 {
+  .content__wrapper {
+    background: #fff;
+    overflow: auto;
+  }
 }
 /*
 pre {
