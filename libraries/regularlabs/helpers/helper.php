@@ -1,70 +1,107 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-}
-
-use RegularLabs\Library\Article as RL_Article;
-use RegularLabs\Library\Cache as RL_Cache;
-use RegularLabs\Library\Document as RL_Document;
-use RegularLabs\Library\Parameters as RL_Parameters;
+require_once __DIR__ . '/cache.php';
 
 class RLHelper
 {
-	public static function getPluginHelper($plugin, $params = null)
+	static function getPluginHelper(&$plugin, $params = null)
 	{
-		if (!class_exists('RegularLabs\Library\Cache'))
-		{
-			return null;
-		}
-
 		$hash = md5('getPluginHelper_' . $plugin->get('_type') . '_' . $plugin->get('_name') . '_' . json_encode($params));
 
-		if (RL_Cache::has($hash))
+		if (RLCache::has($hash))
 		{
-			return RL_Cache::get($hash);
+			return RLCache::get($hash);
 		}
 
 		if (!$params)
 		{
-			$params = RL_Parameters::getInstance()->getPluginParams($plugin->get('_name'));
+			require_once __DIR__ . '/parameters.php';
+			$params = RLParameters::getInstance()->getPluginParams($plugin->get('_name'));
 		}
 
-		$file = JPATH_PLUGINS . '/' . $plugin->get('_type') . '/' . $plugin->get('_name') . '/helper.php';
-
-		if (!is_file($file))
-		{
-			return null;
-		}
-
-		require_once $file;
+		require_once JPATH_PLUGINS . '/' . $plugin->get('_type') . '/' . $plugin->get('_name') . '/helper.php';
 		$class = get_class($plugin) . 'Helper';
 
-		return RL_Cache::set(
+		return RLCache::set(
 			$hash,
 			new $class($params)
 		);
 	}
 
-	public static function processArticle(&$article, &$context, &$helper, $method, $params = [])
+	static function isCategoryList($context)
 	{
-		class_exists('RegularLabs\Library\Article') && RL_Article::process($article, $context, $helper, $method, $params);
+		$hash = md5('isCategoryList_' . $context);
+
+		if (RLCache::has($hash))
+		{
+			return RLCache::get($hash);
+		}
+
+		// Return false if it is not a category page
+		if ($context != 'com_content.category' || JFactory::getApplication()->input->get('view') != 'category')
+		{
+			return RLCache::set($hash, false);
+		}
+
+		// Return false if it is not a list layout
+		if (JFactory::getApplication()->input->get('layout') && JFactory::getApplication()->input->get('layout') != 'list')
+		{
+			return RLCache::set($hash, false);
+		}
+
+		// Return true if it IS a list layout
+		return RLCache::set($hash, true);
 	}
 
-	public static function isCategoryList($context)
+	static function processArticle(&$article, &$context, &$helper, $method, $params = array())
 	{
-		return class_exists('RegularLabs\Library\Document') && RL_Document::isCategoryList($context);
+		if (!empty($article->description))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->description), $params));
+		}
+
+		if (!empty($article->title))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->title), $params));
+		}
+
+		if (!empty($article->created_by_alias))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->created_by_alias), $params));
+		}
+
+		if (self::isCategoryList($context))
+		{
+			return;
+		}
+
+		// Process texts
+		if (!empty($article->text))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->text), $params));
+
+			return;
+		}
+
+		if (!empty($article->introtext))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->introtext), $params));
+		}
+
+		if (!empty($article->fulltext))
+		{
+			call_user_func_array(array($helper, $method), array_merge(array(&$article->fulltext), $params));
+		}
 	}
 }

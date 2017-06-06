@@ -1,24 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_Key extends \RegularLabs\Library\Field
+class JFormFieldRL_Key extends RLFormField
 {
 	public $type = 'Key';
 
@@ -32,11 +27,11 @@ class JFormFieldRL_Key extends \RegularLabs\Library\Field
 		if (!$key)
 		{
 			return '<div id="' . $this->id . '_field" class="btn-wrapper input-append clearfix">'
-				. '<input type="text" class="rl_codefield" name="' . $this->name . '" id="' . $this->id . '" autocomplete="off" value="">'
-				. '<button href="#" class="btn btn-success" title="' . JText::_('JAPPLY') . '" onclick="' . $action . '">'
-				. '<span class="icon-checkmark"></span>'
-				. '</button>'
-				. '</div>';
+			. '<input type="text" class="rl_codefield" name="' . $this->name . '" id="' . $this->id . '" autocomplete="off" value="">'
+			. '<button href="#" class="btn btn-success" title="' . JText::_('JAPPLY') . '" onclick="' . $action . '">'
+			. '<span class="icon-checkmark"></span>'
+			. '</button>'
+			. '</div>';
 		}
 
 		$cloak_length = max(0, strlen($key) - 4);

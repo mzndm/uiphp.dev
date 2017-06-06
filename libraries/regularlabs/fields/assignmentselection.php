@@ -1,27 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
-use RegularLabs\Library\StringHelper as RL_String;
-
-class JFormFieldRL_AssignmentSelection extends \RegularLabs\Library\Field
+class JFormFieldRL_AssignmentSelection extends RLFormField
 {
 	public $type = 'AssignmentSelection';
 
@@ -34,37 +26,37 @@ class JFormFieldRL_AssignmentSelection extends \RegularLabs\Library\Field
 	{
 		$this->params = $this->element->attributes();
 
-		RL_Document::stylesheet('regularlabs/style.min.css');
+		RLFunctions::stylesheet('regularlabs/style.min.css', '16.5.10919');
 
 		require_once __DIR__ . '/toggler.php';
 		$toggler = new RLFieldToggler;
 
-		$this->value     = (int) $this->value;
-		$label           = $this->get('label');
-		$param_name      = $this->get('name');
-		$use_main_toggle = $this->get('use_main_toggle', 1);
-		$showclose       = $this->get('showclose', 0);
+		$this->value = (int) $this->value;
+		$label       = $this->get('label');
+		$param_name  = $this->get('name');
+		$noshow      = $this->get('noshow', 0);
+		$showclose   = $this->get('showclose', 0);
 
-		$html = [];
+		$html = array();
 
 		if (!$label)
 		{
-			if ($use_main_toggle)
+			if (!$noshow)
 			{
-				$html[] = $toggler->getInput(['div' => 1]);
+				$html[] = $toggler->getInput(array('div' => 1));
 			}
 
-			$html[] = $toggler->getInput(['div' => 1]);
+			$html[] = $toggler->getInput(array('div' => 1));
 
 			return '</div>' . implode('', $html);
 		}
 
-		$label = RL_String::html_entity_decoder(JText::_($label));
+		$label = RLText::html_entity_decoder(JText::_($label));
 
 		$html[] = '</div>';
-		if ($use_main_toggle)
+		if (!$noshow)
 		{
-			$html[] = $toggler->getInput(['div' => 1, 'param' => 'show_assignments|' . $param_name, 'value' => '1|1,2']);
+			$html[] = $toggler->getInput(array('div' => 1, 'param' => 'show_assignments|' . $param_name, 'value' => '1|1,2'));
 		}
 
 		$class = 'well well-small rl_well';
@@ -101,8 +93,8 @@ class JFormFieldRL_AssignmentSelection extends \RegularLabs\Library\Field
 
 		$onclick = ' onclick="RegularLabsScripts.setToggleTitleClass(this, 2)"';
 		$onclick .= ' onload="RegularLabsScripts.setToggleTitleClass(this, ' . $this->value . ', 7)"';
-		$html[]  = '<input type="radio" id="' . $this->id . '2" name="' . $this->name . '" value="2"' . (($this->value === 2) ? ' checked="checked"' : '') . $onclick . '>';
-		$html[]  = '<label class="rl_btn-exclude" for="' . $this->id . '2">' . JText::_('RL_EXCLUDE') . '</label>';
+		$html[] = '<input type="radio" id="' . $this->id . '2" name="' . $this->name . '" value="2"' . (($this->value === 2) ? ' checked="checked"' : '') . $onclick . '>';
+		$html[] = '<label class="rl_btn-exclude" for="' . $this->id . '2">' . JText::_('RL_EXCLUDE') . '</label>';
 
 		$html[] = '</fieldset>';
 		$html[] = '</div>';
@@ -110,7 +102,7 @@ class JFormFieldRL_AssignmentSelection extends \RegularLabs\Library\Field
 		$html[] = '</div>';
 		$html[] = '<div class="clearfix"> </div>';
 
-		$html[] = $toggler->getInput(['div' => 1, 'param' => $param_name, 'value' => '1,2']);
+		$html[] = $toggler->getInput(array('div' => 1, 'param' => $param_name, 'value' => '1,2'));
 		$html[] = '<div><div>';
 
 		return '</div>' . implode('', $html);

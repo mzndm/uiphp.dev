@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -16,30 +16,54 @@
 
 defined('_JEXEC') or die;
 
-use RegularLabs\Library\Extension as RL_Extension;
-
 jimport('joomla.filesystem.file');
 
 $this->config->show_assignto_groupusers = (int) (
 	$this->config->show_assignto_usergrouplevels
+	|| $this->config->show_assignto_users
 );
 
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
+$this->config->show_assignto_easyblog      = (int) ($this->config->show_assignto_easyblog && RLFunctions::extensionInstalled('easyblog'));
+$this->config->show_assignto_flexicontent  = (int) ($this->config->show_assignto_flexicontent && RLFunctions::extensionInstalled('flexicontent'));
+$this->config->show_assignto_form2content  = (int) ($this->config->show_assignto_form2content && RLFunctions::extensionInstalled('form2content'));
+$this->config->show_assignto_k2            = (int) ($this->config->show_assignto_k2 && RLFunctions::extensionInstalled('k2'));
+$this->config->show_assignto_zoo           = (int) ($this->config->show_assignto_zoo && RLFunctions::extensionInstalled('zoo'));
+$this->config->show_assignto_akeebasubs    = (int) ($this->config->show_assignto_akeebasubs && RLFunctions::extensionInstalled('akeebasubs'));
+$this->config->show_assignto_hikashop      = (int) ($this->config->show_assignto_hikashop && RLFunctions::extensionInstalled('hikashop'));
+$this->config->show_assignto_mijoshop      = (int) ($this->config->show_assignto_mijoshop && RLFunctions::extensionInstalled('mijoshop'));
+$this->config->show_assignto_redshop       = (int) ($this->config->show_assignto_redshop && RLFunctions::extensionInstalled('redshop'));
+$this->config->show_assignto_virtuemart    = (int) ($this->config->show_assignto_virtuemart && RLFunctions::extensionInstalled('virtuemart'));
+$this->config->show_assignto_cookieconfirm = (int) ($this->config->show_assignto_cookieconfirm && RLFunctions::extensionInstalled('cookieconfirm'));
 
-$assignments = [
+$assignments = array(
 	'menuitems',
 	'homepage',
 	'date',
 	'groupusers',
 	'languages',
+	'ips',
+	'geo',
 	'templates',
 	'urls',
-	'devices',
 	'os',
 	'browsers',
 	'components',
 	'tags',
 	'content',
-];
+	'easyblog',
+	'flexicontent',
+	'form2content',
+	'k2',
+	'zoo',
+	'akeebasubs',
+	'hikashop',
+	'mijoshop',
+	'redshop',
+	'virtuemart',
+	'cookieconfirm',
+	'php',
+);
 foreach ($assignments as $i => $ass)
 {
 	if ($ass != 'menuitems' && (!isset($this->config->{'show_assignto_' . $ass}) || !$this->config->{'show_assignto_' . $ass}))
@@ -48,7 +72,7 @@ foreach ($assignments as $i => $ass)
 	}
 }
 
-$html = [];
+$html = array();
 
 $html[] = $this->render($this->assignments, 'assignments');
 
@@ -71,7 +95,7 @@ foreach ($assignments as $ass)
 	$html[] = $this->render($this->assignments, 'assignto_' . $ass);
 }
 
-$show_assignto_users = 0;
+$show_assignto_users = (int) $this->config->show_assignto_users;
 $html[] = '<input type="hidden" name="show_users" value="' . $show_assignto_users . '">';
 $html[] = '<input type="hidden" name="show_usergrouplevels" value="' . (int) $this->config->show_assignto_usergrouplevels . '">';
 

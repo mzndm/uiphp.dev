@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -18,9 +16,9 @@ require_once dirname(__DIR__) . '/assignment.php';
 class RLAssignmentsDateTime extends RLAssignment
 {
 	var $timezone = null;
-	var $dates    = [];
+	var $dates    = array();
 
-	public function passDate()
+	function passDate()
 	{
 		if (!$this->params->publish_up && !$this->params->publish_down)
 		{
@@ -89,28 +87,26 @@ class RLAssignmentsDateTime extends RLAssignment
 		return ($this->assignment == 'include');
 	}
 
-	public function passSeasons()
+	function passSeasons()
 	{
 		$season = self::getSeason($this->date, $this->params->hemisphere);
 
 		return $this->passSimple($season);
 	}
 
-	public function passMonths()
+	function passMonths()
 	{
 		$month = $this->date->format('m', true); // 01 (for January) through 12 (for December)
-
 		return $this->passSimple((int) $month);
 	}
 
-	public function passDays()
+	function passDays()
 	{
 		$day = $this->date->format('N', true); // 1 (for Monday) though 7 (for Sunday )
-
 		return $this->passSimple($day);
 	}
 
-	public function passTime()
+	function passTime()
 	{
 		$now  = $this->getNow();
 		$up   = strtotime($this->date->format('Y-m-d ', true) . $this->params->publish_up);
@@ -142,7 +138,7 @@ class RLAssignmentsDateTime extends RLAssignment
 		return $this->pass(false);
 	}
 
-	private function getSeason(&$d, $hemisphere = 'northern')
+	function getSeason(&$d, $hemisphere = 'northern')
 	{
 		// Set $date to today
 		$date = strtotime($d->format('Y-m-d H:i:s', true));
@@ -151,7 +147,7 @@ class RLAssignmentsDateTime extends RLAssignment
 		$date_year = $d->format('Y', true); // Four digit representation for the year
 
 		// Specify the season names
-		$season_names = ['winter', 'spring', 'summer', 'fall'];
+		$season_names = array('winter', 'spring', 'summer', 'fall');
 
 		// Declare season date ranges
 		switch (strtolower($hemisphere))
@@ -247,12 +243,7 @@ class RLAssignmentsDateTime extends RLAssignment
 			return $this->dates[$id];
 		}
 
-		$this->dates[$id] = JFactory::getDate($date);
-
-		if (empty($this->params->ignore_time_zone))
-		{
-			$this->dates[$id]->setTimeZone($this->getTimeZone());
-		}
+		$this->dates[$id] = JFactory::getDate($date)->setTimeZone($this->getTimeZone());
 
 		return $this->dates[$id];
 	}
@@ -264,8 +255,6 @@ class RLAssignmentsDateTime extends RLAssignment
 			return $this->timezone;
 		}
 
-		$this->timezone = new DateTimeZone(JFactory::getApplication()->getCfg('offset'));
-
-		return $this->timezone;
+		return new DateTimeZone(JFactory::getApplication()->getCfg('offset'));
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -15,8 +15,6 @@
  */
 
 defined('_JEXEC') or die;
-
-use RegularLabs\Library\Parameters as RL_Parameters;
 
 /**
  * Modules Component Module Model
@@ -31,31 +29,28 @@ class AdvancedModulesModelModules extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
-	public function __construct($config = [])
+	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
 		{
-			$config['filter_fields'] = [
+			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'color', 'a.color',
 				'title', 'a.title',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
 				'published', 'a.published', 'state',
-				'access', 'a.access',
-				'ag.title', 'access_level',
+				'access', 'a.access', 'access_level',
 				'ordering', 'a.ordering',
 				'module', 'a.module',
-				'a.language',
-				'l.title', 'language_title',
+				'language', 'a.language', 'language_title',
 				'publish_up', 'a.publish_up',
 				'publish_down', 'a.publish_down',
 				'client_id', 'a.client_id',
 				'position', 'a.position',
-				'menuitem',
 				'menuid',
 				'name', 'e.name',
-			];
+			);
 		}
 
 		parent::__construct($config);
@@ -97,7 +92,7 @@ class AdvancedModulesModelModules extends JModelList
 		$clientId = $app->input->getString('client_id', null);
 
 		// Client Site(0) or Administrator(1) selected?
-		if (in_array($clientId, ['0', '1']))
+		if (in_array($clientId, array('0', '1')))
 		{
 			// Not the same client like saved previous one?
 			if ($clientId != $app->getUserState($this->context . '.client_id'))
@@ -117,7 +112,7 @@ class AdvancedModulesModelModules extends JModelList
 			$clientId = (string) $app->getUserState($this->context . '.client_id');
 
 			// Client not Site(0) and not Administrator(1)? So, set to Site(0).
-			if (!in_array($clientId, ['0', '1']))
+			if (!in_array($clientId, array('0', '1')))
 			{
 				$clientId = '0';
 			}
@@ -162,13 +157,13 @@ class AdvancedModulesModelModules extends JModelList
 			$this->getConfig();
 			list($default_ordering, $default_direction) = explode(' ', $this->config->default_ordering, 2);
 
-			$data->list = [
+			$data->list = array(
 				'direction'    => $default_direction,
 				'limit'        => $this->state->{'list.limit'},
 				'ordering'     => $default_ordering,
 				'fullordering' => $this->config->default_ordering,
 				'start'        => $this->state->{'list.start'},
-			];
+			);
 		}
 
 		return $data;
@@ -214,7 +209,7 @@ class AdvancedModulesModelModules extends JModelList
 		$ordering  = strtolower($this->getState('list.ordering', 'ordering'));
 		$orderDirn = strtoupper($this->getState('list.direction', 'ASC'));
 
-		if (in_array($ordering, ['menuid', 'name']))
+		if (in_array($ordering, array('menuid', 'name')))
 		{
 			$this->_db->setQuery($query);
 			$result = $this->_db->loadObjectList();
@@ -261,14 +256,14 @@ class AdvancedModulesModelModules extends JModelList
 		$this->_db->setQuery($query);
 		$result = $this->_db->loadObjectList();
 		$this->translate($result);
-		$newresult = [];
+		$newresult = array();
 
 		foreach ($result as $i => $row)
 		{
 			$params = json_decode($row->advancedparams);
 			if (is_null($params))
 			{
-				$params = (object) [];
+				$params = new stdClass;
 			}
 
 			$color                                              = isset($params->color) ? str_replace('#', '', $params->color) : 'none';
@@ -372,20 +367,20 @@ class AdvancedModulesModelModules extends JModelList
 		$query = $db->getQuery(true)
 			// Select the required fields from the table.
 			->select('a.id')
-			->from($db->quoteName('#__modules', 'a'))
+			->from('#__modules AS a')
 			// Join over the module menus
-			->join('LEFT', $db->quoteName('#__modules_menu', 'mm') . ' ON ' . $db->quoteName('mm.moduleid') . ' = ' . $db->quoteName('a.id'))
+			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = a.id')
 			// Join over the extensions
-			->join('LEFT', $db->quoteName('#__extensions', 'e') . ' ON ' . $db->quoteName('e.element') . ' = ' . $db->quoteName('a.module'));
+			->join('LEFT', '#__extensions AS e ON e.element = a.module');
 
 		// Filter by module
 		$module = $this->getState('filter.module');
 		if ($module)
 		{
-			$query->where($db->quoteName('a.module') . ' = ' . $db->quote($module));
+			$query->where('a.module = ' . $db->quote($module));
 		}
 
-		$wheres = [];
+		$wheres = array();
 
 		// Filter by menuid
 		$menuid = $this->getState('filter.menuid');
@@ -395,27 +390,26 @@ class AdvancedModulesModelModules extends JModelList
 			case '':
 				break;
 			case '0':
-				$wheres[] = $db->quoteName('mm.menuid') . ' = 0';
+				$wheres[] = 'mm.menuid = 0';
 				break;
 			case '-':
-				$wheres[] = $db->quoteName('mm.menuid') . ' IS NULL';
+				$wheres[] = 'mm.menuid IS NULL';
 				break;
 			case '-1':
-				$wheres[] = $db->quoteName('mm.menuid') . ' LIKE \'-%\'';
+				$wheres[] = 'mm.menuid LIKE \'-%\'';
 				break;
 			case '-2':
-				$wheres[] = $db->quoteName('mm.menuid') . ' NOT LIKE \'-%\' AND ' . $db->quoteName('mm.menuid') . ' != 0';
+				$wheres[] = 'mm.menuid NOT LIKE \'-%\' AND mm.menuid != 0';
 				break;
 			default:
-				$wheres[] = '(' . $db->quoteName('mm.menuid') . ' IN (0, ' . (int) $menuid . ')'
-					. ' OR (' . $db->quoteName('mm.menuid') . ' LIKE \'-%\' AND ' . $db->quoteName('mm.menuid') . ' != ' . $db->quote('-' . (int) $menuid) . '))';
+				$wheres[] = '(mm.menuid IN (0, ' . (int) $menuid . ') OR (mm.menuid LIKE \'-%\' AND mm.menuid != ' . $db->quote('-' . (int) $menuid) . '))';
 				break;
 		}
 
 		// Filter by position
 		if ($position = $this->getState('filter.position'))
 		{
-			$wheres[] = $db->quoteName('a.position') . ' = ' . $db->quote($position != 'none' ? $position : '');
+			$wheres[] = 'a.position = ' . $db->quote($position != 'none' ? $position : '');
 		}
 
 		// Filter by access level.
@@ -427,7 +421,7 @@ class AdvancedModulesModelModules extends JModelList
 		// Filter on the language.
 		if ($language = $this->getState('filter.language'))
 		{
-			$wheres[] = $db->quoteName('a.language') . ' = ' . $db->quote($language);
+			$wheres[] = 'a.language = ' . $db->quote($language);
 		}
 
 		// Filter by published state
@@ -441,11 +435,11 @@ class AdvancedModulesModelModules extends JModelList
 
 		if (is_numeric($published))
 		{
-			$wheres[] = $db->quoteName('a.published') . ' = ' . (int) $published;
+			$wheres[] = 'a.published = ' . (int) $published;
 		}
 		elseif ($published == '')
 		{
-			$wheres[] = '(' . $db->quoteName('a.published') . ' IN (0, 1))';
+			$wheres[] = '(a.published IN (0, 1))';
 		}
 
 		// Filter by client.
@@ -459,8 +453,7 @@ class AdvancedModulesModelModules extends JModelList
 
 		if (is_numeric($clientId))
 		{
-			$wheres[] = $db->quoteName('a.client_id') . ' = ' . (int) $clientId
-				. ' AND ' . $db->quoteName('e.client_id') . ' =' . (int) $clientId;
+			$wheres[] = 'a.client_id = ' . (int) $clientId . ' AND e.client_id =' . (int) $clientId;
 		}
 
 		// Modal view should return only specific language and ALL
@@ -468,13 +461,13 @@ class AdvancedModulesModelModules extends JModelList
 		{
 			if (JFactory::getApplication()->isSite() && JLanguageMultilang::isEnabled())
 			{
-				$query->where($db->quoteName('a.language') . ' in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ')');
+				$query->where('a.language in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ')');
 			}
 		}
 		elseif ($language = $this->getState('filter.language'))
 		{
 			// Filter on the language.
-			$query->where($db->quoteName('a.language') . ' = ' . $db->quote($language));
+			$query->where('a.language = ' . $db->quote($language));
 		}
 
 		// Set wheres
@@ -490,15 +483,12 @@ class AdvancedModulesModelModules extends JModelList
 		{
 			if (stripos($search, 'id:') === 0)
 			{
-				$query->where($db->quoteName('a.id') . ' = ' . (int) substr($search, 3));
+				$query->where('a.id = ' . (int) substr($search, 3));
 			}
 			else
 			{
 				$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
-				$query->where('('
-					. $db->quoteName('a.title') . ' LIKE ' . $search
-					. ' OR ' . $db->quoteName('a.note') . ' LIKE ' . $search
-					. ')');
+				$query->where('(' . 'a.title LIKE ' . $search . ' OR a.note LIKE ' . $search . ')');
 			}
 		}
 
@@ -520,13 +510,13 @@ class AdvancedModulesModelModules extends JModelList
 			$mirror_wheres = $wheres;
 			array_unshift(
 				$mirror_wheres,
-				$db->quoteName('aa.mirror_id') . ' IN (' . implode(',', $ids) . ',-' . implode(',-', $ids) . ')'
+				'aa.mirror_id IN (' . implode(',', $ids) . ',-' . implode(',-', $ids) . ')'
 			);
 
 			$query->clear('where');
 
 			// Join advanced params
-			$query->join('LEFT', $db->quoteName('#__advancedmodules', 'aa') . ' ON ' . $db->quoteName('aa.moduleid') . ' = ' . $db->quoteName('a.id'));
+			$query->join('LEFT', '#__advancedmodules AS aa ON aa.moduleid = a.id');
 
 			// Set wheres
 			foreach ($mirror_wheres as $where)
@@ -563,27 +553,24 @@ class AdvancedModulesModelModules extends JModelList
 			)
 			->from('#__modules AS a')
 			// Join over the language
-			->select($db->quoteName('l.title', 'language_title'))
-			->select($db->quoteName('l.image', 'language_image'))
-			->join('LEFT', $db->quoteName('#__languages', 'l') . ' ON ' . $db->quoteName('l.lang_code') . ' = ' . $db->quoteName('a.language'))
-			->select($db->quoteName('le.element', 'language'))
-			->join('LEFT', $db->quoteName('#__extensions', 'le') . ' ON ' . $db->quoteName('le.element') . ' = ' . $db->quoteName('a.language'))
+			->select('l.manifest_cache AS language_params')
+			->join('LEFT', '#__extensions AS l ON l.element = a.language')
 			// Join over the users for the checked out user.
-			->select($db->quoteName('uc.name', 'editor'))
-			->join('LEFT', $db->quoteName('#__users', 'uc') . ' ON ' . $db->quoteName('uc.id') . ' = ' . $db->quoteName('a.checked_out'))
+			->select('uc.name AS editor')
+			->join('LEFT', '#__users AS uc ON uc.id = a.checked_out')
 			// Join over the asset groups.
-			->select($db->quoteName('ag.title', 'access_level'))
-			->join('LEFT', $db->quoteName('#__viewlevels', 'ag') . ' ON ' . $db->quoteName('ag.id') . ' = ' . $db->quoteName('a.access'))
+			->select('ag.title AS access_level')
+			->join('LEFT', '#__viewlevels AS ag ON ag.id = a.access')
 			// Join over the module menus
 			->select('MIN(mm.menuid) AS menuid')
-			->join('LEFT', $db->quoteName('#__modules_menu', 'mm') . ' ON ' . $db->quoteName('mm.moduleid') . ' = ' . $db->quoteName('a.id'))
+			->join('LEFT', '#__modules_menu AS mm ON mm.moduleid = a.id')
 			// Join over the extensions
-			->select($db->quoteName('e.name', 'name'))
-			->join('LEFT', $db->quoteName('#__extensions', 'e') . ' ON ' . $db->quoteName('e.element') . ' = ' . $db->quoteName('a.module'))
+			->select('e.name AS name')
+			->join('LEFT', '#__extensions AS e ON e.element = a.module')
 			// Join over the advanced params
-			->select($db->quoteName('aa.params', 'advancedparams'))
-			->select($db->quoteName('aa.mirror_id', 'mirror_id'))
-			->join('LEFT', $db->quoteName('#__advancedmodules', 'aa') . ' ON ' . $db->quoteName('aa.moduleid') . ' = ' . $db->quoteName('a.id'))
+			->select('aa.params AS advancedparams')
+			->select('aa.mirror_id AS mirror_id')
+			->join('LEFT', '#__advancedmodules AS aa ON aa.moduleid = a.id')
 			// Group
 			->group(
 				'a.id, a.title, a.note, a.position, a.module, a.language, a.checked_out,' .
@@ -600,7 +587,7 @@ class AdvancedModulesModelModules extends JModelList
 
 		$ids = array_unique($ids);
 
-		$query->where($db->quoteName('a.id') . ' IN (' . implode(',', $ids) . ')');
+		$query->where('a.id IN (' . implode(',', $ids) . ')');
 
 		return $query;
 	}
@@ -617,7 +604,9 @@ class AdvancedModulesModelModules extends JModelList
 			return $this->config;
 		}
 
-		$this->config = RL_Parameters::getInstance()->getComponentParams('advancedmodules');
+		require_once JPATH_LIBRARIES . '/regularlabs/helpers/parameters.php';
+		$parameters   = RLParameters::getInstance();
+		$this->config = $parameters->getComponentParams('advancedmodules');
 
 		return $this->config;
 	}

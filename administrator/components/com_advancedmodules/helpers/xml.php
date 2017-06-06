@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -42,19 +42,17 @@ class ModulesHelperXML
 				$rows[$i]->name    = 'custom';
 				$rows[$i]->module  = 'custom';
 				$rows[$i]->descrip = 'Custom created module, using Module Manager New function';
-
-				continue;
 			}
-
-			$data = JInstaller::parseXMLInstallFile($row->path . '/' . $row->file);
-
-			if ($data['type'] != 'module')
+			else
 			{
-				continue;
-			}
+				$data = JInstaller::parseXMLInstallFile($row->path . '/' . $row->file);
 
-			$rows[$i]->name    = $data['name'];
-			$rows[$i]->descrip = $data['description'];
+				if ($data['type'] == 'module')
+				{
+					$rows[$i]->name    = $data['name'];
+					$rows[$i]->descrip = $data['description'];
+				}
+			}
 		}
 	}
 }

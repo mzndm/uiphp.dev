@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -15,8 +15,6 @@
  */
 
 defined('_JEXEC') or die;
-
-use RegularLabs\Library\Parameters as RL_Parameters;
 
 /**
  * View class for a list of modules.
@@ -38,11 +36,15 @@ class AdvancedModulesViewModules extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		$this->items         = $this->get('Items');
-		$this->pagination    = $this->get('Pagination');
-		$this->state         = $this->get('State');
-		$this->filterForm    = $this->get('FilterForm');
-		$this->activeFilters = $this->get('ActiveFilters');
+		$this->items      = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
+		$this->state      = $this->get('State');
+
+		if ($this->getLayout() == 'default')
+		{
+			$this->filterForm    = $this->get('FilterForm');
+			$this->activeFilters = $this->get('ActiveFilters');
+		}
 
 		$this->getConfig();
 
@@ -51,7 +53,7 @@ class AdvancedModulesViewModules extends JViewLegacy
 			$this->items[$i]->params = json_decode($item->advancedparams);
 			if (is_null($this->items[$i]->params))
 			{
-				$this->items[$i]->params = (object) [];
+				$this->items[$i]->params = new stdClass;
 			}
 		}
 
@@ -85,7 +87,9 @@ class AdvancedModulesViewModules extends JViewLegacy
 			return $this->config;
 		}
 
-		$this->config = RL_Parameters::getInstance()->getComponentParams('advancedmodules');
+		require_once JPATH_LIBRARIES . '/regularlabs/helpers/parameters.php';
+		$parameters   = RLParameters::getInstance();
+		$this->config = $parameters->getComponentParams('advancedmodules');
 
 		return $this->config;
 	}
@@ -127,7 +131,7 @@ class AdvancedModulesViewModules extends JViewLegacy
 			// Instantiate a new JLayoutFile instance and render the layout
 			$layout = new JLayoutFile('toolbar.newmodule');
 
-			$bar->appendButton('Custom', $layout->render([]), 'new');
+			$bar->appendButton('Custom', $layout->render(array()), 'new');
 		}
 
 		if ($canDo->get('core.edit'))
@@ -168,7 +172,7 @@ class AdvancedModulesViewModules extends JViewLegacy
 			// Instantiate a new JLayoutFile instance and render the batch button
 			$layout = new JLayoutFile('joomla.toolbar.batch');
 
-			$dhtml = $layout->render(['title' => $title]);
+			$dhtml = $layout->render(array('title' => $title));
 			$bar->appendButton('Custom', $dhtml, 'batch');
 		}
 

@@ -1,124 +1,135 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(__DIR__ . '/vendor/autoload.php'))
+jimport('joomla.filesystem.file');
+
+if (JFactory::getApplication()->isAdmin() && JFile::exists(JPATH_LIBRARIES . '/regularlabs//helpers/functions.php'))
 {
-	return;
+	// load the Regular Labs Library language file
+	require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
+	RLFunctions::loadLanguage('plg_system_regularlabs');
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
-
-if (is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-}
-
-use RegularLabs\Library\Document as RL_Document;
-use RegularLabs\Library\Parameters as RL_Parameters;
-use RegularLabs\LibraryPlugin\AdminMenu as RL_AdminMenu;
-use RegularLabs\LibraryPlugin\DownloadKey as RL_DownloadKey;
-use RegularLabs\LibraryPlugin\QuickPage as RL_QuickPage;
-use RegularLabs\LibraryPlugin\SearchHelper as RL_SearchHelper;
-
-JFactory::getLanguage()->load('plg_system_regularlabs', __DIR__);
+// If controller.php exists, assume this is K2 v3
+define('RL_K2_VERSION', JFile::exists(JPATH_ADMINISTRATOR . '/components/com_k2/controller.php') ? 3 : 2);
 
 class PlgSystemRegularLabs extends JPlugin
 {
 	public function onAfterRoute()
 	{
-		if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
+		if (!JFile::exists(JPATH_LIBRARIES . '/regularlabs/helpers/functions.php'))
 		{
-			if (JFactory::getApplication()->isAdmin())
-			{
-				JFactory::getApplication()->enqueueMessage('The Regular Labs Library folder is missing or incomplete: ' . JPATH_LIBRARIES . '/regularlabs', 'error');
-			}
+			JFactory::getApplication()->enqueueMessage('The Regular Labs Library folder is missing or incomplete: ' . JPATH_LIBRARIES . '/regularlabs', 'error');
 
 			return;
 		}
 
-		RL_DownloadKey::update();
+		$this->updateDownloadKey();
 
-		RL_SearchHelper::load();
+		$this->loadSearchHelper();
 
-		RL_QuickPage::render();
-	}
-
-	public function onAfterDispatch()
-	{
-		if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-		{
-			return;
-		}
-
-		if (!RL_Document::isAdmin() || !RL_Document::isHtml()
-		)
-		{
-			return;
-		}
-
-		RL_Document::script('regularlabs/script.min.js');
+		$this->renderQuickPage();
 	}
 
 	public function onAfterRender()
 	{
-		if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-		{
-			return;
-		}
-
-		if (!RL_Document::isAdmin() || !RL_Document::isHtml()
-		)
-		{
-			return;
-		}
-
-		RL_AdminMenu::combine();
-
-		RL_AdminMenu::addHelpItem();
+		$this->combineAdminMenu();
 	}
 
-	public function onInstallerBeforePackageDownload(&$url, &$headers)
+	private function renderQuickPage()
 	{
-		$uri  = JUri::getInstance($url);
-		$host = $uri->getHost();
+		if (!JFactory::getApplication()->input->getInt('rl_qp', 0))
+		{
+			return;
+		}
 
+		require_once __DIR__ . '/helpers/quickpage.php';
+		$helper = new PlgSystemRegularLabsQuickPageHelper;
+
+		$helper->render();
+	}
+
+	private function updateDownloadKey()
+	{
+		// Save the download key from the Regular Labs Extension Manager config to the update sites
 		if (
-			strpos($host, 'regularlabs.com') === false
-			&& strpos($host, 'nonumber.nl') === false
+			JFactory::getApplication()->isSite()
+			|| JFactory::getApplication()->input->get('option') != 'com_config'
+			|| JFactory::getApplication()->input->get('task') != 'config.save.component.apply'
+			|| JFactory::getApplication()->input->get('component') != 'com_regularlabsmanager'
 		)
 		{
-			return true;
+			return;
 		}
 
-		$uri->setHost('download.regularlabs.com');
-		$url = $uri->toString();
+		$form = JFactory::getApplication()->input->post->get('jform', array(), 'array');
 
-		if (strpos($host, 'pro=1') === false)
+		if (!isset($form['key']))
 		{
-			return true;
+			return;
 		}
 
-		$params = RL_Parameters::getInstance()->getComponentParams('regularlabsmanager');
+		$key = $form['key'];
 
-		if (empty($params->key))
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true)
+			->update('#__update_sites')
+			->set($db->quoteName('extra_query') . ' = ' . $db->quote(''))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('http://download.regularlabs.com%'));
+		$db->setQuery($query);
+		$db->execute();
+
+		$query->clear()
+			->update('#__update_sites')
+			->set($db->quoteName('extra_query') . ' = ' . $db->quote('k=' . $key))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('http://download.regularlabs.com%'))
+			->where($db->quoteName('location') . ' LIKE ' . $db->quote('%&pro=1%'));
+		$db->setQuery($query);
+		$db->execute();
+	}
+
+	private function loadSearchHelper()
+	{
+		// Only in frontend search component view
+		if (!JFactory::getApplication()->isSite() || JFactory::getApplication()->input->get('option') != 'com_search')
 		{
-			return true;
+			return;
 		}
 
-		$uri->setVar('k', $params->key);
-		$url = $uri->toString();
+		$classes = get_declared_classes();
 
-		return true;
+		if (in_array('SearchModelSearch', $classes) || in_array('searchmodelsearch', $classes))
+		{
+			return;
+		}
+
+		require_once JPATH_LIBRARIES . '/regularlabs/helpers/search.php';
+	}
+
+	private function combineAdminMenu()
+	{
+		if (JFactory::getApplication()->isSite()
+			|| JFactory::getDocument()->getType() != 'html'
+			|| !$this->params->get('combine_admin_menu', 0)
+		)
+		{
+			return;
+		}
+
+		require_once __DIR__ . '/helpers/adminmenu.php';
+		$helper = new PlgSystemRegularLabsAdminMenuHelper();
+
+		$helper->combine();
 	}
 }
 

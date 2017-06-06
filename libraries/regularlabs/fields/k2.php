@@ -1,33 +1,25 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-// If controller.php exists, assume this is K2 v3
-defined('RL_K2_VERSION') or define('RL_K2_VERSION', JFile::exists(JPATH_ADMINISTRATOR . '/components/com_k2/controller.php') ? 3 : 2);
-
-class JFormFieldRL_K2 extends \RegularLabs\Library\FieldGroup
+class JFormFieldRL_K2 extends RLFormGroupField
 {
 	public $type = 'K2';
 
 	protected function getInput()
 	{
-		if ($error = $this->missingFilesOrTables(['categories', 'items', 'tags']))
+		if ($error = $this->missingFilesOrTables(array('categories', 'items', 'tags')))
 		{
 			return $error;
 		}
@@ -109,6 +101,6 @@ class JFormFieldRL_K2 extends \RegularLabs\Library\FieldGroup
 		$this->db->setQuery($query);
 		$list = $this->db->loadObjectList();
 
-		return $this->getOptionsByList($list, ['cat', 'id']);
+		return $this->getOptionsByList($list, array('cat', 'id'));
 	}
 }

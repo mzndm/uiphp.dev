@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -15,7 +15,6 @@
  */
 
 defined('_JEXEC') or die;
-
 JHtml::_('behavior.tabstate');
 
 if (!JFactory::getUser()->authorise('core.manage', 'com_modules'))
@@ -23,13 +22,15 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_modules'))
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
+
+RLFunctions::loadLanguage('com_modules', JPATH_ADMINISTRATOR);
+RLFunctions::loadLanguage('com_advancedmodules');
+
 jimport('joomla.filesystem.file');
 
 // return if Regular Labs Library plugin is not installed
-if (
-	!is_file(JPATH_PLUGINS . '/system/regularlabs/regularlabs.xml')
-	|| !is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php')
-)
+if (!JFile::exists(JPATH_PLUGINS . '/system/regularlabs/regularlabs.php'))
 {
 	$msg = JText::_('AMM_REGULAR_LABS_LIBRARY_NOT_INSTALLED')
 		. ' ' . JText::sprintf('AMM_EXTENSION_CAN_NOT_FUNCTION', JText::_('COM_ADVANCEDMODULES'));
@@ -39,19 +40,16 @@ if (
 }
 
 // give notice if Regular Labs Library plugin is not enabled
-if (!JPluginHelper::isEnabled('system', 'regularlabs'))
+$regularlabs = JPluginHelper::getPlugin('system', 'regularlabs');
+if (!isset($regularlabs->name))
 {
 	$msg = JText::_('AMM_REGULAR_LABS_LIBRARY_NOT_ENABLED')
 		. ' ' . JText::sprintf('AMM_EXTENSION_CAN_NOT_FUNCTION', JText::_('COM_ADVANCEDMODULES'));
 	JFactory::getApplication()->enqueueMessage($msg, 'notice');
 }
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Language as RL_Language;
-
-RL_Language::load('plg_system_regularlabs');
-RL_Language::load('com_modules', JPATH_ADMINISTRATOR);
+// load the Regular Labs Library language file
+RLFunctions::loadLanguage('plg_system_regularlabs');
 
 $controller = JControllerLegacy::getInstance('AdvancedModules');
 $controller->execute(JFactory::getApplication()->input->get('task'));

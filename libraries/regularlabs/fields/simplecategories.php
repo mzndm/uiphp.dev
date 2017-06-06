@@ -1,34 +1,29 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/functions.php';
+require_once dirname(__DIR__) . '/helpers/field.php';
+require_once dirname(__DIR__) . '/helpers/html.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
-
-class JFormFieldRL_SimpleCategories extends \RegularLabs\Library\Field
+class JFormFieldRL_SimpleCategories extends RLFormField
 {
 	public $type = 'SimpleCategories';
 
 	protected function getInput()
 	{
 		JHtml::_('jquery.framework');
-		RL_Document::script('regularlabs/script.min.js');
-		RL_Document::script('regularlabs/toggler.min.js');
+		RLFunctions::script('regularlabs/script.min.js', '16.5.10919');
+		RLFunctions::script('regularlabs/toggler.min.js', '16.5.10919');
 
 		$this->params = $this->element->attributes();
 
@@ -40,12 +35,12 @@ class JFormFieldRL_SimpleCategories extends \RegularLabs\Library\Field
 
 		if ($this->get('show_none', 1))
 		{
-			$options[] = JHtml::_('select.option', '', '- ' . JText::_('JNONE') . ' -');
+			$options[] = JHtml::_('select.option', '', '- ' . JText::_('JNONE') . ' -', 'value', 'text');
 		}
 
 		if ($this->get('show_new', 1))
 		{
-			$options[] = JHtml::_('select.option', '-1', '- ' . JText::_('RL_NEW_CATEGORY') . ' -');
+			$options[] = JHtml::_('select.option', '-1', '- ' . JText::_('RL_NEW_CATEGORY') . ' -', 'value', 'text', false);
 		}
 
 		$options = array_merge($options, $categories);
@@ -63,16 +58,16 @@ class JFormFieldRL_SimpleCategories extends \RegularLabs\Library\Field
 			);
 		}
 
-		RL_Document::script('regularlabs/simplecategories.min.js');
+		RLFunctions::script('regularlabs/simplecategories.min.js', '16.5.10919');
 
-		$html = [];
+		$html = array();
 
 		$html[] = '<div class="rl_simplecategory">';
 
 		$html[] = '<input type="hidden" class="rl_simplecategory_value" id="' . $this->id . '" name="' . $this->name . '" value="' . $this->value . '" checked="checked">';
 
 		$html[] = '<div class="rl_simplecategory_select">';
-		$html[] = $this->selectListSimple(
+		$html[] = RLHtml::selectlistsimple(
 			$options,
 			$this->getName($this->fieldname . '_select'),
 			$this->value,
@@ -99,7 +94,7 @@ class JFormFieldRL_SimpleCategories extends \RegularLabs\Library\Field
 
 		if (!$table)
 		{
-			return [];
+			return array();
 		}
 
 		// Get the user groups from the database.

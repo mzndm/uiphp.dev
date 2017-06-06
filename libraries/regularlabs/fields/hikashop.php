@@ -1,30 +1,25 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_HikaShop extends \RegularLabs\Library\FieldGroup
+class JFormFieldRL_HikaShop extends RLFormGroupField
 {
 	public $type = 'HikaShop';
 
 	protected function getInput()
 	{
-		if ($error = $this->missingFilesOrTables(['categories' => 'category', 'products' => 'product']))
+		if ($error = $this->missingFilesOrTables(array('categories' => 'category', 'products' => 'product')))
 		{
 			return $error;
 		}
@@ -81,7 +76,7 @@ class JFormFieldRL_HikaShop extends \RegularLabs\Library\FieldGroup
 		}
 
 		$query->clear('select')
-			->select('p.product_id as id, p.product_name AS name, p.product_published AS published, c.category_name AS cat')
+			->select('p.product_id as id, p.product_name AS name, p.product_published AS published')
 			->join('LEFT', '#__hikashop_product_category AS x ON x.product_id = p.product_id')
 			->join('INNER', '#__hikashop_category AS c ON c.category_id = x.category_id')
 			->group('p.product_id')
@@ -89,6 +84,6 @@ class JFormFieldRL_HikaShop extends \RegularLabs\Library\FieldGroup
 		$this->db->setQuery($query);
 		$list = $this->db->loadObjectList();
 
-		return $this->getOptionsByList($list, ['cat', 'id']);
+		return $this->getOptionsByList($list, array('cat', 'id'));
 	}
 }

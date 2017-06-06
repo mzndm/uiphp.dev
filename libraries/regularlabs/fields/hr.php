@@ -1,24 +1,17 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
-
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
+require_once dirname(__DIR__) . '/helpers/functions.php';
 
 class JFormFieldRL_HR extends JFormField
 {
@@ -31,7 +24,7 @@ class JFormFieldRL_HR extends JFormField
 
 	protected function getInput()
 	{
-		RL_Document::stylesheet('regularlabs/style.min.css');
+		RLFunctions::stylesheet('regularlabs/style.min.css', '16.5.10919');
 
 		return '<div class="rl_panel rl_hr"></div>';
 	}

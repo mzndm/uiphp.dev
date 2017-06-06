@@ -1,51 +1,72 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
-/* @DEPRECATED */
-
 defined('_JEXEC') or die;
-
-if (is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-}
-
-use RegularLabs\Library\Cache as RL_Cache;
 
 class RLCache
 {
-	static $cache = [];
+	static $cache = array();
 
-	public static function has($hash)
+	static public function has($hash)
 	{
-		return RL_Cache::has($hash);
+		return isset(self::$cache[$hash]);
 	}
 
-	public static function get($hash)
+	static public function get($hash)
 	{
-		return RL_Cache::get($hash);
+		if (!isset(self::$cache[$hash]))
+		{
+			return false;
+		}
+
+		return is_object(self::$cache[$hash]) ? clone self::$cache[$hash] : self::$cache[$hash];
 	}
 
-	public static function set($hash, $data)
+	static public function set($hash, $data)
 	{
-		return RL_Cache::set($hash, $data);
+		self::$cache[$hash] = $data;
+
+		return $data;
 	}
 
-	public static function read($hash)
+	static public function read($hash)
 	{
-		return RL_Cache::read($hash);
+		if (isset(self::$cache[$hash]))
+		{
+			return self::$cache[$hash];
+		}
+
+		$cache = JFactory::getCache('regularlabs', 'output');
+
+		return $cache->get($hash);
 	}
 
-	public static function write($hash, $data, $ttl = 0)
+	static public function write($hash, $data, $ttl = 0)
 	{
-		return RL_Cache::write($hash, $data, $ttl);
+		self::$cache[$hash] = $data;
+
+		$cache = JFactory::getCache('regularlabs', 'output');
+
+		if ($ttl)
+		{
+			// convert ttl to minutes
+			$cache->setLifeTime($ttl * 60);
+		}
+
+		$cache->setCaching(true);
+
+		$cache->store($data, $hash);
+
+		self::set($hash, $data);
+
+		return $data;
 	}
 }

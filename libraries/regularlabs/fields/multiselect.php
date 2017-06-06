@@ -1,24 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_MultiSelect extends \RegularLabs\Library\Field
+class JFormFieldRL_MultiSelect extends RLFormField
 {
 	public $type = 'MultiSelect';
 
@@ -41,6 +36,8 @@ class JFormFieldRL_MultiSelect extends \RegularLabs\Library\Field
 
 		$size = (int) $this->get('size');
 
-		return $this->selectList($options, $this->name, $this->value, $this->id, $size, true);
+		require_once dirname(__DIR__) . '/helpers/html.php';
+
+		return RLHtml::selectlist($options, $this->name, $this->value, $this->id, $size, 1);
 	}
 }

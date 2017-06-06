@@ -1,21 +1,21 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
-/* @DEPRECATED */
-
 defined('_JEXEC') or die;
+
+require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsAkeebaSubs extends RLAssignment
 {
-	public function init()
+	function init()
 	{
 		if (!$this->request->id && $this->request->view == 'level')
 		{
@@ -32,12 +32,12 @@ class RLAssignmentsAkeebaSubs extends RLAssignment
 		}
 	}
 
-	public function passPageTypes()
+	function passPageTypes()
 	{
 		return $this->passByPageTypes('com_akeebasubs', $this->selection, $this->assignment);
 	}
 
-	public function passLevels()
+	function passLevels()
 	{
 		if (!$this->request->id || $this->request->option != 'com_akeebasubs' || $this->request->view != 'level')
 		{

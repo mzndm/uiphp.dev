@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,7 +15,7 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsMenu extends RLAssignment
 {
-	public function passMenu()
+	function passMenu()
 	{
 		// return if no Itemid or selection is set
 		if (!$this->request->Itemid || empty($this->selection))
@@ -45,7 +43,7 @@ class RLAssignmentsMenu extends RLAssignment
 		}
 
 		$parent_ids = $this->getMenuParentIds($this->request->Itemid);
-		$parent_ids = array_diff($parent_ids, ['1']);
+		$parent_ids = array_diff($parent_ids, array('1'));
 		foreach ($parent_ids as $id)
 		{
 			if (!in_array($id, $this->selection))
@@ -59,31 +57,15 @@ class RLAssignmentsMenu extends RLAssignment
 		return $this->pass(false);
 	}
 
-	private function getMenuParentIds($id = 0)
+	function getMenuParentIds($id = 0)
 	{
 		return $this->getParentIds($id, 'menu');
 	}
 
-	private function getMenuType()
+	function getMenuType()
 	{
 		if (isset($this->request->menutype))
 		{
-			return $this->request->menutype;
-		}
-
-		if (empty($this->request->Itemid))
-		{
-			$this->request->menutype = '';
-
-			return $this->request->menutype;
-		}
-
-		if (JFactory::getApplication()->isSite())
-		{
-			$menu = JFactory::getApplication()->getMenu()->getItem((int) $this->request->Itemid);
-
-			$this->request->menutype = isset($menu->menutype) ? $menu->menutype : '';
-
 			return $this->request->menutype;
 		}
 

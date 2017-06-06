@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,19 +15,19 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsRedShop extends RLAssignment
 {
-	public function init()
+	function init()
 	{
 		$this->request->item_id     = JFactory::getApplication()->input->getInt('pid', 0);
 		$this->request->category_id = JFactory::getApplication()->input->getInt('cid', 0);
 		$this->request->id          = ($this->request->item_id) ? $this->request->item_id : $this->request->category_id;
 	}
 
-	public function passPageTypes()
+	function passPageTypes()
 	{
 		return $this->passByPageTypes('com_redshop', $this->selection, $this->assignment, true);
 	}
 
-	public function passCategories()
+	function passCategories()
 	{
 		if ($this->request->option != 'com_redshop')
 		{
@@ -48,7 +46,7 @@ class RLAssignmentsRedShop extends RLAssignment
 			return $this->pass(false);
 		}
 
-		$cats = [];
+		$cats = array();
 		if ($this->request->category_id)
 		{
 			$cats = $this->request->category_id;
@@ -82,7 +80,7 @@ class RLAssignmentsRedShop extends RLAssignment
 		return $this->passSimple($cats);
 	}
 
-	public function passProducts()
+	function passProducts()
 	{
 		if (!$this->request->id || $this->request->option != 'com_redshop' || $this->request->view != 'product')
 		{
@@ -92,7 +90,7 @@ class RLAssignmentsRedShop extends RLAssignment
 		return $this->passSimple($this->request->id);
 	}
 
-	private function getCatParentIds($id = 0)
+	function getCatParentIds($id = 0)
 	{
 		return $this->getParentIds($id, 'redshop_category_xref', 'category_parent_id', 'category_child_id');
 	}

@@ -1,27 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
-use RegularLabs\Library\StringHelper as RL_String;
-
-class JFormFieldRL_Slide extends \RegularLabs\Library\Field
+class JFormFieldRL_Slide extends RLFormField
 {
 	public $type = 'Slide';
 
@@ -34,9 +26,9 @@ class JFormFieldRL_Slide extends \RegularLabs\Library\Field
 	{
 		$this->params = $this->element->attributes();
 
-		RL_Document::stylesheet('regularlabs/style.min.css');
+		RLFunctions::stylesheet('regularlabs/style.min.css', '16.5.10919');
 
-		$label       = RL_String::html_entity_decoder(JText::_($this->get('label')));
+		$label       = RLText::html_entity_decoder(JText::_($this->get('label')));
 		$description = $this->prepareText($this->get('description'));
 		$lang_file   = $this->get('language_file');
 
@@ -89,9 +81,9 @@ class JFormFieldRL_Slide extends \RegularLabs\Library\Field
 				$description = '<p>' . $description . '</p>';
 			}
 			$class = 'rl_panel rl_panel_description';
-			$html  .= '<div class="' . $class . '"><div class="rl_block rl_title">';
-			$html  .= $description;
-			$html  .= '<div style="clear: both;"></div></div></div>';
+			$html .= '<div class="' . $class . '"><div class="rl_block rl_title">';
+			$html .= $description;
+			$html .= '<div style="clear: both;"></div></div></div>';
 		}
 
 		return $html;

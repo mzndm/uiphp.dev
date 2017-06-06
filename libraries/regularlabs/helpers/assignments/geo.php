@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -22,35 +20,33 @@ class RLAssignmentsGeo extends RLAssignment
 	/**
 	 * passContinents
 	 */
-	public function passContinents()
+	function passContinents()
 	{
 		if (!$this->getGeo() || empty($this->geo->continentCode))
 		{
 			return $this->pass(false);
 		}
 
-		return $this->passSimple([$this->geo->continent, $this->geo->continentCode]);
+		return $this->passSimple($this->geo->continentCode);
 	}
 
 	/**
 	 * passCountries
 	 */
-	public function passCountries()
+	function passCountries()
 	{
-		$this->getGeo();
-
 		if (!$this->getGeo() || empty($this->geo->countryCode))
 		{
 			return $this->pass(false);
 		}
 
-		return $this->passSimple([$this->geo->country, $this->geo->countryCode]);
+		return $this->passSimple($this->geo->countryCode);
 	}
 
 	/**
 	 * passRegions
 	 */
-	public function passRegions()
+	function passRegions()
 	{
 		if (!$this->getGeo() || empty($this->geo->countryCode) || empty($this->geo->regionCodes))
 		{
@@ -69,7 +65,7 @@ class RLAssignmentsGeo extends RLAssignment
 	/**
 	 * passPostalcodes
 	 */
-	public function passPostalcodes()
+	function passPostalcodes()
 	{
 		if (!$this->getGeo() || empty($this->geo->postalCode))
 		{
@@ -99,12 +95,6 @@ class RLAssignmentsGeo extends RLAssignment
 		$geo = new GeoIp($ip);
 
 		$this->geo = $geo->get();
-
-		if (JDEBUG)
-		{
-			JLog::addLogger(['text_file' => 'regularlabs_geoip.log.php'], JLog::ALL, ['regularlabs_geoip']);
-			JLog::add(json_encode($this->geo), JLog::DEBUG, 'regularlabs_geoip');
-		}
 
 		return $this->geo;
 	}

@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,47 +15,34 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsTags extends RLAssignment
 {
-	public function passTags()
+	function passTags()
 	{
-		if (in_array($this->request->option, ['com_content', 'com_flexicontent']))
-		{
-			return $this->passTagsContent();
-		}
+		$is_content = in_array($this->request->option, array('com_content', 'com_flexicontent'));
 
-		if ($this->request->option != 'com_tags'
-			|| $this->request->view != 'tag'
-			|| !$this->request->id
-		)
+		if (!$is_content)
 		{
 			return $this->pass(false);
 		}
 
-		return $this->passTag($this->request->id);
-	}
+		$is_item     = in_array($this->request->view, array('', 'article', 'item'));
+		$is_category = in_array($this->request->view, array('category'));
 
-	private function passTagsContent()
-	{
-		$is_item     = in_array($this->request->view, ['', 'article', 'item']);
-		$is_category = in_array($this->request->view, ['category']);
-
-		switch (true)
+		if ($is_item)
 		{
-			case ($is_item):
-				$prefix = 'com_content.article';
-				break;
-
-			case ($is_category):
-				$prefix = 'com_content.category';
-				break;
-
-			default:
-				return $this->pass(false);
+			$prefix = 'com_content.article';
+		}
+		else if ($is_category)
+		{
+			$prefix = 'com_content.category';
+		}
+		else
+		{
+			return $this->pass(false);
 		}
 
 		// Load the tags.
 		$query = $this->db->getQuery(true)
 			->select($this->db->quoteName('t.id'))
-			->select($this->db->quoteName('t.title'))
 			->from('#__tags AS t')
 			->join(
 				'INNER', '#__contentitem_tag_map AS m'
@@ -66,7 +51,7 @@ class RLAssignmentsTags extends RLAssignment
 				. ' AND m.content_item_id IN ( ' . $this->request->id . ')'
 			);
 		$this->db->setQuery($query);
-		$tags = $this->db->loadObjectList();
+		$tags = $this->db->loadColumn();
 
 		if (empty($tags))
 		{
@@ -75,7 +60,7 @@ class RLAssignmentsTags extends RLAssignment
 
 		foreach ($tags as $tag)
 		{
-			if (!$this->passTag($tag->id) && !$this->passTag($tag->title))
+			if (!$this->passTag($tag))
 			{
 				continue;
 			}
@@ -113,7 +98,7 @@ class RLAssignmentsTags extends RLAssignment
 	{
 		$parentids = $this->getParentIds($id, 'tags');
 		// Remove the root tag
-		$parentids = array_diff($parentids, ['1']);
+		$parentids = array_diff($parentids, array('1'));
 
 		return $parentids;
 	}

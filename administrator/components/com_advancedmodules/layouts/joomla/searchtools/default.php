@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -16,35 +16,32 @@
 
 defined('JPATH_BASE') or die;
 
-use RegularLabs\Library\Document as RL_Document;
-
 $data = $displayData;
 
 // Receive overridable options
-$data['options'] = !empty($data['options']) ? $data['options'] : [];
+$data['options'] = !empty($data['options']) ? $data['options'] : array();
 
-if ($data['view'] instanceof AdvancedModulesViewModules && JFactory::getApplication()->input->get('layout', '', 'cmd') !== 'modal')
-{
-	RL_Document::styleDeclaration("
-		/* Fixed filter field in search bar */
-		.js-stools .js-stools-client_id {
-			float: left;
-			margin-right: 10px;
-			min-width: 220px;
-		}
-		html[dir=rtl] .js-stools .js-stools-client_id {
-			float: right;
-			margin-left: 10px
-			margin-right: 0;
-		}
-		.js-stools .js-stools-container-bar .js-stools-field-filter .chzn-container {
-			padding: 3px 0;
-		}
-	");
+$doc = JFactory::getDocument();
 
-	// Client selector doesn't have to activate the filter bar.
-	unset($data['view']->activeFilters['client_id']);
-}
+$doc->addStyleDeclaration("
+	/* Fixed filter field in search bar */
+	.js-stools .js-stools-client_id {
+		float: left;
+		margin-right: 10px;
+		min-width: 220px;
+	}
+	html[dir=rtl] .js-stools .js-stools-client_id {
+		float: right;
+		margin-left: 10px
+		margin-right: 0;
+	}
+	.js-stools .js-stools-container-bar .js-stools-field-filter .chzn-container {
+		padding: 3px 0;
+	}
+");
 
-// Display the main joomla layout.
-echo JLayoutHelper::render('joomla.searchtools.default', $data, null, ['component' => 'none']);
+// Menutype filter doesn't have to activate the filter bar
+unset($data['view']->activeFilters['client_id']);
+
+// Display the main joomla layout
+echo JLayoutHelper::render('joomla.searchtools.default', $data, null, array('component' => 'none'));

@@ -1,10 +1,10 @@
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 @font-face {
@@ -43,13 +43,8 @@
   font-family: 'RegularLabs' !important;
   font-size: 14.2px !important;
 }
-h1 .icon-reglab:before,
-h2 .icon-reglab:before {
-  font-size: 16px !important;
-}
 .btn .icon-reglab {
   text-indent: -2px;
-  font-size: 12px;
 }
 .btn .icon-reglab:before {
   vertical-align: -3px;
@@ -71,6 +66,9 @@ h2 .icon-reglab:before {
 .icon-addtomenu:before {
   content: "\e001";
 }
+.icon-adminbardocker:before {
+  content: "\e002";
+}
 .icon-advancedmodulemanager:before {
   content: "\e003";
 }
@@ -91,9 +89,6 @@ h2 .icon-reglab:before {
 }
 .icon-componentsanywhere:before {
   content: "\e008";
-}
-.icon-conditionalcontent:before {
-  content: "\e019";
 }
 .icon-contenttemplater:before {
   content: "\e009";
@@ -122,9 +117,6 @@ h2 .icon-reglab:before {
 .icon-rereplacer:before {
   content: "\e00e";
 }
-.icon-simpleusernotes:before {
-  content: "\e01a";
-}
 .icon-sliders:before {
   content: "\e00f";
 }
@@ -136,6 +128,9 @@ h2 .icon-reglab:before {
 }
 .icon-tabs:before {
   content: "\e012";
+}
+.icon-timedstyles:before {
+  content: "\e013";
 }
 .icon-tooltips:before {
   content: "\e014";
@@ -251,9 +246,6 @@ h2 .icon-reglab:before {
 .icon-reglab-lifetime:before {
   content: "\e022";
 }
-.icon-reglab-magento:before {
-  content: "\e023";
-}
 .icon-reglab.icon-src_sourcetags:before {
   font-family: 'RegularLabsIcons' !important;
   content: "\e01b";
@@ -275,7 +267,7 @@ h2 .icon-reglab:before {
 }
 .rl_tablelist td {
   height: 22px;
-  color: #555;
+  color: #555555;
 }
 .rl_tablelist td.has-context {
   height: 23px;
@@ -285,7 +277,7 @@ fieldset.rl_plaintext {
 }
 .rl_code {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  color: #999;
+  color: #999999;
 }
 div.rl_well {
   padding-bottom: 0;
@@ -295,7 +287,7 @@ div.rl_well h4 {
 }
 .rl_well.alert-success,
 .rl_well.alert-error {
-  color: #333;
+  color: #333333;
 }
 .well-striped:nth-child(even) {
   background-color: #fdfdfd;
@@ -304,20 +296,64 @@ div.rl_well h4 {
   margin: 14px 0 0;
 }
 .rl_btn-ignore.btn-danger.active {
-  background-color: #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .rl_btn-ignore.btn-danger.active:hover,
-.rl_btn-ignore.btn-danger.active:focus {
-  background-color: #737373;
+.rl_btn-ignore.btn-danger.active:focus,
+.rl_btn-ignore.btn-danger.active:active,
+.rl_btn-ignore.btn-danger.active.active,
+.rl_btn-ignore.btn-danger.active.disabled,
+.rl_btn-ignore.btn-danger.active[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.rl_btn-ignore.btn-danger.active:active,
+.rl_btn-ignore.btn-danger.active.active {
+  background-color: #cccccc \9;
 }
 .rl_btn-exclude.btn-success.active {
-  background-color: #bd362f;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ad312b;
+  background-image: -moz-linear-gradient(top, #bd362f, #942a25);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#942a25));
+  background-image: -webkit-linear-gradient(top, #bd362f, #942a25);
+  background-image: -o-linear-gradient(top, #bd362f, #942a25);
+  background-image: linear-gradient(to bottom, #bd362f, #942a25);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ff942a25', GradientType=0);
+  border-color: #942a25 #942a25 #571916;
+  *background-color: #942a25;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .rl_btn-exclude.btn-success.active:hover,
-.rl_btn-exclude.btn-success.active:focus {
-  background-color: #802420;
+.rl_btn-exclude.btn-success.active:focus,
+.rl_btn-exclude.btn-success.active:active,
+.rl_btn-exclude.btn-success.active.active,
+.rl_btn-exclude.btn-success.active.disabled,
+.rl_btn-exclude.btn-success.active[disabled] {
+  color: #ffffff;
+  background-color: #942a25;
+  *background-color: #802420;
+}
+.rl_btn-exclude.btn-success.active:active,
+.rl_btn-exclude.btn-success.active.active {
+  background-color: #6b1f1b \9;
 }
 .rl_textarea {
   -webkit-box-sizing: border-box;
@@ -434,7 +470,7 @@ div.chzn-container#advancedparams_color_chzn {
   min-width: 100%;
 }
 .btn-group-yesno-reverse .active.btn-success {
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #ad312b;
   background-image: -moz-linear-gradient(top, #bd362f, #942a25);
@@ -455,7 +491,7 @@ div.chzn-container#advancedparams_color_chzn {
 .btn-group-yesno-reverse .active.btn-success.active,
 .btn-group-yesno-reverse .active.btn-success.disabled,
 .btn-group-yesno-reverse .active.btn-success[disabled] {
-  color: #fff;
+  color: #ffffff;
   background-color: #942a25;
   *background-color: #802420;
 }
@@ -464,7 +500,7 @@ div.chzn-container#advancedparams_color_chzn {
   background-color: #6b1f1b \9;
 }
 .btn-group-yesno-reverse .active.btn-danger {
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #409740;
   background-image: -moz-linear-gradient(top, #46a546, #378137);
@@ -485,7 +521,7 @@ div.chzn-container#advancedparams_color_chzn {
 .btn-group-yesno-reverse .active.btn-danger.active,
 .btn-group-yesno-reverse .active.btn-danger.disabled,
 .btn-group-yesno-reverse .active.btn-danger[disabled] {
-  color: #fff;
+  color: #ffffff;
   background-color: #378137;
   *background-color: #2f6f2f;
 }
@@ -507,7 +543,7 @@ input.rl_keyfield {
   font-size: 14px !important;
 }
 .rl_keycode {
-  color: #999;
+  color: #999999;
   padding: 2px 0;
 }
 #key_button,
@@ -531,9 +567,6 @@ input.rl_keyfield {
 }
 .rl_footer .rl_footer_review {
   margin-top: 5px;
-}
-.rl_footer .rl_footer_review a.stars {
-  display: inline-block;
 }
 .rl_footer .rl_footer_review a.stars .icon-star {
   color: #fcac0a;

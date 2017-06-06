@@ -1,19 +1,18 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-use RegularLabs\Library\Document as RL_Document;
-
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
 
 JHtml::_('bootstrap.framework');
 JHtml::_('behavior.formvalidator');
@@ -66,8 +65,8 @@ if (JFactory::getUser()->authorise('core.admin'))
 }
 
 JFactory::getDocument()->addScriptDeclaration($script);
-RL_Document::script('regularlabs/script.min.js');
-RL_Document::script('regularlabs/toggler.min.js');
+RLFunctions::script('regularlabs/script.min.js', '16.5.10919');
+RLFunctions::script('regularlabs/toggler.min.js', '16.5.10919');
 
 JFactory::getDocument()->addStyleSheetVersion(JUri::root(true) . '/media/regularlabs/css/frontend.min.css');
 ?>
@@ -144,12 +143,12 @@ JFactory::getDocument()->addStyleSheetVersion(JUri::root(true) . '/media/regular
 					</fieldset>
 					<?php
 					// Set main fields.
-					$this->fields = [
+					$this->fields = array(
 						'published',
 						'access',
 						'ordering',
 						'note',
-					];
+					);
 					?>
 					<?php echo str_replace('form-vertical', 'form-horizontal', JLayoutHelper::render('joomla.edit.global', $this)); ?>
 					<fieldset class="form-horizontal">
@@ -158,6 +157,28 @@ JFactory::getDocument()->addStyleSheetVersion(JUri::root(true) . '/media/regular
 						<?php endif; ?>
 						<?php if ($this->item->client_id == 0 && $this->config->show_hideempty) : ?>
 							<?php echo $this->render($this->assignments, 'hideempty'); ?>
+						<?php endif; ?>
+						<?php if ($this->config->show_extra) : ?>
+							<?php for ($i = 1; $i <= 5; $i++) : ?>
+								<?php if (isset($this->config->{'extra' . $i}) && $this->config->{'extra' . $i} != '') : ?>
+									<?php
+									$label   = explode('|', $this->config->{'extra' . $i}, 2);
+									$tooltip = isset($label['1']) ? JText::_($label['1']) : '';
+									$label   = JText::_($label['0']);
+									?>
+									<div class="control-group">
+										<div class="control-label">
+											<label id="advancedparams_extra<?php echo $i; ?>-lbl" for="advancedparams_extra<?php echo $i; ?>"
+												<?php echo $tooltip ? 'class="tooltip" title="<strong>' . $label . '</strong><br>' . $tooltip . '"' : ''; ?>>
+												<?php echo $label; ?>
+											</label>
+										</div>
+										<div class="controls">
+											<?php echo $this->assignments->getInput('extra' . $i); ?>
+										</div>
+									</div>
+								<?php endif; ?>
+							<?php endfor; ?>
 						<?php endif; ?>
 					</fieldset>
 
@@ -171,8 +192,8 @@ JFactory::getDocument()->addStyleSheetVersion(JUri::root(true) . '/media/regular
 
 					<div class="form-horizontal">
 						<?php
-						$this->fieldsets        = [];
-						$this->ignore_fieldsets = ['basic', 'description'];
+						$this->fieldsets        = array();
+						$this->ignore_fieldsets = array('basic', 'description');
 						echo JLayoutHelper::render('joomla.edit.params', $this);
 						?>
 					</div>

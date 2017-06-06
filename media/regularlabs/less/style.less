@@ -1,10 +1,10 @@
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 @import "init.less";
@@ -41,7 +41,7 @@ div.rl_well {
 	color: @grayDark;
 }
 
-.well-striped:nth-child(even) {
+.well-striped:nth-child(even){
 	background-color: lighten(@wellBackground, 3%);
 }
 
@@ -50,21 +50,11 @@ div.rl_well {
 }
 
 .rl_btn-ignore.btn-danger.active {
-	background-color: @grayLight;
-	border:           1px solid rgba(0, 0, 0, 0.2);
-	&:hover,
-	&:focus {
-		background-color: darken(@grayLight, 15%);
-	}
+	.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255, 255, 255, .75));
 }
 
 .rl_btn-exclude.btn-success.active {
-	background-color: @btnDangerBackground;
-	border:           1px solid rgba(0, 0, 0, 0.2);
-	&:hover,
-	&:focus {
-		background-color: darken(@btnDangerBackground, 15%);
-	}
+	.buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
 }
 
 .rl_textarea {
@@ -251,8 +241,6 @@ input.rl_keyfield {
 		margin-top: 5px;
 
 		a.stars {
-			display: inline-block;
-
 			.icon-star {
 				color:  mix(@yellow, @orange);
 				margin: 0;

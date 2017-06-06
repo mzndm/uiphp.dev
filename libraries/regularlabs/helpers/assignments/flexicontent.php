@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,12 +15,12 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsFlexiContent extends RLAssignment
 {
-	public function passPageTypes()
+	function passPageTypes()
 	{
 		return $this->passByPageTypes('com_flexicontent', $this->selection, $this->assignment);
 	}
 
-	public function passTags()
+	function passTags()
 	{
 		if ($this->request->option != 'com_flexicontent')
 		{
@@ -31,7 +29,7 @@ class RLAssignmentsFlexiContent extends RLAssignment
 
 		$pass = (
 			($this->params->inc_tags && $this->request->view == 'tags')
-			|| ($this->params->inc_items && in_array($this->request->view, ['item', 'items']))
+			|| ($this->params->inc_items && in_array($this->request->view, array('item', 'items')))
 		);
 
 		if (!$pass)
@@ -48,7 +46,7 @@ class RLAssignmentsFlexiContent extends RLAssignment
 				->where('t.published = 1');
 			$this->db->setQuery($query);
 			$tag  = $this->db->loadResult();
-			$tags = [$tag];
+			$tags = array($tag);
 		}
 		else
 		{
@@ -65,14 +63,14 @@ class RLAssignmentsFlexiContent extends RLAssignment
 		return $this->passSimple($tags, true);
 	}
 
-	public function passTypes()
+	function passTypes()
 	{
 		if ($this->request->option != 'com_flexicontent')
 		{
 			return $this->pass(false);
 		}
 
-		$pass = in_array($this->request->view, ['item', 'items']);
+		$pass = in_array($this->request->view, array('item', 'items'));
 
 		if (!$pass)
 		{
@@ -86,8 +84,13 @@ class RLAssignmentsFlexiContent extends RLAssignment
 		$this->db->setQuery($query);
 		$type = $this->db->loadResult();
 
-		$types = $this->makeArray($type);
+		$types = $this->makeArray($type, 1);
 
 		return $this->passSimple($types);
+	}
+
+	function getCatParentIds($id = 0)
+	{
+		return $this->getParentIds($id, 'categories', 'parent_id');
 	}
 }

@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,7 +15,7 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsMijoShop extends RLAssignment
 {
-	public function init()
+	function init()
 	{
 		$input = JFactory::getApplication()->input;
 
@@ -49,12 +47,12 @@ class RLAssignmentsMijoShop extends RLAssignment
 		$this->request->view = $view;
 	}
 
-	public function passPageTypes()
+	function passPageTypes()
 	{
 		return $this->passByPageTypes('com_mijoshop', $this->selection, $this->assignment, true);
 	}
 
-	public function passCategories()
+	function passCategories()
 	{
 		if ($this->request->option != 'com_mijoshop')
 		{
@@ -73,7 +71,7 @@ class RLAssignmentsMijoShop extends RLAssignment
 			return $this->pass(false);
 		}
 
-		$cats = [];
+		$cats = array();
 		if ($this->request->category_id)
 		{
 			$cats = $this->request->category_id;
@@ -107,7 +105,7 @@ class RLAssignmentsMijoShop extends RLAssignment
 		return $this->passSimple($cats);
 	}
 
-	public function passProducts()
+	function passProducts()
 	{
 		if (!$this->request->id || $this->request->option != 'com_mijoshop' || $this->request->view != 'product')
 		{
@@ -117,7 +115,7 @@ class RLAssignmentsMijoShop extends RLAssignment
 		return $this->passSimple($this->request->id);
 	}
 
-	private function getCatParentIds($id = 0)
+	function getCatParentIds($id = 0)
 	{
 		return $this->getParentIds($id, 'mijoshop_category', 'parent_id', 'category_id');
 	}

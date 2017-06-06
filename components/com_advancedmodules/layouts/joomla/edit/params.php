@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -26,20 +26,20 @@ if (empty($fieldSets))
 	return;
 }
 
-$ignoreFieldsets = $displayData->get('ignore_fieldsets') ?: [];
-$ignoreFields    = $displayData->get('ignore_fields') ?: [];
-$extraFields     = $displayData->get('extra_fields') ?: [];
+$ignoreFieldsets = $displayData->get('ignore_fieldsets') ?: array();
+$ignoreFields    = $displayData->get('ignore_fields') ?: array();
+$extraFields     = $displayData->get('extra_fields') ?: array();
 
 if (!empty($displayData->hiddenFieldsets))
 {
 	// These are required to preserve data on save when fields are not displayed.
-	$hiddenFieldsets = $displayData->hiddenFieldsets ?: [];
+	$hiddenFieldsets = $displayData->hiddenFieldsets ?: array();
 }
 
 if (!empty($displayData->configFieldsets))
 {
 	// These are required to configure showing and hiding fields in the editor.
-	$configFieldsets = $displayData->configFieldsets ?: [];
+	$configFieldsets = $displayData->configFieldsets ?: array();
 }
 
 if ($displayData->get('show_options', 1))
@@ -56,16 +56,16 @@ if ($displayData->get('show_options', 1))
 
 		if (!empty($fieldSet->label))
 		{
-			$label = JText::_($fieldSet->label);
+			$label = JText::_($fieldSet->label, true);
 		}
 		else
 		{
 			$label = strtoupper('JGLOBAL_FIELDSET_' . $name);
-			if (JText::_($label) == $label)
+			if (JText::_($label, true) == $label)
 			{
 				$label = strtoupper('COM_MODULES_' . $name . '_FIELDSET_LABEL');
 			}
-			$label = JText::_($label);
+			$label = JText::_($label, true);
 		}
 
 		echo JHtml::_('bootstrap.addSlide', 'moduleSlide', $label, 'attrib-' . $name);
@@ -83,7 +83,7 @@ if ($displayData->get('show_options', 1))
 }
 else
 {
-	$html   = [];
+	$html   = array();
 	$html[] = '<div style="display:none;">';
 	foreach ($fieldSets as $name => $fieldSet)
 	{

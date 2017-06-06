@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -23,18 +23,18 @@ $function  = JFactory::getApplication()->input->getCmd('function', 'jSelectPosit
 $lang      = JFactory::getLanguage();
 $ordering  = $this->escape($this->state->get('list.ordering'));
 $direction = $this->escape($this->state->get('list.direction'));
-$clientId  = $this->state->get('client_id');
-$state     = $this->state->get('filter.state');
+$clientId  = $this->state->get('filter.client_id');
+$published = $this->state->get('filter.published');
 $template  = $this->state->get('filter.template');
 $type      = $this->state->get('filter.type');
 ?>
 <form
-		action="<?php echo JRoute::_('index.php?option=com_advancedmodules&view=positions&layout=modal&tmpl=component&function=' . $function . '&client_id=' . $clientId); ?>"
-		method="post" name="adminForm" id="adminForm">
+	action="<?php echo JRoute::_('index.php?option=com_advancedmodules&view=positions&layout=modal&tmpl=component&function=' . $function . '&client_id=' . $clientId); ?>"
+	method="post" name="adminForm" id="adminForm">
 	<fieldset class="filter clear">
 		<div class="left">
 			<label for="filter_search">
-				<?php echo JText::_('JSEARCH_FILTER_LABEL'); ?>
+				<?php echo JText::_('JSearch_Filter_Label'); ?>
 			</label>
 			<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" size="30"
 			       title="<?php echo JText::_('COM_MODULES_FILTER_SEARCH_DESC'); ?>">
@@ -106,10 +106,10 @@ $type      = $this->state->get('filter.type');
 	</table>
 
 	<div>
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?php echo $ordering; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?php echo $direction; ?>" />
+		<input type="hidden" name="task" value="">
+		<input type="hidden" name="boxchecked" value="0">
+		<input type="hidden" name="filter_order" value="<?php echo $ordering; ?>">
+		<input type="hidden" name="filter_order_Dir" value="<?php echo $direction; ?>">
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

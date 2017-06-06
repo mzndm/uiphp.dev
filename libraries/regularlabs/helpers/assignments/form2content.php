@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,7 +15,7 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsForm2Content extends RLAssignment
 {
-	public function passProjects()
+	function passProjects()
 	{
 		if ($this->request->option != 'com_content' && $this->request->view == 'article')
 		{
@@ -31,7 +29,7 @@ class RLAssignmentsForm2Content extends RLAssignment
 		$this->db->setQuery($query);
 		$type = $this->db->loadResult();
 
-		$types = $this->makeArray($type);
+		$types = $this->makeArray($type, 1);
 
 		return $this->passSimple($types);
 	}

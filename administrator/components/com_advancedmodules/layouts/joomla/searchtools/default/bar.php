@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -18,9 +18,9 @@ defined('JPATH_BASE') or die;
 
 $data = $displayData;
 
-if ($data['view'] instanceof AdvancedModulesViewModules && JFactory::getApplication()->input->get('layout', '', 'cmd') !== 'modal')
+if ($data['view'] instanceof AdvancedModulesViewModules)
 {
-	// Add the client selector before the form filters.
+	// We will get the client filter & remove it from the form filters
 	$clientIdField = $data['view']->filterForm->getField('client_id');
 	?>
 	<div class="js-stools-field-filter js-stools-client_id">
@@ -29,5 +29,5 @@ if ($data['view'] instanceof AdvancedModulesViewModules && JFactory::getApplicat
 	<?php
 }
 
-// Display the main joomla layout.
-echo JLayoutHelper::render('joomla.searchtools.default.bar', $data, null, ['component' => 'none']);
+// Display the main joomla layout
+echo JLayoutHelper::render('joomla.searchtools.default.bar', $data, null, array('component' => 'none'));

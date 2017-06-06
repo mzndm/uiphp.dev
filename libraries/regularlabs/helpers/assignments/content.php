@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -19,7 +17,7 @@ class RLAssignmentsContent extends RLAssignment
 {
 	public function passPageTypes()
 	{
-		$components = ['com_content', 'com_contentsubmit'];
+		$components = array('com_content', 'com_contentsubmit');
 		if (!in_array($this->request->option, $components))
 		{
 			return $this->pass(false);
@@ -39,7 +37,7 @@ class RLAssignmentsContent extends RLAssignment
 	public function passCategories()
 	{
 		// components that use the com_content secs/cats
-		$components = ['com_content', 'com_flexicontent', 'com_contentsubmit'];
+		$components = array('com_content', 'com_flexicontent', 'com_contentsubmit');
 		if (!in_array($this->request->option, $components))
 		{
 			return $this->pass(false);
@@ -50,9 +48,9 @@ class RLAssignmentsContent extends RLAssignment
 			return $this->pass(false);
 		}
 
-		$is_content  = in_array($this->request->option, ['com_content', 'com_flexicontent']);
-		$is_category = in_array($this->request->view, ['category']);
-		$is_item     = in_array($this->request->view, ['', 'article', 'item', 'form']);
+		$is_content  = in_array($this->request->option, array('com_content', 'com_flexicontent'));
+		$is_category = in_array($this->request->view, array('category'));
+		$is_item     = in_array($this->request->view, array('', 'article', 'item', 'form'));
 
 		if (
 			$this->request->option != 'com_contentsubmit'
@@ -117,7 +115,7 @@ class RLAssignmentsContent extends RLAssignment
 			if (!$pass && $this->params->inc_children)
 			{
 				$parent_ids = $this->getCatParentIds($catid);
-				$parent_ids = array_diff($parent_ids, ['1']);
+				$parent_ids = array_diff($parent_ids, array('1'));
 				foreach ($parent_ids as $id)
 				{
 					if (in_array($id, $this->selection))
@@ -205,31 +203,21 @@ class RLAssignmentsContent extends RLAssignment
 		return $this->pass($pass);
 	}
 
-	public function getItem($fields = [])
+	public function getItem($fields = array())
 	{
 		if ($this->article)
 		{
 			return $this->article;
 		}
 
-		if (!class_exists('ContentModelArticle'))
-		{
-			require_once JPATH_SITE . '/components/com_content/models/article.php';
-		}
-
-		$model = JModelLegacy::getInstance('article', 'contentModel');
-
-		if (!method_exists($model, 'getItem'))
-		{
-			return null;
-		}
-
+		require_once JPATH_SITE . '/components/com_content/models/article.php';
+		$model         = JModelLegacy::getInstance('article', 'contentModel');
 		$this->article = $model->getItem($this->request->id);
 
 		return $this->article;
 	}
 
-	private function getCatParentIds($id = 0)
+	public function getCatParentIds($id = 0)
 	{
 		return $this->getParentIds($id, 'categories');
 	}

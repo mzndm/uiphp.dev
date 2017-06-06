@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -54,7 +54,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 		$app->setUserState('com_advancedmodules.add.module.params', null);
 
 		// Parameters could be coming in for a new item, so let's set them.
-		$params = $app->input->get('params', [], 'array');
+		$params = $app->input->get('params', array(), 'array');
 		$app->setUserState('com_advancedmodules.add.module.params', $params);
 	}
 
@@ -116,7 +116,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 	 *
 	 * @return  boolean
 	 */
-	protected function allowAdd($data = [])
+	protected function allowAdd($data = array())
 	{
 		$user = JFactory::getUser();
 
@@ -131,7 +131,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 	 *
 	 * @return  boolean
 	 */
-	protected function allowEdit($data = [], $key = 'id')
+	protected function allowEdit($data = array(), $key = 'id')
 	{
 		// Initialise variables.
 		$recordId = (int) isset($data[$key]) ? $data[$key] : 0;
@@ -159,7 +159,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Set the model
-		$model = $this->getModel('Module', '', []);
+		$model = $this->getModel('Module', '', array());
 
 		// Preset the redirect
 		$redirectUrl = 'index.php?option=com_advancedmodules&view=modules' . $this->getRedirectToListAppend();
@@ -177,7 +177,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 	 *
 	 * @return  void
 	 */
-	protected function postSaveHook(JModelLegacy $model, $validData = [])
+	protected function postSaveHook(JModelLegacy $model, $validData = array())
 	{
 		$app  = JFactory::getApplication();
 		$task = $this->getTask();
@@ -214,7 +214,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 		if (JFactory::getDocument()->getType() == 'json')
 		{
 			$model      = $this->getModel();
-			$data       = $this->input->post->get('jform', [], 'array');
+			$data       = $this->input->post->get('jform', array(), 'array');
 			$item       = $model->getItem($this->input->get('id'));
 			$properties = $item->getProperties();
 
@@ -250,7 +250,7 @@ class AdvancedModulesControllerModule extends JControllerForm
 		$lang    = JFactory::getLanguage();
 		$model   = $this->getModel();
 		$table   = $model->getTable();
-		$data    = $this->input->post->get('jform', [], 'array');
+		$data    = $this->input->post->get('jform', array(), 'array');
 		$checkin = property_exists($table, 'checked_out');
 		$context = "$this->option.edit.$this->context";
 		$task    = $this->getTask();
@@ -316,10 +316,11 @@ class AdvancedModulesControllerModule extends JControllerForm
 				if ($errors[$i] instanceof Exception)
 				{
 					$app->enqueueMessage($errors[$i]->getMessage(), 'warning');
-					continue;
 				}
-
-				$app->enqueueMessage($errors[$i], 'warning');
+				else
+				{
+					$app->enqueueMessage($errors[$i], 'warning');
+				}
 			}
 
 			// Save the data in the session.
@@ -394,81 +395,5 @@ class AdvancedModulesControllerModule extends JControllerForm
 		}
 
 		$this->redirect();
-	}
-
-	/**
-	 * Method to get the other modules in the same position
-	 *
-	 * @return  string  The data for the Ajax request.
-	 *
-	 * @since   3.6.3
-	 */
-	public function orderPosition()
-	{
-		$app = JFactory::getApplication();
-
-		// Send json mime type.
-		$app->mimeType = 'application/json';
-		$app->setHeader('Content-Type', $app->mimeType . '; charset=' . $app->charSet);
-		$app->sendHeaders();
-
-		// Check if user token is valid.
-		if (!JSession::checkToken('get'))
-		{
-			$app->enqueueMessage(JText::_('JINVALID_TOKEN'), 'error');
-			echo new JResponseJson;
-			$app->close();
-		}
-
-		$jinput   = $app->input;
-		$clientId = $jinput->getValue('client_id');
-		$position = $jinput->getValue('position');
-
-		$db    = JFactory::getDbo();
-		$query = $db->getQuery(true)
-			->select('position, ordering, title')
-			->from('#__modules')
-			->where('client_id = ' . (int) $clientId . ' AND position = ' . $db->q($position))
-			->order('ordering');
-
-		$db->setQuery($query);
-
-		try
-		{
-			$orders = $db->loadObjectList();
-		}
-		catch (RuntimeException $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-
-			return '';
-		}
-
-		$orders2 = [];
-		$n       = count($orders);
-
-		if ($n > 0)
-		{
-			for ($i = 0, $n; $i < $n; $i++)
-			{
-				if (!isset($orders2[$orders[$i]->position]))
-				{
-					$orders2[$orders[$i]->position] = 0;
-				}
-
-				$orders2[$orders[$i]->position]++;
-				$ord   = $orders2[$orders[$i]->position];
-				$title = JText::sprintf('COM_MODULES_OPTION_ORDER_POSITION', $ord, htmlspecialchars($orders[$i]->title, ENT_QUOTES, 'UTF-8'));
-
-				$html[] = $orders[$i]->position . ',' . $ord . ',' . $title;
-			}
-		}
-		else
-		{
-			$html[] = $position . ',' . 1 . ',' . JText::_('JNONE');
-		}
-
-		echo new JResponseJson($html);
-		$app->close();
 	}
 }

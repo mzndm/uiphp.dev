@@ -1,27 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Form as RL_Form;
-use RegularLabs\Library\RegEx as RL_RegEx;
-
-class JFormFieldRL_Modules extends \RegularLabs\Library\Field
+class JFormFieldRL_Modules extends RLFormField
 {
 	public $type = 'Modules';
 
@@ -49,7 +41,7 @@ class JFormFieldRL_Modules extends \RegularLabs\Library\Field
 		$modules = $this->db->loadObjectList();
 
 		// assemble menu items to the array
-		$options = [];
+		$options = array();
 
 		$p = 0;
 		foreach ($modules as $item)
@@ -78,7 +70,7 @@ class JFormFieldRL_Modules extends \RegularLabs\Library\Field
 			{
 				$item->title .= ' (' . $item->language . ')';
 			}
-			$item->title = RL_Form::prepareSelectItem($item->title, $item->published);
+			$item->title = RLText::prepareSelectItem($item->title, $item->published);
 
 			$options[] = JHtml::_('select.option', $item->id, $item->title);
 		}
@@ -139,6 +131,6 @@ class JFormFieldRL_Modules extends \RegularLabs\Library\Field
 			$html = '<div class="input-maximize">' . $html . '</div>';
 		}
 
-		return RL_RegEx::replace('>\[\[\:(.*?)\:\]\]', ' style="\1">', $html);
+		return preg_replace('#>\[\[\:(.*?)\:\]\]#si', ' style="\1">', $html);
 	}
 }

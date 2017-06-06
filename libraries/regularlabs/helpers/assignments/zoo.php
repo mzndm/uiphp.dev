@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,7 +15,7 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsZoo extends RLAssignment
 {
-	public function init()
+	function init()
 	{
 		if (!$this->request->view)
 		{
@@ -57,12 +55,12 @@ class RLAssignmentsZoo extends RLAssignment
 		}
 	}
 
-	public function passPageTypes()
+	function passPageTypes()
 	{
 		return $this->passByPageTypes('com_zoo', $this->selection, $this->assignment);
 	}
 
-	public function passCategories()
+	function passCategories()
 	{
 		if ($this->request->option != 'com_zoo')
 		{
@@ -111,7 +109,7 @@ class RLAssignmentsZoo extends RLAssignment
 	{
 		if ($this->article && isset($this->article->catid))
 		{
-			return [$this->article->catid];
+			return array($this->article->catid);
 		}
 
 		$menuparams = $this->getMenuItemParams($this->request->Itemid);
@@ -121,18 +119,18 @@ class RLAssignmentsZoo extends RLAssignment
 			case 'frontpage':
 				if ($this->request->id)
 				{
-					return [$this->request->id];
+					return array($this->request->id);
 				}
 
 				if (!isset($menuparams->application))
 				{
-					return [];
+					return array();
 				}
 
-				return ['app' . $menuparams->application];
+				return array('app' . $menuparams->application);
 
 			case 'category':
-				$cats = [];
+				$cats = array();
 
 				if ($this->request->id)
 				{
@@ -145,7 +143,7 @@ class RLAssignmentsZoo extends RLAssignment
 
 				if (empty($cats['0']))
 				{
-					return [];
+					return array();
 				}
 
 				$query = $this->db->getQuery(true)
@@ -167,7 +165,7 @@ class RLAssignmentsZoo extends RLAssignment
 
 				if (!$id)
 				{
-					return [];
+					return array();
 				}
 
 				$query = $this->db->getQuery(true)
@@ -192,7 +190,7 @@ class RLAssignmentsZoo extends RLAssignment
 		}
 	}
 
-	public function passItems()
+	function passItems()
 	{
 		if (!$this->request->id || $this->request->option != 'com_zoo')
 		{
@@ -221,7 +219,7 @@ class RLAssignmentsZoo extends RLAssignment
 		return $this->pass($pass);
 	}
 
-	public function getItem($fields = [])
+	public function getItem($fields = array())
 	{
 		$query = $this->db->getQuery(true)
 			->select($fields)
@@ -232,9 +230,9 @@ class RLAssignmentsZoo extends RLAssignment
 		return $this->db->loadObject();
 	}
 
-	private function getCatParentIds($id = 0)
+	function getCatParentIds($id = 0)
 	{
-		$parent_ids = [];
+		$parent_ids = array();
 
 		if (!$id)
 		{

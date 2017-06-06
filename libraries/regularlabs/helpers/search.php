@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -162,7 +162,7 @@ class SearchModelSearch extends JModelLegacy
 				)
 			);
 
-			$rows = [];
+			$rows = array();
 
 			foreach ($results as $result)
 			{
@@ -185,20 +185,12 @@ class SearchModelSearch extends JModelLegacy
 			$params->set('rl_search', 1);
 			foreach ($this->_data as $item)
 			{
-				if (empty($item->text))
+				if ($item->text != '')
 				{
-					continue;
+					$dispatcher->trigger('onContentPrepare', array('com_content.article', &$item, &$params, 0));
+					// strip html tags from title
+					$item->title = strip_tags($item->title);
 				}
-
-				$dispatcher->trigger('onContentPrepare', ['com_search.search.article', &$item, &$params, 0]);
-
-				if (empty($item->title))
-				{
-					continue;
-				}
-
-				// strip html tags from title
-				$item->title = strip_tags($item->title);
 			}
 			/* <<< */
 		}
@@ -228,7 +220,7 @@ class SearchModelSearch extends JModelLegacy
 	 *
 	 * @access  public
 	 */
-	public function setAreas($active = [], $search = [])
+	public function setAreas($active = array(), $search = array())
 	{
 		$this->_areas['active'] = $active;
 		$this->_areas['search'] = $search;
@@ -263,7 +255,7 @@ class SearchModelSearch extends JModelLegacy
 		// Load the Category data
 		if (empty($this->_areas['search']))
 		{
-			$areas = [];
+			$areas = array();
 
 			JPluginHelper::importPlugin('search');
 			$dispatcher  = JEventDispatcher::getInstance();

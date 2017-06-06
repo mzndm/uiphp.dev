@@ -1,26 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-require_once JPATH_LIBRARIES . '/joomla/form/fields/password.php';
+require_once dirname(__DIR__) . '/helpers/text.php';
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
-
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\StringHelper as RL_String;
+JFormHelper::loadFieldClass('password');
 
 class JFormFieldRL_Password extends JFormFieldPassword
 {
@@ -54,7 +47,7 @@ class JFormFieldRL_Password extends JFormFieldPassword
 		$var5 = JText::_($this->get('var5'));
 
 		$string = JText::sprintf(JText::_($string), $var1, $var2, $var3, $var4, $var5);
-		$string = trim(RL_String::html_entity_decoder($string));
+		$string = trim(RLText::html_entity_decoder($string));
 		$string = str_replace('&quot;', '"', $string);
 		$string = str_replace('span style="font-family:monospace;"', 'span class="rl_code"', $string);
 

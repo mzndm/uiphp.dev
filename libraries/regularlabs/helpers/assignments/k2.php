@@ -1,22 +1,17 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
 require_once dirname(__DIR__) . '/assignment.php';
-
-// If controller.php exists, assume this is K2 v3
-defined('RL_K2_VERSION') or define('RL_K2_VERSION', JFile::exists(JPATH_ADMINISTRATOR . '/components/com_k2/controller.php') ? 3 : 2);
 
 class RLAssignmentsK2 extends RLAssignment
 {
@@ -46,7 +41,7 @@ class RLAssignmentsK2 extends RLAssignment
 			return $this->pass(false);
 		}
 
-		$cats = $this->makeArray($this->getCategories());
+		$cats = $this->makeArray($this->getCategories(), true);
 		$pass = $this->passSimple($cats, 'include');
 
 		if ($pass && $this->params->inc_children == 2)
@@ -175,7 +170,7 @@ class RLAssignmentsK2 extends RLAssignment
 		return $this->pass($pass);
 	}
 
-	public function getItem($fields = [])
+	public function getItem($fields = array())
 	{
 		$query = $this->db->getQuery(true)
 			->select($fields)

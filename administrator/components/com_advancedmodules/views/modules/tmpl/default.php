@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -16,13 +16,12 @@
 
 defined('_JEXEC') or die;
 
-use RegularLabs\Library\Document as RL_Document;
-use RegularLabs\Library\License as RL_License;
-use RegularLabs\Library\Version as RL_Version;
-
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
+
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/versions.php';
 
 $client    = $this->state->get('filter.client_id') ? 'administrator' : 'site';
 $user      = JFactory::getUser();
@@ -31,19 +30,17 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 $trashed   = $this->state->get('filter.state') == -2 ? true : false;
 $canOrder  = $user->authorise('core.edit.state', 'com_modules');
 $saveOrder = ($listOrder == 'ordering');
-
-$langs = JLanguage::getKnownLanguages(constant('JPATH_' . strtoupper($client)));
-
 if ($saveOrder)
 {
 	$saveOrderingUrl = 'index.php?option=com_advancedmodules&task=modules.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', 'moduleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
-
 $showcolors = ($client == 'site' && $this->config->show_color);
 if ($showcolors)
 {
-	$script = "
+	require_once JPATH_LIBRARIES . '/joomla/form/fields/color.php';
+	$colorfield = new JFormFieldColor;
+	$script     = "
 		function setColor(id, el)
 		{
 			var f = document.getElementById('adminForm');
@@ -51,10 +48,10 @@ if ($showcolors)
 			listItemTask(id, 'modules.setcolor');
 		}
 	";
-	RL_Document::scriptDeclaration($script);
+	JFactory::getDocument()->addScriptDeclaration($script);
 }
 
-RL_Document::style('regularlabs/style.min.css');
+RLFunctions::stylesheet('regularlabs/style.min.css', '16.5.10919');
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_advancedmodules'); ?>" method="post" name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)) : ?>
@@ -67,13 +64,13 @@ RL_Document::style('regularlabs/style.min.css');
 		// Version check
 		if ($this->config->show_update_notification)
 		{
-			echo RL_Version::getMessage('ADVANCED_MODULE_MANAGER');
+			echo RLVersions::render('ADVANCED_MODULE_MANAGER');
 		}
 		?>
 		<div class="clear"></div>
 		<?php
 		// Search tools bar and filters
-		echo JLayoutHelper::render('joomla.searchtools.default', ['view' => $this]);
+		echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
 		?>
 		<?php if (empty($this->items)) : ?>
 			<div class="alert alert-no-items">
@@ -122,8 +119,8 @@ RL_Document::style('regularlabs/style.min.css');
 						<th width="10%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 						</th>
-						<th width="10%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'a.language', $listDirn, $listOrder); ?>
+						<th width="5%" class="nowrap hidden-phone">
+							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap center hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -197,13 +194,7 @@ RL_Document::style('regularlabs/style.min.css');
 							<?php if ($showcolors) : ?>
 								<td class="center inlist">
 									<?php
-									include_once(JPATH_LIBRARIES . '/joomla/form/fields/color.php');
-									$colorfield = new JFormFieldColor;
-
-									$color = (isset($item->params->color) && $item->params->color)
-										? $color = str_replace('##', '#', $item->params->color)
-										: 'none';
-
+									$color          = (isset($item->params->color) && $item->params->color) ? $color = str_replace('##', '#', $item->params->color) : 'none';
 									$element        = new SimpleXMLElement(
 										'<field
 												name="color_' . $i . '"
@@ -216,9 +207,7 @@ RL_Document::style('regularlabs/style.min.css');
 												/>'
 									);
 									$element->value = $color;
-
 									$colorfield->setup($element, $color);
-
 									echo $colorfield->__get('input');
 									?>
 								</td>
@@ -279,7 +268,7 @@ RL_Document::style('regularlabs/style.min.css');
 							</td>
 							<td class="small hidden-phone">
 								<?php
-								if (empty($item->language))
+								if ($item->language == '')
 								{
 									echo JText::_('JDEFAULT');
 								}
@@ -304,12 +293,8 @@ RL_Document::style('regularlabs/style.min.css');
 								}
 								else
 								{
-									echo $item->language_title
-										? JHtml::_('image', 'mod_languages/' . $item->language_image . '.gif', $item->language_title, ['title' => $item->language_title], true) . '&nbsp;' . $this->escape($item->language_title)
-										: ((isset($langs[$item->language]) && !empty($langs[$item->language]['name']))
-											? $this->escape($langs[$item->language]['name'])
-											: JText::_('JUNDEFINED')
-										);
+									$language_params = json_decode($item->language_params);
+									echo !empty($language_params->name) ? $this->escape($language_params->name) : JText::_('JUNDEFINED');
 								}
 								?>
 							</td>
@@ -349,12 +334,9 @@ RL_Document::style('regularlabs/style.min.css');
 			</div>
 		<?php endif; ?>
 		<?php
-		// PRO Check
-
-		echo RL_License::getMessage('ADVANCED_MODULE_MANAGER');
 
 		// Copyright
-		echo RL_Version::getFooter('ADVANCED_MODULE_MANAGER');
+		echo RLVersions::getFooter('ADVANCED_MODULE_MANAGER', $this->config->show_copyright);
 		?>
 	</div>
 </form>

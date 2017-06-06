@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -32,7 +32,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 
 	public function preflight($route, JAdapterInstance $adapter)
 	{
-		if (!in_array($route, ['install', 'update']))
+		if (!in_array($route, array('install', 'update')))
 		{
 			return;
 		}
@@ -44,7 +44,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			$this->install_type = 'update';
 		}
 
-		if ($this->onBeforeInstall($route) === false)
+		if ($this->onBeforeInstall() === false)
 		{
 			return false;
 		}
@@ -57,16 +57,15 @@ class PlgSystemRegularLabsInstallerScriptHelper
 
 		JFactory::getLanguage()->load($this->getPrefix() . '_' . $this->extname, $this->getMainFolder());
 
-		if (!in_array($route, ['install', 'update']))
+		if (!in_array($route, array('install', 'update')))
 		{
 			return;
 		}
 
-		$this->fixExtensionNames();
 		$this->updateUpdateSites();
 		$this->removeAdminCache();
 
-		if ($this->onAfterInstall($route) === false)
+		if ($this->onAfterInstall() === false)
 		{
 			return false;
 		}
@@ -108,7 +107,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		switch ($this->extension_type)
 		{
 			case 'plugin' :
-				return JPATH_PLUGINS . '/' . $this->plugin_folder . '/' . $this->extname;
+				return JPATH_SITE . '/plugins/' . $this->plugin_folder . '/' . $this->extname;
 
 			case 'component' :
 				return JPATH_ADMINISTRATOR . '/components/com_' . $this->extname;
@@ -150,12 +149,12 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			return;
 		}
 
-		$folders = [];
+		$folders = array();
 
 		switch ($type)
 		{
 			case 'plugin';
-				$folders[] = JPATH_PLUGINS . '/' . $folder . '/' . $extname;
+				$folders[] = JPATH_SITE . '/plugins/' . $folder . '/' . $extname;
 				break;
 
 			case 'component':
@@ -198,12 +197,12 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			return;
 		}
 
-		$ignore_ids = JFactory::getApplication()->getUserState('rl_ignore_uninstall_ids', []);
+		$ignore_ids = JFactory::getApplication()->getUserState('rl_ignore_uninstall_ids', array());
 
 		if (JFactory::getApplication()->input->get('option') == 'com_installer' && JFactory::getApplication()->input->get('task') == 'remove')
 		{
 			// Don't attempt to uninstall extensions that are already selected to get uninstalled by them selves
-			$ignore_ids = array_merge($ignore_ids, JFactory::getApplication()->input->get('cid', [], 'array'));
+			$ignore_ids = array_merge($ignore_ids, JFactory::getApplication()->input->get('cid', array(), 'array'));
 			JFactory::getApplication()->input->set('cid', array_merge($ignore_ids, $ids));
 		}
 
@@ -234,7 +233,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		}
 	}
 
-	public function foldersExist($folders = [])
+	public function foldersExist($folders = array())
 	{
 		foreach ($folders as $folder)
 		{
@@ -339,7 +338,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		// add module to the modules_menu table
 		$query->clear()
 			->insert('#__modules_menu')
-			->columns([$this->db->quoteName('moduleid'), $this->db->quoteName('menuid')])
+			->columns(array($this->db->quoteName('moduleid'), $this->db->quoteName('menuid')))
 			->values((int) $id . ', 0');
 		$this->db->setQuery($query);
 		$this->db->execute();
@@ -504,41 +503,36 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		}
 
 		$contents = str_replace(
-			['FREEFREE', 'FREEPRO', 'PROFREE', 'PROPRO'],
-			['FREE', 'PRO', 'FREE', 'PRO'],
+			array('FREEFREE', 'FREEPRO', 'PROFREE', 'PROPRO'),
+			array('FREE', 'PRO', 'FREE', 'PRO'),
 			$contents
 		);
 
 		JFile::write($file, $contents);
 	}
 
-	public function onBeforeInstall($route)
+	public function onBeforeInstall()
 	{
 		if (!$this->canInstall())
 		{
 			return false;
 		}
-
-		return true;
 	}
 
-	public function onAfterInstall($route)
+	public function onAfterInstall()
 	{
 	}
 
-	public function delete($files = [])
+	public function deleteFolders($folders = array())
 	{
-		foreach ($files as $file)
+		foreach ($folders as $folder)
 		{
-			if (is_dir($file))
+			if (!is_dir($folder))
 			{
-				JFolder::delete($file);
+				continue;
 			}
 
-			if (is_file($file))
-			{
-				JFile::delete($file);
-			}
+			JFolder::delete($folder);
 		}
 	}
 
@@ -550,65 +544,6 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			->set($this->db->quoteName('rules') . ' = ' . $this->db->quote($rules))
 			->where($this->db->quoteName('title') . ' = ' . $this->db->quote('com_' . $this->extname))
 			->where($this->db->quoteName('rules') . ' = ' . $this->db->quote('{}'));
-		$this->db->setQuery($query);
-		$this->db->execute();
-	}
-
-	private function fixExtensionNames()
-	{
-		switch ($this->extension_type)
-		{
-			case 'module' :
-				$this->fixModuleNames();
-		}
-	}
-
-	private function fixModuleNames()
-	{
-		// Get module id
-		$query = $this->db->getQuery(true)
-			->select('id')
-			->from('#__modules')
-			->where($this->db->quoteName('module') . ' = ' . $this->db->quote('mod_' . $this->extname))
-			->where($this->db->quoteName('client_id') . ' = ' . (int) $this->client_id);
-		$this->db->setQuery($query, 0, 1);
-		$module_id = $this->db->loadResult();
-
-		if (empty($module_id))
-		{
-			return;
-		}
-
-		$title = 'Regular Labs - ' . JText::_($this->name);
-
-		$query->clear()
-			->update('#__modules')
-			->set($this->db->quoteName('title') . ' = ' . $this->db->quote($title))
-			->where($this->db->quoteName('id') . ' = ' . (int) $module_id)
-			->where($this->db->quoteName('title') . ' LIKE ' . $this->db->quote('NoNumber%'));
-		$this->db->setQuery($query);
-		$this->db->execute();
-
-		// Fix module assets
-
-		// Get asset id
-		$query = $this->db->getQuery(true)
-			->select('id')
-			->from('#__assets')
-			->where($this->db->quoteName('name') . ' = ' . $this->db->quote('com_modules.module.' . (int) $module_id))
-			->where($this->db->quoteName('title') . ' LIKE ' . $this->db->quote('NoNumber%'));
-		$this->db->setQuery($query, 0, 1);
-		$asset_id = $this->db->loadResult();
-
-		if (empty($asset_id))
-		{
-			return;
-		}
-
-		$query->clear()
-			->update('#__assets')
-			->set($this->db->quoteName('title') . ' = ' . $this->db->quote($title))
-			->where($this->db->quoteName('id') . ' = ' . (int) $asset_id);
 		$this->db->setQuery($query);
 		$this->db->execute();
 	}
@@ -693,13 +628,10 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		$query->clear()
 			->update('#__update_sites')
 			->set($this->db->quoteName('extra_query') . ' = ' . $this->db->quote(''))
-			->where(
-				'('
-				. $this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.nonumber.nl%')
-				. ' OR '
-				. $this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.regularlabs.com%')
-				. ')'
-			);
+			->where(array(
+				$this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.nonumber.nl%'),
+				$this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.regularlabs.com%'),
+			), 'OR');
 		$this->db->setQuery($query);
 		$this->db->execute();
 
@@ -707,21 +639,18 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			->update('#__update_sites')
 			->set($this->db->quoteName('extra_query') . ' = ' . $this->db->quote('k=' . $params->key))
 			->where($this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%&pro=1%'))
-			->where(
-				'('
-				. $this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.nonumber.nl%')
-				. ' OR '
-				. $this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.regularlabs.com%')
-				. ')'
-			);
+			->where(array(
+				$this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.nonumber.nl%'),
+				$this->db->quoteName('location') . ' LIKE ' . $this->db->quote('%download.regularlabs.com%'),
+			), 'OR');
 		$this->db->setQuery($query);
 		$this->db->execute();
 	}
 
 	private function removeAdminCache()
 	{
-		$this->delete([JPATH_ADMINISTRATOR . '/cache/regularlabs']);
-		$this->delete([JPATH_ADMINISTRATOR . '/cache/nonumber']);
+		$this->deleteFolders(array(JPATH_ADMINISTRATOR . '/cache/regularlabs'));
+		$this->deleteFolders(array(JPATH_ADMINISTRATOR . '/cache/nonumber'));
 	}
 
 	private function removeGlobalLanguageFiles()
@@ -769,7 +698,7 @@ class PlgSystemRegularLabsInstallerScriptHelper
 			$installed_languages
 		);
 
-		$delete_languages = [];
+		$delete_languages = array();
 
 		foreach ($languages as $language)
 		{
@@ -782,6 +711,6 @@ class PlgSystemRegularLabsInstallerScriptHelper
 		}
 
 		// Remove folders
-		$this->delete($delete_languages);
+		$this->deleteFolders($delete_languages);
 	}
 }

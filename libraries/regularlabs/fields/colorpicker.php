@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -13,14 +13,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.form.formfield');
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
-
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
+require_once dirname(__DIR__) . '/helpers/functions.php';
 
 class JFormFieldRL_ColorPicker extends JFormField
 {
@@ -28,11 +21,6 @@ class JFormFieldRL_ColorPicker extends JFormField
 
 	protected function getInput()
 	{
-		if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-		{
-			return null;
-		}
-
 		$field = new RLFieldColorPicker;
 
 		return $field->getInput($this->name, $this->id, $this->value, $this->element->attributes());
@@ -56,13 +44,13 @@ class RLFieldColorPicker
 			$action     = ' onchange="' . $this->get('action') . '"';
 		}
 
-		RL_Document::script('regularlabs/colorpicker.min.js');
-		RL_Document::stylesheet('regularlabs/colorpicker.min.css');
+		RLFunctions::script('regularlabs/colorpicker.min.js', '16.5.10919');
+		RLFunctions::stylesheet('regularlabs/colorpicker.min.css', '16.5.10919');
 
 		$class = ' class="' . trim('nncolorpicker chzn-done ' . $this->get('class')) . '"';
 
 		$color = strtolower($this->value);
-		if (!$color || in_array($color, ['none', 'transparent']))
+		if (!$color || in_array($color, array('none', 'transparent')))
 		{
 			$color = 'none';
 		}
@@ -74,7 +62,7 @@ class RLFieldColorPicker
 		$colors = $this->get('colors');
 		if (empty($colors))
 		{
-			$colors = [
+			$colors = array(
 				'none',
 				'#049cdb',
 				'#46a546',
@@ -87,7 +75,7 @@ class RLFieldColorPicker
 				'#999999',
 				'#555555',
 				'#000000',
-			];
+			);
 		}
 		else
 		{
@@ -109,7 +97,7 @@ class RLFieldColorPicker
 		}
 		$split = $split ? $split : 3;
 
-		$html   = [];
+		$html   = array();
 		$html[] = '<select ' . $action . ' name="' . $this->name . '" id="' . $this->id . '"'
 			. $class . ' style="visibility:hidden;width:22px;height:1px">';
 

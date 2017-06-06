@@ -1,24 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_MijoShop extends \RegularLabs\Library\FieldGroup
+class JFormFieldRL_MijoShop extends RLFormGroupField
 {
 	public $type        = 'MijoShop';
 	public $store_id    = 0;
@@ -26,7 +21,7 @@ class JFormFieldRL_MijoShop extends \RegularLabs\Library\FieldGroup
 
 	protected function getInput()
 	{
-		if ($error = $this->missingFilesOrTables(['categories' => 'category', 'products' => 'product']))
+		if ($error = $this->missingFilesOrTables(array('categories' => 'category', 'products' => 'product')))
 		{
 			return $error;
 		}
@@ -100,6 +95,6 @@ class JFormFieldRL_MijoShop extends \RegularLabs\Library\FieldGroup
 		$this->db->setQuery($query);
 		$list = $this->db->loadObjectList();
 
-		return $this->getOptionsByList($list, ['model', 'cat', 'id']);
+		return $this->getOptionsByList($list, array('model', 'cat', 'id'));
 	}
 }

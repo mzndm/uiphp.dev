@@ -1,15 +1,13 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
-
-/* @DEPRECATED */
 
 defined('_JEXEC') or die;
 
@@ -17,21 +15,21 @@ require_once dirname(__DIR__) . '/assignment.php';
 
 class RLAssignmentsIPs extends RLAssignment
 {
-	public function passIPs()
+	function passIPs()
 	{
 		if (is_array($this->selection))
 		{
 			$this->selection = implode(',', $this->selection);
 		}
 
-		$this->selection = explode(',', str_replace([' ', "\r", "\n"], ['', '', ','], $this->selection));
+		$this->selection = explode(',', str_replace(array(' ', "\r", "\n"), array('', '', ','), $this->selection));
 
 		$pass = $this->checkIPList();
 
 		return $this->pass($pass);
 	}
 
-	private function checkIPList()
+	function checkIPList()
 	{
 		foreach ($this->selection as $range)
 		{
@@ -49,7 +47,7 @@ class RLAssignmentsIPs extends RLAssignment
 		return false;
 	}
 
-	private function checkIP($range)
+	function checkIP($range)
 	{
 		if (empty($range))
 		{
@@ -66,7 +64,7 @@ class RLAssignmentsIPs extends RLAssignment
 		return $this->checkIPPart($range);
 	}
 
-	private function checkIPRange($range)
+	function checkIPRange($range)
 	{
 		$ip = $_SERVER['REMOTE_ADDR'];
 
@@ -116,7 +114,7 @@ class RLAssignmentsIPs extends RLAssignment
 		return implode('.', $prefix) . '.' . implode('.', $max_parts);
 	}
 
-	private function checkIPPart($range)
+	function checkIPPart($range)
 	{
 		$ip = $_SERVER['REMOTE_ADDR'];
 

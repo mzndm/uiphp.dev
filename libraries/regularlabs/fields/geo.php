@@ -1,32 +1,28 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Form as RL_Form;
-use RegularLabs\Library\RegEx as RL_RegEx;
-
-class JFormFieldRL_Geo extends \RegularLabs\Library\Field
+class JFormFieldRL_Geo extends RLFormField
 {
 	public $type = 'Geo';
 
 	protected function getInput()
 	{
+		/* >>> [NONE] >>> */
+		//$this->getRegionArray();
+		/* <<< [NONE] <<< */
+
 		$this->params = $this->element->attributes();
 
 		if (!is_array($this->value))
@@ -34,35 +30,35 @@ class JFormFieldRL_Geo extends \RegularLabs\Library\Field
 			$this->value = explode(',', $this->value);
 		}
 
-		$group     = $this->get('group', 'countries');
-		$use_names = $this->get('use_names');
+		$group = $this->get('group', 'countries');
 
-		$options = [];
+		$options = array();
 		foreach ($this->{$group} as $key => $val)
 		{
 			if (!$val)
 			{
 				$options[] = JHtml::_('select.option', '-', '&nbsp;', 'value', 'text', true);
-				continue;
 			}
-
-			if ($key['0'] == '-')
+			else if ($key['0'] == '-')
 			{
 				$options[] = JHtml::_('select.option', '-', $val, 'value', 'text', true);
-				continue;
 			}
-
-			$val       = RL_Form::prepareSelectItem($val);
-			$options[] = JHtml::_('select.option', $use_names ? $val : $key, $val);
+			else
+			{
+				$val       = RLText::prepareSelectItem($val);
+				$options[] = JHtml::_('select.option', $key, $val);
+			}
 		}
 
 		$size     = (int) $this->get('size');
 		$multiple = $this->get('multiple');
 
-		return $this->selectListSimple($options, $this->name, $this->value, $this->id, $size, $multiple);
+		require_once dirname(__DIR__) . '/helpers/html.php';
+
+		return RLHtml::selectlistsimple($options, $this->name, $this->value, $this->id, $size, $multiple);
 	}
 
-	public $continents = [
+	public $continents = array(
 		'AF' => 'Africa',
 		'AS' => 'Asia',
 		'EU' => 'Europe',
@@ -70,7 +66,7 @@ class JFormFieldRL_Geo extends \RegularLabs\Library\Field
 		'SA' => 'South America',
 		'OC' => 'Oceania',
 		'AN' => 'Antarctica',
-	];
+	);
 
 	public $countries = array(
 		'AF' => "Afghanistan",
@@ -1694,4 +1690,166 @@ class JFormFieldRL_Geo extends \RegularLabs\Library\Field
 		'VN-45' => "Vietnam: Đồng Tháp",
 	);
 
+	/* >>> [NONE] >>> */
+
+	public $region_countries = array(
+		'AU' => "Australia",
+		'BE' => "Belgium",
+		'BR' => "Brazil",
+		//'BG' => "Bulgaria",
+		'CA' => "Canada",
+		'CN' => "China",
+		//'CY' => "Cyprus",
+		//'CZ' => "Czech Republic",
+		//'DK' => "Denmark",
+		'EG' => "Egypt",
+		'FR' => "France",
+		'DE' => "Germany",
+		//'GR' => "Greece",
+		//'HK' => "Hong Kong",
+		//'HU' => "Hungary",
+		//'IS' => "Iceland",
+		'IN' => "India",
+		'ID' => "Indonesia",
+		//'IE' => "Ireland",
+		//'IL' => "Israel",
+		'IT' => "Italy",
+		'JP' => "Japan",
+		'MX' => "Mexico",
+		'MA' => "Morocco",
+		'NL' => "Netherlands",
+		'NG' => "Nigeria",
+		'NO' => "Norway",
+		'PH' => "Philippines",
+		//'PL' => "Poland",
+		'PT' => "Portugal",
+		//'RO' => "Romania",
+		'RU' => "Russian Federation",
+		//'SK' => "Slovakia",
+		//'SI' => "Slovenia",
+		//'ZA' => "South Africa",
+		'ES' => "Spain",
+		//'SE' => "Sweden",
+		//'CH' => "Switzerland",
+		//'TW' => "Taiwan",
+		//'TH' => "Thailand",
+		//'TR' => "Turkey",
+		//'UA' => "Ukraine",
+		//'AE' => "United Arab Emirates",
+		'GB' => "United Kingdom",
+		'US' => "United States",
+		'VN' => "Vietnam",
+	);
+
+	function getRegionArray()
+	{
+		$regions = $this->getRegionArrayByFile();
+		$regions = $this->cleanRegions($regions);
+
+		$by_country = array();
+
+		foreach ($regions as $full_region)
+		{
+			if (empty($full_region))
+			{
+				continue;
+			}
+			list($code_c, $code_r, $region) = explode(',', $full_region, 3);
+
+			$code_c = trim($code_c);
+			$code_r = trim($code_r);
+			$region = trim($region);
+
+			if (!isset($this->region_countries[$code_c]))
+			{
+				continue;
+			}
+
+			$country = $this->countries[$code_c];
+
+			if (!isset($by_country[$code_c]))
+			{
+				$by_country[$code_c] = array();
+			}
+
+			$by_country[$code_c][$region] = '\'' . $code_c . '-' . $code_r . '\'  => "' . $country . ': ' . $region . '",';
+		}
+
+		$min_regions = 3;
+
+		$output = array();
+		foreach ($this->region_countries as $code_c => $country)
+		{
+			if (!isset($by_country[$code_c]))
+			{
+				continue;
+			}
+
+			$regions = $by_country[$code_c];
+
+			if (count($regions) < $min_regions)
+			{
+				continue;
+			}
+
+			ksort($regions);
+
+			if (empty($output))
+			{
+				$output[] = '\'-' . $code_c . '\'  => "' . $country . '",';
+				$output[] = implode("\n", $regions);
+
+				continue;
+			}
+
+			$output[] = '';
+			$output[] = '\'--' . $code_c . '\'  => "", \'-' . $code_c . '\'  => "' . $country . '",';
+			$output[] = implode("\n", $regions);
+		}
+
+		echo implode("\n", $output);
+
+		exit;
+	}
+
+	function getRegionArrayByFile()
+	{
+		// https://www.softcatala.org/wiki/ISO_3166_2
+		return trim(file_get_contents(__DIR__ . '/geo.iso.regions.txt'));
+	}
+
+	public function cleanRegions($regions)
+	{
+		$regions = htmlspecialchars($regions);
+
+		// LR,MY, name for US-MD,Maryland,Maryland
+		// >>
+		// LR,MY,Maryland,Maryland
+		// US,MD,Maryland,Maryland
+		$regex = '#(\n[^,]*),([^\n]*), name for ([^-]*)-([^,]*),([^\n]*\n)#';
+		while (preg_match($regex, $regions))
+		{
+			$regions = preg_replace($regex, '\1,\2,\5\3,\4,\5', $regions);
+		}
+
+		// LR,MY,Maryland,Maryland
+		// >>
+		// LR,MY,Maryland
+		$regions = preg_replace('#(\n[^,]*,[^,]*),([^,]*),\2#', '\1,\2', $regions);
+
+		// LR,MY,District of Columbia,Disricte de Columbia
+		// >>
+		// LR, MY, District of Columbia, Disricte de Columbia
+		$regions = str_replace(',', ', ', $regions);
+
+		// GB, WRX, Wrexham;Wrecsam
+		// >>
+		// GB, WRX, Wrexham;Wrecsam
+		$regions = preg_replace('#(\n[^,]*,[^,]*,[^;]*);([^\n]*)#', '\1 (\2)', $regions);
+
+		$regions = trim(preg_replace('#  +#', ' ', $regions));
+
+		return explode("\n", $regions);
+	}
+	/* <<< [NONE] <<< */
 }

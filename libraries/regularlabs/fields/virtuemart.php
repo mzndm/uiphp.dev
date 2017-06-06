@@ -1,31 +1,26 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/groupfield.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_VirtueMart extends \RegularLabs\Library\FieldGroup
+class JFormFieldRL_VirtueMart extends RLFormGroupField
 {
 	public $type     = 'VirtueMart';
 	public $language = null;
 
 	protected function getInput()
 	{
-		if ($error = $this->missingFilesOrTables(['categories', 'products']))
+		if ($error = $this->missingFilesOrTables(array('categories', 'products')))
 		{
 			return $error;
 		}
@@ -86,7 +81,7 @@ class JFormFieldRL_VirtueMart extends \RegularLabs\Library\FieldGroup
 		$this->db->setQuery($query);
 		$list = $this->db->loadObjectList();
 
-		return $this->getOptionsByList($list, ['sku', 'cat', 'id']);
+		return $this->getOptionsByList($list, array('sku', 'cat', 'id'));
 	}
 
 	private function getActiveLanguage()
@@ -117,7 +112,7 @@ class JFormFieldRL_VirtueMart extends \RegularLabs\Library\FieldGroup
 			return $this->language;
 		}
 
-		$active_languages = VmConfig::get('active_languages', []);
+		$active_languages = VmConfig::get('active_languages', array());
 
 		if (!isset($active_languages['0']))
 		{

@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -25,18 +25,18 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 		$this->uninstallPlugin($this->extname, $folder = 'system');
 	}
 
-	public function onBeforeInstall($route)
+	public function onBeforeInstall()
 	{
 		// Fix incorrectly formed versions because of issues in old packager
 		$this->fixFileVersions(
-			[
+			array(
 				JPATH_ADMINISTRATOR . '/components/com_advancedmodules/advancedmodules.xml',
 				JPATH_PLUGINS . '/system/advancedmodules/advancedmodules.xml',
-			]
+			)
 		);
 	}
 
-	public function onAfterInstall($route)
+	public function onAfterInstall()
 	{
 		$this->createTable();
 		$this->fixAssignments();
@@ -46,6 +46,7 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 		$this->removeFrontendComponentFromDB();
 		$this->deleteOldFiles();
 		$this->fixAssetsRules();
+		$this->checkForGeoIP();
 	}
 
 	private function createTable()
@@ -213,7 +214,7 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 				$params = json_decode($row->params);
 				if (is_null($params))
 				{
-					$params = (object) [];
+					$params = new stdClass;
 				}
 			}
 
@@ -250,7 +251,7 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 					case 'assignto_php_selection':
 					case 'assignto_urls_selection':
 					case 'assignto_ips_selection':
-						$v = str_replace(['\n', '\|'], ["\n", '|'], $v);
+						$v = str_replace(array('\n', '\|'), array("\n", '|'), $v);
 						break;
 					case 'color':
 						$v = str_replace('#', '', $v);
@@ -309,12 +310,12 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 	private function deleteOldFiles()
 	{
 		JFile::delete(
-			[
+			array(
 				JPATH_ADMINISTRATOR . '/components/com_advancedmodules/script.advancedmodules.php',
 				JPATH_SITE . '/components/com_advancedmodules/advancedmodules.xml',
 				JPATH_SITE . '/components/com_advancedmodules/script.advancedmodules.php',
 				JPATH_SITE . '/plugins/system/advancedmodules/modulehelper.php',
-			]
+			)
 		);
 	}
 
@@ -332,4 +333,42 @@ class Com_AdvancedModulesInstallerScript extends Com_AdvancedModulesInstallerScr
 		$this->db->execute();
 	}
 
+	private function checkForGeoIP()
+	{
+		$query = $this->db->getQuery(true)
+			->select($this->db->quoteName('extension_id'))
+			->from($this->db->quoteName('#__extensions'))
+			->where($this->db->quoteName('element') . ' = ' . $this->db->quote('geoip'))
+			->where($this->db->quoteName('type') . ' = ' . $this->db->quote('library'));
+		$this->db->setQuery($query, 0, 1);
+		$result = $this->db->loadResult();
+
+		// GeoIP library is installed, so ignore
+		if (!empty($result))
+		{
+			return;
+		}
+
+		$query = $this->db->getQuery(true)
+			->select($this->db->quoteName('moduleid'))
+			->from($this->db->quoteName('#__advancedmodules'))
+			->where($this->db->quoteName('params') . ' RLIKE ' . $this->db->quote('"assignto_geo(continents|countries|regions)":"1"'));
+		$this->db->setQuery($query, 0, 1);
+		$result = $this->db->loadResult();
+
+		// No modules found with Geo assignments, so ignore
+		if (empty($result))
+		{
+			return;
+		}
+
+		JFactory::getApplication()->enqueueMessage(
+			'Advanced Module Manager no longer uses external services for the <strong>Geolocation assignments</strong>.<br>
+			It now makes use of a new <strong>Regular Labs GeoIP library</strong>.<br>
+			<br>
+			You currently have modules with Geo assignments. To continue using these assignments you are required to install the Regular Labs GeoIP library<br><br>
+			<a href="https://www.regularlabs.com/geoip" target="_blank" class="btn">Install the Regular Labs GeoIP library</a>',
+			'warning'
+		);
+	}
 }

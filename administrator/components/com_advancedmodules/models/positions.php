@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -29,14 +29,14 @@ class AdvancedModulesModelPositions extends JModelList
 	 * @see     JController
 	 * @since   1.6
 	 */
-	public function __construct($config = [])
+	public function __construct($config = array())
 	{
 		if (empty($config['filter_fields']))
 		{
-			$config['filter_fields'] = [
+			$config['filter_fields'] = array(
 				'value',
 				'templates',
-			];
+			);
 		}
 
 		parent::__construct($config);
@@ -52,7 +52,7 @@ class AdvancedModulesModelPositions extends JModelList
 	 *
 	 * @return  void
 	 */
-	protected function populateState($ordering = 'value', $direction = 'asc')
+	protected function populateState($ordering = null, $direction = null)
 	{
 		$app = JFactory::getApplication('administrator');
 
@@ -77,7 +77,7 @@ class AdvancedModulesModelPositions extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState($ordering, $direction);
+		parent::populateState('value', 'asc');
 	}
 
 	/**
@@ -129,12 +129,12 @@ class AdvancedModulesModelPositions extends JModelList
 
 				foreach ($positions as $value => $position)
 				{
-					$positions[$value] = [];
+					$positions[$value] = array();
 				}
 			}
 			else
 			{
-				$positions = [];
+				$positions = array();
 			}
 
 			// Load the positions from the installed templates.
@@ -176,7 +176,7 @@ class AdvancedModulesModelPositions extends JModelList
 							{
 								if (!isset($positions[$value]))
 								{
-									$positions[$value] = [];
+									$positions[$value] = array();
 								}
 
 								$positions[$value][$template->name] = $label;

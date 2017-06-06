@@ -1,26 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\RegEx as RL_RegEx;
-
-class JFormFieldRL_RadioImages extends \RegularLabs\Library\Field
+class JFormFieldRL_RadioImages extends RLFormField
 {
 	public $type = 'RadioImages';
 
@@ -39,7 +32,7 @@ class JFormFieldRL_RadioImages extends \RegularLabs\Library\Field
 		$files    = JFolder::files($path, $filter);
 		$rowcount = $this->get('rowcount');
 
-		$options = [];
+		$options = array();
 
 		if (!$this->get('hide_none'))
 		{
@@ -58,7 +51,7 @@ class JFormFieldRL_RadioImages extends \RegularLabs\Library\Field
 			{
 				if ($exclude)
 				{
-					if (RL_RegEx::match(chr(1) . $exclude . chr(1), $file))
+					if (preg_match(chr(1) . $exclude . chr(1), $file))
 					{
 						continue;
 					}
@@ -81,8 +74,8 @@ class JFormFieldRL_RadioImages extends \RegularLabs\Library\Field
 		$list = JHtml::_('select.radiolist', $options, '' . $this->name . '', '', 'value', 'text', $this->value, $this->id);
 
 		$list = '<div style="float:left;">' . str_replace('<input type="radio"', '</div><div style="float:left;margin:2px 0;"><input type="radio" style="float:left;"', $list) . '</div>';
-		$list = str_replace(['<label', '</label>'], ['<span style="float: left;"', '</span>'], $list);
-		$list = RL_RegEx::replace('</span>(\s*)</div>', '</span></div>\1', $list);
+		$list = str_replace(array('<label', '</label>'), array('<span style="float: left;"', '</span>'), $list);
+		$list = preg_replace('#</span>(\s*)</div>#', '</span></div>\1', $list);
 		$list = str_replace('<br></span></div>', '<br></span></div><div style="clear:both;"></div>', $list);
 
 		$list = '<div style="clear:both;"></div>' . $list;

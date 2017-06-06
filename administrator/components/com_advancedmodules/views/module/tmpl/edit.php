@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -16,13 +16,12 @@
 
 defined('_JEXEC') or die;
 
-use RegularLabs\Library\Document as RL_Document;
-
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.formvalidator');
 JHtml::_('behavior.combobox');
-JHtml::_('formbehavior.chosen', 'select', null, ['disable_search_threshold' => 0]);
+JHtml::_('formbehavior.chosen', 'select', null, array('disable_search_threshold' => 0));
+require_once JPATH_LIBRARIES . '/regularlabs/helpers/functions.php';
 
 $hasContent          = empty($this->item->module) || isset($this->item->xml->customContent);
 $hasContentFieldName = 'content';
@@ -71,9 +70,9 @@ if (JFactory::getUser()->authorise('core.admin'))
 	});";
 }
 
-RL_Document::scriptDeclaration($script);
-RL_Document::script('regularlabs/script.min.js');
-RL_Document::script('regularlabs/toggler.min.js');
+JFactory::getDocument()->addScriptDeclaration($script);
+RLFunctions::script('regularlabs/script.min.js', '16.5.10919');
+RLFunctions::script('regularlabs/toggler.min.js', '16.5.10919');
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_advancedmodules&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm"
@@ -82,9 +81,9 @@ RL_Document::script('regularlabs/toggler.min.js');
 	<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 
 	<div class="form-horizontal">
-		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', ['active' => 'general']); ?>
+		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
-		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE')); ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_MODULES_MODULE', true)); ?>
 
 		<div class="row-fluid">
 			<div class="span9">
@@ -151,7 +150,7 @@ RL_Document::script('regularlabs/toggler.min.js');
 			</div>
 			<div class="span3">
 				<fieldset class="form-vertical">
-					<?php echo $this->form->renderField('showtitle'); ?>
+					<?php echo $this->form->getControlGroup('showtitle'); ?>
 					<div class="control-group">
 						<div class="control-label">
 							<?php echo $this->form->getLabel('position'); ?>
@@ -163,12 +162,12 @@ RL_Document::script('regularlabs/toggler.min.js');
 				</fieldset>
 				<?php
 				// Set main fields.
-				$this->fields = [
+				$this->fields = array(
 					'published',
 					'access',
 					'ordering',
 					'note',
-				];
+				);
 				?>
 				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
 				<fieldset class="form-vertical">
@@ -185,10 +184,7 @@ RL_Document::script('regularlabs/toggler.min.js');
 								include_once(JPATH_LIBRARIES . '/joomla/form/fields/color.php');
 								$colorfield = new JFormFieldColor;
 
-								$color = (isset($this->item->advancedparams['color']) && $this->item->advancedparams['color'])
-									? str_replace('##', '#', $this->item->advancedparams['color'])
-									: 'none';
-
+								$color          = (isset($this->item->advancedparams['color']) && $this->item->advancedparams['color']) ? str_replace('##', '#', $this->item->advancedparams['color']) : 'none';
 								$element        = new SimpleXMLElement(
 									'<field
 											name="advancedparams[color]"
@@ -201,9 +197,7 @@ RL_Document::script('regularlabs/toggler.min.js');
 											/>'
 								);
 								$element->value = $color;
-
 								$colorfield->setup($element, $color);
-
 								echo $colorfield->__get('input');
 								?>
 							</div>
@@ -215,32 +209,54 @@ RL_Document::script('regularlabs/toggler.min.js');
 					<?php if ($this->item->client_id == 0 && $this->config->show_hideempty) : ?>
 						<?php echo $this->render($this->assignments, 'hideempty'); ?>
 					<?php endif; ?>
+					<?php if ($this->config->show_extra) : ?>
+						<?php for ($i = 1; $i <= 5; $i++) : ?>
+							<?php if (isset($this->config->{'extra' . $i}) && $this->config->{'extra' . $i} != '') : ?>
+								<?php
+								$label   = explode('|', $this->config->{'extra' . $i}, 2);
+								$tooltip = isset($label['1']) ? JText::_($label['1']) : '';
+								$label   = JText::_($label['0']);
+								?>
+								<div class="control-group">
+									<div class="control-label">
+										<label id="advancedparams_extra<?php echo $i; ?>-lbl" for="advancedparams_extra<?php echo $i; ?>"
+											<?php echo $tooltip ? 'class="tooltip" title="<strong>' . $label . '</strong><br>' . $tooltip . '"' : ''; ?>>
+											<?php echo $label; ?>
+										</label>
+									</div>
+									<div class="controls">
+										<?php echo $this->assignments->getInput('extra' . $i); ?>
+									</div>
+								</div>
+							<?php endif; ?>
+						<?php endfor; ?>
+					<?php endif; ?>
 				</fieldset>
 			</div>
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 
 		<?php if (isset($long_description) && $long_description != '') : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION')); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'description', JText::_('JGLOBAL_FIELDSET_DESCRIPTION', true)); ?>
 			<?php echo $long_description; ?>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php if ($this->item->client_id == 0) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'assignment', JText::_('AMM_ASSIGNMENTS')); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'assignment', JText::_('AMM_ASSIGNMENTS', true)); ?>
 			<?php echo $this->loadTemplate('assignment'); ?>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php if ($this->canDo->get('core.admin')) : ?>
-			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_MODULES_FIELDSET_RULES')); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_MODULES_FIELDSET_RULES', true)); ?>
 			<?php echo $this->form->getInput('rules'); ?>
 			<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
 
 		<?php
-		$this->fieldsets        = [];
-		$this->ignore_fieldsets = ['basic', 'description'];
+		$this->fieldsets        = array();
+		$this->ignore_fieldsets = array('basic', 'description');
 		echo JLayoutHelper::render('joomla.edit.params', $this);
 		?>
 

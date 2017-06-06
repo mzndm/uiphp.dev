@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 ?>
 
 <script>
-	var form  = window.top.document.adminForm
+	var form = window.top.document.adminForm
 	var title = form.title.value;
 
 	var alltext = window.top.<?php echo $this->editor->getContent('text') ?>;

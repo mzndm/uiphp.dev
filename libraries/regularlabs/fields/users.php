@@ -1,24 +1,19 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-class JFormFieldRL_Users extends \RegularLabs\Library\Field
+class JFormFieldRL_Users extends RLFormField
 {
 	public $type = 'Users';
 
@@ -36,7 +31,9 @@ class JFormFieldRL_Users extends \RegularLabs\Library\Field
 		$size     = (int) $this->get('size');
 		$multiple = $this->get('multiple');
 
-		return $this->selectListSimple($options, $this->name, $this->value, $this->id, $size, $multiple);
+		require_once dirname(__DIR__) . '/helpers/html.php';
+
+		return RLHtml::selectlistsimple($options, $this->name, $this->value, $this->id, $size, $multiple);
 	}
 
 	function getUsers()
@@ -59,6 +56,6 @@ class JFormFieldRL_Users extends \RegularLabs\Library\Field
 		$this->db->setQuery($query);
 		$list = $this->db->loadObjectList();
 
-		return $this->getOptionsByList($list, ['username', 'id']);
+		return $this->getOptionsByList($list, array('username', 'id'));
 	}
 }

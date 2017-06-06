@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -17,7 +17,7 @@ class JFormFieldRL_Header_Library extends JFormFieldRL_Header
 {
 	protected function getInput()
 	{
-		$extensions = [
+		$extensions = array(
 			'Add to Menu',
 			'Advanced Module Manager',
 			'Advanced Template Manager',
@@ -42,19 +42,17 @@ class JFormFieldRL_Header_Library extends JFormFieldRL_Header
 			'Tabs',
 			'Tooltips',
 			'What? Nothing!',
-		];
+		);
 
 		$list = '<ul><li>' . implode('</li><li>', $extensions) . '</li></ul>';
 
-		$attributes = $this->element->attributes();
-
 		$warning = '';
-		if (isset($attributes['warning']))
+		if (isset($this->element->attributes()['warning']))
 		{
-			$warning = '<div class="alert alert-danger">' . JText::_($attributes['warning']) . '</div>';
+			$warning = '<div class="alert alert-danger">' . JText::_($this->element->attributes()['warning']) . '</div>';
 		}
 
-		$this->element->attributes()['description'] = JText::sprintf($attributes['description'], $warning, $list);
+		$this->element->attributes()['description'] = JText::sprintf($this->element->attributes()['description'], $warning, $list);
 
 		return parent::getInput();
 	}

@@ -1,11 +1,11 @@
 <?php
 /**
  * @package         Advanced Module Manager
- * @version         7.1.1
+ * @version         6.0.1PRO
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
@@ -41,7 +41,7 @@ abstract class ModulesHelper
 	public static function getStateOptions()
 	{
 		// Build the filter options.
-		$options   = [];
+		$options   = array();
 		$options[] = JHtml::_('select.option', '1', JText::_('JPUBLISHED'));
 		$options[] = JHtml::_('select.option', '0', JText::_('JUNPUBLISHED'));
 		$options[] = JHtml::_('select.option', '-2', JText::_('JTRASHED'));
@@ -58,7 +58,7 @@ abstract class ModulesHelper
 	public static function getClientOptions()
 	{
 		// Build the filter options.
-		$options   = [];
+		$options   = array();
 		$options[] = JHtml::_('select.option', '0', JText::_('JSITE'));
 		$options[] = JHtml::_('select.option', '1', JText::_('JADMINISTRATOR'));
 
@@ -87,7 +87,7 @@ abstract class ModulesHelper
 		try
 		{
 			$positions = $db->loadColumn();
-			$positions = is_array($positions) ? $positions : [];
+			$positions = is_array($positions) ? $positions : array();
 		}
 		catch (RuntimeException $e)
 		{
@@ -97,17 +97,18 @@ abstract class ModulesHelper
 		}
 
 		// Build the list
-		$options = [];
+		$options = array();
 
 		foreach ($positions as $position)
 		{
 			if (!$position && !$editPositions)
 			{
 				$options[] = JHtml::_('select.option', 'none', ':: ' . JText::_('JNONE') . ' ::');
-				continue;
 			}
-
-			$options[] = JHtml::_('select.option', $position, $position);
+			else
+			{
+				$options[] = JHtml::_('select.option', $position, $position);
+			}
 		}
 
 		return $options;
@@ -130,25 +131,27 @@ abstract class ModulesHelper
 		$query = $db->getQuery(true);
 
 		// Build the query.
-		$query->select('element, name, enabled')
-			->from('#__extensions')
-			->where('client_id = ' . (int) $clientId)
-			->where('type = ' . $db->quote('template'));
-
-		if ($state != '')
-		{
-			$query->where('enabled = ' . $db->quote($state));
-		}
+		$query->select('e.element, e.name, e.enabled')
+			->from('#__extensions as e');
 
 		if ($template != '')
 		{
-			$query->where('element = ' . $db->quote($template));
+			$query->where('e.element = ' . $db->quote($template));
+		}
+
+		$query->where('e.type = ' . $db->quote('template'))
+			->where('e.client_id = ' . (int) $clientId);
+
+		if ($state != '')
+		{
+			$query->where('e.enabled = ' . $db->quote($state));
 		}
 
 		// Set the query and load the templates.
 		$db->setQuery($query);
+		$templates = $db->loadObjectList('element');
 
-		return $db->loadObjectList('element');
+		return $templates;
 	}
 
 	/**
@@ -164,9 +167,9 @@ abstract class ModulesHelper
 		$query = $db->getQuery(true)
 			->select('e.element AS value, e.name AS text')
 			->from('#__extensions as e')
-			->where('e.client_id = ' . (int) $clientId)
-			->where('e.type = ' . $db->quote('module'))
 			->join('LEFT', '#__modules as m ON m.module=e.element AND m.client_id=e.client_id')
+			->where('e.type = ' . $db->quote('module'))
+			->where('e.client_id = ' . (int) $clientId)
 			->where('m.module IS NOT NULL')
 			->group('e.element, e.name');
 
@@ -198,7 +201,7 @@ abstract class ModulesHelper
 	 */
 	public static function getMenuItemAssignmentOptions($clientId)
 	{
-		$options   = [];
+		$options   = array();
 		$options[] = JHtml::_('select.option', '0', JText::_('JALL'));
 		$options[] = JHtml::_('select.option', '-', JText::_('JNONE'));
 
@@ -269,7 +272,7 @@ abstract class ModulesHelper
 			{
 				// Try to humanize the position name
 				$text = ucfirst(preg_replace('/^' . $template . '\-/', '', $position));
-				$text = ucwords(str_replace(['-', '_'], ' ', $text));
+				$text = ucwords(str_replace(array('-', '_'), ' ', $text));
 			}
 		}
 
@@ -304,7 +307,7 @@ abstract class ModulesHelper
 			$text = $value;
 		}
 
-		$option        = (object) [];
+		$option        = new stdClass;
 		$option->value = $value;
 		$option->text  = $text;
 
@@ -319,9 +322,9 @@ abstract class ModulesHelper
 	 *
 	 * @return  array  Return the new group as an array
 	 */
-	public static function createOptionGroup($label = '', $options = [])
+	public static function createOptionGroup($label = '', $options = array())
 	{
-		$group          = [];
+		$group          = array();
 		$group['value'] = $label;
 		$group['text']  = $label;
 		$group['items'] = $options;

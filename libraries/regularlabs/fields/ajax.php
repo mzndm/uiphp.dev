@@ -1,26 +1,20 @@
 <?php
 /**
  * @package         Regular Labs Library
- * @version         17.2.15002
+ * @version         16.5.10919
  * 
  * @author          Peter van Westen <info@regularlabs.com>
  * @link            http://www.regularlabs.com
- * @copyright       Copyright © 2017 Regular Labs All Rights Reserved
+ * @copyright       Copyright © 2016 Regular Labs All Rights Reserved
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
 
 defined('_JEXEC') or die;
 
-if (!is_file(JPATH_LIBRARIES . '/regularlabs/autoload.php'))
-{
-	return;
-}
+require_once dirname(__DIR__) . '/helpers/functions.php';
+require_once dirname(__DIR__) . '/helpers/field.php';
 
-require_once JPATH_LIBRARIES . '/regularlabs/autoload.php';
-
-use RegularLabs\Library\Document as RL_Document;
-
-class JFormFieldRL_Ajax extends \RegularLabs\Library\Field
+class JFormFieldRL_Ajax extends RLFormField
 {
 	public $type = 'Ajax';
 
@@ -30,7 +24,7 @@ class JFormFieldRL_Ajax extends \RegularLabs\Library\Field
 
 		JHtml::_('jquery.framework');
 
-		RL_Document::script('regularlabs/script.min.js');
+		RLFunctions::script('regularlabs/script.min.js', '16.5.10919');
 
 		$loading = "jQuery(\"#" . $this->id . "\").find(\"span\").attr(\"class\", \"icon-refresh icon-spin\");";
 		$success = "jQuery(\"#" . $this->id . "\").find(\"span\").attr(\"class\", \"icon-ok\");"
@@ -42,9 +36,8 @@ class JFormFieldRL_Ajax extends \RegularLabs\Library\Field
 			. $loading
 			. "jQuery(\"#message_" . $this->id . "\").attr(\"class\", \"\").html(\"\");"
 			. "RegularLabsScripts.loadajax("
-			. "'" . addslashes($this->get('url')) . "',"
-			. "'var data = data.trim();"
-			. "if(data == \"\" || data.substring(0,1) == \"+\") {"
+			. "'" . addslashes($this->get('url')) . "',
+					'var data = data.trim();if(data == \"\" || data.substring(0,1) == \"+\") {"
 			. "data = data.replace(/^\\\\+/, \\'\\');"
 			. $success
 			. "} else {"
