@@ -91,7 +91,7 @@
     color: #000;
     text-decoration: none;
     &:hover {
-      @extend .hover;
+      @extend .tdu;
     }
   }
   &__logo {

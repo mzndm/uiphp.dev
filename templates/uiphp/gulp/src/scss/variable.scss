@@ -66,9 +66,12 @@ p {
   margin: 0.5em 0;
   color: #000;
 }
-.hover {
+.tdu {
   text-decoration: underline;
   text-decoration-color: $green;
+}
+.tdn {
+  text-decoration: none;
 }
 .page_title {
   @extend .col-md-offset-2;

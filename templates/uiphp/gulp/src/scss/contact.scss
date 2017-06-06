@@ -46,7 +46,7 @@
     text-decoration: none;
     color: #000;
     &:hover {
-      @extend .hover;
+      @extend .tdu;
     }
   }
   p {

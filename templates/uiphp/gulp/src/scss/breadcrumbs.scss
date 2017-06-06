@@ -1,0 +1,43 @@
+.breadcrumbs {
+  &__wrapper {}
+  &__item {
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0;
+    line-height: 0;
+    &--active {
+      color: $green;
+    }
+    &--1 {
+      @extend .page_title;
+    }
+    &--2 {
+      display: none;
+    }
+    &--3 {
+     // display: none;
+      font-family: $Regular;
+      font-size: 1.125em;
+      .breadcrumbs__link {
+        @extend .tdu;
+        &:hover {
+          @extend .tdn;
+        }
+      }
+    }
+    &--4 {
+      @extend .breadcrumbs__item--3;
+    }
+  }
+  &__link {
+    color: $grey;
+    text-decoration: none;
+    &:hover {
+      @extend .tdu;
+    }
+  }
+  &__name {}
+  &__divider {
+    font-size: 22px;
+  }
+}
