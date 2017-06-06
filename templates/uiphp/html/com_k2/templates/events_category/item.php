@@ -19,10 +19,10 @@ defined('_JEXEC') or die;
 </a>
 <?php endif; ?>
 
-<!-- Start K2 Item Layout -->
-<span id="startOfPageId<?php echo JRequest::getInt('id'); ?>"></span>
+<!-- Start K2 Item Layout --><!--
+<span id="startOfPageId<?php /*echo JRequest::getInt('id'); */?>"></span>-->
 
-<div id="k2Container" class="itemView<?php echo ($this->item->featured) ? ' itemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>">
+<div id="k2Container" class="events__item event <?php echo ($this->item->featured) ? ' itemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>">
 
 	<!-- Plugins: BeforeDisplay -->
 	<?php echo $this->item->event->BeforeDisplay; ?>
@@ -194,7 +194,7 @@ defined('_JEXEC') or die;
 	</div>
 	<?php endif; ?>
 
-  <div class="itemBody">
+  <div class="item__body">
 
 	  <!-- Plugins: BeforeDisplayContent -->
 	  <?php echo $this->item->event->BeforeDisplayContent; ?>
@@ -204,12 +204,13 @@ defined('_JEXEC') or die;
 
 	  <?php if($this->item->params->get('itemImage') && !empty($this->item->image)): ?>
 	  <!-- Item Image -->
-	  <div class="itemImageBlock">
-		  <span class="itemImage">
-		  	<a class="modal" rel="{handler: 'image'}" href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
-		  		<img src="<?php echo $this->item->image; ?>" alt="<?php if(!empty($this->item->image_caption)) echo K2HelperUtilities::cleanHtml($this->item->image_caption); else echo K2HelperUtilities::cleanHtml($this->item->title); ?>" style="width:<?php echo $this->item->imageWidth; ?>px; height:auto;" />
-		  	</a>
-		  </span>
+
+<!--
+		  	<a class="modal" rel="{handler: 'image'}" href="<?php /*echo $this->item->imageXLarge; */?>" title="<?php /*echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); */?>">
+
+		  	</a>-->
+
+		  <img class="item__image" src="<?php echo $this->item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($this->item->title); ?>" />
 
 		  <?php if($this->item->params->get('itemImageMainCaption') && !empty($this->item->image_caption)): ?>
 		  <!-- Image caption -->
@@ -220,27 +221,24 @@ defined('_JEXEC') or die;
 		  <!-- Image credits -->
 		  <span class="itemImageCredits"><?php echo $this->item->image_credits; ?></span>
 		  <?php endif; ?>
-
-		  <div class="clr"></div>
-	  </div>
 	  <?php endif; ?>
 
 	  <?php if(!empty($this->item->fulltext)): ?>
 	  <?php if($this->item->params->get('itemIntroText')): ?>
 	  <!-- Item introtext -->
-	  <div class="itemIntroText">
+	  <div class="item__text item__text--intro">
 	  	<?php echo $this->item->introtext; ?>
 	  </div>
 	  <?php endif; ?>
 	  <?php if($this->item->params->get('itemFullText')): ?>
 	  <!-- Item fulltext -->
-	  <div class="itemFullText">
+	  <div class="item__text item__text--full">
 	  	<?php echo $this->item->fulltext; ?>
 	  </div>
 	  <?php endif; ?>
 	  <?php else: ?>
 	  <!-- Item text -->
-	  <div class="itemFullText">
+	  <div class="item__text item__text--full">
 	  	<?php echo $this->item->introtext; ?>
 	  </div>
 	  <?php endif; ?>
@@ -672,14 +670,5 @@ defined('_JEXEC') or die;
   </div>
   <?php endif; ?>
 
-	<?php if(!JRequest::getCmd('print')): ?>
-	<div class="itemBackToTop">
-		<a class="k2Anchor" href="<?php echo $this->item->link; ?>#startOfPageId<?php echo JRequest::getInt('id'); ?>">
-			<?php echo JText::_('K2_BACK_TO_TOP'); ?>
-		</a>
-	</div>
-	<?php endif; ?>
-
-	<div class="clr"></div>
 </div>
 <!-- End K2 Item Layout -->

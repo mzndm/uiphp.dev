@@ -345,7 +345,7 @@ class K2ModelItem extends K2Model
 				$handle->jpeg_quality = $params->get('imagesQuality');
 				$handle->file_auto_rename = false;
 				$handle->file_overwrite = true;
-				$handle->file_new_name_body = $filename;
+				$handle->file_new_name_body = $filename.'_L';
 				if (JRequest::getInt('itemImageL'))
 				{
 					$imageWidth = JRequest::getInt('itemImageL');
@@ -383,7 +383,7 @@ class K2ModelItem extends K2Model
 				$handle->jpeg_quality = $params->get('imagesQuality');
 				$handle->file_auto_rename = false;
 				$handle->file_overwrite = true;
-				$handle->file_new_name_body = $filename;
+				$handle->file_new_name_body = $filename.'_S';
 				if (JRequest::getInt('itemImageS'))
 				{
 					$imageWidth = JRequest::getInt('itemImageS');

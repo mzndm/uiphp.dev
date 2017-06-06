@@ -83,6 +83,22 @@
       padding-bottom: 3em;
     }
   }
+  &__item {
+    padding: 3em 4em;
+  }
+
+}
+.event {
+  .item {
+    &__image {
+      @extend .col-md-3;
+      padding-left: 0;
+      margin-bottom: 2em;
+    }
+    &__text {
+
+    }
+  }
 }
 
 .toEvents {
