@@ -16,7 +16,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 ?>
 
 <!-- Start K2 Item Layout -->
-<div class="project__wrapper <?php echo ($this->item->featured) ? ' catItemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>" style="background-image: url('<?php echo $this->item->image; ?>')">
+<div class="projectCategory__wrapper <?php echo ($this->item->featured) ? ' catItemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>" style="background-image: url('<?php echo $this->item->image; ?>')">
 
 	<?php echo $this->item->event->BeforeDisplay; ?>
 
@@ -24,10 +24,10 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 	<?php if($this->item->params->get('catItemTitle')): ?>
 		<!-- Item title -->
-		<div class="project__title">
+		<div class="projectCategory__title">
 
 			<?php if ($this->item->params->get('catItemTitleLinked')): ?>
-				<a class="project__link" href="<?php echo $this->item->link; ?>">
+				<a class="projectCategory__link" href="<?php echo $this->item->link; ?>">
 					<?php echo $this->item->title; ?>
 				</a>
 			<?php else: ?>
@@ -50,7 +50,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 			<?php foreach ($this->item->extra_fields as $key=>$extraField): ?>
 			<?php if($extraField->value != ''): ?>
-			<div class="project__date project__field--<?php echo $key + 1; ?>">
+			<div class="projectCategory__date projectCategory__field--<?php echo $key + 1; ?>">
 				<?php echo $extraField->value; ?>
 			</div>
 			<?php endif; ?>

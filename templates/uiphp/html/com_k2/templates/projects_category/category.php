@@ -13,20 +13,11 @@ defined('_JEXEC') or die;
 ?>
 
 <!-- Start K2 Category Layout -->
-<div id="k2Container" class="project itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
-
-<!--	--><?php //if($this->params->get('show_page_title')): ?>
-	<!-- Page title -->
-<!--	<div class="componentheading--><?php //echo $this->params->get('pageclass_sfx')?><!--">-->
-<!--		--><?php //echo $this->escape($this->params->get('page_title')); ?>
-<!--	</div>-->
-<!--	--><?php //endif; ?>
-
-
+<div id="k2Container" class="projectCategory itemListView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
 	<?php if((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))): ?>
 	<!-- Item list -->
-	<div class="project__list">
+	<div class="projectCategory__list">
 
 		<?php if(isset($this->leading) && count($this->leading)): ?>
 		<!-- Leading items -->
@@ -40,7 +31,7 @@ defined('_JEXEC') or die;
 				$lastContainer='';
 			?>
 			
-			<div class="project__item">
+			<div class="projectCategory__item">
 				<?php
 					// Load category_item.php by default
 					$this->item=$item;
@@ -64,5 +55,14 @@ defined('_JEXEC') or die;
 	<?php endif; ?>
 
 	<?php endif; ?>
+
+	<div class="projectCategory__nav">
+		<a href="/index.php?Itemid=134" class="projectCategory__navlink projectCategory__navlink--inprogress">
+			<?php echo JText::_('K2_INPROGRESS') ?>
+		</a>
+		<a href="/index.php?Itemid=138" class="projectCategory__navlink projectCategory__navlink--done">
+			<?php echo JText::_('K2_DONE') ?>
+		</a>
+	</div>
 </div>
 <!-- End K2 Category Layout    projects_category/category -->

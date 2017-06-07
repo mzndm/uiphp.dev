@@ -13,6 +13,7 @@
     }
     &--2 {
       display: none;
+      @extend .breadcrumbs__item--3;
     }
     &--3 {
      // display: none;

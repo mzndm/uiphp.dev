@@ -1,4 +1,4 @@
-.project {
+.projectCategory {
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -40,8 +40,51 @@
     &--4,
     &--5,
     &--6 {
-      @extend .project__field--1;
+      @extend .projectCategory__field--1;
     }
-
+  }
+  &__nav {
+    text-align: center;
+  }
+  &__navlink {
+    @extend .tdu;
+    font-family: $Light;
+    font-size: 2.25em;
+    color: $light_grey;
+    text-transform: uppercase;
+  }
+}
+.projectItem {
+  @extend .projectCategory__wrapper;
+  @extend .clearfix;
+  padding-bottom: 4em;
+  &__text {
+    @extend .col-md-offset-2;
+    @extend .col-md-8;
+    padding-left: 20px;
+    img {}
+    h2 {
+      font-family: $Medium;
+      font-size: 2.25em;
+    }
+    h3 {
+      font-family: $Light;
+      font-size: $big;
+    }
+  }
+  &__field {
+    @extend .col-md-12;
+    margin-bottom: 1em;
+  }
+  &__fieldName {
+    @extend .col-md-2;
+    text-align: right;
+    font-family: $Medium;
+    font-size: $normal;
+  }
+  &__fieldValue {
+    @extend .col-md-8;
+    @extend p;
+    margin: 0;
   }
 }

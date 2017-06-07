@@ -5,7 +5,8 @@
   }
 }
 .pageid-102,
-.pageid-103 {
+.pageid-103,
+.pageid-104 {
   .submenu {
     .menu__item:first-child {
       a {
@@ -21,27 +22,18 @@
     display: none;
   }
 }
-/*.pageid-131 {
-  .page_title {
-    padding-left: 3em;
-  }
-}*/
 .pageid-104,
 .pageid-105,
 .pageid-106,
 .pageid-130,
 .pageid-131,
+.pageid-134,
 .pageid-135,
-.pageid-136 {
+.pageid-136,
+.pageid-138 {
   .content {
     background-color: transparent;
   }
-/*  .page_title,
-  .submenu,
-  .institutions__title{
-    padding-left: 10vw;
-    !*  TODO: padding-left: 10vw на всіх строрінках, де це потрібно   *!
-  }*/
 }
 .pageid-130 {
   .content__wrapper {
@@ -51,12 +43,26 @@
 }
 .pageid-104,
 .pageid-131,
-.pageid-136 {
+.pageid-134,
+.pageid-136,
+.pageid-138 {
   .events__filter {
     display: none;
   }
 }
-/*
-pre {
-  font-size: 0.4em;
-}*/
+.pageid-104 {
+  .breadcrumbs__item--2 {
+    display: inline-block;
+  }
+}
+.pageid-134 {
+  .projectCategory__navlink--inprogress {
+    display: none;
+  }
+}
+.pageid-138 {
+  .projectCategory__navlink--done {
+    display: none;
+  }
+}
+
