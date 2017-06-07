@@ -9,9 +9,10 @@
 
       >a {
         @extend h1;
+        width: 60%;
         display: block;
         float: left;
-        width: 14.9vw;
+        //width: 14.9vw;
         padding: 15px;
         margin-top: 1.5em;
         text-decoration: underline;
@@ -41,11 +42,16 @@
       }
     }
     &__icon {
-      width: 134px;
-      height: 134px;
+      width: 35%;
+      height: 8rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 5%;
+      //width: 134px;
+      //height: 134px;
       display: block;
       float: left;
-      margin-right: 10px;
+      //margin-right: 10px;
       &--102 { background-image: url("../img/icons/uiphp.png"); }
       &--103 { background-image: url("../img/icons/apple.png"); }
       &--131 { background-image: url("../img/icons/resources.png"); }
@@ -56,9 +62,10 @@
     &__child {
       visibility: hidden;
       padding: 10px;
-      margin-right: 1px;
+      //margin-right: 1px;
       background-color: #fff;
-      width: 14.9vw;
+      width: 60%;
+      //width: 14.9vw;
       float: right;
       &:hover {
         visibility: visible;
