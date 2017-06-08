@@ -59,12 +59,12 @@
     .filter__item {
       .controls {
         label {
+          @extend .tdu;
           background: none;
           font-family: $Regular;
           font-size: $normal;
           color: $light_grey;
-          text-decoration: underline;
-          text-decoration-color: $green;
+          cursor: pointer;
         }
         .checked {
           color: $green;

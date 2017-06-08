@@ -1,15 +1,17 @@
 .content {
   background-color: #fff;
-  //&__wrapper {
-  //  padding: 0 4em;
-  //  margin-bottom: 3em;
-  //}
+  &__wrapper {
+    @extend .clearfix;
+    padding: 0 5rem 3em;
+  }
   .page-header {
     h2 {
-       @extend  .page_title;
-       font-weight: normal;
-       text-transform: inherit;
-       margin-bottom: 0;
+      @extend  .page_title;
+      font-weight: normal;
+      text-transform: inherit;
+      margin-bottom: 0;
+      margin-left: 0;
+      padding-left: 0;
     }
   }
 }
@@ -78,7 +80,7 @@
     font-size: $big;
     text-transform: uppercase;
     margin-bottom: 1em;
-    padding-left: 10vw;
+    padding-left: 5rem;
   }
   &__item {
     @extend .col-md-4;
@@ -103,7 +105,6 @@
   }
   &__img {
     padding-top: 0;
-    //width: inherit;
     max-width: 100%;
     margin-bottom: 1em;
   }

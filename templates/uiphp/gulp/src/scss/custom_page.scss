@@ -16,7 +16,6 @@ html, body {
 .pageid-102,
 .pageid-126 {
   .content__wrapper {
-    @extend .clearfix;
     padding-bottom: 10em;
     background: url(../img/image/about-us_bg.png) right bottom no-repeat;
     background-size: 50%;
@@ -47,35 +46,13 @@ html, body {
     display: none;
   }
 }
-.pageid-,
-.pageid-104,
-.pageid-105,
-.pageid-106,
-.pageid-130,
-.pageid-131,
-.pageid-134,
-.pageid-135,
-.pageid-136,
-.pageid-138 {
-  .content {
-    background-color: transparent;
-  }
-}
 .pageid-130 {
   .content__wrapper {
     background: #fff;
     overflow: auto;
   }
 }
-.pageid-104,
-.pageid-131,
-.pageid-134,
-.pageid-136,
-.pageid-138 {
-  .events__filter {
-    display: none;
-  }
-}
+
 .pageid-104 {
   .breadcrumbs__item--2 {
     display: inline-block;
@@ -92,13 +69,39 @@ html, body {
     display: none;
   }
 }
-.pageid-103,
-.pageid-126,
-.pageid-128 {
-  .content__wrapper {
-    padding: 0 4em 3em;
+
+.pageid-,
+.pageid-101,
+.pageid-104,
+.pageid-105,
+.pageid-106,
+.pageid-130,
+.pageid-131,
+.pageid-134,
+.pageid-135,
+.pageid-136,
+.pageid-138 {
+  .content {
+    background-color: transparent;
+    &__wrapper {
+      padding: 0;
+      margin: 0;
+    }
   }
-  .page-header h2 {
-    margin-left: 8rem;
+  .events__filter {
+    display: none;
   }
+}
+.pageid-130 {
+  .events__filter {
+    display: block;
+  }
+
+}
+.pageid-101 {
+  .events,
+  .banner {
+    margin-top: -3em;
+  }
+
 }

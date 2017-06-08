@@ -74,13 +74,14 @@ p {
   text-decoration: none;
 }
 .page_title {
-  @extend .col-md-offset-2;
+  //@extend .col-md-offset-1;
   font-family: $Regular;
   font-size: 3em;
-  padding-left: 15px;
- // padding-left: 10vw;
   text-transform: uppercase;
   color: $grey;
-  margin-top: 1.5em;
-  margin-bottom: 1em;
+  padding-left: 15px;
+ // padding-left: 10vw;
+  margin: 1.5em 0 0.5em 4rem;
+  //margin-top: ;
+  //margin-bottom: 1em;
 }
