@@ -11,8 +11,7 @@
         @extend h1;
         width: 60%;
         display: block;
-        float: left;
-        //width: 14.9vw;
+        float: right;
         padding: 15px;
         margin-top: 1.5em;
         text-decoration: underline;
@@ -47,11 +46,8 @@
       background-size: contain;
       background-repeat: no-repeat;
       margin-right: 5%;
-      //width: 134px;
-      //height: 134px;
       display: block;
       float: left;
-      //margin-right: 10px;
       &--102 { background-image: url("../img/icons/uiphp.png"); }
       &--103 { background-image: url("../img/icons/apple.png"); }
       &--131 { background-image: url("../img/icons/resources.png"); }
@@ -62,11 +58,11 @@
     &__child {
       visibility: hidden;
       padding: 10px;
-      //margin-right: 1px;
       background-color: #fff;
       width: 60%;
-      //width: 14.9vw;
       float: right;
+      position: relative;
+      z-index: 1;
       &:hover {
         visibility: visible;
         .parent__link {

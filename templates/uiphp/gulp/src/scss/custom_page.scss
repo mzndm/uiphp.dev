@@ -1,3 +1,28 @@
+* {
+  //outline: 1px dotted blue;
+  box-sizing: border-box;
+}
+html, body {
+  position: relative;
+}
+.site {
+  background-color: #f0f0ef;
+  height: 100%;
+  min-height: 100vh;
+  margin-bottom: -5em;
+  padding-bottom: 5em;
+}
+
+.pageid-102,
+.pageid-126 {
+  .content__wrapper {
+    @extend .clearfix;
+    padding-bottom: 10em;
+    background: url(../img/image/about-us_bg.png) right bottom no-repeat;
+    background-size: 50%;
+  }
+}
+
 .pageid-101,
 .pageid-106 {
   .page_title {
@@ -67,4 +92,13 @@
     display: none;
   }
 }
-
+.pageid-103,
+.pageid-126,
+.pageid-128 {
+  .content__wrapper {
+    padding: 0 4em 3em;
+  }
+  .page-header h2 {
+    margin-left: 8rem;
+  }
+}

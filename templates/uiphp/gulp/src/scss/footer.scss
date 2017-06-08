@@ -1,6 +1,10 @@
 .footer {
   background-color: #19d0cc;
   padding: 0.5em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5em;
   &__copyright {
     width: 190px;
     font-family: $Light;

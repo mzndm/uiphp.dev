@@ -305,8 +305,8 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 		</div>
 
 		<div class="container-fluid">
-			<div class="content">
-				<div class="container">
+<!--			<div class="">-->
+				<div class="container content">
 					<div class="row">
 						<div class="content__wrapper">
 							<jdoc:include type="modules" name="before_content" style="xhtml" />
@@ -315,7 +315,7 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 						</div>
 					</div> 	<!--	.row	-->
 				</div>	<!--	.container -->
-			</div>	<!--	.content -->
+		<!--	<!--	.content -->
 		</div>	<!--	.container-fluid  -->
 
 		<div class="container">

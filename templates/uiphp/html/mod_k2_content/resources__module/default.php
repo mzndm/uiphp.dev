@@ -11,8 +11,7 @@
 defined('_JEXEC') or die;
 ?>
 	<span class="recent__h1"><?php echo JText::_('K2_RECENT'); ?> </span>
-	<a class="toEvents" href="#"><?php echo JText::_('K2_RESOURCE'); ?> </a>
-<!-- TODO: ссилка на ресурси -->
+	<a class="toEvents" href="/index.php?Itemid=131"><?php echo JText::_('K2_RESOURCE'); ?> </a>
 
 <div id="k2ModuleBox<?php echo $module->id; ?>" class="recent__category">
 

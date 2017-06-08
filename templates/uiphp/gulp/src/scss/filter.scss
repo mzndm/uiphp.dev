@@ -55,6 +55,7 @@
       @extend input[type="text"];
       background-color: $green;
       text-align: left;
+      cursor: pointer;
     }
   }
 }
