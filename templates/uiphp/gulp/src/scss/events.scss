@@ -95,8 +95,10 @@
       padding-left: 0;
       margin-bottom: 2em;
     }
-    &__text {
-
+    &__date {
+      @extend h3;
+      color: #bdbfc0;
+      text-align: right;
     }
   }
 }

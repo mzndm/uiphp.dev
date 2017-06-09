@@ -19,8 +19,7 @@ defined('_JEXEC') or die;
 </a>
 <?php endif; ?>
 
-<!-- Start K2 Item Layout --><!--
-<span id="startOfPageId<?php /*echo JRequest::getInt('id'); */?>"></span>-->
+<!-- Start K2 Item Layout -->
 
 <div id="k2Container" class="events__item event <?php echo ($this->item->featured) ? ' itemIsFeatured' : ''; ?><?php if($this->item->params->get('pageclass_sfx')) echo ' '.$this->item->params->get('pageclass_sfx'); ?>">
 
@@ -34,9 +33,9 @@ defined('_JEXEC') or die;
 
 		<?php if($this->item->params->get('itemDateCreated')): ?>
 		<!-- Date created -->
-		<span class="itemDateCreated">
+		<div class="item__date">
 			<?php echo JHTML::_('date', $this->item->created , JText::_('K2_DATE_FORMAT_LC2')); ?>
-		</span>
+		</div>
 		<?php endif; ?>
 
 	  <?php if($this->item->params->get('itemTitle')): ?>

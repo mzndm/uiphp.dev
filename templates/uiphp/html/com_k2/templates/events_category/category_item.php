@@ -23,7 +23,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 	<?php if($this->item->params->get('catItemDateCreated')): ?>
 
-		<div class="item__date"><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT')); ?>
+		<div class="item__date"><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?>
 		</div>
 		<?php endif; ?>
 
