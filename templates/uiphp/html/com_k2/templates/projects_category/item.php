@@ -67,6 +67,11 @@ defined('_JEXEC') or die;
 	  <?php endif; ?>
 
 
+	<?php if($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)): ?>
+		<div class="projectItem__gallery">
+			<?php echo $this->item->gallery; ?>
+		</div>
+	<?php endif; ?>
 
 	  <?php echo $this->item->event->AfterDisplayContent; ?>
 	  <?php echo $this->item->event->K2AfterDisplayContent; ?>

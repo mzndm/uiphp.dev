@@ -48,6 +48,15 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/jquery-migrate.min.js']);
 		unset($doc->_scripts[JURI::root(true) . '/media/jui/js/bootstrap.min.js']);
 
+/*	unset	jw_sigpro  	*/
+		unset($doc->_styleSheets[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/includes/js/jquery_lightview/css/lightview/lightview.css?v=3.4.0']);
+		unset($doc->_styleSheets[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/tmpl/responsive/css/template.css']);
+		unset($doc->_styleSheets[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/includes/css/print.css']);
+
+		unset($doc->_scripts[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/includes/js/jquery_lightview/js/spinners/spinners.min.js?v=3.4.0']);
+		unset($doc->_scripts[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/includes/js/jquery_lightview/js/lightview/lightview.js?v=3.4.0']);
+		unset($doc->_scripts[JURI::root(true) . '/plugins/content/jw_sigpro/jw_sigpro/includes/js/behaviour.js']);
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>">
@@ -56,12 +65,6 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<jdoc:include type="head" />
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
-
-<!--
-	<link rel="stylesheet" href="<?php /*echo $this->baseurl . '/templates/' . $this->template . '/css/libs.css'*/?>">
-	<link rel="stylesheet" href="<?php /*echo $this->baseurl . '/templates/' . $this->template . '/css/main.css'*/?>">
--->
-
 
 </head>
 
