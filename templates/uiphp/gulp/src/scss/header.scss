@@ -14,7 +14,7 @@
 .pageid-101 {
   .header {
     &__logo {
-      @extend .col-md-9;
+      @extend .col-md-10;
       padding-top: 0;
       .logo {
         width: 275px;
@@ -33,7 +33,7 @@
   }
 }
 .search {
-  float: right;
+  //float: right;
   .element-invisible {
     display: none;
   }
