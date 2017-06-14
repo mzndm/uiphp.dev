@@ -28,10 +28,16 @@
           height: 10px;
           margin: 10px;
           background-image: url("../img/icons/triangle.png");
+          @include ipad() {
+            display: none;
+          }
         }
         &--over {
           background-color: #fff;
           &+.menu__child {
+            @include ipad() {
+              visibility: hidden;
+            }
             visibility: visible;
           }
           &:after {
