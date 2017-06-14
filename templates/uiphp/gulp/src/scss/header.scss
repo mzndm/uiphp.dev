@@ -19,6 +19,12 @@
       .logo {
         width: 275px;
         margin: 2em auto 3em;
+        &__link {
+          display: block;
+        }
+        &__img {
+
+        }
       }
     }
     .insidePage__menu {

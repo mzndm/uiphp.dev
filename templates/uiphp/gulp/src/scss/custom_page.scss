@@ -5,6 +5,16 @@
 html, body {
   position: relative;
 }
+.uk-ua {
+  .logo__img--en {
+    display: none;
+  }
+}
+.en-gb {
+  .logo__img--ua {
+    display: none;
+  }
+}
 .site {
   background-color: #f0f0ef;
   height: 100%;
