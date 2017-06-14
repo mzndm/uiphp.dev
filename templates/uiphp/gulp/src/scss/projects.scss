@@ -1,5 +1,8 @@
 .projectCategory {
   &__list {
+    @include ipad(landscape) {
+      max-height: 990px;
+    }
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

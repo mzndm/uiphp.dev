@@ -45,6 +45,7 @@
       text-transform: uppercase;
     }
     &__link {
+      @include ipad(landscape) {color: $grey}
       color: #fff;
       text-decoration: none;
     }

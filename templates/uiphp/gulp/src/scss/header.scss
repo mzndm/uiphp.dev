@@ -47,6 +47,7 @@
    // margin-top: 4em;
   }
   &__input {
+    @include ipad(landscape) {max-width: 80%;}
     border: 0;
     background: none;
     border-bottom: 1px solid $green;
