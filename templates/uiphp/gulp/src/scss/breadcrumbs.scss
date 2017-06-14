@@ -16,9 +16,9 @@
       @extend .breadcrumbs__item--3;
     }
     &--3 {
-     // display: none;
       font-family: $Regular;
       font-size: 1.125em;
+      margin-bottom: 1em;
       .breadcrumbs__link {
         @extend .tdu;
         &:hover {

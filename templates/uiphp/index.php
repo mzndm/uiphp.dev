@@ -106,9 +106,9 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 
 			</div>	<!-- 	.row	 -->
             <div class="row">
-                <div class="page_title">
-                   <?php echo $active->title ?>
-					<!--		TODO: зробить, щоб виводило активнимй батьківський title			-->
+
+                <div class="parent-title">
+					<jdoc:include type="modules" name="parent_title" style="xhtml" />
                 </div>
 				<div class="submenu">
 					<jdoc:include type="modules" name="submenu" style="xhtml" />
