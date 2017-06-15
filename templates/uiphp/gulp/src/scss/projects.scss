@@ -1,6 +1,9 @@
 .projectCategory {
   &__list {
-    @include ipad(landscape) {
+    @include screen($phone-landscape, $ipad-landscape, landscape) {
+      max-height: 990px;
+    }
+    @include screen($nexus7-portrait, $nexus10-portrait, portrait) {
       max-height: 990px;
     }
     display: flex;
@@ -10,6 +13,7 @@
   }
   &__item {
     @extend .col-md-4;
+    @extend .col-sm-6;
   }
   &__wrapper {
     @extend .resources__wrapper;
@@ -76,17 +80,22 @@
     }
   }
   &__field {
-    @extend .col-md-12;
+    @extend .col-sm-12;
     margin-bottom: 1em;
   }
   &__fieldName {
     @extend .col-md-2;
+    @extend .col-sm-12;
+    @include max-screen($ipad-landscape) {
+      text-align: left;
+    }
     text-align: right;
     font-family: $Medium;
     font-size: $normal;
   }
   &__fieldValue {
     @extend .col-md-8;
+    @extend .col-sm-12;
     @extend p;
     margin: 0;
   }

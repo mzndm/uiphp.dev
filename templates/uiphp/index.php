@@ -22,23 +22,11 @@ $menu   = $app->getMenu();
 $active = $menu->getActive();
 $class  = $active->alias . " pageid-" . $active->id;
 
-//// Getting params from template
-//$params = $app->getTemplate(true)->params;
-//
-//// Detecting Active Variables
-//$option   = $app->input->getCmd('option', '');
-//$view     = $app->input->getCmd('view', '');
-//$layout   = $app->input->getCmd('layout', '');
-//$task     = $app->input->getCmd('task', '');
-//$itemid   = $app->input->getCmd('Itemid', '');
-//$sitename = $app->get('sitename');
-
 // add scripts
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/libs/libs.js');
 // add styles
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/libs.css');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/main.css');
-
 
 ?>
 
@@ -76,32 +64,30 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 
 			<div class="row">
 				<header class="header">
-					<div class="row">
-						<div class="header__logo">
-							<div class="logo">
-								<a class="logo__link" href="/">
-									<img class="logo__img logo__img--ua" src="/templates/uiphp/img/icons/uiphp_logo_ukr.svg" alt="logo">
-									<img class="logo__img logo__img--en" src="/templates/uiphp/img/icons/uiphp_logo_eng.svg" alt="logo">
-								</a>
-							</div>	<!--	.logo	-->
-						</div>		<!--	.header__logo	-->
+					<div class="header__logo">
+						<div class="logo">
+							<a class="logo__link" href="/">
+								<img class="logo__img logo__img--ua" src="/templates/uiphp/img/icons/uiphp_logo_ukr.svg" alt="logo">
+								<img class="logo__img logo__img--en" src="/templates/uiphp/img/icons/uiphp_logo_eng.svg" alt="logo">
+							</a>
+						</div>	<!--	.logo	-->
+					</div>		<!--	.header__logo	-->
 
-						<div class="header__menu insidePage__menu">
-							<jdoc:include type="modules" name="insidePage__menu" style="xhtml" />
-						</div>		<!--	.header__menu insidePage__menu	-->
+					<div class="header__menu insidePage__menu">
+						<jdoc:include type="modules" name="insidePage__menu" style="xhtml" />
+					</div>		<!--	.header__menu insidePage__menu	-->
 
-						<div class="header__search">
-							<div class="search">
-								<jdoc:include type="modules" name="search" style="xhtml" />
-							</div>		<!--	.search		-->
-							<div class="language">
-								<jdoc:include type="modules" name="language" style="xhtml" />
-							</div>		<!--	.language	-->
-						</div>		<!--	.header__search		-->
-						<div class="header__menu mainPage__menu">
-							<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
-						</div>		<!--	.header__menu mainPage__menu	-->
-					</div>	<!--	.row	-->
+					<div class="header__search">
+						<div class="search">
+							<jdoc:include type="modules" name="search" style="xhtml" />
+						</div>		<!--	.search		-->
+						<div class="language">
+							<jdoc:include type="modules" name="language" style="xhtml" />
+						</div>		<!--	.language	-->
+					</div>		<!--	.header__search		-->
+					<div class="header__menu mainPage__menu">
+						<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
+					</div>		<!--	.header__menu mainPage__menu	-->
 				</header>		<!--	.header		-->
 
 			</div>	<!-- 	.row	 -->
@@ -121,7 +107,6 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 
 
 		<div class="container-fluid">
-<!--			<div class="">-->
 				<div class="container content">
 					<div class="row">
 						<div class="content__wrapper">

@@ -8,13 +8,30 @@
   }
   &__search {
     @extend .col-md-2;
+    @extend .col-sm-4;
+    @include screen($nexus7-portrait, $nexus7-landscape) {
+      position: absolute;
+      top:0;
+      right: 0;
+      width: 30%;
+      margin-top: 1rem;
+    }
     padding-top: 3em;
+  }
+}
+.logo {
+  &__img {
+    @include screen($nexus7-portrait, $nexus7-landscape) {
+      width: 30%;
+      margin-left: 25%;
+    }
   }
 }
 .pageid-101 {
   .header {
     &__logo {
       @extend .col-md-10;
+      @extend .col-sm-8;
       padding-top: 0;
       .logo {
         width: 275px;
@@ -23,7 +40,10 @@
           display: block;
         }
         &__img {
-
+          @include screen($nexus7-portrait, $nexus7-landscape) {
+            width: initial;
+            margin-left: auto;
+          }
         }
       }
     }
@@ -35,6 +55,9 @@
     }
     &__search {
       padding-top: 4em;
+      @include screen($nexus7-portrait, $nexus7-landscape) {
+        position: static;
+      }
     }
   }
 }
@@ -47,13 +70,12 @@
    // margin-top: 4em;
   }
   &__input {
-    @include ipad(landscape) {max-width: 80%;}
     border: 0;
     background: none;
     border-bottom: 1px solid $green;
     color: $grey;
     padding: 0 0.5em 0.1em;
-    max-width: 85%;
+    max-width: 80%;
     &:focus {
       outline: none;
     }

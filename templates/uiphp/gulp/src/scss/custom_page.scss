@@ -22,6 +22,16 @@ html, body {
   margin-bottom: -5em;
   padding-bottom: 5em;
 }
+.container {
+  @include screen($nexus7-portrait, $nexus7-landscape) {
+    position: relative;
+  }
+}
+.container-fluid {
+  @include max-screen($nexus7-landscape) {
+    padding: 0;
+  }
+}
 
 .pageid-102,
 .pageid-126 {

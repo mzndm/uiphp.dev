@@ -23,6 +23,7 @@
     margin-bottom: 3em;
     &__image {
       @extend .col-md-4;
+      @extend .col-sm-5;
       display: block;
       padding-left: 0;
       img {

@@ -17,6 +17,9 @@
   }
   &__list {
     @extend .col-md-6;
+    @include screen($nexus7-portrait, $nexus7-landscape) {
+      min-height: auto;
+    }
     min-height: 460px;
   }
   &__title {

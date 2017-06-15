@@ -5,10 +5,18 @@
     }
     > .menu__item {
       @extend .col-sm-4;
+      @include ipad(portrait) {
+        height: 100px;
+      }
       height: 170px;
 
       >a {
         @extend h1;
+        @include ipad(portrait) {
+          width: 70%;
+          margin-top: 0;
+          padding-top: 0;
+        }
         width: 60%;
         display: block;
         float: right;
@@ -16,6 +24,7 @@
         margin-top: 1.5em;
         text-decoration: underline;
         text-decoration-color: $green;
+
       }
     }
     .parent {
@@ -47,6 +56,9 @@
       }
     }
     &__icon {
+      @include ipad(portrait) {
+        width: 25%;
+      }
       width: 35%;
       height: 8rem;
       background-size: contain;

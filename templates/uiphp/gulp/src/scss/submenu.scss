@@ -4,6 +4,9 @@
   .menu {
     margin-bottom: 3em;
     &__item {
+      @include max-screen($ipad-landscape) {
+        line-height: 2;
+      }
       display: inline-block;
       font-family: $Regular;
       font-size: $normal;

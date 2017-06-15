@@ -1,5 +1,6 @@
 .filter {
   @extend .col-md-4;
+  @extend .col-sm-12;
   &__wrapper {}
   &__item {
     label{

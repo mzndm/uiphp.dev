@@ -34,10 +34,12 @@
   .pull-left {
     margin: 0 1em 0.5em 0;
     padding-left: 0;
+    max-width: 50%;
   }
   .pull-right {
     margin: 0 1em 0.5em 0;
     padding-right: 0;
+    max-width: 50%;
   }
   p {
     margin: 1em 0;
@@ -55,6 +57,9 @@
 
 .flat {
   @extend .row;
+  @include max-screen($ipad-landscape) {
+    margin: 0;
+  }
   display: flex;
   flex-wrap: wrap;
   &__partners {
@@ -68,6 +73,10 @@
   }
   &__institution {
     &--national {
+      @include screen($phone-portrait, $ipad-portrait, portrait) {
+        flex-direction: column;
+        max-height: 700px;
+      }
       flex-direction: row;
     }
     &--foreign {
@@ -84,7 +93,8 @@
   }
   &__item {
     @extend .col-md-4;
-    width: 33.33%;
+    @extend .col-sm-6;
+    //width: 33.33%;
     margin-bottom: 2em;
   }
   &__wrapper {

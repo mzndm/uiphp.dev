@@ -1,5 +1,7 @@
 .recent {
-  //padding: 2em;
+  @include screen($phone-portrait, $ipad-portrait, portrait) {
+    margin-top: 2em;
+  }
   &__h1 {
     @extend .events__h1;
     margin-left: 1em;
@@ -12,6 +14,9 @@
   }
   .resources {
     &__item {
+      @include screen($phone-portrait, $ipad-portrait, portrait) {
+        height: 350px;
+      }
       background-color: #fff;
       padding: 1.5em;
       height: 300px;
