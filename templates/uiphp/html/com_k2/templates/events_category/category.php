@@ -15,12 +15,6 @@ defined('_JEXEC') or die;
 <!-- Start K2 Category Layout -->
 <div id="k2Container" class="eventsCategory<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
 
-
-
-
-
-
-
 	<?php if((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))): ?>
 
 		<?php if(isset($this->leading) && count($this->leading)): ?>
@@ -50,8 +44,7 @@ defined('_JEXEC') or die;
 
 		<?php if(isset($this->primary) && count($this->primary)): ?>
 		<!-- Primary items -->
-		<div id="itemListPrimary">
-			<?php foreach($this->primary as $key=>$item): ?>
+		<?php foreach($this->primary as $key=>$item): ?>
 
 			<?php
 			// Define a CSS class for the last container on each row
@@ -61,21 +54,18 @@ defined('_JEXEC') or die;
 				$lastContainer='';
 			?>
 
-			<div class="eventsCategory__item item <?php echo $lastContainer; ?>">
-				<?php
-					// Load category_item.php by default
-					$this->item=$item;
-					echo $this->loadTemplate('item');
-				?>
-			</div>
-			<?php if(($key+1)%($this->params->get('num_primary_columns'))==0): ?>
-			<?php endif; ?>
-			<?php endforeach; ?>
-
+		<div class="eventsCategory__item item <?php echo $lastContainer; ?>">
+			<?php
+				// Load category_item.php by default
+				$this->item=$item;
+				echo $this->loadTemplate('item');
+			?>
 		</div>
+		<?php if(($key+1)%($this->params->get('num_primary_columns'))==0): ?>
 		<?php endif; ?>
+		<?php endforeach; ?>
 
-
+	<?php endif; ?>
 
 	<?php endif; ?>
 </div>

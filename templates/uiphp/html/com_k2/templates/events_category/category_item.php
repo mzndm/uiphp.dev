@@ -15,7 +15,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 ?>
 
-<!-- Start K2 Item Layout -->
+<!-- Start K2 Item Layout events_category/category_item.php -->
 
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
@@ -27,13 +27,17 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 		</div>
 		<?php endif; ?>
 
-	<?php if($this->item->params->get('catItemImage') && !empty($this->item->image)): ?>
+	<?php if ($this->item->params->get('catItemImage') && !empty($this->item->image)): ?>
 
 		<a class="item__image" href="<?php echo $this->item->link; ?>">
 			<img class="" src="<?php echo $this->item->image; ?>" alt="<?php if(!empty($this->item->image_caption)) echo K2HelperUtilities::cleanHtml($this->item->image_caption); else echo K2HelperUtilities::cleanHtml($this->item->title); ?>" />
 		</a>
+		<?php else: ?>
+		<a class="item__image" href="<?php echo $this->item->link; ?>">
+			<img class="" src="<?php echo $this->item->imageXSmall; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($this->item->title); ?>" />
+		</a>
 
-<?php endif; ?>
+	<?php endif; ?>
 
 	<div class="item__content">
 		<?php if($this->item->params->get('catItemTitle')): ?>
