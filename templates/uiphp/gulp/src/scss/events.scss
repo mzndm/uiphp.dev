@@ -51,6 +51,7 @@
   }
   &__filter {
     @extend .col-md-2;
+    @extend .col-sm-12;
     float: right;
     background: #fff;
     padding-top: 4em;
@@ -61,6 +62,9 @@
       .controls {
         label {
           @extend .tdu;
+          @include screen($phone-portrait, $ipad-landscape, portrait) {
+            display: inline-block;
+          }
           background: none;
           font-family: $Regular;
           font-size: $normal;
@@ -76,6 +80,7 @@
   }
   &__pagination {
     @extend .col-md-12;
+    @extend .col-sm-12;
     .pagination__wrapper {
       background: #f0f0ef;
       margin: auto -15px;
@@ -125,6 +130,10 @@
 .eventsCategory {
   @extend .events;
   @extend .col-md-10;
+  @extend .col-sm-12;
+  @include screen($phone-portrait, $ipad-landscape, portrait) {
+    padding-top: 0;
+  }
   padding-top: 4em;
   background-color: #fff;
   margin-bottom: 0;
@@ -143,6 +152,7 @@
     }
     &__content {
       @extend .col-md-7;
+      @extend .col-sm-9;
     }
     &__title {
       font-size:$big;

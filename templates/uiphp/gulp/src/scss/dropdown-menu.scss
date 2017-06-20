@@ -1,0 +1,44 @@
+.dropdown {
+  &-button {
+    @extend .hidden-md;
+    @extend .hidden-lg;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    float: right;
+    margin-right: 15px;
+    &__line {
+      display: block;
+      width: 35px;
+      height: 4px;
+      margin-bottom: 8px;
+      background: $grey;
+      transition: all 0.1s ease-in;
+    }
+    &__close {
+      .dropdown-button {
+        &__line {
+          background: $green;
+          &--1 {
+            transform: rotate(45deg);
+            margin-top: 15px;
+            margin-bottom: 0;
+          }
+          &--2 {
+            background-color: transparent;
+          }
+          &--3 {
+            transform: rotate(-45deg);
+            margin-top: -15px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+/*
+.visible {
+  display: block;
+}*/

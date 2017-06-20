@@ -1,7 +1,23 @@
 .filter {
   @extend .col-md-4;
   @extend .col-sm-12;
+  @include screen(0, $md-min, portrait) {
+    display: none;
+  }
+  display: block;
   &__wrapper {}
+  &__title {
+    @extend h2;
+    display: inline-block;
+    line-height: 40px;
+    float: right;
+    margin-right: 1em;
+  }
+  &__list {
+    @include screen($iphone6-plus-portrait, $md-min, portrait ) {
+      width: 50%;
+    }
+  }
   &__item {
     label{
       font-family: $Medium;
@@ -20,6 +36,9 @@
       padding: 0.5em 1em;
       width: 100%;
       background-color: transparent;
+      background-image: url("../img/icons/search.png");
+      background-repeat: no-repeat;
+      background-position: 96% center;
       &:focus {
         outline: none;
       }
@@ -55,6 +74,7 @@
     .btn {
       @extend input[type="text"];
       background-color: $green;
+      background-image: none;
       text-align: left;
       cursor: pointer;
     }

@@ -19,6 +19,13 @@ $itemid = $params->get('set_itemid',0)?$params->get('set_itemid',0):JRequest::ge
 $ajax_filter = $params->get('ajax_filter', 0);
 $share_url = $params->get('share_url_of_results_page', 0);
 ?>
+<div class="filter__wrapper">
+	<div class="filter__button dropdown-button">
+		<span class="dropdown-button__line dropdown-button__line--1"></span>
+		<span class="dropdown-button__line dropdown-button__line--2"></span>
+		<span class="dropdown-button__line dropdown-button__line--3"></span>
+	</div>
+	<div class="filter__title"><?php echo JText::_('FILTER_NEWS')?></div>
 <form id="<?php echo $formid; ?>" class="filter" name="<?php echo $formid; ?>" method="POST"
 	action="<?php echo JRoute::_('index.php?option=com_jak2filter&view=itemlist&Itemid='.$itemid); ?>">
 <input type="hidden" name="task" value="search" />
@@ -36,7 +43,7 @@ $share_url = $params->get('share_url_of_results_page', 0);
 <?php if(!$filter_by_category): ?>
 <?php echo $categories; ?>
 <?php endif; ?>
-<ul id="jak2filter<?php echo $module->id; ?>" class="filter__wrapper ja-k2filter <?php echo $ja_stylesheet;?>">
+<ul id="jak2filter<?php echo $module->id; ?>" class="filter__list ja-k2filter <?php echo $ja_stylesheet;?>">
 <?php 
 $j = 0;
 $clear = '';
@@ -285,7 +292,7 @@ $clear = '';
 	<input type="hidden" name="tmpl" value="component"/>
 <?php endif; ?>
 </form>
-
+</div>
 <script type="text/javascript">
 /*<![CDATA[*/
 

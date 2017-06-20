@@ -116,7 +116,17 @@ html, body {
   .events__filter {
     display: block;
   }
-
+  .filter {
+    @include screen(0, $md-min, portrait) {
+      display: block;
+    }
+  }
+  .filter__button {
+    display: none;
+  }
+  .filter__title {
+    display: none;
+  }
 }
 .pageid-135 {
   .article .page_title {

@@ -1,5 +1,6 @@
 .resources {
   @extend .col-md-8;
+  @extend .col-sm-12;
   .componentheading {
     @extend h2;
     padding: 1em 0 0 1em;

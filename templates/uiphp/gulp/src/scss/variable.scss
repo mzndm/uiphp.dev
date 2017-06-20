@@ -43,12 +43,20 @@ $light_grey: #bdbfc0;
 // device width
 $phone-portrait: 360px;
 $phone-landscape: 640px;
+
+$iphone6-plus-portrait: 414px;
+$iphone6-plus-landscape: 735px;
+
 $nexus7-portrait: 600px;
 $nexus7-landscape: 960px;
+
 $nexus10-portrait: 800px;
 $nexus10-landscape: 1280px;
+
 $ipad-portrait: 768px;
 $ipad-landscape: 1024px;
+
+$md-min: 992px;
 
 
 h1 {
@@ -62,7 +70,6 @@ h2 {
   font-family: $Medium;
   font-size: $big;
   font-weight: normal;
-  //text-transform: uppercase;
 }
 h3 {
   font-family: $Medium;
@@ -89,14 +96,10 @@ p {
   text-decoration: none;
 }
 .page_title {
-  //@extend .col-md-offset-1;
   font-family: $Regular;
   font-size: 3em;
   text-transform: uppercase;
   color: $grey;
   padding-left: 15px;
- // padding-left: 10vw;
   margin: 1em 0 0.5em 4rem;
-  //margin-top: ;
-  //margin-bottom: 1em;
 }
