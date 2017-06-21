@@ -13,7 +13,10 @@
   }
   &__title {
     @extend h2;
-    display: inline-block;
+    @include max-screen($md-min) {
+      display: inline-block;
+    }
+    display: none;
     line-height: 40px;
     float: right;
     margin-right: 1em;

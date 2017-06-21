@@ -415,7 +415,7 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
 
         $query .= $groupby . " ORDER BY ".$orderby;
         
-        //echo $query; die;
+//        echo "<br>".$query; die;
 
         $dispatcher = JDispatcher::getInstance();
         JPluginHelper::importPlugin('k2');
@@ -684,6 +684,7 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
                 $query .= " AND i.featured = 1";
             }
         }
+
         $dispatcher = JDispatcher::getInstance();
         JPluginHelper::importPlugin('k2');
         $dispatcher->trigger('onK2BeforeSetQuery', array(&$query));
@@ -1230,6 +1231,8 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
 		$matchTypes = $config->get('extra_fields_search_mode', array());
         if(count($vars)) {
             $exPattern = '/xf_([0-9]+)(?:_([a-zA-Z0-9_]+))*/i';
+            $flag = false;
+            $i = 1;
             foreach ($vars as $field => $value) {
                 if(empty($value)) continue;
                 if(preg_match($exPattern, $field, $matches) && $filter != $field) {
@@ -1289,11 +1292,66 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
                             	$value = $this->rgEscapse($this->convert_string_non_latin($value));
                                 $value = str_replace('\u', '\\\\\\\\u', $value);
                             	$searchPattern = $prefix.'[",][[:space:]]*'.$value.'[[:space:]]*[",]'; // ~ EQUAL 'string'
+
                             } else {
-                            	$searchPattern = $prefix.'"'.$value.'"'; // ~ EQUAL 'string'
+//                                echo $i . '<br>';
+                                $i++;
+                                if (isset($_GET['xf_6']) && isset($_GET['xf_22'])) {
+                                    if($flag == false) {
+                                    $param = JRequest::getInt('xf_22');
+                                    $searchPattern = $prefix.'"'.$param.'"';
+                                    $sqlWhere = "(i.extra_fields REGEXP '".$searchPattern."') OR ";
+                                    for($i = 1; $i <= (JRequest::getInt('xf_6') - JRequest::getInt('xf_22')); $i++ ) {
+                                            $param = (JRequest::getInt('xf_22')+$i);
+                                            $searchPattern = $prefix.'"'.$param.'"';
+                                            $sqlWhere .= "(i.extra_fields REGEXP '".$searchPattern."') OR ";
+                                        }
+                                        //echo $prefix . '<br>';
+                                        //echo $param . '<br>';
+                                    }
+                                    $sqlWhere = substr($sqlWhere, 0, -3);
+                                    $flag = true;
+                                } elseif (isset($_GET['xf_61'])) {
+                                    if($flag == false) {
+                                    $param = JRequest::getInt('xf_6');
+                                    for($i = 1; $i < (JRequest::getInt('xf_6')); $i++ ) {
+                                        $param .=  '|' . (JRequest::getInt('xf_6')-$i);
+                                    }
+                                        $searchPattern = $prefix.'"'.$param.'"';
+                                    }
+                                    $flag = true;
+                                } elseif (isset($_GET['xf_22'])) {
+                                    if($flag == false) {
+                                    $param = JRequest::getInt('xf_22');
+                                    for($i = 1; $i < (JRequest::getInt('xf_22')); $i++ ) {
+                                        $param .=  '|' . (JRequest::getInt('xf_22')+$i);
+                                    }
+                                        $searchPattern = $prefix.'"'.$param.'"'; // ~ EQUAL 'string'
+                                    }
+                                    $flag = true;
+                                } else {
+                                    $searchPattern = $prefix.'"'.$value.'"'; // ~ EQUAL 'string'
+                                }
                             }
                         }
-                        $where[] = "(i.extra_fields REGEXP '".$searchPattern."')";
+//                        AND i.catid IN (2) AND (i.extra_fields REGEXP '{"id":"6","value":[^{]*"1"')
+//                        AND i.catid IN (2) AND (i.extra_fields REGEXP '{"id":"6","value":[^{]*"2"')
+//                        AND i.catid IN (2) AND (i.extra_fields REGEXP '{"id":"6","value":[^{]*"2"')
+//                        AND i.catid IN (2) AND (i.extra_fields REGEXP '{"id":"6","value":[^{]*"3|2|1"')
+//                        AND i.catid IN (2) AND (i.extra_fields REGEXP '{"id":"6","value":[^{]*"3|2|1"')
+
+                        //echo "sqlWhere: " . $sqlWhere . '<br>';
+//                        exit();
+                        if($sqlWhere) {
+                            if(substr($sqlWhere, -3) != "') ") {
+                                $where[] = $sqlWhere . "')";
+                            } else {
+                                $where[] = $sqlWhere;
+                            }
+//                            echo substr($sqlWhere, -3) . "<br><br>";
+                        } else {
+                            $where[] = "(i.extra_fields REGEXP '".$searchPattern."')";
+                        }
                     } else {
                         switch ($cType) {
                             case 'txt':
@@ -1339,6 +1397,7 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
         $sql .= empty($where) ? '' : ' AND ' . implode(' AND ', $where);
 
         if(empty($search)) {
+//            echo $sql;
             return $sql;
         }
 

@@ -18,6 +18,7 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 
 	function display($tpl = null)
 	{
+
 		$mainframe = JFactory::getApplication();
 		//$params = K2HelperUtilities::getParams('com_k2');
 		if ($mainframe->isSite()) {
@@ -54,6 +55,7 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 		switch ($task)
 		{
 			case 'category' :
+
 				// Get category
 				$id = JRequest::getInt('id');
 				JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
@@ -285,6 +287,7 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 				break;
 
 			case 'search' :
+
 				// Set layout
 				$this->setLayout('category');
 
@@ -368,6 +371,7 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 				break;
 		}
 
+
 		// Set limit for model
 		if (!$limit)
 		$limit = 10;
@@ -382,9 +386,13 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 		{
 			$items = $model->getData($ordering);
 		}
-		if(count($items)==0){
-			return JError::raiseNotice(500, JText::_('SEARCH_RESULT_NULL'));
+
+
+        if(count($items)==0){
+			echo '<div class="search__null">' . JText::_('SEARCH_RESULT_NULL') . '</div>';
+			return;
 		}
+
 		// Pagination
 		jimport('joomla.html.pagination');
 		$total = count($items) ? $model->getTotal() : 0;

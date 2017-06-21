@@ -1,7 +1,15 @@
 .header {
   &__logo {
     @extend .col-md-2;
-    @extend .col-xs-6;
+    //@extend .col-xs-6;
+    @include ipad(portrait) {
+      width: 66.6%;
+      float: left;
+    }
+    @include screen($nexus7-portrait, $ipad-portrait, portrait) {
+      width: 50%;
+      float: left;
+    }
     @include screen(0, $nexus7-portrait, portrait) {
       padding-bottom: 3rem;
     }
@@ -14,25 +22,32 @@
     @extend .col-md-2;
     @extend .col-sm-4;
     @extend .col-xs-4;
-    @include screen($nexus7-portrait, $nexus7-landscape) {
-      position: absolute;
+/*    @include ipad(portrait) {
+      width: 50%;
+    }*/
+    @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
+/*      position: absolute;
       top:0;
-      right: 0;
+      right: 0;*/
       //width: 30%;
-      margin-top: 1rem;
+      //margin-top: 1rem;
     }
-    padding-top: 3em;
+    padding-top: 4rem;
   }
 }
 .logo {
   &__img {
-    @include screen($nexus7-portrait, $nexus7-landscape) {
+    @include screen($nexus7-portrait +1 px, $nexus7-landscape) {
       width: 30%;
       margin-left: 25%;
     }
     @include screen(0, $nexus7-portrait, portrait) {
       width: 100%;
     }
+  }
+  @include ipad(portrait) {
+    width: 275px;
+    margin: 2em auto 3em;
   }
 }
 .pageid-101 {
@@ -42,7 +57,7 @@
       @extend .col-sm-8;
       padding-top: 0;
       .logo {
-      @include screen(0, $ipad-portrait, portrait) {
+      @include screen(0, $ipad-portrait - 1px, portrait) {
         width: 100%;
         margin-bottom: 0;
       }
@@ -65,7 +80,7 @@
     .mainPage__menu {
       @extend .col-md-12;
       @extend .col-xs-12;
-      @include screen(0, $ipad-portrait, portrait) {
+      @include screen(0, $ipad-portrait -1px, portrait) {
         display: none;
       }
     }
@@ -74,14 +89,14 @@
       @include screen($nexus7-portrait, $nexus7-landscape) {
         position: static;
       }
-      @include screen(0, $ipad-portrait, portrait) {
+      @include screen(0, $ipad-portrait -1px, portrait) {
         padding-top:2.8em;
       }
     }
   }
 }
 .search {
-  @include screen(0, $ipad-portrait, portrait) {
+  @include screen(0, $ipad-portrait - 1px, portrait) {
     //position: relative;
     width: 50%;
     float: left;
@@ -97,12 +112,12 @@
     background-position: center;
   }
   &__wrapper {
-    @include screen(0, $ipad-portrait, portrait) {
+    @include screen(0, $ipad-portrait - 1px, portrait) {
      // display: none;
     }
   }
   &__form {
-    @include screen(0, $ipad-portrait, portrait) {
+    @include screen(0, $ipad-portrait - 1px, portrait) {
       display: none;
       position: absolute;
       top: 8.7rem;
@@ -111,7 +126,7 @@
       width: 45vw;
       padding: 5px 0 5px 5px;
     }
-    @include screen(0, $nexus7-portrait, portrait) {
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
       top: 5.8rem;
       width: 43vw;
     }
@@ -134,7 +149,7 @@
   }
 }
 .language {
-  @include screen(0, $ipad-portrait, portrait) {
+  @include screen(0, $ipad-portrait - 1px, portrait) {
     width: 50%;
     margin-top: 0;
   }

@@ -14,7 +14,7 @@
   }
   .resources {
     &__item {
-      @include screen($phone-portrait, $ipad-portrait, portrait) {
+      @include screen($phone-portrait, $ipad-portrait + 2px, portrait) {
         height: 350px;
       }
       background-color: #fff;

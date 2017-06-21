@@ -1,9 +1,11 @@
 .mainPage__menu {
-  @include screen(0, $ipad-portrait, portrait) {
+  @include screen(0, $ipad-portrait - 1px, portrait) {
+    display: none;
     padding-bottom: 2rem;
   }
+  //display: none;
   .menu {
-    @include screen(0, $ipad-portrait, portrait) {
+    @include screen(0, $ipad-portrait - 1px, portrait) {
      // display: none;
     }
     .item-101 {
@@ -97,7 +99,7 @@
       &--106 { background-image: url("../img/icons/contact.png"); }
     }
     &__child {
-      @include screen(0, $ipad-portrait, portrait) {
+      @include screen(0, $ipad-portrait - 1px, portrait) {
         display: none;
       }
       visibility: hidden;
@@ -152,10 +154,10 @@
 .menu-header__button {
   @extend .menu__button;
   @include screen($nexus5x-portrait, $nexus7-portrait - 1px, portrait) {
-    margin-top: 2.8em;
+    margin-top: 3em;
     padding: 0.5rem;
   }
-  margin-top: 3.8em;
+  margin-top: 4em;
   padding: 1.5rem;
   .dropdown-button__line {
     background-color: $green;
@@ -163,6 +165,9 @@
 }
 
 .insidePage__menu {
+  @include max-screen($ipad-portrait) {
+    display: none;
+  }
   .menu {
     display: flex;
     flex-direction: row;

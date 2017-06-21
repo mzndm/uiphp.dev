@@ -134,7 +134,14 @@ html, body {
   }
 }
 .mainPage__menu .menu > .menu__item.item-103 > a {
-  @include screen(0, $ipad-portrait, portrait) {
+  @include screen(0, $ipad-portrait - 1px, portrait) {
     margin-top: 1rem;
+  }
+}
+.pageid-101 {
+  .mainPage__menu {
+    @include min-screen($ipad-portrait + 1px) {
+      display: block;
+    }
   }
 }
