@@ -82,10 +82,16 @@ $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/mai
 							<jdoc:include type="modules" name="search" style="xhtml" />
 						</div>		<!--	.search		-->
 						<div class="language">
+							<div class="language__button"></div>
 							<jdoc:include type="modules" name="language" style="xhtml" />
 						</div>		<!--	.language	-->
 					</div>		<!--	.header__search		-->
-					<div class="header__menu mainPage__menu">
+					<div class="menu-header__button dropdown-button">
+						<span class="dropdown-button__line dropdown-button__line--1"></span>
+						<span class="dropdown-button__line dropdown-button__line--2"></span>
+						<span class="dropdown-button__line dropdown-button__line--3"></span>
+					</div>
+					<div class="mainPage__menu">
 						<jdoc:include type="modules" name="mainPage__menu" style="xhtml" />
 					</div>		<!--	.header__menu mainPage__menu	-->
 				</header>		<!--	.header		-->

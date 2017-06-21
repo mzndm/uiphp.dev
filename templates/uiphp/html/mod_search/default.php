@@ -26,6 +26,7 @@ else
 }
 ?>
 <div class="search__wrapper<?php echo $moduleclass_sfx; ?>">
+	<div class="search__button"></div>
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="search__form">
 		<?php
 			$output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';

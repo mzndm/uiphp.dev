@@ -3,9 +3,6 @@
     @extend .hidden-md;
     @extend .hidden-lg;
     position: relative;
-    width: 45px;
-    height: 45px;
-    padding: 5px;
     float: right;
     margin-right: 15px;
     &__line {
@@ -38,7 +35,3 @@
     }
   }
 }
-/*
-.visible {
-  display: block;
-}*/

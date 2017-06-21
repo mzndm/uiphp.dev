@@ -133,3 +133,8 @@ html, body {
     margin-top: 0;
   }
 }
+.mainPage__menu .menu > .menu__item.item-103 > a {
+  @include screen(0, $ipad-portrait, portrait) {
+    margin-top: 1rem;
+  }
+}
