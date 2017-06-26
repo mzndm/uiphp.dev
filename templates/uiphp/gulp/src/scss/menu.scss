@@ -1,9 +1,17 @@
 .mainPage__menu {
-  @include screen(0, $ipad-portrait - 1px, portrait) {
-    display: none;
+  @include screen(0, $nexus10-portrait , portrait) {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 2rem;
+    float: left;
   }
-  //display: none;
+  @include screen($nexus7-portrait +1px, $nexus10-portrait, portrait) {
+    display: block;
+  }
+  display: none;
   .menu {
     @include screen(0, $ipad-portrait - 1px, portrait) {
      // display: none;
@@ -28,7 +36,7 @@
           margin-top: 0;
           padding-left: 0;
         }
-        @include screen($nexus7-portrait, $ipad-portrait, portrait) {
+        @include screen($nexus7-portrait, $ipad-portrait -1px, portrait) {
           width: 70%;
           margin-top: 0;
           padding-top: 0;
@@ -45,7 +53,6 @@
         margin-top: 1.5em;
         text-decoration: underline;
         text-decoration-color: $green;
-
       }
     }
     .parent {
@@ -80,7 +87,7 @@
       @include screen($ipad-portrait, $md-min, portrait) {
         height: 100%;
       }
-      @include screen(0, $ipad-portrait, portrait) {
+      @include screen(0, $ipad-portrait - 1px, portrait) {
         width: 25%;
         height: 100%;
       }
@@ -165,7 +172,7 @@
 }
 
 .insidePage__menu {
-  @include max-screen($ipad-portrait) {
+  @include max-screen($nexus10-portrait) {
     display: none;
   }
   .menu {

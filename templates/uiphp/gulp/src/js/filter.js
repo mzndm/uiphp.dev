@@ -10,3 +10,13 @@ $('input[type=radio]').change(function () {
         $(this).parent().removeClass('checked');
     }
 });
+$('#xf_112').change(function () {
+    if( $(this).is(':checked')) {
+        $('#xf_2_0').parent().addClass('hidden');
+    }
+});
+$('#xf_111').change(function () {
+    if( $(this).is(':checked')) {
+        $('#xf_2_0').parent().removeClass('hidden');
+    }
+});

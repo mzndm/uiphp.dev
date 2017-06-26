@@ -140,7 +140,7 @@ html, body {
 }
 .pageid-101 {
   .mainPage__menu {
-    @include min-screen($ipad-portrait + 1px) {
+    @include min-screen($ipad-portrait ) {
       display: block;
     }
   }

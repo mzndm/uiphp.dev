@@ -40,7 +40,7 @@ defined('_JEXEC') or die;
 
 	  <?php if($this->item->params->get('itemTitle')): ?>
 	  <!-- Item title -->
-	  <h2 class="itemTitle">
+	  <div class="item__title">
 			<?php if(isset($this->item->editLink)): ?>
 			<!-- Item edit link -->
 			<span class="itemEditLink">
@@ -61,7 +61,7 @@ defined('_JEXEC') or die;
 	  	</span>
 	  	<?php endif; ?>
 
-	  </h2>
+	  </div>
 	  <?php endif; ?>
 
 		<?php if($this->item->params->get('itemAuthor')): ?>

@@ -140,7 +140,7 @@ ul.sigProResponsive li.sigProThumb span.sigProLinkOuterWrapper { }
 ul.sigProResponsive li.sigProThumb span.sigProLinkWrapper { }
 ul.sigProResponsive li.sigProThumb a.sigProLink,
 ul.sigProResponsive li.sigProThumb a.sigProLink:hover { position:relative; display:block; padding:0; margin:0; }
-ul.sigProResponsive li.sigProThumb a.sigProLink { color:#000; background-color:#000; border:4px solid #000; -webkit-transition: 200ms all ease-in; -moz-transition: 200ms all ease-in; transition: 200ms all ease-in; }
+ul.sigProResponsive li.sigProThumb a.sigProLink { color:#000; background-color:#000; border:4px solid #bdbfc0; -webkit-transition: 200ms all ease-in; -moz-transition: 200ms all ease-in; transition: 200ms all ease-in; }
 ul.sigProResponsive li.sigProThumb a.sigProLink:hover { color:#19d0cc; text-decoration:none; background-color:#19d0cc; border:4px solid #19d0cc; }
 ul.sigProResponsive li.sigProThumb a.sigProLink img.sigProImg,
 ul.sigProResponsive li.sigProThumb a.sigProLink:hover img.sigProImg { display:block; padding:0; margin:0; border:none; background-repeat:no-repeat; background-position:50% 50%; }
