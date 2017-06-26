@@ -1,12 +1,12 @@
 .projectCategory {
   &__list {
-    @include screen($phone-landscape, $ipad-landscape, landscape) {
+    @include screen($ipad-portrait, $nexus10-portrait, portrait) {
       max-height: 990px;
     }
-    @include screen($nexus7-portrait, $nexus10-portrait, portrait) {
-      max-height: 990px;
+    @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
+      max-height: 1500px;
     }
-    @include screen($nexus7-portrait, $nexus10-portrait, portrait) {
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
       flex-direction: row;
       max-height: inherit;
     }
@@ -18,6 +18,12 @@
   &__item {
     @extend .col-md-4;
     @extend .col-sm-6;
+    @include screen($nexus7-portrait, $md-min, portrait) {
+      width: 50%;
+    }
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
+      width: 100%;
+    }
   }
   &__wrapper {
     @extend .resources__wrapper;
@@ -90,17 +96,23 @@
   &__fieldName {
     @extend .col-md-2;
     @extend .col-sm-12;
-    @include max-screen($ipad-landscape) {
-      text-align: left;
-    }
     text-align: right;
     font-family: $Medium;
     font-size: $normal;
+    @include max-screen($ipad-landscape) {
+      text-align: left;
+    }
+    @include max-screen($nexus7-portrait - 1px) {
+      padding: 0;
+    }
   }
   &__fieldValue {
     @extend .col-md-8;
     @extend .col-sm-12;
     @extend p;
     margin: 0;
+    @include max-screen($nexus7-portrait - 1px) {
+      padding: 0;
+    }
   }
 }

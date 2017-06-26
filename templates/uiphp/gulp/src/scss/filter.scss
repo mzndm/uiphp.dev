@@ -22,6 +22,9 @@
     @include max-screen($md-min) {
       display: inline-block;
     }
+    @include max-screen($nexus7-portrait - 1px) {
+      font-size: 1.3em;
+    }
     display: none;
     line-height: 40px;
     float: right;

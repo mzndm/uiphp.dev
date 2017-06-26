@@ -166,6 +166,10 @@
     @extend .visible-xs;
     @extend h2;
     @extend .menu__button;
+    @include screen(0, $nexus5x-portrait - 1px, portrait) {
+      padding-left: 8px;
+      padding-top: 12px;
+    }
     text-align: center;
     background-repeat: no-repeat;
     background-position: center;

@@ -5,6 +5,9 @@
 html, body {
   position: relative;
 }
+img {
+ max-width: 100%;
+}
 .uk-ua {
   .logo__img--en {
     display: none;

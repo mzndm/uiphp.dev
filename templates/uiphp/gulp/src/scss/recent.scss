@@ -6,6 +6,9 @@
     @extend .events__h1;
     margin-left: 1em;
     margin-bottom: 1em;
+    @include screen( 0, $phone-portrait, portrait) {
+      margin-bottom: 0;
+    }
   }
   &__category {}
   &__item {

@@ -6,6 +6,9 @@
   }
   .menu {
     margin-bottom: 3em;
+    @include max-screen($ipad-landscape) {
+      margin-bottom: 0;
+    }
     &__item {
       @include max-screen($ipad-landscape) {
         line-height: 2;

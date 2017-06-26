@@ -1,19 +1,15 @@
 .about-us {
-  //overflow: auto;
-  //padding-bottom: 10em;
-  //background: url("../img/image/about-us_bg.png") right bottom no-repeat;
-  //background-size: 50%;
-  //padding: 0 4em;
   &__big {
     font-size: $big;
     text-align: justify;
     margin-bottom: 2.5em;
+    @include screen(0, $phone-portrait, portrait) {
+      font-size: $normal;
+    }
   }
   &__normal {
-    //width: 80%;
     @extend .col-md-10;
     padding: 0;
-    //margin-bottom: 1.5em;
   }
   &__list {
     @extend .col-md-6;
@@ -31,7 +27,6 @@
     @extend .row;
     padding: 0;
     margin: 0 -15px;
-    //max-width: 80%;
   }
   &__li {
     @extend p;
@@ -45,6 +40,5 @@
       background: url("../img/icons/round.png") no-repeat;
       background-size: contain;
     }
-
   }
 }

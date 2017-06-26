@@ -38,11 +38,17 @@
     margin: 0 1em 0.5em 0;
     padding-left: 0;
     max-width: 50%;
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
+      max-width: 100%;
+    }
   }
   .pull-right {
     margin: 0 1em 0.5em 0;
     padding-right: 0;
     max-width: 50%;
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
+      max-width: 100%;
+    }
   }
   p {
     margin: 1em 0;

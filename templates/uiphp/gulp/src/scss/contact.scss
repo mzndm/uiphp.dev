@@ -1,9 +1,16 @@
 .map {
   height: 75vh;
   margin-top: 3em;
+  @include screen(0, $nexus7-portrait - 1px, portrait) {
+    height: 50vh;
+    margin-top: 0;
+  }
 }
 .contact {
   @extend .col-md-5;
+  @include screen(0, $nexus7-portrait - 1px, portrait) {
+    position: static;
+  }
   position: absolute;
   top: -2em;
   left: 5em;

@@ -12,6 +12,14 @@
       margin-bottom: 8px;
       background: $grey;
       transition: all 0.1s ease-in;
+      @include screen($nexus5x-portrait, $nexus7-portrait - 1px, portrait) {
+        width: 28px;
+        margin-bottom: 5px;
+      }
+      @include screen(0, $nexus5x-portrait - 1px, portrait) {
+        width: initial;
+        margin-bottom: 5px;
+      }
     }
     &__close {
       .dropdown-button {
@@ -21,6 +29,12 @@
             transform: rotate(45deg);
             margin-top: 15px;
             margin-bottom: 0;
+            @include screen($nexus5x-portrait, $nexus7-portrait - 1px, portrait) {
+              margin-top: 11px;
+            }
+            @include screen(0, $nexus5x-portrait - 1px, portrait) {
+              margin-top: 10px;
+            }
           }
           &--2 {
             background-color: transparent;
@@ -29,6 +43,12 @@
             transform: rotate(-45deg);
             margin-top: -15px;
             margin-bottom: 0;
+            @include screen($nexus5x-portrait, $nexus7-portrait - 1px, portrait) {
+              margin-top: -13px;
+            }
+            @include screen(0, $nexus5x-portrait - 1px, portrait) {
+              margin-top: -13px;
+            }
           }
         }
       }
