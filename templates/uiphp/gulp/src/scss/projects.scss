@@ -6,6 +6,10 @@
     @include screen($nexus7-portrait, $nexus10-portrait, portrait) {
       max-height: 990px;
     }
+    @include screen($nexus7-portrait, $nexus10-portrait, portrait) {
+      flex-direction: row;
+      max-height: inherit;
+    }
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

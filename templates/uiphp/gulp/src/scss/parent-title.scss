@@ -2,6 +2,9 @@
   font-size: 1em;
   margin-left: 4rem;
   padding-left: 15px;
+  @include screen(0, $nexus7-portrait, portrait) {
+    margin-left: 2rem;
+  }
   ul {
     padding: 0;
   }
@@ -15,6 +18,9 @@
         display: block;
         line-height: 1;
         margin-bottom: 0;
+        @include screen(0, $nexus7-portrait, portrait) {
+          margin-top: -2rem;
+        }
       }
     }
     &__divider {

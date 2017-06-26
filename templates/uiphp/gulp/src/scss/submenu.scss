@@ -1,6 +1,9 @@
 .submenu {
   margin-left: 4rem;
   padding-left: 15px;
+  @include screen(0, $nexus7-portrait, portrait) {
+    margin-left: 2rem;
+  }
   .menu {
     margin-bottom: 3em;
     &__item {

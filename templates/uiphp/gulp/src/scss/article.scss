@@ -3,6 +3,9 @@
   &__wrapper {
     @extend .clearfix;
     padding: 0 5rem 3em;
+    @include screen(0, $nexus7-portrait, portrait) {
+      padding: 0 3rem 3em;
+    }
   }
   .page-header {
     h2 {
@@ -66,6 +69,10 @@
     &--national {
       flex-direction: column;
       max-height: 600px;
+      @include screen(0, $ipad-portrait - 1px, portrait) {
+        flex-direction: row;
+        max-height: inherit;
+      }
     }
     &--foreign {
       flex-direction: row;
@@ -73,11 +80,14 @@
   }
   &__institution {
     &--national {
-      @include screen($phone-portrait, $ipad-portrait, portrait) {
+      flex-direction: row;
+      @include screen($nexus7-portrait + 1px, $ipad-portrait, portrait) {
         flex-direction: column;
         max-height: 700px;
       }
-      flex-direction: row;
+      @include screen(0, $nexus7-portrait, portrait) {
+        flex-direction: row;
+      }
     }
     &--foreign {
       flex-direction: row;
@@ -90,10 +100,14 @@
     text-transform: uppercase;
     margin-bottom: 1em;
     padding-left: 5rem;
+    @include screen(0, $ipad-portrait - 1px, portrait ) {
+      padding-left: 3rem;
+    }
   }
   &__item {
     @extend .col-md-4;
     @extend .col-sm-6;
+    @extend .col-xs-12;
     //width: 33.33%;
     margin-bottom: 2em;
   }

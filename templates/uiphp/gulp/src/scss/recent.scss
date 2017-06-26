@@ -11,15 +11,21 @@
   &__item {
     @extend .col-sm-4;
     margin-bottom: 4em;
+    @include screen( 0, $nexus7-portrait, portrait) {
+      margin-bottom: 2em;
+    }
   }
   .resources {
     &__item {
-      @include screen($phone-portrait, $ipad-portrait + 2px, portrait) {
-        height: 350px;
-      }
       background-color: #fff;
       padding: 1.5em;
       height: 300px;
+      @include screen($nexus7-portrait + 1px, $ipad-portrait, portrait) {
+        height: 350px;
+      }
+      @include screen( 0, $nexus7-portrait, portrait) {
+        height: 225px;
+      }
     }
     &__title {}
     &__format {
@@ -27,5 +33,9 @@
       bottom: 1.5em;
     }
   }
-
+  .toEvents {
+    @include screen(0, $nexus7-portrait, portrait) {
+      margin-left: 3rem;
+    }
+  }
 }

@@ -62,8 +62,10 @@ html, body {
 }
 .pageid-105,
 .pageid-106 {
-  h1, h2 {
-    display: none;
+  .page-header {
+    h1, h2 {
+      display: none;
+    }
   }
 }
 .pageid-130 {

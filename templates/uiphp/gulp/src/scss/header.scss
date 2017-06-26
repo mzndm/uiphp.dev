@@ -14,6 +14,7 @@
     }
     @include screen(0, $nexus7-portrait, portrait) {
       padding-bottom: 3rem;
+      padding-top: 2rem;
     }
     padding-top: 3em;
   }
@@ -24,15 +25,8 @@
     @extend .col-md-2;
     @extend .col-sm-4;
     @extend .col-xs-4;
-/*    @include ipad(portrait) {
-      width: 50%;
-    }*/
-    @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
-/*      position: absolute;
-      top:0;
-      right: 0;*/
-      //width: 30%;
-      //margin-top: 1rem;
+    @include screen(0, $nexus7-portrait - 1px, portrait) {
+      padding-top: 3rem;
     }
     padding-top: 4rem;
   }
@@ -59,10 +53,10 @@
       @extend .col-sm-8;
       padding-top: 0;
       .logo {
-      @include screen(0, $ipad-portrait - 1px, portrait) {
-        width: 100%;
-        margin-bottom: 0;
-      }
+        @include screen(0, $ipad-portrait - 1px, portrait) {
+          width: 100%;
+          margin-bottom: 0;
+        }
         width: 275px;
         margin: 2em auto 3em;
         &__link {
@@ -91,8 +85,8 @@
       @include screen($nexus7-portrait, $nexus7-landscape) {
         position: static;
       }
-      @include screen(0, $ipad-portrait -1px, portrait) {
-        padding-top:2.8em;
+      @include screen(0, $nexus7-portrait - 1px, portrait) {
+        padding-top: 3rem;
       }
     }
   }
