@@ -208,7 +208,11 @@ function jak2AjaxSubmit(form, K2SitePath) {
 
 function jak2AjaxStart() {
     if(!jQuery('#jak2-loading').length) {
-        jQuery('body').append('<div id="jak2-loading">Loading</div>');
+        if (jQuery('html').attr('lang') == 'uk-ua') {
+            jQuery('body').append('<div id="jak2-loading">Завантажується</div>');
+        } else {
+            jQuery('body').append('<div id="jak2-loading">Loading</div>');
+        }
     }
     jQuery('#jak2-loading').css({'display': 'block'});
 }
@@ -313,7 +317,11 @@ function jak2AjaxHandle(text, K2SitePath) {
         //highlight search team in result
         jak2Highlight(container, jQuery('.ja-k2filter input[name="searchword"]').val());
     } else {
-        container.html('No Item found!');
+       if (jQuery('html').attr('lang') == 'uk-ua') {
+           container.html('<p class="not_found">По заданим параметрам матеріалів не існує</p>');
+       } else {
+           container.html('<p class="not_found">Not found</p>');
+       }
     }
     jQuery('#jak2-loading').css({'display': 'none'});
 	jQuery('html, body').animate({scrollTop: container.offset().top}, 1000);

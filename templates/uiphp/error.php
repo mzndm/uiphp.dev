@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 
 if (($this->error->getCode()) == '404') {
+//	header("HTTP/1.0 404 Not Found");
 	header('Location: /index.php?option=com_content&view=article&id=8');
 	exit;
 }

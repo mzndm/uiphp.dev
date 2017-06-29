@@ -26,7 +26,7 @@
       @include screen($nexus7-portrait + 1px, $ipad-portrait, portrait) {
         height: 350px;
       }
-      @include screen( 0, $nexus7-portrait, portrait) {
+      @include screen($nexus5x-portrait, $nexus7-portrait, portrait) {
         height: 225px;
       }
     }

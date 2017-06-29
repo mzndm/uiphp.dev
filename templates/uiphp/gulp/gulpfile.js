@@ -108,7 +108,7 @@ gulp.task('lib_js:build', function () {
         .pipe(gulp.dest(path.build.lib_js))
 });
 
-gulp.task('image:build', function () {          // TODO:  зменшити якість картинок на виході
+gulp.task('image:build', function () {
     gulp.src(path.src.img)
         .pipe(cache(imagemin({
             progressive: true,

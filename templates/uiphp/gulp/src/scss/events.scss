@@ -19,8 +19,8 @@
     margin-top: 1.5em;
   }
   .item {
-    overflow: auto;
     margin-bottom: 3em;
+    clear: both;
     &__image {
       @extend .col-md-4;
       @extend .col-sm-5;
