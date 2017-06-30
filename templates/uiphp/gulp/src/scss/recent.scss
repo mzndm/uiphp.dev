@@ -20,6 +20,9 @@
   }
   .resources {
     &__item {
+      background-repeat: no-repeat;
+      background-size: 50%;
+      background-position: right bottom;
       background-color: #fff;
       padding: 1.5em;
       height: 300px;

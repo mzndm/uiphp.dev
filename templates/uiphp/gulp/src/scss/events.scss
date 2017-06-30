@@ -21,6 +21,7 @@
   .item {
     margin-bottom: 3em;
     clear: both;
+    overflow-x: hidden;
     &__image {
       @extend .col-md-4;
       @extend .col-sm-5;

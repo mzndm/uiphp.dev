@@ -19,7 +19,7 @@ defined('_JEXEC') or die;
 
     <?php foreach ($items as $key=>$item):	?>
     <div class="recent__item">
-		<div class="resources__item">
+		<div class="resources__item" style="background-image: url('<?php echo $item->image; ?>')">
 
 		  <?php if($params->get('itemAttachments') && count($item->attachments)): ?>
 			  <?php foreach ($item->attachments as $attachment): ?>

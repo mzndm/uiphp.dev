@@ -15,7 +15,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 
 ?>
 
-<div class="resources__wrapper" style="background-image: url('<?php echo $this->item->image; ?>')">
+<div class="resources__wrapper" style="background-image: url('<?php echo $this->item->imageXSmall; ?>')">
 
 	<?php echo $this->item->event->BeforeDisplay; ?>
 
