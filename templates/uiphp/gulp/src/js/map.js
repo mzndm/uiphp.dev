@@ -20,7 +20,7 @@ $(document).ready(function() {
             });
 
             google.maps.event.addDomListener(window, 'resize', function () {
-                var center = map.getCenter();
+                var center = new google.maps.LatLng({lat: 50.4505917, lng: 30.5190985});
                 google.maps.event.trigger(map, 'resize');
                 map.setCenter(center);
             });

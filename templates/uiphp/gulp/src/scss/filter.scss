@@ -25,6 +25,9 @@
     @include max-screen($nexus7-portrait - 1px) {
       font-size: 1.3em;
     }
+    @include max-screen($iphone5-portrait) {
+      font-size: 1em;
+    }
     display: none;
     line-height: 40px;
     float: right;

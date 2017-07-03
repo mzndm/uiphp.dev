@@ -16,6 +16,9 @@
       padding-bottom: 3rem;
       padding-top: 2rem;
     }
+    @include screen(0, $iphone5-portrait, portrait) {
+      padding-bottom: 4rem;
+    }
     padding-top: 3em;
   }
   .insidePage__menu {
@@ -27,6 +30,9 @@
     @extend .col-xs-4;
     @include screen(0, $nexus7-portrait - 1px, portrait) {
       padding-top: 3rem;
+    }
+    @include screen(0, $iphone5-portrait, portrait) {
+      margin-left: -5px;
     }
     padding-top: 4rem;
   }

@@ -64,7 +64,7 @@
       .controls {
         label {
           @extend .tdu;
-          @include screen($phone-portrait, $ipad-landscape, portrait) {
+          @include screen(0, $ipad-landscape, portrait) {
             display: inline-block;
           }
           background: none;
@@ -90,6 +90,9 @@
       padding-top: 2em;
       padding-left: 12em;
       padding-bottom: 3em;
+      @include max-screen($ipad-landscape) {
+        padding-left: 2em;
+      }
     }
   }
   &__item {
@@ -132,6 +135,9 @@
     @include screen(0, $nexus7-portrait, portrait) {
       top: 10px;
     }
+    @include iphone5(portrait) {
+      top:0;
+    }
   }
   @include screen(0, $nexus7-portrait, portrait) {
     position: relative;
@@ -142,6 +148,9 @@
   @include screen(0, $phone-portrait, portrait) {
     font-size: 1.3em;
   }
+  @include iphone5(portrait) {
+    font-size: 1em;
+  }
 }
 
 
@@ -150,8 +159,11 @@
   @extend .col-md-10;
   @extend .col-sm-12;
   @extend .col-xs-12;
-  @include screen($phone-portrait, $ipad-landscape, portrait) {
+  @include screen(0, $ipad-landscape, portrait) {
     padding-top: 0;
+  }
+  @include iphone5(portrait) {
+    // float: none;
   }
   padding-top: 4em;
   background-color: #fff;
