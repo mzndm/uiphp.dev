@@ -25,6 +25,34 @@ img {
   margin-bottom: -5em;
   padding-bottom: 5em;
 }
+
+.error {
+  &__404 {
+    float: none;
+    @extend .col-md-6;
+    @extend .col-md-offset-3;
+  }
+  &__message {
+    @extend p;
+    font-size:$big;
+    text-align: center;
+  }
+  &__button {
+    font-family:$Medium;
+    font-size:$big;
+    width: 250px;
+    display: block;
+    color:$grey;
+    background-color: $green;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+    margin: 0 auto;
+  }
+}
+
 .container {
   @include screen($nexus7-portrait, $nexus7-landscape) {
     position: relative;
