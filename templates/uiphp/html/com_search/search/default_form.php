@@ -40,9 +40,9 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 		<?php echo $this->pagination->getLimitBox(); ?>
 	</div>
 
-	<p class="counter">
-		<?php echo $this->pagination->getPagesCounter(); ?>
-	</p>
+	<!--<p class="counter">
+		<?php /*echo $this->pagination->getPagesCounter(); */?>
+	</p>-->
 
 <?php endif; ?>
 

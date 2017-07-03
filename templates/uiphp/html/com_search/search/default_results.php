@@ -44,6 +44,6 @@ defined('_JEXEC') or die;
 
 </div>
 
-<div class="pagination">
+<div class="result__pagination">
 	<?php echo $this->pagination->getPagesLinks(); ?>
 </div>
