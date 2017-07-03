@@ -563,7 +563,7 @@ class JPagination
 		$limits = array();
 
 		// Make the option list.
-		for ($i = 5; $i <= 30; $i += 5)
+		for ($i = 10; $i <= 30; $i += 5)
 		{
 			$limits[] = JHtml::_('select.option', "$i");
 		}

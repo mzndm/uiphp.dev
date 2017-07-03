@@ -1,0 +1,43 @@
+.result {
+  padding-top: 3rem;
+  @extend .clearfix;
+  &__form {
+    padding: 0 30px 2rem;
+    float: none;
+    @extend .col-md-6;
+    @extend .col-md-offset-3;
+    @extend .col-sm-10;
+    @extend .col-sm-offset-1;
+  }
+  &__input {
+    width: 90%;
+    max-width: 90%;
+    line-height: 2rem;
+    @extend .search__input;
+  }
+  &__limit {
+    display: none;
+  }
+  &__category {
+    display: none;
+  }
+  &__img{
+    vertical-align: middle;
+  }
+  &__wrapper {
+    @extend .col-md-8;
+    @extend .col-md-offset-2;
+  }
+  &__item {
+    @extend .resources__wrapper;
+  }
+  &__title {
+    @extend .resources__title;
+  }
+  &__text {
+    @extend p;
+  }
+  &__date {
+    @extend .resources__format;
+  }
+}
