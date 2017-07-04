@@ -43,6 +43,9 @@
       padding-bottom: 5rem;
       width: 50%;
     }
+    @include screen(0, $iphone5-landscape, landscape) {
+      margin-left: -5px;
+    }
     padding-top: 4rem;
   }
 }
@@ -217,6 +220,12 @@
     @include screen(0, $nexus5x-portrait - 1px, portrait) {
       padding-left: 8px;
       padding-top: 12px;
+    }
+    @include screen(0, $phone-landscape, landscape) {
+      margin-right: -15px;
+    }
+    @include screen(0, $iphone5-landscape, landscape) {
+      margin-right: -20px;
     }
     text-align: center;
     background-repeat: no-repeat;
