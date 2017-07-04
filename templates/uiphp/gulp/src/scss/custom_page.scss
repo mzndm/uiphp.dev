@@ -110,6 +110,7 @@ img {
   .filter {
     @include screen(0, $iphone6-plus-landscape, landscape) {
       display: block;
+      width: 100%;
     }
   }
 }

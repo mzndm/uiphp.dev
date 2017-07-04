@@ -1,6 +1,5 @@
 .events {
   @extend .col-md-8;
-  margin-bottom: 3em;
   &__h1 {
     @extend h1;
     background: url("../img/icons/round.png") no-repeat;
@@ -102,7 +101,6 @@
   &__item {
     padding: 3em 4em;
   }
-
 }
 .event {
   .item {
@@ -186,6 +184,10 @@
       width: 25%;
       @include screen(0, $nexus7-portrait, portrait) {
         width: 100%;
+      }
+      @include screen(0, $nexus7-landscape - 1px, landscape) {
+        width: 50%;
+        float: left;
       }
     }
     &__content {

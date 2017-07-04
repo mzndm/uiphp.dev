@@ -1,6 +1,6 @@
 .projectCategory {
   &__list {
-    @include screen($ipad-portrait, $nexus7-landscape) {
+    @include screen($ipad-portrait, $nexus7-landscape, portrait) {
       max-height: 990px;
     }
     @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
@@ -10,10 +10,12 @@
       flex-direction: row;
       max-height: inherit;
     }
-    //@include screen(0, $nexus7-landscape - 1px, landscape) {
-    //  flex-direction: row;
-    //  max-height: inherit;
-    //}
+    @include screen( $phone-landscape + 1px, $iphone6-plus-landscape, landscape) {
+      max-height: 1200px;
+    }
+    @include screen(0, $phone-landscape, landscape) {
+      max-height: 1500px;
+    }
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -28,7 +30,6 @@
     @include screen(0, $nexus7-portrait - 1px, portrait) {
       width: 100%;
     }
-
     @include screen(0, $nexus7-landscape - 1px, landscape) {
       width: 50%;
     }
