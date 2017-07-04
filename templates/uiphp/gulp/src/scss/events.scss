@@ -64,7 +64,7 @@
       .controls {
         label {
           @extend .tdu;
-          @include screen(0, $ipad-landscape, portrait) {
+          @include screen(0, $ipad-landscape) {
             display: inline-block;
           }
           background: none;
@@ -159,7 +159,7 @@
   @extend .col-md-10;
   @extend .col-sm-12;
   @extend .col-xs-12;
-  @include screen(0, $ipad-landscape, portrait) {
+  @include screen(0, $ipad-landscape) {
     padding-top: 0;
   }
   @include iphone5(portrait) {

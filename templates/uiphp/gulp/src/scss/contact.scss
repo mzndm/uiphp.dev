@@ -11,6 +11,9 @@
   @include screen(0, $nexus7-portrait - 1px, portrait) {
     position: static;
   }
+  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+    left: -1px;
+  }
   position: absolute;
   top: -2em;
   left: 5em;

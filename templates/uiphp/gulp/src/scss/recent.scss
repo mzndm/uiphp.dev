@@ -32,6 +32,9 @@
       @include screen($nexus5x-portrait, $nexus7-portrait, portrait) {
         height: 225px;
       }
+      @include screen(0, $nexus7-landscape, landscape) {
+        height: 500px;
+      }
     }
     &__title {}
     &__format {

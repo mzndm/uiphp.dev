@@ -6,6 +6,9 @@
     overflow: auto;
     width: 100%;
   }
+  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+    width: 33%;
+  }
   display: block;
   &__wrapper {
     @include screen(0, $nexus10-portrait, portrait) {
@@ -16,6 +19,9 @@
     width: 45px;
     height: 45px;
     padding: 5px;
+    @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+      display: none;
+    }
   }
   &__title {
     @extend h2;
@@ -27,6 +33,9 @@
     }
     @include max-screen($iphone5-portrait) {
       font-size: 1em;
+    }
+    @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+      display: none;
     }
     display: none;
     line-height: 40px;

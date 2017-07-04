@@ -12,6 +12,10 @@
     display: block;
     padding-bottom: 0;
   }
+
+  @include screen(0, $nexus7-landscape, landscape) {
+    display: block;
+  }
   display: none;
   .menu {
     .item-101 {
@@ -30,6 +34,10 @@
         height: 80px;
         margin-bottom: 10px;
       }
+      @include screen(0, $nexus7-landscape, landscape) {
+        height: 100px;
+        margin-bottom: 10px;
+      }
       height: 170px;
 
       >a {
@@ -45,6 +53,10 @@
         }
         @include screen(0, $iphone6-portrait, portrait) {
           margin-top: 1rem;
+        }
+        @include screen(0, $nexus7-landscape, landscape) {
+          margin-top: 0;
+          padding-left: 0;
         }
         width: 60%;
         display: block;
@@ -186,6 +198,9 @@
 
 .insidePage__menu {
   @include max-screen($nexus10-portrait) {
+    display: none;
+  }
+  @include screen(0, $nexus7-landscape, landscape) {
     display: none;
   }
   .menu {

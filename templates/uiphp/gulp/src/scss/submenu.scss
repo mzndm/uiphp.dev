@@ -4,6 +4,9 @@
   @include screen(0, $nexus7-portrait, portrait) {
     margin-left: 2rem;
   }
+  @include screen(0, $nexus7-landscape, landscape) {
+    padding-bottom: 2rem;
+  }
   .menu {
     margin-bottom: 3em;
     @include max-screen($ipad-landscape) {

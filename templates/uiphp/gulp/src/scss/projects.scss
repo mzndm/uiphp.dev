@@ -1,6 +1,6 @@
 .projectCategory {
   &__list {
-    @include screen($ipad-portrait, $nexus10-portrait, portrait) {
+    @include screen($ipad-portrait, $nexus7-landscape) {
       max-height: 990px;
     }
     @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {

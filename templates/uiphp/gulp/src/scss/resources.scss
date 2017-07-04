@@ -1,6 +1,9 @@
 .resources {
   @extend .col-md-8;
   @extend .col-sm-12;
+  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+    width: 66%;
+  }
   .componentheading {
     @extend h2;
     padding: 1em 0 0 1em;
