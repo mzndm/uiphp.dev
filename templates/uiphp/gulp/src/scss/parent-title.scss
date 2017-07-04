@@ -21,6 +21,9 @@
         @include screen(0, $nexus7-portrait, portrait) {
           margin-top: -2rem;
         }
+        @include screen(0, $nexus7-landscape - 1px, landscape) {
+          margin-top: -2rem;
+        }
       }
     }
     &__divider {

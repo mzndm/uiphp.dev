@@ -1,8 +1,11 @@
 .resources {
   @extend .col-md-8;
   @extend .col-sm-12;
-  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
     width: 66%;
+  }
+  @include screen(0, $iphone6-plus-landscape, landscape) {
+    margin-top: 3rem;
   }
   .componentheading {
     @extend h2;

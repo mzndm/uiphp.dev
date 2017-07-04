@@ -12,9 +12,13 @@
     display: block;
     padding-bottom: 0;
   }
-
-  @include screen(0, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-landscape +1px, $nexus7-landscape, landscape) {
     display: block;
+  }
+  @include screen(0, $iphone6-plus-landscape, landscape) {
+    width: 100%;
+    float: left;
+    padding-bottom: 2rem;
   }
   display: none;
   .menu {
@@ -35,8 +39,12 @@
         margin-bottom: 10px;
       }
       @include screen(0, $nexus7-landscape, landscape) {
-        height: 100px;
+        height: 80px;
         margin-bottom: 10px;
+      }
+      @include screen(0, $nexus7-landscape - 1px, landscape) {
+        width: 50%;
+        float: left;
       }
       height: 170px;
 
@@ -106,6 +114,9 @@
         width: 25%;
         height: 100%;
       }
+      @include screen(0, $nexus7-landscape - 1px, landscape) {
+        height: 100%;
+      }
       width: 35%;
       height: 8rem;
       background-size: contain;
@@ -122,6 +133,9 @@
     }
     &__child {
       @include screen(0, $ipad-portrait - 1px, portrait) {
+        display: none;
+      }
+      @include screen(0, $nexus7-landscape - 1px, landscape) {
         display: none;
       }
       visibility: hidden;
@@ -174,6 +188,11 @@
     height: 2.5rem;
     width: 2.5rem;
     line-height: 1rem;
+  }
+  @include screen(0, $nexus7-landscape - 1px, landscape) {
+    height: 5rem;
+    width: 5rem;
+    line-height: 3rem;
   }
   border-radius: 4px;
   background-color: #fff;

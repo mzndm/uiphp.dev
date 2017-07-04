@@ -17,6 +17,9 @@
     @include screen( 0, $nexus7-portrait, portrait) {
       margin-bottom: 2em;
     }
+    @include screen( 0, $iphone6-plus-landscape, landscape) {
+      margin-bottom: 2em;
+    }
   }
   .resources {
     &__item {
@@ -32,8 +35,11 @@
       @include screen($nexus5x-portrait, $nexus7-portrait, portrait) {
         height: 225px;
       }
-      @include screen(0, $nexus7-landscape, landscape) {
+      @include screen($iphone6-plus-landscape +1px, $nexus7-landscape, landscape) {
         height: 500px;
+      }
+      @include screen( 0, $iphone6-plus-landscape, landscape) {
+        height: 250px;
       }
     }
     &__title {}

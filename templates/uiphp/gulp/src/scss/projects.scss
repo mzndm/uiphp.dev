@@ -10,6 +10,10 @@
       flex-direction: row;
       max-height: inherit;
     }
+    //@include screen(0, $nexus7-landscape - 1px, landscape) {
+    //  flex-direction: row;
+    //  max-height: inherit;
+    //}
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -23,6 +27,10 @@
     }
     @include screen(0, $nexus7-portrait - 1px, portrait) {
       width: 100%;
+    }
+
+    @include screen(0, $nexus7-landscape - 1px, landscape) {
+      width: 50%;
     }
   }
   &__wrapper {

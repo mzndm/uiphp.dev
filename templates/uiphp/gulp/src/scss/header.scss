@@ -19,6 +19,10 @@
     @include screen(0, $iphone5-portrait, portrait) {
       padding-bottom: 4rem;
     }
+    @include screen(0, $iphone6-plus-landscape, landscape) {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
     padding-top: 3em;
   }
   .insidePage__menu {
@@ -34,7 +38,7 @@
     @include screen(0, $iphone5-portrait, portrait) {
       margin-left: -5px;
     }
-    @include screen(0, $nexus7-landscape, landscape) {
+    @include screen($iphone6-plus-landscape +1px, $nexus7-landscape, landscape) {
       padding-top: 6rem;
       padding-bottom: 5rem;
       width: 50%;
@@ -43,6 +47,9 @@
   }
 }
 .logo {
+  @include screen(0, $iphone6-plus-landscape, landscape) {
+    text-align: center;
+  }
   &__img {
     @include screen($nexus7-portrait +1 px, $nexus7-landscape) {
       width: 30%;
@@ -50,6 +57,9 @@
     }
     @include screen(0, $nexus7-portrait, portrait) {
       width: 100%;
+    }
+    @include screen(0, $iphone6-plus-landscape, landscape) {
+      height: 5rem;
     }
   }
   @include ipad(portrait) {
@@ -64,6 +74,10 @@
       @extend .col-sm-8;
       @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
         width: 50%;
+      }
+      @include screen(0, $iphone6-plus-landscape, landscape) {
+        padding-bottom: 0;
+        padding-top: 2rem;
       }
       padding-top: 0;
       .logo {
@@ -143,6 +157,16 @@
       top: 5.8rem;
       width: 43vw;
     }
+    @include screen(0, $nexus7-landscape - 1px, landscape) {
+      display: none;
+      position: absolute;
+      top: 9rem;
+      background: #fff;
+      margin-top: 9px;
+      width: 88vw;
+      left: -40vw;
+      padding: 5px;
+    }
   }
   &__input {
     border: 0;
@@ -151,6 +175,10 @@
     color: $grey;
     padding: 0 0.5em 0.1em;
     max-width: 80%;
+    @include screen(0, $nexus7-landscape - 1px, landscape) {
+      width: 95%;
+      max-width: 100%;
+    }
     &:focus {
       outline: none;
     }
@@ -165,6 +193,9 @@
   @include screen(0, $ipad-portrait - 1px, portrait) {
     width: 50%;
     margin-top: 0;
+  }
+  @include screen(0, $iphone6-plus-landscape, landscape) {
+    margin-top: 1.1rem;
   }
   margin-top: 0.5em;
   float: right;

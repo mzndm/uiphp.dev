@@ -6,8 +6,13 @@
     overflow: auto;
     width: 100%;
   }
-  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
     width: 33%;
+  }
+  @include screen(0, $nexus7-landscape - 1px, landscape) {
+    display: none;
+    width: 50%;
+    overflow: hidden;
   }
   display: block;
   &__wrapper {
@@ -19,7 +24,7 @@
     width: 45px;
     height: 45px;
     padding: 5px;
-    @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+    @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
       display: none;
     }
   }
@@ -34,7 +39,7 @@
     @include max-screen($iphone5-portrait) {
       font-size: 1em;
     }
-    @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+    @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
       display: none;
     }
     display: none;

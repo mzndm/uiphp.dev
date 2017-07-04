@@ -25,6 +25,10 @@
     &__image {
       @extend .col-md-4;
       @extend .col-sm-5;
+      @include screen(0, $nexus7-landscape - 1px, landscape) {
+        width: 50%;
+        float: left;
+      }
       display: block;
       padding-left: 0;
       img {

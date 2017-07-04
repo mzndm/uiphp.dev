@@ -11,8 +11,11 @@
   @include screen(0, $nexus7-portrait - 1px, portrait) {
     position: static;
   }
-  @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
     left: -1px;
+  }
+  @include screen(0, $iphone6-plus-landscape, landscape) {
+    position: static;
   }
   position: absolute;
   top: -2em;

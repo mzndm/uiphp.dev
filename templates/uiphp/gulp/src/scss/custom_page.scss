@@ -78,6 +78,9 @@ img {
   .page_title {
     display: none;
   }
+  .submenu {
+    display: none;
+  }
 }
 .pageid-102,
 .pageid-103,
@@ -103,6 +106,11 @@ img {
   .content__wrapper {
     background: #fff;
     overflow: auto;
+  }
+  .filter {
+    @include screen(0, $iphone6-plus-landscape, landscape) {
+      display: block;
+    }
   }
 }
 
@@ -175,6 +183,13 @@ img {
   .mainPage__menu {
     @include min-screen($ipad-portrait ) {
       display: block;
+    }
+  }
+  .search__form {
+    @include screen(0, $nexus7-landscape - 1px, landscape) {
+      width: 96vw;
+      left: 0;
+      margin-left: 15px;
     }
   }
 }
