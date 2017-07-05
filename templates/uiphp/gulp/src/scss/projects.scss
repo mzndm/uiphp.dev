@@ -10,11 +10,11 @@
       flex-direction: row;
       max-height: inherit;
     }
-    @include screen( $phone-landscape + 1px, $iphone6-plus-landscape, landscape) {
-      max-height: 1200px;
+    @include screen( $phone-landscape + 1px, $iphone6-plus-landscape - 1px, landscape) {
+      max-height: 900px;
     }
     @include screen(0, $phone-landscape, landscape) {
-      max-height: 1500px;
+      max-height: 1000px;
     }
     display: flex;
     flex-wrap: wrap;

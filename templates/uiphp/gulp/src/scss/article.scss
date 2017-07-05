@@ -64,10 +64,13 @@
   &__partners {
     &--national {
       flex-direction: column;
-      max-height: 600px;
+      max-height: 1000px;
       @include screen(0, $ipad-portrait - 1px, portrait) {
         flex-direction: row;
         max-height: inherit;
+      }
+      @include screen($nexus7-landscape + 1px, $nexus10-landscape, landscape) {
+        max-height: 700px;
       }
     }
     &--foreign {
@@ -76,13 +79,20 @@
   }
   &__institution {
     &--national {
-      flex-direction: row;
-      @include screen($nexus7-portrait + 1px, $ipad-portrait, portrait) {
-        flex-direction: column;
-        max-height: 700px;
+      flex-direction: column;
+      max-height: 900px;
+      @include screen($nexus7-portrait + 1px, $nexus10-portrait, portrait) {
+        max-height: 1200px;
       }
       @include screen(0, $nexus7-portrait, portrait) {
         flex-direction: row;
+        max-height: inherit;
+      }
+      @include screen($nexus7-landscape + 1px, $nexus10-landscape, landscape) {
+        max-height: 900px;
+      }
+      @include screen(0, $nexus7-landscape, landscape) {
+        max-height: 1200px;
       }
     }
     &--foreign {
