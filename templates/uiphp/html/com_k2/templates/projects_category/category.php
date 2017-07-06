@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 
 	<?php if((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))): ?>
 	<!-- Item list -->
-	<div class="projectCategory__list">
+	<div class="projectCategory__list projectCategory__list--<?php echo $this->leading[0]->categoryalias ?>">
 
 		<?php if(isset($this->leading) && count($this->leading)): ?>
 		<!-- Leading items -->

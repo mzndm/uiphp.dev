@@ -10,7 +10,7 @@
   .menu {
     margin-bottom: 3em;
     @include max-screen($ipad-landscape) {
-      margin-bottom: 0;
+      margin-bottom: 1em;
     }
     &__item {
       @include max-screen($ipad-landscape) {

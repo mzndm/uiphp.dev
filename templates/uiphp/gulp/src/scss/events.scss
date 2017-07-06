@@ -20,7 +20,7 @@
   .item {
     margin-bottom: 3em;
     clear: both;
-    overflow-x: hidden;
+    overflow: visible;
     &__image {
       @extend .col-md-4;
       @extend .col-sm-5;
@@ -134,8 +134,11 @@
     margin: 10px;
     background-image: url(../img/icons/triangle.png);
     transform: rotate(-90deg);
-    @include screen(0, $nexus7-portrait, portrait) {
+    @include screen($phone-portrait + 1px, $nexus7-portrait, portrait) {
       top: 10px;
+    }
+    @include screen(0, $phone-portrait, portrait) {
+      top: 5px;
     }
     @include iphone5(portrait) {
       top:0;

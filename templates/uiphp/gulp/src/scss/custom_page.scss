@@ -9,6 +9,12 @@ img {
  max-width: 100%;
 }
 
+.item__text {
+  li {
+    @extend .about-us__li;
+  }
+}
+
 .uk-ua {
   .logo__img--en {
     display: none;

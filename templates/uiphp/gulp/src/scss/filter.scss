@@ -48,10 +48,14 @@
       }
     }
     &-message {
-      @extend h3;
+      font-family: $Medium;
+      font-size: $small;
+      line-height: 1.5em;
       position: relative;
       color: $green;
       margin-bottom: 20px;
+      clear: both;
+      text-decoration: none;
       &:before {
         content: '';
         height: 30px;
@@ -70,7 +74,7 @@
         margin-left: 0.5rem;
       }
       &:hover {
-        @extend .tdn;
+        @extend .tdu;
       }
     }
   }

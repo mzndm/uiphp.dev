@@ -1,25 +1,54 @@
 .projectCategory {
   &__list {
-    @include screen($ipad-portrait, $nexus7-landscape, portrait) {
-      max-height: 990px;
-    }
-    @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
-      max-height: 1500px;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     @include screen(0, $nexus7-portrait - 1px, portrait) {
       flex-direction: row;
       max-height: inherit;
     }
-    @include screen( $phone-landscape + 1px, $iphone6-plus-landscape - 1px, landscape) {
-      max-height: 900px;
-    }
-    @include screen(0, $phone-landscape, landscape) {
+    &--potochni-proekty {
       max-height: 1000px;
+      @include screen(0, $nexus7-portrait - 1px) {
+        max-height: inherit;
+      }
+      @include screen($phone-landscape, $nexus7-landscape) {
+        max-height: 1200px;
+      }
+      @include screen($nexus7-portrait, $ipad-portrait - 1px, portrait) {
+        max-height: 1400px;
+      }
+      @include screen(0, $iphone5-landscape, landscape) {
+        max-height: 1400px;
+      }
+      //@include screen( $phone-landscape + 1px, $iphone6-plus-landscape - 1px, landscape) {
+      //  max-height: 900px;
+      //}
+      //@include screen(0, $phone-landscape, landscape) {
+      //  max-height: 1000px;
+      //}
     }
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    max-height: 770px;
+    &--zaversheni-proekty {
+      max-height: 1000px;
+      @include screen(0, $nexus7-portrait - 1px) {
+        max-height: inherit;
+      }
+      @include screen($ipad-portrait, $nexus7-landscape) {
+        max-height: 1400px;
+      }
+      @include screen($nexus7-portrait, $ipad-portrait - 1px) {
+        max-height: 1600px;
+      }
+      @include screen( $phone-landscape, $iphone6-plus-landscape - 1px, landscape) {
+        max-height: 1700px;
+      }
+      @include screen($iphone5-landscape, $phone-landscape - 1px, landscape) {
+        max-height: 1900px;
+      }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+
+      }
+    }
   }
   &__item {
     @extend .col-md-4;
