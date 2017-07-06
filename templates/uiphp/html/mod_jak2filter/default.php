@@ -20,7 +20,7 @@ $ajax_filter = $params->get('ajax_filter', 0);
 $share_url = $params->get('share_url_of_results_page', 0);
 ?>
 <div class="filter__wrapper">
-	<div class="filter__button dropdown-button">
+	<div class="filter__button-dropdown dropdown-button">
 		<span class="dropdown-button__line dropdown-button__line--1"></span>
 		<span class="dropdown-button__line dropdown-button__line--2"></span>
 		<span class="dropdown-button__line dropdown-button__line--3"></span>

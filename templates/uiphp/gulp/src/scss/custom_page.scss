@@ -8,8 +8,12 @@ html, body {
 img {
  max-width: 100%;
 }
+
 .uk-ua {
   .logo__img--en {
+    display: none;
+  }
+  .filter__button-message--en {
     display: none;
   }
 }
@@ -17,7 +21,11 @@ img {
   .logo__img--ua {
     display: none;
   }
+  .filter__button-message--ua {
+    display: none;
+  }
 }
+
 .site {
   background-color: #f0f0ef;
   height: 100%;
@@ -62,6 +70,13 @@ img {
   @include max-screen($nexus7-landscape) {
     padding: 0;
   }
+}
+
+.open {
+  display: block;
+}
+.hide {
+  display: none;
 }
 
 .pageid-102,
@@ -163,7 +178,7 @@ img {
       display: block;
     }
   }
-  .filter__button {
+  .filter__button-dropdown {
     display: none;
   }
   .filter__title {

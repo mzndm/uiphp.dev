@@ -21,11 +21,57 @@
     }
   }
   &__button {
-    width: 45px;
-    height: 45px;
-    padding: 5px;
-    @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
-      display: none;
+    &-dropdown {
+      @include screen($iphone6-plus-landscape + 1px, $nexus7-landscape, landscape) {
+        display: none;
+      }
+      width: 45px;
+      height: 45px;
+      padding: 5px;
+    }
+    &-show {
+      line-height: 1em;
+      &:before {
+        display: block;
+      }
+      &:after {
+        height: 1rem;
+      }
+    }
+    &-hide {
+      &:before {
+        display: none;
+      }
+      &:after {
+        height: 1.5em;
+        transform: rotateX(180deg);
+      }
+    }
+    &-message {
+      @extend h3;
+      position: relative;
+      color: $green;
+      margin-bottom: 20px;
+      &:before {
+        content: '';
+        height: 30px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1rem;
+        z-index: 2;
+        background: linear-gradient(rgba(255, 255, 255, 0) 0%, #f0f0ef 70%, #f0f0ef 100%);
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1rem;
+        background: transparent url(../img/icons/triangle.png) center no-repeat;
+        margin-left: 0.5rem;
+      }
+      &:hover {
+        @extend .tdn;
+      }
     }
   }
   &__title {
@@ -56,6 +102,20 @@
     }
   }
   &__item {
+    margin-bottom: 20px;
+    &--3 {
+      margin-bottom: 0;
+    }
+    &--4 {
+      @extend .filter__item--3;
+    }
+    &--short {
+      height: 130px;
+      overflow: hidden;
+    }
+    &--long {
+      height: auto;
+    }
     label{
       font-family: $Medium;
       font-size: $small;
@@ -70,15 +130,9 @@
       font-size: $small;
       color: #000;
       border: 1px solid $green;
-      padding: 0.5em 1em;
+      padding: 0.5em 2.5em 0.5em 1em;
       width: 100%;
       background-color: transparent;
-      background-image: url("../img/icons/search.png");
-      background-repeat: no-repeat;
-      background-position: 96% center;
-      &:focus {
-        outline: none;
-      }
     }
     input[type="checkbox"] {
       position: absolute;
@@ -114,6 +168,22 @@
       background-image: none;
       text-align: left;
       cursor: pointer;
+    }
+  }
+  &__search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 32px;
+    width: 40px;
+    border: 0;
+    background-image: url(../img/icons/search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    &:focus {
+      outline: none;
     }
   }
 }

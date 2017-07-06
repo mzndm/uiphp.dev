@@ -4,7 +4,7 @@ $('.dropdown-button').click(function () {
     $(this).toggleClass('dropdown-button__close');
 });
 
-$('.filter__button').click(function(){
+$('.filter__button-dropdown').click(function(){
     $('.filter').slideToggle();
 });
 
