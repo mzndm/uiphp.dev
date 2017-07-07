@@ -24,9 +24,12 @@
     &__image {
       @extend .col-md-4;
       @extend .col-sm-5;
-      @include screen(0, $nexus7-landscape - 1px, landscape) {
+      @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape - 1px, landscape) {
         width: 50%;
         float: left;
+      }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        width: 100%;
       }
       display: block;
       padding-left: 0;
@@ -143,6 +146,9 @@
     @include iphone5(portrait) {
       top:0;
     }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      top: 10px;
+    }
   }
   @include screen(0, $nexus7-portrait, portrait) {
     position: relative;
@@ -155,6 +161,12 @@
   }
   @include iphone5(portrait) {
     font-size: 1em;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    position: relative;
+    display: block;
+    margin-left: 0;
+    line-height: 2;
   }
 }
 
@@ -191,6 +203,9 @@
       @include screen(0, $nexus7-landscape - 1px, landscape) {
         width: 50%;
         float: left;
+      }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        width: 100%;
       }
     }
     &__content {

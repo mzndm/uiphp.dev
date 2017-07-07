@@ -208,7 +208,7 @@ img {
     }
   }
   .search__form {
-    @include screen(0, $nexus7-landscape - 1px, landscape) {
+    @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape - 1px, landscape) {
       width: 96vw;
       left: 0;
       margin-left: 15px;

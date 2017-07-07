@@ -46,6 +46,9 @@
         width: 50%;
         float: left;
       }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        width: 100%;
+      }
       height: 170px;
 
       >a {
@@ -189,10 +192,15 @@
     width: 2.5rem;
     line-height: 1rem;
   }
-  @include screen(0, $nexus7-landscape - 1px, landscape) {
+  @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape - 1px, landscape) {
     height: 5rem;
     width: 5rem;
     line-height: 3rem;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    height: 3rem;
+    width: 3rem;
+    line-height: 1rem;
   }
   border-radius: 4px;
   background-color: #fff;
@@ -210,6 +218,11 @@
   }
   @include iphone5(landscape) {
     margin-right: 20px;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    margin-top: 3em;
+    padding: 0.6rem;
+    padding-top: 0.8rem;
   }
   margin-top: 4em;
   padding: 1.5rem;

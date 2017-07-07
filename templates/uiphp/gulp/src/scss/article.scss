@@ -6,6 +6,9 @@
     @include screen(0, $nexus7-portrait, portrait) {
       padding: 0 3rem 3em;
     }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      padding: 0 3rem 3em;
+    }
   }
   .page-header {
     h2 {
@@ -78,6 +81,10 @@
       @include screen($nexus7-landscape + 1px, $nexus10-landscape, landscape) {
         max-height: 700px;
       }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        flex-direction: row;
+        max-height: inherit;
+      }
     }
     &--foreign {
       flex-direction: row;
@@ -100,6 +107,10 @@
       @include screen(0, $nexus7-landscape, landscape) {
         max-height: 1200px;
       }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        flex-direction: row;
+        max-height: inherit;
+      }
     }
     &--foreign {
       flex-direction: row;
@@ -120,8 +131,11 @@
     @extend .col-md-4;
     @extend .col-sm-6;
     @extend .col-xs-12;
-    @include screen(0, $nexus7-landscape, landscape) {
+    @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape, landscape) {
       width: 50%;
+    }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+     width: 100%;
     }
     //width: 33.33%;
     margin-bottom: 2em;
@@ -155,12 +169,18 @@
   @include screen(0, $nexus7-portrait - 1px, portrait) {
     max-width: 100%;
   }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    max-width: 100%;
+  }
 }
 .pull-right {
   margin: 0 1em 0.5em 0;
   padding-right: 0;
   max-width: 50%;
   @include screen(0, $nexus7-portrait - 1px, portrait) {
+    max-width: 100%;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
     max-width: 100%;
   }
 }

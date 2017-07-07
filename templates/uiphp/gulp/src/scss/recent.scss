@@ -6,7 +6,10 @@
     @extend .events__h1;
     margin-left: 1em;
     margin-bottom: 1em;
-    @include screen( 0, $phone-portrait, portrait) {
+    @include screen( 0, $phone-portrait) {
+      margin-bottom: 0;
+    }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
       margin-bottom: 0;
     }
   }
@@ -50,6 +53,9 @@
   }
   .toEvents {
     @include screen(0, $nexus7-portrait, portrait) {
+      margin-left: 3rem;
+    }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
       margin-left: 3rem;
     }
   }

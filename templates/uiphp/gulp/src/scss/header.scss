@@ -23,6 +23,11 @@
       padding-top: 4rem;
       padding-bottom: 4rem;
     }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      padding-bottom: 3rem;
+      padding-top: 2rem;
+    }
+
     padding-top: 3em;
   }
   .insidePage__menu {
@@ -45,6 +50,9 @@
     }
     @include screen(0, $iphone5-landscape, landscape) {
       margin-left: -5px;
+    }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      padding-top: 3rem;
     }
     padding-top: 4rem;
   }
@@ -78,13 +86,17 @@
       @include screen($nexus5x-landscape, $nexus7-landscape, landscape) {
         width: 50%;
       }
-      @include screen(0, $iphone6-plus-landscape, landscape) {
+      @include screen($iphone6-plus-portrait + 1px, $iphone6-plus-landscape, landscape) {
         padding-bottom: 0;
         padding-top: 2rem;
       }
+      //@include screen(0, $iphone6-plus-portrait, landscape) {
+      //  padding-bottom: 3rem;
+      //  padding-top: 2rem;
+      //}
       padding-top: 0;
       .logo {
-        @include screen(0, $ipad-portrait - 1px, portrait) {
+        @include screen(0, $ipad-portrait - 1px) {
           width: 100%;
           margin-bottom: 0;
         }
@@ -116,7 +128,7 @@
       @include screen($nexus7-portrait, $nexus7-landscape) {
         position: static;
       }
-      @include screen(0, $nexus7-portrait - 1px, portrait) {
+      @include screen(0, $nexus7-portrait - 1px) {
         padding-top: 3rem;
       }
     }
@@ -128,7 +140,11 @@
     width: 50%;
     float: left;
   }
-  @include screen(0, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-portrait +1px, $nexus7-landscape, landscape) {
+    float: left;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    width: 50%;
     float: left;
   }
   .element-invisible {
@@ -170,6 +186,11 @@
       left: -40vw;
       padding: 5px;
     }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      top: 6.5rem;
+      width: 93vw;
+      left: -45vw;
+    }
   }
   &__input {
     border: 0;
@@ -178,9 +199,13 @@
     color: $grey;
     padding: 0 0.5em 0.1em;
     max-width: 80%;
-    @include screen(0, $nexus7-landscape - 1px, landscape) {
+    @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape - 1px, landscape) {
       width: 95%;
       max-width: 100%;
+    }
+    @include screen(0, $iphone6-plus-portrait, landscape) {
+      width: 100%;
+      max-width: 92%;
     }
     &:focus {
       outline: none;

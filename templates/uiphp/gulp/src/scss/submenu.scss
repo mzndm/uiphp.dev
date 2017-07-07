@@ -4,8 +4,11 @@
   @include screen(0, $nexus7-portrait, portrait) {
     margin-left: 2rem;
   }
-  @include screen(0, $nexus7-landscape, landscape) {
+  @include screen($iphone6-plus-portrait + 1px, $nexus7-landscape, landscape) {
     padding-bottom: 2rem;
+  }
+  @include screen(0, $iphone6-plus-portrait, landscape) {
+    padding-bottom: 0;
   }
   .menu {
     margin-bottom: 3em;

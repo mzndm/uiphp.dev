@@ -111,7 +111,7 @@ p {
   color: $grey;
   padding-left: 15px;
   margin: 1em 0 0.5em 4rem;
-  @include screen(0, $nexus7-portrait, portrait) {
+  @include screen(0, $nexus7-portrait) {
     font-size: 2em;
   }
 }

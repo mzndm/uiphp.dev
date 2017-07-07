@@ -20,6 +20,10 @@
         width: initial;
         margin-bottom: 5px;
       }
+      @include screen(0, $iphone6-plus-portrait, landscape) {
+        width: 28px;
+        margin-bottom: 5px;
+      }
     }
     &__close {
       .dropdown-button {
@@ -35,6 +39,9 @@
             @include screen(0, $nexus5x-portrait - 1px, portrait) {
               margin-top: 10px;
             }
+            @include screen(0, $iphone6-plus-portrait, landscape) {
+              margin-top: 11px;
+            }
           }
           &--2 {
             background-color: transparent;
@@ -47,6 +54,9 @@
               margin-top: -13px;
             }
             @include screen(0, $nexus5x-portrait - 1px, portrait) {
+              margin-top: -13px;
+            }
+            @include screen(0, $iphone6-plus-portrait, landscape) {
               margin-top: -13px;
             }
           }

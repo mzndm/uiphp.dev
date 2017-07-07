@@ -10,7 +10,9 @@ var gulp 		= require('gulp'),
     pngquant    = require('imagemin-pngquant'),
     cache       = require('gulp-cache'),
     del         = require('del'),
-    rimraf      = require('rimraf');
+    rimraf      = require('rimraf'),
+    browserSync = require('browser-sync'),
+    reload      = browserSync.reload;
 
 // cssmin     = require('gulp-cssmin'),
 // browserSync = require('browser-sync'),       // TODO: запустить browser sync
@@ -53,15 +55,16 @@ var path = {
 
 };
 
-// var config = {
-//     server: {
-//         baseDir: "./build"
-//     },
-//     tunnel: true,
-//     host: 'localhost',
-//     port: 9000,
-//     logPrefix: "Frontend_Devil"
-// };
+var config = {
+    proxy: "dev.uiphp"
+    // server: {
+    //     baseDir: "./build"
+    // },
+    // tunnel: true,
+    // host: 'localhost',
+    // port: 9000,
+    // logPrefix: ""
+};
 
 gulp.task('style:build', function () {
     gulp.src(path.src.style)
@@ -75,8 +78,8 @@ gulp.task('style:build', function () {
         .pipe(prefixer())
         // .pipe(cssmin())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(path.build.style));
-        // .pipe(reload({stream: true}));
+        .pipe(gulp.dest(path.build.style))
+        .pipe(reload({stream: true}));
 });
 gulp.task('lib_css:build', function () {
     gulp.src(path.lib.style)
@@ -86,9 +89,8 @@ gulp.task('lib_css:build', function () {
         // .pipe(cssmin())
         .pipe(concat('libs.css'))
         .pipe(sourcemaps.write())
-
-        .pipe(gulp.dest(path.build.style));
-    // .pipe(reload({stream: true}));
+        .pipe(gulp.dest(path.build.style))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('js:build', function () {
@@ -143,6 +145,10 @@ gulp.task('cache', function () {
     return cache.clearAll();
 });
 
+gulp.task('webserver', function () {
+    browserSync(config);
+});
+
 gulp.task('watch', function(){
     gulp.watch([path.watch.style], function(event, cb) {
         gulp.start('style:build');
@@ -164,5 +170,5 @@ gulp.task('watch', function(){
     });
 });
 
-gulp.task('default', ['build', 'watch']);
-// gulp.task('default', ['build', 'webserver', 'watch']);
+//gulp.task('default', ['build', 'watch']);
+gulp.task('default', ['build', 'webserver', 'watch']);
