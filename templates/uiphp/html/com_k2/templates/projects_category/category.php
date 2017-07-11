@@ -46,13 +46,13 @@ defined('_JEXEC') or die;
 	</div>
 
 	<!-- Pagination -->
-	<?php if($this->pagination->getPagesLinks()): ?>
-	<div class="k2Pagination">
-		<?php if($this->params->get('catPagination')) echo $this->pagination->getPagesLinks(); ?>
-		<div class="clr"></div>
-		<?php if($this->params->get('catPaginationResults')) echo $this->pagination->getPagesCounter(); ?>
-	</div>
-	<?php endif; ?>
+
+
+		<?php if($this->pagination->getPagesLinks()): ?>
+			<div class="events__pagination">
+				<?php if($this->params->get('catPagination')) echo $this->pagination->getPagesLinks(); ?>
+			</div>
+		<?php endif; ?>
 
 	<?php endif; ?>
 

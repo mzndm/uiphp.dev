@@ -389,8 +389,9 @@ class JAK2FilterViewItemlist extends JAK2FilterView
 
 
         if(count($items)==0){
+//
 			echo '<div class="search__null">' . JText::_('SEARCH_RESULT_NULL') . '</div>';
-			return;
+
 		}
 
 		// Pagination

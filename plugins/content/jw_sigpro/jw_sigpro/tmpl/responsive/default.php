@@ -26,7 +26,7 @@ $layoutclass = ($gallery[0]->width >= 200) ? ' large-block-grid-4 ' : ' large-bl
 			<span class="sigProLinkWrapper">
 				<a href="<?php echo $photo->sourceImageFilePath; ?>" class="sigProLink<?php echo $extraClass; ?>" style="width: 100%; padding-bottom:<?php echo ($photo->height / $photo->width * 100); ?>%;" rel="<?php echo $relName; ?>[gallery<?php echo $gal_id; ?>]" title="<?php echo $photo->captionDescription.$photo->downloadLink.$modulePosition; ?>" data-fresco-caption="<?php echo $photo->captionDescription.$photo->downloadLink.$modulePosition; ?>" target="_blank"<?php echo $customLinkAttributes; ?>>
 					<?php if(($gal_singlethumbmode && $count==0) || !$gal_singlethumbmode): ?>
-					<img class="sigProImg" src="<?php echo $transparent; ?>" alt="<?php echo JText::_('JW_SIGP_LABELS_08').' '.$photo->filename; ?>" title="<?php echo JText::_('JW_SIGP_LABELS_08').' '.$photo->filename; ?>" style="background-image:url(<?php echo $photo->thumbImageFilePath; ?>); background-repeat: no-repeat; background-size: cover;" />
+					<img class="sigProImg" src="<?php echo $transparent; ?>" alt="<?php echo JText::_('JW_SIGP_LABELS_08').' '.$photo->filename; ?>" title="<?php echo JText::_('JW_SIGP_LABELS_08').' '.$photo->filename; ?>" style="background-image:url(<?php echo $photo->sourceImageFilePath; ?>); background-repeat: no-repeat; background-size: cover;" />
 					<?php endif; ?>
 
 					<?php if($gal_captions): ?>

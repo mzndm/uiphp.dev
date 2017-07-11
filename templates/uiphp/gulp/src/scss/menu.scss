@@ -22,7 +22,8 @@
   }
   display: none;
   .menu {
-    .item-101 {
+    .item-101,
+    .item-107 {
       display: none;
     }
     > .menu__item {
@@ -133,6 +134,12 @@
       &--104 { background-image: url("../img/icons/project.png"); }
       &--105 { background-image: url("../img/icons/earth.png"); }
       &--106 { background-image: url("../img/icons/contact.png"); }
+      &--140 { background-image: url("../img/icons/uiphp.png"); }
+      &--145 { background-image: url("../img/icons/apple.png"); }
+      &--150 { background-image: url("../img/icons/resources.png"); }
+      &--151 { background-image: url("../img/icons/project.png"); }
+      &--154 { background-image: url("../img/icons/earth.png"); }
+      &--155 { background-image: url("../img/icons/contact.png"); }
     }
     &__child {
       @include screen(0, $ipad-portrait - 1px, portrait) {
@@ -243,7 +250,7 @@
     flex-direction: row;
     justify-content: space-around;
     margin-top: 3.8em;
-    .item-101 { display: none;}
+    .item-101, .item-107  { display: none;}
     &__item {
       width: 100px;
       a {

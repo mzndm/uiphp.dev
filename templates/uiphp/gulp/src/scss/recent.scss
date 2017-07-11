@@ -2,6 +2,9 @@
   @include screen($phone-portrait, $ipad-portrait, portrait) {
     margin-top: 2em;
   }
+  @include min-screen($nexus10-portrait + 1px) {
+    margin-top: 2em;
+  }
   &__h1 {
     @extend .events__h1;
     margin-left: 1em;

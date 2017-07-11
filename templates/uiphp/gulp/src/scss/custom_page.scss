@@ -95,6 +95,7 @@ img {
 }
 
 .pageid-101,
+.pageid-107,
 .pageid-106 {
   .page_title {
     display: none;
@@ -105,7 +106,10 @@ img {
 }
 .pageid-102,
 .pageid-103,
-.pageid-104 {
+.pageid-104,
+.pageid-140,
+.pageid-145,
+.pageid-151 {
   .submenu {
     .menu__item:first-child {
       a {
@@ -116,14 +120,17 @@ img {
   }
 }
 .pageid-105,
-.pageid-106 {
+.pageid-106,
+.pageid-154,
+.pageid-155 {
   .page-header {
     h1, h2 {
       display: none;
     }
   }
 }
-.pageid-130 {
+.pageid-130,
+.pageid-149 {
   .content__wrapper {
     background: #fff;
     overflow: auto;
@@ -142,12 +149,15 @@ img {
   }
 }
 .pageid-134,
+.pageid-151,
+.pageid-152,
 .pageid-104 {
   .projectCategory__navlink--inprogress {
     display: none;
   }
 }
-.pageid-138 {
+.pageid-138,
+.pageid-153 {
   .projectCategory__navlink--done {
     display: none;
   }
@@ -158,12 +168,21 @@ img {
 .pageid-104,
 .pageid-105,
 .pageid-106,
+.pageid-107,
 .pageid-130,
 .pageid-131,
 .pageid-134,
 .pageid-135,
 .pageid-136,
-.pageid-138 {
+.pageid-138,
+.pageid-148,
+.pageid-149,
+.pageid-150,
+.pageid-151,
+.pageid-152,
+.pageid-153,
+.pageid-154,
+.pageid-155 {
   .content {
     background-color: transparent;
     &__wrapper {
@@ -175,7 +194,8 @@ img {
     display: none;
   }
 }
-.pageid-130 {
+.pageid-130,
+.pageid-149 {
   .events__filter {
     display: block;
   }
@@ -201,7 +221,8 @@ img {
     margin-top: 1rem;
   }
 }
-.pageid-101 {
+.pageid-101,
+.pageid-107 {
   .mainPage__menu {
     @include min-screen($ipad-portrait ) {
       display: block;

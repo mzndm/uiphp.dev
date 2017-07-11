@@ -1355,13 +1355,10 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
                     } else {
                         switch ($cType) {
                             case 'txt':
-                                $value2 = mb_strtolower(trim($value));
-                                $value2 = $this->convert_text_search($value2);
-                                $value2 = $this->rgEscapse($this->convert_string_non_latin($value2));
-                                $value1 = mb_convert_case($value, MB_CASE_TITLE, "UTF-8");
-                                $value1 = $this->convert_text_search($value1);
-                                $value1 = $this->rgEscapse($this->convert_string_non_latin($value1));
-                                $searchPattern = $prefix.'"[^"]*(' . $value2. '|' . $value1 . ')[^"]*"';// ~ LIKE '%string%'
+								$value = trim($value);
+								$value = $this->convert_text_search($value);
+                                $value = $this->rgEscapse($this->convert_string_non_latin($value));
+                                $searchPattern = $prefix.'"[^"]*'.$value.'[^"]*"';// ~ LIKE '%string%'
                                 $searchPattern = str_replace('\u', '\\\\\\\\u', $searchPattern);
                                 $where[] = "(i.extra_fields REGEXP '".$searchPattern."')";
                                 break;
@@ -1400,7 +1397,7 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
         $sql .= empty($where) ? '' : ' AND ' . implode(' AND ', $where);
 
         if(empty($search)) {
-            echo $sql;
+//            echo $sql;
             return $sql;
         }
 
@@ -1475,7 +1472,7 @@ class JAK2FilterModelItemlist extends JAK2FilterModel
 				}
 			}
         }
-//		echo $sql;
+		//echo $sql;
         return $sql;
     }
 

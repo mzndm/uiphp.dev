@@ -5,9 +5,12 @@
   &__project {
     background: url("../img/image/banner_bg.png") no-repeat;
     padding: 2em;
-    margin-top: 3em;
+    //margin-top: 3em;
     background-size: cover;
     height: auto;
+    @include max-screen($nexus10-portrait) {
+      margin-top: 3em;
+    }
     p {
       color: #fff;
     }
