@@ -21,19 +21,30 @@ function pagination_list_render($list)
 //        $html .= GWaddRow($gwpages, $list['start'], 'pagination-start1');
     }
 
-    if ($current > 3) $html .= '<div class="pagination__item"><span>...</span></div>';
+   // if ($current > 3) $html .= '<div class="pagination__item"><span>...</span></div>';
 
+    if (isset($list['pages'][$current - 2])) $html .= GWaddRow($gwpages, $list['pages'][$current - 2]);
     if (isset($list['pages'][$current - 1])) $html .= GWaddRow($gwpages, $list['pages'][$current - 1]);
 
     $html .= GWaddRow($gwpages, $list['pages'][$current]);
 
     if (isset($list['pages'][$current + 1])) $html .= GWaddRow($gwpages, $list['pages'][$current + 1]);
+    if (isset($list['pages'][$current + 2])) $html .= GWaddRow($gwpages, $list['pages'][$current + 2]);
 
     if ($current == 1) {
+        if (isset($list['pages'][$current + 3])) $html .= GWaddRow($gwpages, $list['pages'][$current + 3]);
+        if (isset($list['pages'][$current + 4])) $html .= GWaddRow($gwpages, $list['pages'][$current + 4]);
+    }
+
+    if ($current == 2) {
+        if (isset($list['pages'][$current + 3])) $html .= GWaddRow($gwpages, $list['pages'][$current + 3]);
+    }
+
+    if ($current > 4) {
         if (isset($list['pages'][$current + 2])) $html .= GWaddRow($gwpages, $list['pages'][$current + 2]);
     }
 
-    if ($current < ($countPages - 2)) $html .= '<div class="pagination__item"><span>...</span></div>';
+    //if ($current < ($countPages - 2)) $html .= '<div class="pagination__item"><span>...</span></div>';
 
 
     if ($current != $list['endPage'] && ++$current != $list['endPage']) {

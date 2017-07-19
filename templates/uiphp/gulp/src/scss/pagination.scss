@@ -9,10 +9,13 @@
     margin-right: 1em;
     color: $green;
     &--prev {
-      display: none;
+      display: inline-block;
+      a {
+        display: block!important;
+      }
     }
     &--next {
-      display: none;
+      @extend .pagination__item--prev;
     }
 
     a {

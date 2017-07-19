@@ -7,6 +7,8 @@ jQuery(document).ready(function($) {
 
     //= map.js
 
+    //= pagination.js
+
 });
 
 
